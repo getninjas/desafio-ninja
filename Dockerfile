@@ -31,7 +31,7 @@ USER app
 WORKDIR /home/app
 
 # Copy over gems from the dependencies stage
-COPY --from=dependencies /usr/local/bundle/ /usr/local/bundle/
+COPY --from=dependencies --chown=app /usr/local/bundle/ /usr/local/bundle/
 
 # Finally, copy over the code
 # This is where the .dockerignore file comes into play
