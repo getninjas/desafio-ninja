@@ -13,3 +13,25 @@ Sua tarefa será de criar uma API REST que crie, edite, mostre e delete o agenda
 - A aplicação deverá subir com docker-compose
 - Crie um README.md descrevendo a sua solução e as issues caso houver
 - O desafio pode ser entregue abrindo um pull request ou fazendo um fork do repositório 
+
+
+# Resolução
+Para fazer o setup do projeto com os bancos de teste e desenvolvimento, e popular com as salas default do problema basta rodar o comando:
+`docker-compose run web rails db:setup`
+
+Após configurada a aplicação, conseguimos roda os testes com o comando:
+`docker-compose run web rails test`
+
+E, como requerido, a aplicação é levantada com: `docker-compose up`
+
+Criei uma tabela `rooms` que representa as salas do problema. Cada registro possui suas próprias configurações, então podemos ter salas com configurações diferentes do problema deixando a solução mais escalável.
+
+A tabela `appointments` representa os agendamentos. Cada sala pode ter vários agendamentos, logo tabela `rooms` possui o relacionamento de um para muitos com a tabela `appointments`. Com a aplicação conseguimos criar, editar, listar, mostrar e destruir agendamentos.
+
+Implementei a validação `time_window_disjunction` para garantir que um agendamento não intersecte outros existentes. Para garantir que um agendamento respeite as regras da sala, implementei a validação `room_availability` e, por último, implementei mais uma que garantisse que o tempo final do agendamento não seja antes do tempo inicial.
+
+Os campos que armazenam o horário de disponibilidade das salas é uma `string`, pois só precisava da informação de hora. Para garantir a formatação, criei o validador customizado `HourStringFormatValidator` que faz a verificação com o uso de regex.
+
+Pra ajudar a visualizar a modelagem da resolução problema eu fiz esse diagrama: https://dbdiagram.io/d/60e6269d7e498c3bb3eca6d2
+
+Uma pequena documentação da api gerada pelo postman: https://documenter.getpostman.com/view/8419256/Tzm8FadD
