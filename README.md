@@ -33,3 +33,5 @@ Implementei a validação `time_window_disjunction` para garantir que um agendam
 Os campos que armazenam o horário de disponibilidade das salas é uma `string`, pois só precisava da informação de hora. Para garantir a formatação, criei o validador customizado `HourStringFormatValidator` que faz a verificação com o uso de regex.
 
 Pra ajudar a visualizar a modelagem da resolução problema eu fiz esse diagrama: https://dbdiagram.io/d/60e6269d7e498c3bb3eca6d2
+
+Uma pequena documentação da api gerada pelo postman: https://documenter.getpostman.com/view/8419256/Tzm8FadD
