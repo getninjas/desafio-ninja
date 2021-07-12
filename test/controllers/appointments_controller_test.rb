@@ -5,7 +5,7 @@ class AppointmentsControllerTest < ActionDispatch::IntegrationTest
     appointment_attributes = appointment_attributes(room.id)
 
     post appointments_url, params: { appointment: appointment_attributes }
-    byebug
+
     assert_response :success
     assert Appointment.where(appointment_attributes).exists?
   end
