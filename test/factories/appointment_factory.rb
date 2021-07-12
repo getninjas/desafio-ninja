@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :appointment do
-    responsible_name { 'responsible' }
+    responsible_name { Faker::Name.first_name }
     start_time { appointment_default_start_time }
     end_time { appointment_default_start_time + 1.hour }
     room { build(:room) }
