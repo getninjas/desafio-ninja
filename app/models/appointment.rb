@@ -9,6 +9,7 @@ class Appointment < ActiveRecord::Base
   validates :room, presence: true
   validate :time_window_disjunction
   validate :room_availability
+  validate :time_interval
 
   def intersects_another_appointment?
     Appointment.where(room_id: room_id)
@@ -24,7 +25,7 @@ class Appointment < ActiveRecord::Base
   def respect_room_availability?
     return true if room.blank?
 
-    return false if end_time - start_time > 24.hours.to_i
+    return false if end_time - start_time >= 24.hours.to_i
 
     return false if room.availability_days.exclude?(start_time.wday)
 
@@ -50,6 +51,13 @@ class Appointment < ActiveRecord::Base
     return true if self.respect_room_availability?
 
     errors.add(:base, 'must respect room availability')
+    return false
+  end
+
+  def time_interval
+    return true if self.start_time < self.end_time
+
+    errors.add(:base, 'end_time must be greater than start_time')
     return false
   end
 end
