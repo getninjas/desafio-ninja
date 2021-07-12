@@ -3,6 +3,7 @@ FactoryBot.define do
     responsible_name { 'responsible' }
     start_time { default_start_time }
     end_time { default_start_time + 1.hour }
+    room { build(:room) }
   end
 end
 

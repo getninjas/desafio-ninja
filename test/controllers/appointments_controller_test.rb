@@ -19,9 +19,26 @@ class AppointmentsControllerTest < ActionDispatch::IntegrationTest
     assert_not Appointment.where(appointment_attributes).exists?
   end
 
+  test "should successfully return appointment" do
+    appointment = create(:appointment)
+
+    get appointment_url(appointment.id), params: { 
+      appointment: {
+        id: appointment.id
+      }
+    }
+
+    assert_response :success
+
+    body = JSON.parse(response.body)
+    assert_equal appointment.id, body['appointment']['id']
+  end
+
   private
   def appointment_attributes(room_id)
-    attributes = build(:appointment).attributes.select { |k, v| v.present? }.with_indifferent_access
+    attributes = build(:appointment).attributes
+                                    .select { |k, v| v.present? }
+                                    .with_indifferent_access
 
     attributes[:room_id] = room_id
     attributes[:start_time] = attributes[:start_time].utc.iso8601
