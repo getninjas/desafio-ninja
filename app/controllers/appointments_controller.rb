@@ -1,4 +1,17 @@
 class AppointmentsController < ApplicationController
+
+  def index
+    puts params
+    render json: { 
+      errors: ['room_id must be present']
+    }, status: :bad_request and return if params[:room_id].blank?
+
+    appointments = Appointment.where(room_id: params[:room_id])
+    appointments.map { |a| a.attributes }
+
+    render json: { appointments: appointments }, status: :ok
+  end
+
   def create
     appointment = Appointment.new(appointment_attributes)
 

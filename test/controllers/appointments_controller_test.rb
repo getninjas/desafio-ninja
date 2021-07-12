@@ -73,6 +73,31 @@ class AppointmentsControllerTest < ActionDispatch::IntegrationTest
     assert_not Appointment.where(id: appointment.id).exists?
   end
 
+  test "should list appointments for a room" do
+    room = create(:room)
+
+    create(:appointment)
+    5.times do |x|
+      room.appointments << build(:appointment,
+                                 room: room,
+                                 start_time: appointment_default_start_time + x.hours + 1.minute,
+                                 end_time: appointment_default_start_time + (x+1).hours
+                                )
+    end
+    room.save
+
+    get appointments_url, params: { room_id: room.id }
+    assert_response :success
+
+    body = JSON.parse(response.body)
+    assert_equal 5, body['appointments'].length
+  end
+
+  test "should return error if try list without room param" do
+    get appointments_url
+    assert_response :bad_request
+  end
+
   private
 
   def appointment_attributes(room_id)
