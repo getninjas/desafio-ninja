@@ -13,7 +13,6 @@ services:
       - .:/home/app
     ports:
       - "3000:3000"
-    env_file: .env
     environment:
       DATABASE_PASSWORD: postgres
       DATABASE_USERNAME: postgres
