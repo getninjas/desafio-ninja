@@ -1,7 +1,6 @@
 class AppointmentsController < ApplicationController
 
   def index
-    puts params
     render json: { 
       errors: ['room_id must be present']
     }, status: :bad_request and return if params[:room_id].blank?

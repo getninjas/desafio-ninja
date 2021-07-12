@@ -16,8 +16,15 @@ Sua tarefa será de criar uma API REST que crie, edite, mostre e delete o agenda
 
 
 # Resolução
+Para fazer o setup do projeto com os bancos de teste e desenvolvimento, e popular com as salas default do problema basta rodar o comando:
+`docker-compose run web rails db:setup`
 
-Criei uma tabela `rooms` que representa as salas do problema, parar criar as salas com as especificações do problema basta rodar a task `rails sample_data:rooms`. Cada registro possui suas próprias configurações, então podemos ter salas com configurações diferentes do problema deixando a solução mais escalável.
+Após configurada a aplicação, conseguimos roda os testes com o comando:
+`docker-compose run web rails test`
+
+E, como requerido, a aplicação é levantada com: `docker-compose up`
+
+Criei uma tabela `rooms` que representa as salas do problema. Cada registro possui suas próprias configurações, então podemos ter salas com configurações diferentes do problema deixando a solução mais escalável.
 
 A tabela `appointments` representa os agendamentos. Cada sala pode ter vários agendamentos, logo tabela `rooms` possui o relacionamento de um para muitos com a tabela `appointments`. Com a aplicação conseguimos criar, editar, listar, mostrar e destruir agendamentos.
 
