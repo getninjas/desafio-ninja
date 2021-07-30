@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_30_142951) do
+ActiveRecord::Schema.define(version: 2021_07_30_143713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -22,4 +22,15 @@ ActiveRecord::Schema.define(version: 2021_07_30_142951) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "schedules", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "room_id", null: false
+    t.string "scheduled_by", null: false
+    t.datetime "start_at", null: false
+    t.datetime "end_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_schedules_on_room_id"
+  end
+
+  add_foreign_key "schedules", "rooms"
 end
