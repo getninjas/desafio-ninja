@@ -1,0 +1,25 @@
+web:
+  build: .
+  command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3001 -b '0.0.0.0'"
+  dockerfile: Dockerfile
+  tty: true
+  stdin_open: true
+  ports:
+    - "3001:3001"
+  expose:
+    - "3001"
+  environment:
+    - RAILS_ENV=development
+    - API_AUTHORIZATION=development
+  links:
+    - db
+  volumes:
+    - ".:/desafio-ninja"
+
+db:
+  image: postgres:13
+  environment:
+    POSTGRES_USER: desafio-ninja
+    POSTGRES_PASSWORD: desafio-ninja
+  ports: ["5433:5433"]
+  expose: ["5433"]

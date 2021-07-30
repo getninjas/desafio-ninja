@@ -9,7 +9,7 @@ Sua tarefa será de criar uma API REST que crie, edite, mostre e delete o agenda
 - Utilize as gems que achar necessário
 - Não faça squash dos seus commits, gostamos de acompanhar a evolução gradual da aplicação via commits.
 - Estamos avaliando coisas como design, higiene do código, confiabilidade e boas práticas
-- Esperamos testes automatizados. 
+- Esperamos testes automatizados.
 - A aplicação deverá subir com docker-compose
 - Crie um README.md descrevendo a sua solução e as issues caso houver
-- O desafio pode ser entregue abrindo um pull request ou fazendo um fork do repositório 
+- O desafio pode ser entregue abrindo um pull request ou fazendo um fork do repositório
