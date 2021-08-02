@@ -39,5 +39,10 @@ group :development do
   gem 'pry-rails'
 end
 
+group :test do
+  # SimpleCov is a code coverage analysis tool for Ruby.
+  gem 'simplecov'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
