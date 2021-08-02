@@ -1,4 +1,5 @@
 class Rack::Attack
+  Rack::Attack.enabled = ENV['ENABLE_RACK_ATTACK'] || Rails.env.production?
   Rack::Attack.cache.store = ActiveSupport::Cache::MemoryStore.new
 
   # Allow all localhost traffic (development)
