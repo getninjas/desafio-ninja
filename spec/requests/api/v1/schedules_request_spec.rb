@@ -4,13 +4,14 @@ RSpec.describe "Api::V1::Schedules", type: :request do
   let(:room) { create(:room) }
 
   context "GET rooms/:room_id/schedules" do
-    let(:schedules) { create_list(:schedule, rand(1..5), room: room) }
-    let(:url) { "/api/v1/rooms/#{room.id}/schedules" }
+    let!(:schedule) { create(:schedule, room: room) }
+    let(:url) { "/api/v1/rooms/#{schedule.room_id}/schedules" }
 
     it "should return all schedules from room" do
       get url
       expect(response).to have_http_status(:ok)
       expect(body_json['schedules'].count).to eq(room.schedules.count)
+      expect(body_json['schedules']).to eq([build_schedule_json(room.schedules.first)])
     end
 
     it "should return not found status when room does not exists" do
@@ -22,18 +23,17 @@ RSpec.describe "Api::V1::Schedules", type: :request do
   end
 
   context "GET rooms/:room_id/schedules/:id" do
-    let(:schedules) { create_list(:schedule, rand(1..5), room: room) }
-    let(:schedule_sample) { schedules.sample }
-    let(:url) { "/api/v1/rooms/#{room.id}/schedules/#{schedule_sample.id}" }
+    let(:schedule) { create(:schedule, room: room) }
+    let(:url) { "/api/v1/rooms/#{schedule.room_id}/schedules/#{schedule.id}" }
 
     it "should return schedule" do
       get url
       expect(response).to have_http_status(:ok)
-      expect(body_json['schedule']).to eq(build_schedule_json(Schedule.find(schedule_sample.id)))
+      expect(body_json['schedule']).to eq(build_schedule_json(Schedule.find(schedule.id)))
     end
 
     it "should return not found status when schedule does not exists" do
-      url = "/api/v1/rooms/#{room.id}/schedules/#{Faker::Crypto.md5}"
+      url = "/api/v1/rooms/#{schedule.room_id}/schedules/#{Faker::Crypto.md5}"
       get url
       expect(response).to have_http_status(:not_found)
       expect(response.message).to eq("Not Found")
@@ -42,43 +42,51 @@ RSpec.describe "Api::V1::Schedules", type: :request do
 
   context "POST rooms/:room_id/schedules" do
     let(:room) { create(:room) }
-    let(:schedule) { create(:schedule, room: room) }
     let(:url) { "/api/v1/rooms/#{room.id}/schedules" }
 
     it "should create schedule in commercial time" do
-      schedule_params = {
-        schedule: {
-          scheduled_by: Faker::Name.name,
-          start_at: schedule.start_at + 3.hour,
-          end_at: schedule.end_at + 4.hour
-        }
-      }
+      schedule_params = { schedule: attributes_for(:schedule, room: room) }
 
       post url, params: schedule_params
       expect(response).to have_http_status(:ok)
       expect(body_json['schedule']).to eq(build_schedule_json(Schedule.last))
     end
 
-    it "should not create schedule out of commercial time" do
-      out_commercial_schedule_params = {
-        schedule: {
-          scheduled_by: Faker::Name.name,
-          start_at: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :midnight),
-          end_at: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :midnight) + 1.hour
-        }
+    it "should not create schedule out of business time (on weekday)" do
+      out_business_time_schedule_params = {
+        schedule: attributes_for(:schedule,
+          room: room,
+          start_at: DateTime.now.beginning_of_day + 8.hour,
+          end_at: DateTime.now.beginning_of_day + 9.hour
+        )
       }
 
-      post url, params: out_commercial_schedule_params
+      post url, params: out_business_time_schedule_params
+      expect(response).to have_http_status(:unprocessable_entity)
+    end
+
+    it "should not create schedule out of business time (on weekend)" do
+      out_business_time_schedule_params = {
+        schedule: attributes_for(:schedule,
+          room: room,
+          start_at: Date.today.beginning_of_week(:saturday) + 9.hour,
+          end_at: Date.today.beginning_of_week(:saturday) + 10.hour
+        )
+      }
+
+      post url, params: out_business_time_schedule_params
       expect(response).to have_http_status(:unprocessable_entity)
     end
 
     it "should not create schedule in scheduled time" do
+      schedule = create(:schedule, room: room)
+
       scheduled_schedule_params = {
-        schedule: {
-          scheduled_by: Faker::Name.name,
-          start_at: schedule.start_at,
+        schedule: attributes_for(:schedule,
+          room: room,
+          start_at: schedule.start_at + 0.5.hour,
           end_at: schedule.end_at
-        }
+        )
       }
 
       post url, params: scheduled_schedule_params
@@ -87,11 +95,11 @@ RSpec.describe "Api::V1::Schedules", type: :request do
 
     it "should not create schedule with end less_or_equal to start" do
       end_less_schedule_params = {
-        schedule: {
-          scheduled_by: Faker::Name.name,
-          start_at: schedule.start_at + 4.hour,
-          end_at: schedule.end_at + rand(3..4).hour
-        }
+        schedule: attributes_for(:schedule,
+          room: room,
+          start_at: DateTime.now.beginning_of_day + 10.hour,
+          end_at: DateTime.now.beginning_of_day + 9.hour
+        )
       }
 
       post url, params: end_less_schedule_params
@@ -101,13 +109,13 @@ RSpec.describe "Api::V1::Schedules", type: :request do
 
   context "PUT rooms/:room_id/schedules/:id" do
     let(:schedule) { create(:schedule, room: room) }
-    let(:url) { "/api/v1/rooms/#{room.id}/schedules/#{schedule.id}" }
+    let(:url) { "/api/v1/rooms/#{schedule.room_id}/schedules/#{schedule.id}" }
 
     it "should update schedule" do
       schedule_params = {
         schedule: {
-          start_at: schedule.start_at + 1.hour,
-          end_at: schedule.end_at + 2.hour
+          start_at: DateTime.now.beginning_of_day + 13.hour,
+          end_at: DateTime.now.beginning_of_day + 14.hour
         }
       }
 
@@ -116,11 +124,23 @@ RSpec.describe "Api::V1::Schedules", type: :request do
       expect(body_json['schedule']).to eq(build_schedule_json(Schedule.last))
     end
 
-    it "should not update schedule out of commercial time" do
+    it "should not update schedule out of commercial time (on weekday)" do
       out_commercial_schedule_params = {
         schedule: {
-          start_at: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :midnight),
-          end_at: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :midnight) + 1.hour
+          start_at: DateTime.now.beginning_of_day + 18.hour,
+          end_at: DateTime.now.beginning_of_day + 19.hour
+        }
+      }
+
+      put url, params: out_commercial_schedule_params
+      expect(response).to have_http_status(:unprocessable_entity)
+    end
+
+    it "should not update schedule out of commercial time (on weekend)" do
+      out_commercial_schedule_params = {
+        schedule: {
+          start_at: Date.today.beginning_of_week(:saturday) + 9.hour,
+          end_at: Date.today.beginning_of_week(:saturday) + 9.hour
         }
       }
 
@@ -129,10 +149,16 @@ RSpec.describe "Api::V1::Schedules", type: :request do
     end
 
     it "should not update schedule in scheduled time" do
+      schedule_2 = create(:schedule,
+        room: room,
+        start_at: DateTime.now.beginning_of_day + 15.hour,
+        end_at: DateTime.now.beginning_of_day + 16.hour
+      )
+
       scheduled_schedule_params = {
         schedule: {
-          start_at: schedule.start_at,
-          end_at: schedule.end_at
+          start_at: schedule_2.start_at,
+          end_at: schedule_2.end_at
         }
       }
 
@@ -143,8 +169,8 @@ RSpec.describe "Api::V1::Schedules", type: :request do
     it "should not update schedule with end less_or_equal to start" do
       end_less_schedule_params = {
         schedule: {
-          start_at: schedule.start_at + 4.hour,
-          end_at: schedule.end_at + rand(3..4).hour
+          start_at: DateTime.now.beginning_of_day + 18.hour,
+          end_at: DateTime.now.beginning_of_day + 17.hour
         }
       }
 
@@ -154,21 +180,20 @@ RSpec.describe "Api::V1::Schedules", type: :request do
   end
 
   context "DELETE rooms/:room_id/schedules/:id" do
-    let(:schedules) { create_list(:schedule, rand(1..5), room: room) }
-    let(:schedule_sample) { schedules.sample }
-    let(:url) { "/api/v1/rooms/#{room.id}/schedules/#{schedule_sample.id}" }
+    let(:schedule) { create(:schedule, room: room) }
+    let(:url) { "/api/v1/rooms/#{schedule.room_id}/schedules/#{schedule.id}" }
 
     it "should delete schedule" do
       delete url
       expect(response).to have_http_status(:no_content)
-      expect(Schedule.where(id: schedule_sample.id).exists?).to eq(false)
+      expect(Schedule.where(id: schedule.id).exists?).to eq(false)
     end
   end
 
   def build_schedule_json(schedule)
     {
       id: schedule.id,
-      room_id: schedule.room.id,
+      room_id: schedule.room_id,
       room_name: schedule.room.name,
       scheduled_by: schedule.scheduled_by,
       start_at: schedule.start_at,
