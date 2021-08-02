@@ -9,17 +9,23 @@ class Schedule < ApplicationRecord
   validates :scheduled_by, presence: true
   validates :start_at, presence: true
   validates :end_at, presence: true
+  validate :is_time_valid
   validate :is_time_range_valid
 
   private
+
+  def is_time_valid
+    if (self.start_at && self.end_at)
+      DateTime.parse(self.start_at.to_s) rescue errors.add(:start_at, :invalid)
+      DateTime.parse(self.end_at.to_s) rescue errors.add(:end_at, :invalid)
+    end
+  end
 
   def is_time_range_valid
     if (self.start_at && self.end_at)
       errors.add(:start_at, :start_at_less_than_end_at) unless (self.start_at < self.end_at)
       errors.add(:time_range, :scheduled_time) if is_scheduled?
       errors.add(:time_range, :out_of_range) if !is_in_business_time?
-    else
-      return false
     end
   end
 

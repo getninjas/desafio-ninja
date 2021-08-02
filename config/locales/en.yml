@@ -5,7 +5,10 @@ en:
         schedule:
           attributes:
             start_at:
+              invalid: 'must be a datetime.'
               start_at_less_than_end_at: 'Start time must be higher than end time.'
+            end_at:
+              invalid: 'must be a datetime.'
             time_range:
               out_of_range: 'Informed time is out of business time.'
               scheduled_time: 'Informed time is already scheduled.'

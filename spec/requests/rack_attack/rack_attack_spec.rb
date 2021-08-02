@@ -31,7 +31,7 @@ RSpec.describe "Rack::Attack", type: :request do
       expect(response.body).to include("Retry later")
       expect(response).to have_http_status(:too_many_requests)
 
-      travel_to(5.seconds.from_now) do
+      travel_to(10.seconds.from_now) do
         get url, headers: headers
         expect(response).to have_http_status(:ok)
       end
