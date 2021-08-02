@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :schedule do
     room { nil }
     scheduled_by { Faker::Name.name }
-    start_at { Faker::Time.between_dates(from: Date.today, to: Date.today + rand(1..7), period: :afternoon) }
-    end_at { start_at + rand(1..2).hour }
+    start_at { DateTime.now.beginning_of_day + 9.hour }
+    end_at { start_at + 1.hour }
   end
 end
