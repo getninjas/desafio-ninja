@@ -30,7 +30,10 @@
 
 ### Issues
 - Criação de projeto Ruby on Rails API (default) em container
+- Configuração de banco de dados
 
 ### Get Start
-- 
+- Criação do banco de dados 
+	- docker-compose run web rake db:create
+	
 
