@@ -1,4 +1,4 @@
-class TimeArray
+class MyLibTime
   class << self
     def get_times_by_hour(start_time, end_time)
       times = []
@@ -6,6 +6,14 @@ class TimeArray
         times.push(Time.at(time).utc.strftime("%H:%M"))
       end
       times
+    end
+
+    def to_hours(time)
+      time.strftime("%H:%M")
+      end
+
+    def to_date(date)
+      date.strftime("%d/%m/%Y")
     end
   end
 end

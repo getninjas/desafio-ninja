@@ -14,11 +14,10 @@ class ScheduleRoom::ScheduleRoomController < ApplicationController
   end
 
   def create
-
       unless schedule_room_params[:start_time].nil? && schedule_room_params[:end_time].nil?
         created_objects = []
         ScheduleRoom.transaction do
-          TimeArray.get_times_by_hour(schedule_room_params[:start_time], schedule_room_params[:end_time]).each do |hour|
+          MyLibTime.get_times_by_hour(schedule_room_params[:start_time], schedule_room_params[:end_time]).each do |hour|
             @schedule_room = ScheduleRoom.create( user_id: current_user.id,
                                                   room_id: schedule_room_params[:room_id],
                                                   scheduled_date: schedule_room_params[:scheduled_date],
