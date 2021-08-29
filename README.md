@@ -27,10 +27,18 @@
 ### Versões e Gemas adicionadas
 - Ruby 3.0
 - Rails 6.1.4
+- gem 'bcrypt'
+- gem 'jwt'
+- gem 'simple_command'
+- gem 'rspec-rails'
 
 ### Issues
-- Criação de projeto Ruby on Rails API (default) em container
+- Criação de projeto Ruby on Rails API (default) em Docker
 - Configuração de banco de dados PostgreSQL
+- Adicionar CRUD de usuário (User) com autenticação JWT
+- Adicionar CRUD de sala de reunião (Room)
+- Adicionar CRUD de reserva de sala de reunião (ScheduleRoom)
+- Adicionar Testes 
 
 ### Get Start
 - Criação do banco de dados 
