@@ -2,6 +2,10 @@ class Users::UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
   skip_before_action :authenticate_request, only: %i[create]
 
+  def index
+    render json: { users: User.all}, status: :ok
+  end
+
   def show
     if @user
         render json: { user: @user}, status: :ok
