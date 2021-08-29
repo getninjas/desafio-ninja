@@ -1,5 +1,5 @@
 class AuthenticationController < ApplicationController
-  before_action :authenticate_request, except: %i[authenticate]
+  skip_before_action :authenticate_request, only: %i[authenticate]
 
   def authenticate
     command = AuthenticateUser.call(params[:email], params[:password])

@@ -3,5 +3,9 @@ Rails.application.routes.draw do
 
   post '/authenticate', to: 'authentication#authenticate'
 
-  post '/users', to: 'users/users#create'
+  # Users
+  post '/users/', to: 'users/users#create'
+  get '/users/:id', to: 'users/users#show'
+  put '/users/:id', to: 'users/users#update'
+  delete '/users/:id', to: 'users/users#destroy'
 end
