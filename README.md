@@ -41,7 +41,17 @@
 - Adicionar Testes 
 
 ### Get Start
+- Criação da Imagem Docker
+  - `docker-compose build`
 - Criação do banco de dados 
-	- docker-compose run web rake db:create
+    - `docker-compose run web rake db:drop db:create db:migrate`
+- Start do servidor
+  - `docker-compose up`
+- Importe a [coleção JSON do Postman](/public/my_ninja.postman_collection.json) para facilitar a utilização da API.
 
+### Todo
 
+1. Criar um usuário `POST /users/`
+2. Realizar login de usuário em `POST /authenticate/`
+3. Criar 4 salas de reunião em `POST /rooms/`
+4. Realizar reserva de salaa de reunião em `POST /schedule_room/`
