@@ -48,7 +48,8 @@
 - Start do servidor
   - `docker-compose up`
 - Importe a [coleção JSON do Postman](/public/my_ninja.postman_collection.json) para facilitar a utilização da API.
-
+- Executar testes
+  - `docker-compose run web bundle exec rspec`
 ### Todo
 
 1. Criar um usuário `POST /users/`
