@@ -2,6 +2,10 @@ class Room < ApplicationRecord
 
   has_many :schedule_rooms, dependent: :destroy
 
+  validates :name, presence: true
+  validates :start_time, presence: true
+  validates :end_time, presence: true
+
   def as_json(options={})
       h = super(options)
       h[:start_time] = MyLibTime.to_hours(self.start_time)
