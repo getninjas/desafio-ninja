@@ -4,8 +4,7 @@ class CreateScheduleRooms < ActiveRecord::Migration[6.1]
       t.references :user, null: false, foreign_key: true
       t.references :room, null: false, foreign_key: true
       t.date :scheduled_date
-      t.time :start_time
-      t.time :end_time
+      t.time :scheduled_time
 
       t.timestamps
     end
