@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_06_143555) do
+ActiveRecord::Schema.define(version: 2021_11_06_145000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(version: 2021_11_06_143555) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "schedules", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "room_id", null: false
+    t.uuid "user_id", null: false
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id", "start_time", "end_time"], name: "index_schedules_on_room_id_and_start_time_and_end_time"
+    t.index ["room_id"], name: "index_schedules_on_room_id"
+    t.index ["user_id"], name: "index_schedules_on_user_id"
+  end
+
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.text "email"
     t.datetime "created_at", precision: 6, null: false
@@ -29,4 +41,6 @@ ActiveRecord::Schema.define(version: 2021_11_06_143555) do
     t.index ["email"], name: "index_users_on_email"
   end
 
+  add_foreign_key "schedules", "rooms"
+  add_foreign_key "schedules", "users"
 end
