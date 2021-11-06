@@ -1,0 +1,19 @@
+version: '2'
+services:
+  postgres:
+    image: postgres:12
+    environment:
+      - POSTGRES_PASSWORD=getninjas
+      - POSTGRES_USER=getninjas
+      - POSTGRES_DB=getninjas
+    ports:
+      - 5432:5432
+    mem_limit: 100m
+  app:
+    build: .
+    depends_on:
+      - postgres
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
