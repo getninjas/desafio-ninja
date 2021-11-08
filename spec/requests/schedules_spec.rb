@@ -18,7 +18,8 @@ RSpec.describe "Schedules", type: :request do
     end
 
     context 'when there are schedules for only one room' do
-      let!(:schedule) { create(:schedule, user: user, room: rooms.first) }
+      let!(:first_room_schedule) { create(:schedule, user: user, room: rooms.first) }
+      let!(:last_room_schedules) { create_list(:schedule, 2, user: user, room: rooms.last) }
       let(:expected) do
         {
           data: {
@@ -26,10 +27,18 @@ RSpec.describe "Schedules", type: :request do
               {
                 rooms.first.name => [
                   {
+                    start_time: first_room_schedule.start_time.strftime('%Y-%m-%d %H:%M:%S'),
+                    end_time: first_room_schedule.end_time.strftime('%Y-%m-%d %H:%M:%S'),
+                  }
+                ]
+              },
+              {
+                rooms.last.name => last_room_schedules.map do |schedule|
+                  {
                     start_time: schedule.start_time.strftime('%Y-%m-%d %H:%M:%S'),
                     end_time: schedule.end_time.strftime('%Y-%m-%d %H:%M:%S'),
                   }
-                ]
+                end
               }
             ]
           }

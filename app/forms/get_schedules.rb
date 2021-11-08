@@ -2,7 +2,7 @@ class GetSchedules
   include ActiveModel::Model
 
   def perform
-    rooms = Room.all.joins(:schedules)
+    rooms = Room.includes(:schedules).joins(:schedules)
     {
       rooms: rooms.map do |room|
         {
