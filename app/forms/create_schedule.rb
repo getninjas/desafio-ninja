@@ -28,19 +28,9 @@ class CreateSchedule
         end_time: end_time
       )
     end
-
-  rescue Date::Error
-    errors.add(:schedule, :invalid, message: 'must have valid time')
-    return false
   end
 
   private
-
-  def is_there_schedule_conflict_with?(schedule)
-    (start_time >= schedule.start_time && start_time < schedule.end_time) ||
-    (end_time > schedule.start_time && end_time <= schedule.end_time) ||
-    (start_time <= schedule.start_time && schedule.end_time <= end_time )
-  end
 
   def start_time
     @start_time ||= schedule[:start_time].to_datetime

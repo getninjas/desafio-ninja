@@ -14,6 +14,9 @@ class ScheduleValidator < ActiveModel::Validator
     if start_time.day != end_time.day
       record.errors.add(:schedule, :invalid, message: 'must be in the same day')
     end
+
+  rescue Date::Error
+    record.errors.add(:schedule, :invalid, message: 'must have valid time')
   end
 
   private
