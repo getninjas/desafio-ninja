@@ -1,5 +1,7 @@
 class GetSchedules
-  def self.perform
+  include ActiveModel::Model
+
+  def perform
     rooms = Room.all.joins(:schedules)
     {
       rooms: rooms.map do |room|

@@ -1,6 +1,7 @@
 class SchedulesController < ApplicationController
   def index
-    render json: { data: GetSchedules.perform }, status: 200
+    get_schedules = GetSchedules.new
+    render json: { data: get_schedules.perform }, status: 200
   end
 
   def create
