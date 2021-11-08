@@ -51,7 +51,7 @@ RSpec.describe "Schedules", type: :request do
     let(:perform) { post '/schedules', params: params }
 
     context 'when user\'s email is empty' do
-      let(:params) { { room: rooms.first.name } }
+      let(:params) { { room_name: rooms.first.name } }
 
       it 'returns bad request' do
         perform
@@ -70,7 +70,7 @@ RSpec.describe "Schedules", type: :request do
       end
     end
 
-    context 'when room is empty' do
+    context 'when room_name is empty' do
       let(:params) { { user_email: user.email } }
 
       it 'returns bad request' do
@@ -84,7 +84,7 @@ RSpec.describe "Schedules", type: :request do
 
         expect(response.body).to eq({
           error: {
-            message: 'room must not be empty'
+            message: 'room_name must not be empty'
           }
         }.to_json)
       end
@@ -94,7 +94,7 @@ RSpec.describe "Schedules", type: :request do
       let(:params) do
         {
           user_email: user.email,
-          room: rooms.first.name,
+          room_name: rooms.first.name,
         }
       end
 
@@ -119,7 +119,7 @@ RSpec.describe "Schedules", type: :request do
       let(:params) do
         {
           user_email: user.email,
-          room: rooms.first.name,
+          room_name: rooms.first.name,
           schedule: schedule_params
         }
       end
