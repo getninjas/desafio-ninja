@@ -46,4 +46,342 @@ RSpec.describe "Schedules", type: :request do
     context 'when there are schedules for more than one room' do
     end
   end
+
+  describe "POST /schedules" do
+    let(:perform) { post '/schedules', params: params }
+
+    context 'when user\'s email is empty' do
+      let(:params) { { room: rooms.first.name } }
+
+      it 'returns bad request' do
+        perform
+
+        expect(response.status).to eq(400)
+      end
+
+      it 'returns the error message' do
+        perform
+
+        expect(response.body).to eq({
+          error: {
+            message: 'user_email must not be empty'
+          }
+        }.to_json)
+      end
+    end
+
+    context 'when room is empty' do
+      let(:params) { { user_email: user.email } }
+
+      it 'returns bad request' do
+        perform
+
+        expect(response.status).to eq(400)
+      end
+
+      it 'returns the error message' do
+        perform
+
+        expect(response.body).to eq({
+          error: {
+            message: 'room must not be empty'
+          }
+        }.to_json)
+      end
+    end
+
+    context 'when schedule is empty' do
+      let(:params) do
+        {
+          user_email: user.email,
+          room: rooms.first.name,
+        }
+      end
+
+      it 'returns bad request' do
+        perform
+
+        expect(response.status).to eq(400)
+      end
+
+      it 'returns the error message' do
+        perform
+
+        expect(response.body).to eq({
+          error: {
+            message: 'schedule must not be empty'
+          }
+        }.to_json)
+      end
+    end
+
+    context 'when params has all necessary fields' do
+      let(:params) do
+        {
+          user_email: user.email,
+          room: rooms.first.name,
+          schedule: schedule_params
+        }
+      end
+
+      context 'but schedule has invalid date time format' do
+        let(:schedule_params) do
+          {
+            start_time: 'invalid',
+            end_time: DateTime.now.strftime('%Y-%m-%d %H:%M:%S'),
+          }
+        end
+
+        it 'returns unprocessable entity' do
+          perform
+
+          expect(response.status).to eq(422)
+        end
+
+        it 'returns the error message' do
+          perform
+
+          expect(response.body).to eq({
+            error: {
+              message: 'Schedule must have valid time'
+            }
+          }.to_json)
+        end
+      end
+
+      context 'but end_time is lesser than start_time' do
+        let(:schedule_params) do
+          {
+            end_time: 1.day.ago.to_datetime.strftime('%Y-%m-%d %H:%M:%S'),
+            start_time: DateTime.now.strftime('%Y-%m-%d %H:%M:%S'),
+          }
+        end
+
+        it 'returns unprocessable entity' do
+          perform
+
+          expect(response.status).to eq(422)
+        end
+
+        it 'returns the error message' do
+          perform
+
+          expect(response.body).to eq({
+            error: {
+              message: 'Schedule start_time must not be greater than end_time'
+            }
+          }.to_json)
+        end
+      end
+
+      context 'but it is trying to schedule out of work hours' do
+        let(:schedule_params) do
+          {
+            start_time: '2021-11-08 05:00:00',
+            end_time: DateTime.now.strftime('%Y-%m-%d %H:%M:%S'),
+          }
+        end
+
+        it 'returns unprocessable entity' do
+          perform
+
+          expect(response.status).to eq(422)
+        end
+
+        it 'returns the error message' do
+          perform
+
+          expect(response.body).to eq({
+            error: {
+              message: 'Schedule must be within work hours'
+            }
+          }.to_json)
+        end
+      end
+
+      context 'but it is trying to schedule more than one day' do
+        let(:schedule_params) do
+          {
+            start_time: '2021-11-08 09:00:00',
+            end_time: '2021-11-09 10:00:00',
+          }
+        end
+
+        it 'returns unprocessable entity' do
+          perform
+
+          expect(response.status).to eq(422)
+        end
+
+        it 'returns the error message' do
+          perform
+
+          expect(response.body).to eq({
+            error: {
+              message: 'Schedule must be in the same day'
+            }
+          }.to_json)
+        end
+      end
+
+      context 'but start_time conflicts with an existent schedule' do
+        let(:start_time) { '2021-11-07T09:00:00'.to_datetime }
+        let(:end_time) { '2021-11-07T10:00:00'.to_datetime }
+        let(:schedule_params) do
+          {
+            start_time: '2021-11-07T09:30:00',
+            end_time: '2021-11-07T10:30:00',
+          }
+        end
+
+        let!(:schedule) do
+          create(
+            :schedule,
+            room: rooms.first,
+            user: user,
+            start_time: start_time,
+            end_time: end_time,
+          )
+        end
+
+        it 'returns unprocessable entity' do
+          perform
+
+          expect(response.status).to eq(422)
+        end
+
+        it 'returns the error message' do
+          perform
+
+          expect(response.body).to eq({
+            error: {
+              message: 'Schedule not available'
+            }
+          }.to_json)
+        end
+      end
+
+      context 'but end_time conflicts with an existent schedule' do
+        let(:start_time) { '2021-11-07T10:00:00'.to_datetime }
+        let(:end_time) { '2021-11-07T11:30:00'.to_datetime }
+        let(:schedule_params) do
+          {
+            start_time: '2021-11-07T09:30:00',
+            end_time: '2021-11-07T11:30:00',
+          }
+        end
+
+        let!(:schedule) do
+          create(
+            :schedule,
+            room: rooms.first,
+            user: user,
+            start_time: start_time,
+            end_time: end_time,
+          )
+        end
+
+        it 'returns unprocessable entity' do
+          perform
+
+          expect(response.status).to eq(422)
+        end
+
+        it 'returns the error message' do
+          perform
+
+          expect(response.body).to eq({
+            error: {
+              message: 'Schedule not available'
+            }
+          }.to_json)
+        end
+      end
+
+      context 'but there are schedules within start_time and end_time' do
+        let(:start_time) { '2021-11-07T10:00:00'.to_datetime }
+        let(:end_time) { '2021-11-07T12:00:00'.to_datetime }
+        let(:schedule_params) do
+          {
+            start_time: '2021-11-07 09:30:00',
+            end_time: '2021-11-07 14:30:00',
+          }
+        end
+
+        let!(:schedule) do
+          create(
+            :schedule,
+            room: rooms.first,
+            user: user,
+            start_time: start_time,
+            end_time: end_time,
+          )
+        end
+
+        it 'returns unprocessable entity' do
+          perform
+
+          expect(response.status).to eq(422)
+        end
+
+        it 'returns the error message' do
+          perform
+
+          expect(response.body).to eq({
+            error: {
+              message: 'Schedule not available'
+            }
+          }.to_json)
+        end
+      end
+
+      context 'and the params are valid' do
+        let(:start_time) { '2021-11-07T10:00:00'.to_datetime }
+        let(:end_time) { '2021-11-07T12:00:00'.to_datetime }
+        let(:schedule_params) do
+          {
+            start_time: '2021-11-07 14:00:00',
+            end_time: '2021-11-07 14:30:00',
+          }
+        end
+
+        let!(:schedule) do
+          create(
+            :schedule,
+            room: rooms.first,
+            user: user,
+            start_time: start_time,
+            end_time: end_time,
+          )
+        end
+
+        it 'returns created' do
+          perform
+
+          expect(response.status).to eq(201)
+        end
+
+        it 'returns the schedule' do
+          perform
+
+          expect(response.body).to eq({
+            data: {
+              message: 'success'
+            }
+          }.to_json)
+        end
+
+        it 'creates a schedule' do
+          perform
+
+          persisted = Schedule.find_by(
+            start_time: schedule_params[:start_time].to_datetime,
+            end_time: schedule_params[:end_time].to_datetime,
+          )
+
+          expect(persisted).not_to be_nil
+        end
+      end
+    end
+  end
 end
