@@ -35,6 +35,17 @@ class SchedulesController < ApplicationController
     render json: { error: { message: "#{e.param} must not be empty" } }, status: 400
   end
 
+  def destroy
+    delete_schedule = DeleteSchedule.new
+
+    if delete_schedule.perform(params[:id])
+      render json: { data: { message: "success" } }, status: 200
+    end
+
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: { message: "schedule not found" } }, status: 404
+  end
+
   private
 
   def create_params

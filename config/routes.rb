@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :schedules, only: %i(index create update)
+  resources :schedules, only: %i(index create update destroy)
 end

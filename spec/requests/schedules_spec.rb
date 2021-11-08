@@ -703,4 +703,46 @@ RSpec.describe "Schedules", type: :request do
       end
     end
   end
+
+  describe "DELETE /schedule/:id" do
+    let(:perform) { delete "/schedules/#{schedule_id}" }
+
+    context 'when the schedule does not exist' do
+      let(:schedule_id) { 'invalid' }
+
+      it 'returns not found' do
+        perform
+
+        expect(response.status).to eq(404)
+      end
+    end
+
+    context 'when the schedule exists' do
+      let(:schedule) { create(:schedule) }
+      let(:schedule_id) { schedule.id }
+
+      it 'returns ok' do
+        perform
+
+        expect(response.status).to eq(200)
+      end
+
+      it 'returns success message' do
+        perform
+
+        expect(response.body).to eq({
+          data: {
+            message: 'success'
+          }
+        }.to_json)
+      end
+
+      it 'deletes the schedule' do
+        perform
+
+
+        expect(Schedule.find_by(id: schedule_id)).to be_nil
+      end
+    end
+  end
 end
