@@ -64,3 +64,8 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+def valid_authorization_header
+  @access_token ||= CreateAccessToken.new(user: user).perform
+  { 'Authorization': "Bearer #{ @access_token }" }
+end

@@ -1,4 +1,6 @@
 class SchedulesController < ApplicationController
+  before_action :authenticate_user
+
   def index
     get_schedules = GetSchedules.new
     render json: { data: get_schedules.perform }, status: 200

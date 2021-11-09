@@ -9,7 +9,7 @@ class GenerateToken
     user = User.find_by_email(user_email)
 
     if user&.password == password
-      @access_token = ::JWT.encode({ data: { user_id: user.id }, exp: 1.hour }, SECRET_KEY)
+      @access_token = ::JWT.encode({ data: { user_id: user.id }, exp: 1.hour.from_now.to_i }, SECRET_KEY)
     else
       errors.add(:base, :invalid, message: 'user_email or password is not valid')
       return false
