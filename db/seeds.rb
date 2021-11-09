@@ -2,4 +2,4 @@
   Room.create(name: "Room##{ room_number }")
 end
 
-User.create(email: 'sullyvan@email.com')
+User.create(email: 'sullyvan@email.com', password: 'getninjas')
