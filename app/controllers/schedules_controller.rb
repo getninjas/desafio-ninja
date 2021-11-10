@@ -11,7 +11,11 @@ class SchedulesController < ApplicationController
     if create_schedule.perform
       render json: {
         data: {
-          message: :success
+          schedule: {
+            id: create_schedule.schedule.id,
+            start_time: create_schedule.schedule.start_time.strftime('%Y-%m-%d %H:%M:%S'),
+            end_time: create_schedule.schedule.end_time.strftime('%Y-%m-%d %H:%M:%S'),
+          }
         }
       }, status: 201
     else

@@ -423,9 +423,18 @@ RSpec.describe "Schedules", type: :request do
           it 'returns the schedule' do
             perform
 
+            persisted = Schedule.find_by(
+              start_time: schedule_params[:start_time].to_datetime,
+              end_time: schedule_params[:end_time].to_datetime,
+            )
+
             expect(response.body).to eq({
               data: {
-                message: 'success'
+                schedule: {
+                  id: persisted.id,
+                  start_time: persisted.start_time.strftime('%Y-%m-%d %H:%M:%S'),
+                  end_time: persisted.end_time.strftime('%Y-%m-%d %H:%M:%S'),
+                }
               }
             }.to_json)
           end

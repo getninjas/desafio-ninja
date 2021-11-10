@@ -41,7 +41,7 @@ class CreateSchedule
         SendEmailToGuestsWorker.perform_async(schedule.id)
       end
 
-      schedule
+      @schedule = schedule
     end
   end
 
