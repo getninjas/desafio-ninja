@@ -2,7 +2,7 @@ class CreateSchedule
   include ActiveModel::Model
   validates_with ScheduleValidator
 
-  attr_accessor :user_email, :room_name, :schedule
+  attr_accessor :user_email, :room_name, :schedule, :guests
 
   def perform
     return false unless valid?
@@ -21,12 +21,23 @@ class CreateSchedule
           end
         end
 
-      Schedule.create!(
+      schedule = Schedule.create!(
         room: room,
         user: User.find_by(email: user_email),
         start_time: start_time,
         end_time: end_time
       )
+
+
+      if guests&.is_a? Array
+        persisted_guests = guests.map do |guest|
+          break unless guest.is_a?(Hash) && guest.dig(:email)
+          Guest.find_or_create_by(email: guest[:email])
+        end
+      end
+
+      schedule.guests << persisted_guests if(persisted_guests&.size)
+      schedule
     end
   end
 

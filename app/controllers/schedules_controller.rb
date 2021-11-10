@@ -52,7 +52,7 @@ class SchedulesController < ApplicationController
 
   def create_params
     params.require([:user_email, :room_name, :schedule]).last.require([:start_time, :end_time])
-    params.permit(:user_email, :room_name, schedule: [:start_time, :end_time])
+    params.permit(:user_email, :room_name, :guests, schedule: [:start_time, :end_time], guests: [:email])
   end
 
   def update_params

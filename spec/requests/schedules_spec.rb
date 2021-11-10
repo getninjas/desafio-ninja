@@ -177,7 +177,7 @@ RSpec.describe "Schedules", type: :request do
           {
             user_email: user.email,
             room_name: rooms.first.name,
-            schedule: schedule_params
+            schedule: schedule_params,
           }
         end
 
@@ -437,6 +437,30 @@ RSpec.describe "Schedules", type: :request do
             )
 
             expect(persisted).not_to be_nil
+          end
+
+          context 'when guests are included' do
+            let(:guest_email) { 'darwin@email.com' }
+            let(:params) do
+              {
+                user_email: user.email,
+                room_name: rooms.first.name,
+                schedule: schedule_params,
+                guests: [
+                  {
+                    email: guest_email
+                  }
+                ]
+              }
+            end
+
+            it 'associates guests with schedule' do
+              perform
+
+              guest = Guest.find_by(email: guest_email)
+
+              expect(guest).not_to be_nil
+            end
           end
         end
       end
