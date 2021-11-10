@@ -10,11 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_09_002417) do
+ActiveRecord::Schema.define(version: 2021_11_10_000517) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "guests", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "email", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_guests_on_email", unique: true
+  end
+
+  create_table "guests_schedule_tables", force: :cascade do |t|
+    t.bigint "guest_id"
+    t.bigint "schedule_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["guest_id"], name: "index_guests_schedule_tables_on_guest_id"
+    t.index ["schedule_id"], name: "index_guests_schedule_tables_on_schedule_id"
+  end
+
+  create_table "guests_schedules", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "guest_id", null: false
+    t.uuid "schedule_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["guest_id"], name: "index_guests_schedules_on_guest_id"
+    t.index ["schedule_id"], name: "index_guests_schedules_on_schedule_id"
+  end
 
   create_table "rooms", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.text "name"
@@ -42,6 +67,8 @@ ActiveRecord::Schema.define(version: 2021_11_09_002417) do
     t.index ["email"], name: "index_users_on_email"
   end
 
+  add_foreign_key "guests_schedules", "guests"
+  add_foreign_key "guests_schedules", "schedules"
   add_foreign_key "schedules", "rooms"
   add_foreign_key "schedules", "users"
 end
