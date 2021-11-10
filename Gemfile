@@ -27,6 +27,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'bcrypt'
 gem 'jwt'
+gem 'sidekiq'
 
 group :development do
   gem 'listen', '~> 3.3'
