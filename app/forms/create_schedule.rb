@@ -36,7 +36,11 @@ class CreateSchedule
         end
       end
 
-      schedule.guests << persisted_guests if(persisted_guests&.size)
+      if(persisted_guests&.size)
+        schedule.guests << persisted_guests
+        SendEmailToGuestsWorker.perform_async(schedule.id)
+      end
+
       schedule
     end
   end

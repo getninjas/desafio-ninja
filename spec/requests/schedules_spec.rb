@@ -1,4 +1,6 @@
 require 'rails_helper'
+require 'sidekiq/testing'
+Sidekiq::Testing.fake!
 
 RSpec.describe "Schedules", type: :request do
   let!(:rooms) { create_list(:room, 2) }
@@ -460,6 +462,12 @@ RSpec.describe "Schedules", type: :request do
               guest = Guest.find_by(email: guest_email)
 
               expect(guest).not_to be_nil
+            end
+
+            it 'schedule a job to send email to guests' do
+              expect {
+                perform
+              }.to change(SendEmailToGuestsWorker.jobs, :size).by(1)
             end
           end
         end
