@@ -1,0 +1,29 @@
+version: '3.3'
+
+services:
+  db:
+    image: postgres:12.9
+    env_file: .devops/environments/development
+    ports:
+      - '5432:5432'
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+  puma:
+    build:
+      context: .
+      dockerfile: .devops/dockerfiles/Dockerfile
+      args:
+        - RAILS_ENV=development
+    volumes:
+      - .:/desafio-ninja
+    env_file: .devops/environments/development
+    environment:
+      - POSTGRES_HOST=db
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+volumes:
+  pg-data:
+
+  
