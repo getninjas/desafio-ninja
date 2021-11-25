@@ -21,5 +21,9 @@ RUN chmod +x /entrypoint.sh
 
 COPY . /desafio-ninja/
 
+RUN echo 'alias rspec="bundle exec rspec"' >> ~/.bashrc && \
+    echo 'alias rubocop="bundle exec rubocop"' >> ~/.bashrc && \
+    echo 'alias rails="bundle exec rails"' >> ~/.bashrc
+
 ENTRYPOINT [ "/entrypoint.sh" ]
 CMD [ "bundle", "exec", "puma" ]
