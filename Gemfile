@@ -32,6 +32,9 @@ group :development, :test do
 
   gem 'factory_bot', '~> 6.2'
   gem 'factory_bot_rails', '~> 6.2'
+
+  gem 'shoulda-matchers'
+  
   # There may be other lines in this block already. Simply append the following after:
   %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
     gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'main' # Previously '4-0-dev' or '4-0-maintenance' branch
