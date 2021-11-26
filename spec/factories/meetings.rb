@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :meetings do
+  factory :meeting do
     title { "Spring Review - Squad" }
     starts_at { "2021-11-25 21:19:15" }
     ends_at { "2021-11-25 21:19:15" }
