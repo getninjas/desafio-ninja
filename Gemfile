@@ -46,7 +46,11 @@ group :development, :test do
 end
 
 group :test do
+  # Strategies to cleaning databases in Ruby
   gem 'database_cleaner-active_record'
+
+  # Code coverage for Ruby
+  gem 'simplecov', '~> 0.16.1', require: false
 end
 
 group :development do
