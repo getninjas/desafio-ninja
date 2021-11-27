@@ -102,7 +102,7 @@ RSpec.describe "Meetings", type: :request do
       }
     end
 
-    context 'meetings creation' do
+    context 'meetings edition' do
       it 'fails when invalids params are used' do
         put "/meetings/#{meeting.id}", params: invalid_params
         expect(response).to have_http_status(422)
@@ -114,4 +114,23 @@ RSpec.describe "Meetings", type: :request do
       end
     end
   end
+
+  describe 'DELETE /meetings' do
+    let!(:meeting) { create(:meeting) }
+
+    context 'deletes a specific meeting' do
+      it 'fails when requested a invalid id' do
+        delete '/meetings/404'
+        expect(response).to have_http_status(404)
+      end
+
+      it 'success when meeting is found' do
+        expect {
+          delete "/meetings/#{meeting.id}"
+        }.to change { Meeting.count }.by(-1)
+
+        expect(response).to have_http_status(:ok)
+      end
+    end
+  end  
 end

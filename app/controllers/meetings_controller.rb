@@ -19,6 +19,12 @@ class MeetingsController < ApplicationController
     render json: @meeting
   end
 
+  def destroy
+    @meeting.destroy!
+
+    head :ok
+  end
+
   private 
   
   def set_meeting
