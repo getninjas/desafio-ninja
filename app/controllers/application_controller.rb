@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordNotFound do |e|
     render json: { message: e.message }, status: 404

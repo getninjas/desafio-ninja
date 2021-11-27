@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe MeetingSerializer, type: :serializer do
-  describe "#attributes" do
-    let(:meeting) { create(:meeting)}
-    
+  describe '#attributes' do
+    let(:meeting) { create(:meeting) }
+
     subject { described_class.new(meeting) }
 
     context 'returns attributes' do

@@ -1,34 +1,35 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Meetings", type: :request do
-  describe "GET /index" do
+RSpec.describe 'Meetings', type: :request do
+  describe 'GET /index' do
     let(:room) { create(:room) }
-    let!(:meeting_one) do 
-      create(:meeting, starts_at: DateTime.parse("2021-11-25 10:00:00"), ends_at: DateTime.parse("2021-11-25 11:00:00"), room: room)
+    let!(:meeting_one) do
+      create(:meeting, starts_at: DateTime.parse('2021-11-25 10:00:00'), ends_at: DateTime.parse('2021-11-25 11:00:00'), room: room)
     end
     let!(:meeting_two) do
-      create(:meeting, starts_at: DateTime.parse("2021-11-25 13:00:00"), ends_at: DateTime.parse("2021-11-25 14:00:00"), room: room)
+      create(:meeting, starts_at: DateTime.parse('2021-11-25 13:00:00'), ends_at: DateTime.parse('2021-11-25 14:00:00'), room: room)
     end
     let!(:meeting_three) { create(:meeting) }
 
     context 'show all meetings' do
-      it do 
+      it do
         get '/meetings'
         expect(response).to have_http_status(:ok)
-        expect(parsed_response.size).to eq(3)        
+        expect(parsed_response.size).to eq(3)
       end
     end
 
     context 'show all meetings from a specific room' do
       it do
-        get '/meetings', params: { room_id: room.id }  
+        get '/meetings', params: { room_id: room.id }
 
         expect(response).to have_http_status(:ok)
         expect(parsed_response.size).to eq(2)
       end
     end
   end
-
 
   describe 'GET /show' do
     let(:meeting) { create(:meeting) }
@@ -46,24 +47,23 @@ RSpec.describe "Meetings", type: :request do
     end
   end
 
-
   describe 'POST /meetings' do
     let(:room) { create(:room) }
     let(:invalid_params) do
       {
-        "title" => "Outra reunião importante",
-        "starts_at" => "2021-11-25 08:00:00",
-        "ends_at" => "2021-11-25 10:00:00",
-        "room_id" => room.id
+        'title' => 'Outra reunião importante',
+        'starts_at' => '2021-11-25 08:00:00',
+        'ends_at' => '2021-11-25 10:00:00',
+        'room_id' => room.id
       }
     end
 
     let(:valid_params) do
       {
-        "title" => "Outra reunião importante",
-        "starts_at" => "2021-11-25 09:00:00",
-        "ends_at" => "2021-11-25 10:00:00",
-        "room_id" => room.id
+        'title' => 'Outra reunião importante',
+        'starts_at' => '2021-11-25 09:00:00',
+        'ends_at' => '2021-11-25 10:00:00',
+        'room_id' => room.id
       }
     end
 
@@ -80,25 +80,24 @@ RSpec.describe "Meetings", type: :request do
     end
   end
 
-
   describe 'PUT /meetings' do
     let(:room) { create(:room) }
     let(:meeting) { create(:meeting) }
     let(:invalid_params) do
       {
-        "title" => "Outra reunião importante",
-        "starts_at" => "2021-11-25 08:00:00",
-        "ends_at" => "2021-11-25 10:00:00",
-        "room_id" => room.id
+        'title' => 'Outra reunião importante',
+        'starts_at' => '2021-11-25 08:00:00',
+        'ends_at' => '2021-11-25 10:00:00',
+        'room_id' => room.id
       }
     end
 
     let(:valid_params) do
       {
-        "title" => "Outra reunião importante",
-        "starts_at" => "2021-11-25 09:00:00",
-        "ends_at" => "2021-11-25 10:00:00",
-        "room_id" => room.id
+        'title' => 'Outra reunião importante',
+        'starts_at' => '2021-11-25 09:00:00',
+        'ends_at' => '2021-11-25 10:00:00',
+        'room_id' => room.id
       }
     end
 
@@ -125,12 +124,12 @@ RSpec.describe "Meetings", type: :request do
       end
 
       it 'success when meeting is found' do
-        expect {
+        expect do
           delete "/meetings/#{meeting.id}"
-        }.to change { Meeting.count }.by(-1)
+        end.to change { Meeting.count }.by(-1)
 
         expect(response).to have_http_status(:ok)
       end
     end
-  end  
+  end
 end

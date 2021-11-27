@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RoomSerializer < ActiveModel::Serializer
   attributes :id, :name, :created_date, :updated_date
   has_many :meetings, serializer: MeetingSerializer

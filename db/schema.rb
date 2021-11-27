@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,26 +12,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_25_211915) do
-
+ActiveRecord::Schema.define(version: 20_211_125_211_915) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "meetings", force: :cascade do |t|
-    t.string "title"
-    t.datetime "starts_at"
-    t.datetime "ends_at"
-    t.bigint "room_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["room_id"], name: "index_meetings_on_room_id"
+  create_table 'meetings', force: :cascade do |t|
+    t.string 'title'
+    t.datetime 'starts_at'
+    t.datetime 'ends_at'
+    t.bigint 'room_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['room_id'], name: 'index_meetings_on_room_id'
   end
 
-  create_table "rooms", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'rooms', force: :cascade do |t|
+    t.string 'name'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  add_foreign_key "meetings", "rooms"
+  add_foreign_key 'meetings', 'rooms'
 end

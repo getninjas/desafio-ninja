@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Meeting < ApplicationRecord
   include ActiveModel::Validations
 
@@ -8,15 +10,13 @@ class Meeting < ApplicationRecord
   validates_with Validations::BusinessHours
 
   def meeting_duration
-    if starts_at && ends_at
-      errors.add(:ends_at, "must be greater than starts_at") if starts_at >= ends_at
-    end
+    errors.add(:ends_at, 'must be greater than starts_at') if starts_at && ends_at && (starts_at >= ends_at)
   end
 
   def period
     starts_at..ends_at
   end
-  
+
   def meeting_conflict
     other_meetings = Meeting.where(room_id: room_id).where.not(id: id)
 
@@ -24,7 +24,6 @@ class Meeting < ApplicationRecord
       period.overlaps?(other_meeting.period)
     end
 
-    errors.add(:room_already_reserved, "meeting period was already reserved") if is_overlapping
+    errors.add(:room_already_reserved, 'meeting period was already reserved') if is_overlapping
   end
 end
-

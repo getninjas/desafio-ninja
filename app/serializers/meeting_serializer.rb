@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MeetingSerializer < ActiveModel::Serializer
   attributes :id, :title, :start_date, :end_date
 

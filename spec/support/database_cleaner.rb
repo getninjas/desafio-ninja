@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require 'database_cleaner/active_record'
 
 RSpec.configure do |config|
-  config.before(:each, :truncation => true) do
+  config.before(:each, truncation: true) do
     @cleaner_strategy = :truncation
   end
 
-  config.before(:each) do |group|
+  config.before(:each) do |_group|
     @cleaner_strategy ||= :transaction
 
     DatabaseCleaner.strategy = @cleaner_strategy

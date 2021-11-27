@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe RoomSerializer, type: :serializer do
-  describe "#attributes" do
-    let(:room) { create(:room)}
-    
+  describe '#attributes' do
+    let(:room) { create(:room) }
+
     subject { described_class.new(room) }
 
     context 'returns attributes' do

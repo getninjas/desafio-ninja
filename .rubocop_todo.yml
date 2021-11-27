@@ -33,19 +33,14 @@ Style/ClassAndModuleChildren:
 # Offense count: 3
 # Configuration parameters: AllowedConstants.
 Style/Documentation:
-  Exclude:
-    - 'spec/**/*'
-    - 'test/**/*'
-    - 'app/models/application_record.rb'
-    - 'config/application.rb'
-    - 'db/migrate/20211125205636_create_rooms.rb'
+  Enabled: false
 
 # Offense count: 39
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: always, always_true, never
 Style/FrozenStringLiteralComment:
-  Enabled: false
+  Enabled: true
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -79,3 +74,6 @@ Style/SpecialGlobalVars:
 # URISchemes: http, https
 Layout/LineLength:
   Max: 198
+
+Metrics/BlockLength:
+  IgnoredMethods: ['describe', 'context']
