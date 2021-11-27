@@ -7,7 +7,7 @@ RSpec.describe "Rooms", type: :request do
     end
 
     it 'show all rooms' do
-      get '/'
+      get '/rooms'
       expect(response).to have_http_status(:ok)
     end
   end
