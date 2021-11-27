@@ -18,7 +18,7 @@ class Meeting < ApplicationRecord
   end
   
   def meeting_conflict
-    other_meetings = Meeting.where(room_id: room_id)
+    other_meetings = Meeting.where(room_id: room_id).where.not(id: id)
 
     is_overlapping = other_meetings.any? do |other_meeting|
       period.overlaps?(other_meeting.period)

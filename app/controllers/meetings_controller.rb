@@ -10,13 +10,13 @@ class MeetingsController < ApplicationController
   end
 
   def create
-    @meeting = Meeting.new(meeting_params)
+    @meeting = Meeting.new(meeting_params).save!
+    render json: @meeting, status: :created
+  end
 
-    if @meeting.save
-      render json: @meeting, status: :created
-    else
-      render json: @meeting.errors, status: :unprocessable_entity
-    end
+  def update
+    @meeting.update!(meeting_params)
+    render json: @meeting
   end
 
   private 
