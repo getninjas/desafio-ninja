@@ -45,4 +45,38 @@ RSpec.describe "Meetings", type: :request do
       end
     end
   end
+
+
+  describe 'POST /meetings' do
+    let(:room) { create(:room) }
+    let(:invalid_params) do
+      {
+        "title" => "Outra reunião importante",
+        "starts_at" => "2021-11-25 08:00:00",
+        "ends_at" => "2021-11-25 10:00:00",
+        "room_id" => room.id
+      }
+    end
+
+    let(:valid_params) do
+      {
+        "title" => "Outra reunião importante",
+        "starts_at" => "2021-11-25 09:00:00",
+        "ends_at" => "2021-11-25 10:00:00",
+        "room_id" => room.id
+      }
+    end
+
+    context 'meetings creation' do
+      it 'fails when invalids params are used' do
+        post '/meetings', params: invalid_params
+        expect(response).to have_http_status(422)
+      end
+
+      it 'success when valid params are used' do
+        post '/meetings', params: valid_params
+        expect(response).to have_http_status(201)
+      end
+    end
+  end
 end

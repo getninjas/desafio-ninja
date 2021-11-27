@@ -9,9 +9,23 @@ class MeetingsController < ApplicationController
     render json: @meeting
   end
 
+  def create
+    @meeting = Meeting.new(meeting_params)
+
+    if @meeting.save
+      render json: @meeting, status: :created
+    else
+      render json: @meeting.errors, status: :unprocessable_entity
+    end
+  end
+
   private 
   
   def set_meeting
     @meeting = Meeting.find(params[:id])
+  end
+
+  def meeting_params
+    params.permit(:title, :starts_at, :ends_at, :room_id)
   end
 end
