@@ -67,7 +67,11 @@ As requisições HTTPs utilizadas para o consumo da API estão dentro do resposi
 A busca por conflitos pode não apresentar uma performance aceitável caso a aplicação aumente consideravelmente o número de agendamentos. Se esse cenário acontecer será necessário melhorar esse ponto específico.
 
 **Formato de datas**
+
 A formatação de datas fixa realizada pela aplicação não é o ideal. Seria melhor transferir essa responsabilidade para a aplicação que renderizará as informações na tela, levando em consideração a localização do usuário para a escolha do fuso horário e formato comum.
+
+**Autenticação de usuários**
+A aplicação desenvolvida ainda não possui nenhuma sistema de autenticação ou permissão. Portanto, qualquer usuário pode alterar, excluir e visualizar reuniões criadas por outros usuários, por isso a implementação de autenticação seria interessante.
 
 # Notas
 
