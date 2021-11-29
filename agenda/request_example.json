@@ -1,0 +1,19 @@
+{
+	"schedule":
+    [
+        {
+            "rooms_id": "integer",
+            "date":
+            {
+                "day": "integer",
+                "month": "integer",
+                "year": "integer"
+            },
+            "time":
+            {
+                "start": "string",
+                "end": "string"
+            }
+        }
+    ]
+}
