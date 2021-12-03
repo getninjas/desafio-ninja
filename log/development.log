@@ -1,0 +1,1586 @@
+Started POST "/api/v1/organizations" for 127.0.0.1 at 2021-12-02 22:17:28 -0300
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+[31mUnpermitted parameter: :organization[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.8ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00:00"], ["business_hours_end", "18:00:00"], ["created_at", "2021-12-03 01:17:28.904658"], ["updated_at", "2021-12-03 01:17:28.904658"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (27.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 54ms (Views: 0.6ms | ActiveRecord: 31.9ms | Allocations: 10522)
+
+
+Started POST "/api/v1/organizations" for 127.0.0.1 at 2021-12-02 22:23:39 -0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+[31mUnpermitted parameter: :organization[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.7ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00"], ["business_hours_end", "18:00"], ["created_at", "2021-12-03 01:23:39.170822"], ["updated_at", "2021-12-03 01:23:39.170822"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (8.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 30ms (Views: 0.4ms | ActiveRecord: 11.7ms | Allocations: 10223)
+
+
+Started POST "/api/v1/organizations" for 127.0.0.1 at 2021-12-02 22:24:16 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.2ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00"], ["business_hours_end", "18:00"], ["created_at", "2021-12-03 01:24:16.804070"], ["updated_at", "2021-12-03 01:24:16.804070"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (15.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 28ms (Views: 0.4ms | ActiveRecord: 21.7ms | Allocations: 6177)
+
+
+Started DELETE "/api/v1/organizations/2" for 127.0.0.1 at 2021-12-02 22:24:30 -0300
+Processing by Api::V1::OrganizationsController#destroy as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "id"=>"2", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mOrganization Load (0.2ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:45:in `set_organization'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:40:in `destroy'
+  [1m[36mOrganization Destroy (0.5ms)[0m  [1m[31mDELETE FROM "organizations" WHERE "organizations"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:40:in `destroy'
+  [1m[36mTRANSACTION (46.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:40:in `destroy'
+Completed 204 No Content in 57ms (ActiveRecord: 47.7ms | Allocations: 3042)
+
+
+Started GET "/api/v1/organizations" for 127.0.0.1 at 2021-12-02 22:24:37 -0300
+Processing by Api::V1::OrganizationsController#index as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mOrganization Load (0.2ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations"[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:9:in `index'
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.2ms | Allocations: 1067)
+
+
+Started DELETE "/api/v1/organizations/1" for 127.0.0.1 at 2021-12-02 22:24:47 -0300
+Processing by Api::V1::OrganizationsController#destroy as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "id"=>"1", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mOrganization Load (0.2ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:45:in `set_organization'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:40:in `destroy'
+  [1m[36mOrganization Destroy (0.3ms)[0m  [1m[31mDELETE FROM "organizations" WHERE "organizations"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:40:in `destroy'
+  [1m[36mTRANSACTION (17.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:40:in `destroy'
+Completed 204 No Content in 24ms (ActiveRecord: 17.7ms | Allocations: 2019)
+
+
+Started POST "/api/v1/organizations" for 127.0.0.1 at 2021-12-02 22:24:53 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.2ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00"], ["business_hours_end", "18:00"], ["created_at", "2021-12-03 01:24:53.823839"], ["updated_at", "2021-12-03 01:24:53.823839"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (16.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 24ms (Views: 0.6ms | ActiveRecord: 17.0ms | Allocations: 2274)
+
+
+Started POST "/api/v1/organizations/1/rooms" for 127.0.0.1 at 2021-12-02 22:25:06 -0300
+Processing by Api::V1::RoomsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization_id"=>"1", "room"=>{"name"=>"Get Ninjas SP"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mRoom Create (0.7ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["created_at", "2021-12-03 01:25:06.423774"], ["updated_at", "2021-12-03 01:25:06.423774"]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 3.3ms | Allocations: 4286)
+
+
+  
+ActiveRecord::NotNullViolation (PG::NotNullViolation: ERROR:  null value in column "organization_id" of relation "rooms" violates not-null constraint
+DETAIL:  Failing row contains (1, Get Ninjas SP, 2021-12-03 01:25:06.423774, 2021-12-03 01:25:06.423774, null).
+):
+  
+app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Started GET "/api/v1/organizations/1/rooms" for 127.0.0.1 at 2021-12-02 22:25:26 -0300
+Processing by Api::V1::RoomsController#index as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization_id"=>"1", "room"=>{"name"=>"Get Ninjas SP"}}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:10:in `index'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.2ms | Allocations: 827)
+
+
+Started POST "/api/v1/organizations/1/rooms" for 127.0.0.1 at 2021-12-02 22:26:31 -0300
+Processing by Api::V1::RoomsController#create as */*
+  Parameters: {"name"=>"Sala 1", "organization_id"=>"1", "room"=>{"name"=>"Sala 1"}}
+[31mUnpermitted parameter: :room[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mRoom Create (1.0ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "created_at", "updated_at", "organization_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Sala 1"], ["created_at", "2021-12-03 01:26:31.120083"], ["updated_at", "2021-12-03 01:26:31.120083"], ["organization_id", 1]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 5.7ms | Allocations: 4317)
+
+
+  
+ActiveRecord::InvalidForeignKey (PG::ForeignKeyViolation: ERROR:  insert or update on table "rooms" violates foreign key constraint "fk_rails_c2da7dc036"
+DETAIL:  Key (organization_id)=(1) is not present in table "organizations".
+):
+  
+app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Started POST "/api/v1/organizations/3/rooms" for 127.0.0.1 at 2021-12-02 22:27:31 -0300
+Processing by Api::V1::RoomsController#create as */*
+  Parameters: {"name"=>"Sala 1", "organization_id"=>"3", "room"=>{"name"=>"Sala 1"}}
+[31mUnpermitted parameter: :room[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mRoom Create (0.6ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "created_at", "updated_at", "organization_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Sala 1"], ["created_at", "2021-12-03 01:27:31.199197"], ["updated_at", "2021-12-03 01:27:31.199197"], ["organization_id", 3]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (160.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Completed 201 Created in 169ms (Views: 0.6ms | ActiveRecord: 161.5ms | Allocations: 2081)
+
+
+Started POST "/api/v1/organizations" for 127.0.0.1 at 2021-12-02 22:29:11 -0300
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.4ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00"], ["business_hours_end", "18:00"], ["created_at", "2021-12-03 01:29:11.947905"], ["updated_at", "2021-12-03 01:29:11.947905"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (81.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 107ms (Views: 0.4ms | ActiveRecord: 84.9ms | Allocations: 10209)
+
+
+Started POST "/api/v1/organizations" for 127.0.0.1 at 2021-12-02 22:29:14 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.3ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00"], ["business_hours_end", "18:00"], ["created_at", "2021-12-03 01:29:14.308454"], ["updated_at", "2021-12-03 01:29:14.308454"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (18.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 27ms (Views: 0.6ms | ActiveRecord: 19.2ms | Allocations: 2259)
+
+
+Started POST "/api/v1/organizations/1/rooms" for 127.0.0.1 at 2021-12-02 22:29:37 -0300
+Processing by Api::V1::RoomsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "organization_id"=>"1", "room"=>{"name"=>"Get Ninjas SP"}}
+[31mUnpermitted parameter: :room[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mRoom Create (0.6ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "created_at", "updated_at", "organization_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["created_at", "2021-12-03 01:29:37.387835"], ["updated_at", "2021-12-03 01:29:37.387835"], ["organization_id", 1]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (75.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Completed 201 Created in 92ms (Views: 0.7ms | ActiveRecord: 78.5ms | Allocations: 4341)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 22:29:54 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.8ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00"], ["business_hours_end", "18:00"], ["created_at", "2021-12-03 01:29:54.659240"], ["updated_at", "2021-12-03 01:29:54.659240"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (13.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 24ms (Views: 0.6ms | ActiveRecord: 14.8ms | Allocations: 2248)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 22:29:54 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.2ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00"], ["business_hours_end", "18:00"], ["created_at", "2021-12-03 01:29:54.823874"], ["updated_at", "2021-12-03 01:29:54.823874"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 8ms (Views: 0.3ms | ActiveRecord: 4.3ms | Allocations: 2223)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 22:29:55 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.3ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00"], ["business_hours_end", "18:00"], ["created_at", "2021-12-03 01:29:55.091837"], ["updated_at", "2021-12-03 01:29:55.091837"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (8.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 16ms (Views: 0.5ms | ActiveRecord: 8.9ms | Allocations: 2243)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 22:29:55 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.5ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00"], ["business_hours_end", "18:00"], ["created_at", "2021-12-03 01:29:55.306030"], ["updated_at", "2021-12-03 01:29:55.306030"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 39ms (Views: 0.5ms | ActiveRecord: 3.3ms | Allocations: 2223)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 22:29:55 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.4ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00"], ["business_hours_end", "18:00"], ["created_at", "2021-12-03 01:29:55.498165"], ["updated_at", "2021-12-03 01:29:55.498165"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 10ms (Views: 0.6ms | ActiveRecord: 3.0ms | Allocations: 2225)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 22:29:55 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.5ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00"], ["business_hours_end", "18:00"], ["created_at", "2021-12-03 01:29:55.605827"], ["updated_at", "2021-12-03 01:29:55.605827"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (8.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 19ms (Views: 0.7ms | ActiveRecord: 9.1ms | Allocations: 2223)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 22:29:55 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.3ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00"], ["business_hours_end", "18:00"], ["created_at", "2021-12-03 01:29:55.737095"], ["updated_at", "2021-12-03 01:29:55.737095"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (21.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 30ms (Views: 0.7ms | ActiveRecord: 21.5ms | Allocations: 2224)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 22:29:55 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.4ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00"], ["business_hours_end", "18:00"], ["created_at", "2021-12-03 01:29:55.897285"], ["updated_at", "2021-12-03 01:29:55.897285"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 11ms (Views: 0.8ms | ActiveRecord: 2.8ms | Allocations: 2223)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 22:29:56 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.4ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00"], ["business_hours_end", "18:00"], ["created_at", "2021-12-03 01:29:56.057667"], ["updated_at", "2021-12-03 01:29:56.057667"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (9.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 17ms (Views: 0.5ms | ActiveRecord: 9.6ms | Allocations: 2223)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 22:29:56 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.2ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00"], ["business_hours_end", "18:00"], ["created_at", "2021-12-03 01:29:56.185185"], ["updated_at", "2021-12-03 01:29:56.185185"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (8.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 13ms (Views: 0.4ms | ActiveRecord: 9.0ms | Allocations: 2223)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 22:29:56 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.2ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00"], ["business_hours_end", "18:00"], ["created_at", "2021-12-03 01:29:56.332763"], ["updated_at", "2021-12-03 01:29:56.332763"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (9.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 17ms (Views: 0.5ms | ActiveRecord: 10.0ms | Allocations: 2223)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 22:29:56 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.2ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00"], ["business_hours_end", "18:00"], ["created_at", "2021-12-03 01:29:56.481598"], ["updated_at", "2021-12-03 01:29:56.481598"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 9ms (Views: 0.5ms | ActiveRecord: 2.8ms | Allocations: 2223)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 22:29:56 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.2ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00"], ["business_hours_end", "18:00"], ["created_at", "2021-12-03 01:29:56.623593"], ["updated_at", "2021-12-03 01:29:56.623593"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 8ms (Views: 0.3ms | ActiveRecord: 4.0ms | Allocations: 2223)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 22:29:56 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.3ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00"], ["business_hours_end", "18:00"], ["created_at", "2021-12-03 01:29:56.812138"], ["updated_at", "2021-12-03 01:29:56.812138"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 12ms (Views: 0.7ms | ActiveRecord: 4.8ms | Allocations: 2223)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 22:29:56 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.2ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00"], ["business_hours_end", "18:00"], ["created_at", "2021-12-03 01:29:56.929888"], ["updated_at", "2021-12-03 01:29:56.929888"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 11ms (Views: 0.5ms | ActiveRecord: 4.4ms | Allocations: 2223)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 22:29:57 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.2ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00"], ["business_hours_end", "18:00"], ["created_at", "2021-12-03 01:29:57.083205"], ["updated_at", "2021-12-03 01:29:57.083205"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 6ms (Views: 0.3ms | ActiveRecord: 3.2ms | Allocations: 2223)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 22:29:57 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.2ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00"], ["business_hours_end", "18:00"], ["created_at", "2021-12-03 01:29:57.235648"], ["updated_at", "2021-12-03 01:29:57.235648"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (8.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 13ms (Views: 0.4ms | ActiveRecord: 8.8ms | Allocations: 2223)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 22:29:57 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.3ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00"], ["business_hours_end", "18:00"], ["created_at", "2021-12-03 01:29:57.377073"], ["updated_at", "2021-12-03 01:29:57.377073"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (8.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 8.9ms | Allocations: 2223)
+
+
+Started POST "/api/v1/organizations/12/rooms" for 127.0.0.1 at 2021-12-02 22:30:12 -0300
+Processing by Api::V1::RoomsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "organization_id"=>"12", "room"=>{"name"=>"Get Ninjas SP"}}
+[31mUnpermitted parameter: :room[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mRoom Create (0.4ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "created_at", "updated_at", "organization_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["created_at", "2021-12-03 01:30:12.860785"], ["updated_at", "2021-12-03 01:30:12.860785"], ["organization_id", 12]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (13.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Completed 201 Created in 21ms (Views: 0.5ms | ActiveRecord: 14.4ms | Allocations: 2001)
+
+
+Started POST "/api/v1/organizations/12/rooms" for 127.0.0.1 at 2021-12-02 22:30:13 -0300
+Processing by Api::V1::RoomsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "organization_id"=>"12", "room"=>{"name"=>"Get Ninjas SP"}}
+[31mUnpermitted parameter: :room[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "created_at", "updated_at", "organization_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["created_at", "2021-12-03 01:30:13.866507"], ["updated_at", "2021-12-03 01:30:13.866507"], ["organization_id", 12]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (17.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Completed 201 Created in 23ms (Views: 0.5ms | ActiveRecord: 17.6ms | Allocations: 2001)
+
+
+Started POST "/api/v1/organizations/12/rooms" for 127.0.0.1 at 2021-12-02 22:30:15 -0300
+Processing by Api::V1::RoomsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "organization_id"=>"12", "room"=>{"name"=>"Get Ninjas SP"}}
+[31mUnpermitted parameter: :room[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "created_at", "updated_at", "organization_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["created_at", "2021-12-03 01:30:15.161414"], ["updated_at", "2021-12-03 01:30:15.161414"], ["organization_id", 12]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (13.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Completed 201 Created in 20ms (Views: 0.5ms | ActiveRecord: 13.9ms | Allocations: 2000)
+
+
+Started GET "/api/v1/organizations/1/rooms" for 127.0.0.1 at 2021-12-02 22:31:19 -0300
+Processing by Api::V1::RoomsController#index as */*
+  Parameters: {"name"=>"Get Ninjas SP", "organization_id"=>"1", "room"=>{"name"=>"Get Ninjas SP"}}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:10:in `index'
+Completed 200 OK in 8ms (Views: 4.1ms | ActiveRecord: 5.7ms | Allocations: 3426)
+
+
+Started GET "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:32:39 -0300
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for Api::V1::MeetingsController):
+  
+actionpack (6.1.4.1) lib/abstract_controller/base.rb:160:in `process'
+actionpack (6.1.4.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.1.4.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.1.4.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.1.4.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.1.4.1) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (6.1.4.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.4.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.4.1) lib/action_dispatch/routing/route_set.rb:842:in `call'
+rack-attack (6.5.0) lib/rack/attack.rb:99:in `call'
+rack-attack (6.5.0) lib/rack/attack.rb:106:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.1.4.1) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.4.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.4.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.4.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.4.1) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.4.1) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.4.1) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.4.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.4.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.1.4.1) lib/rails/engine.rb:539:in `call'
+puma (5.5.2) lib/puma/configuration.rb:249:in `call'
+puma (5.5.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.5.2) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.5.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.5.2) lib/puma/server.rb:447:in `process_client'
+puma (5.5.2) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:36:41 -0300
+Processing by Api::V1::MeetingsController#index as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+  [1m[36mMeeting Load (0.5ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings"[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:9:in `index'
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 1.7ms | Allocations: 1023)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:36:46 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :starts_at, :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.6ms)[0m  [1m[32mINSERT INTO "meetings" ("end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:36:46.338543"], ["updated_at", "2021-12-03 01:36:46.338543"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (23.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 77ms (Views: 0.6ms | ActiveRecord: 28.4ms | Allocations: 11831)
+
+
+Started GET "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:37:42 -0300
+Processing by Api::V1::MeetingsController#index as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+  [1m[36mMeeting Load (0.2ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings"[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:9:in `index'
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.2ms | Allocations: 844)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:37:45 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :starts_at, :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.4ms)[0m  [1m[32mINSERT INTO "meetings" ("end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:37:45.986960"], ["updated_at", "2021-12-03 01:37:45.986960"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (56.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 63ms (Views: 0.4ms | ActiveRecord: 57.4ms | Allocations: 3116)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:37:46 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :starts_at, :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.3ms)[0m  [1m[32mINSERT INTO "meetings" ("end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:37:46.160523"], ["updated_at", "2021-12-03 01:37:46.160523"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (8.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 14ms (Views: 0.3ms | ActiveRecord: 8.9ms | Allocations: 3085)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:37:46 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :starts_at, :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.5ms)[0m  [1m[32mINSERT INTO "meetings" ("end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:37:46.322329"], ["updated_at", "2021-12-03 01:37:46.322329"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 11ms (Views: 0.4ms | ActiveRecord: 5.5ms | Allocations: 3085)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:37:46 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :starts_at, :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.4ms)[0m  [1m[32mINSERT INTO "meetings" ("end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:37:46.447820"], ["updated_at", "2021-12-03 01:37:46.447820"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 13ms (Views: 0.7ms | ActiveRecord: 3.8ms | Allocations: 3085)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:37:46 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :starts_at, :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.2ms)[0m  [1m[32mINSERT INTO "meetings" ("end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:37:46.569007"], ["updated_at", "2021-12-03 01:37:46.569007"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (8.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 14ms (Views: 0.4ms | ActiveRecord: 8.8ms | Allocations: 3085)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:37:46 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :starts_at, :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.4ms)[0m  [1m[32mINSERT INTO "meetings" ("end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:37:46.715036"], ["updated_at", "2021-12-03 01:37:46.715036"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 11ms (Views: 0.3ms | ActiveRecord: 3.9ms | Allocations: 3085)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:37:46 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :starts_at, :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.2ms)[0m  [1m[32mINSERT INTO "meetings" ("end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:37:46.883025"], ["updated_at", "2021-12-03 01:37:46.883025"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 8ms (Views: 0.3ms | ActiveRecord: 2.9ms | Allocations: 3085)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:37:47 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :starts_at, :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.5ms)[0m  [1m[32mINSERT INTO "meetings" ("end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:37:47.059518"], ["updated_at", "2021-12-03 01:37:47.059518"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 21ms (Views: 0.7ms | ActiveRecord: 7.4ms | Allocations: 3085)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:37:47 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :starts_at, :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.2ms)[0m  [1m[32mINSERT INTO "meetings" ("end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:37:47.189807"], ["updated_at", "2021-12-03 01:37:47.189807"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 10ms (Views: 0.4ms | ActiveRecord: 4.5ms | Allocations: 3085)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:37:47 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :starts_at, :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.3ms)[0m  [1m[32mINSERT INTO "meetings" ("end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:37:47.343607"], ["updated_at", "2021-12-03 01:37:47.343607"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 18ms (Views: 0.5ms | ActiveRecord: 7.3ms | Allocations: 3085)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:37:47 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :starts_at, :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.7ms)[0m  [1m[32mINSERT INTO "meetings" ("end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:37:47.525594"], ["updated_at", "2021-12-03 01:37:47.525594"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (7.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 19ms (Views: 0.6ms | ActiveRecord: 8.6ms | Allocations: 3085)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:37:47 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :starts_at, :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.6ms)[0m  [1m[32mINSERT INTO "meetings" ("end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:37:47.730521"], ["updated_at", "2021-12-03 01:37:47.730521"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 15ms (Views: 0.5ms | ActiveRecord: 4.1ms | Allocations: 3085)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:37:47 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :starts_at, :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.3ms)[0m  [1m[32mINSERT INTO "meetings" ("end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:37:47.843212"], ["updated_at", "2021-12-03 01:37:47.843212"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (7.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 19ms (Views: 0.6ms | ActiveRecord: 7.9ms | Allocations: 3085)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:37:47 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :starts_at, :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.3ms)[0m  [1m[32mINSERT INTO "meetings" ("end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:37:47.990712"], ["updated_at", "2021-12-03 01:37:47.990712"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (9.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 21ms (Views: 0.6ms | ActiveRecord: 10.1ms | Allocations: 3088)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:37:48 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :starts_at, :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.5ms)[0m  [1m[32mINSERT INTO "meetings" ("end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:37:48.122703"], ["updated_at", "2021-12-03 01:37:48.122703"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 13ms (Views: 0.5ms | ActiveRecord: 3.6ms | Allocations: 3085)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:37:48 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :starts_at, :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.2ms)[0m  [1m[32mINSERT INTO "meetings" ("end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:37:48.268777"], ["updated_at", "2021-12-03 01:37:48.268777"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (8.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 14ms (Views: 0.3ms | ActiveRecord: 8.7ms | Allocations: 3085)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:37:48 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :starts_at, :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.4ms)[0m  [1m[32mINSERT INTO "meetings" ("end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:37:48.441419"], ["updated_at", "2021-12-03 01:37:48.441419"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 9ms (Views: 0.4ms | ActiveRecord: 2.5ms | Allocations: 3085)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:37:48 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :starts_at, :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.6ms)[0m  [1m[32mINSERT INTO "meetings" ("end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:37:48.597021"], ["updated_at", "2021-12-03 01:37:48.597021"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 14ms (Views: 0.5ms | ActiveRecord: 3.7ms | Allocations: 3085)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:37:48 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :starts_at, :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.3ms)[0m  [1m[32mINSERT INTO "meetings" ("end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:37:48.763209"], ["updated_at", "2021-12-03 01:37:48.763209"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 15ms (Views: 0.5ms | ActiveRecord: 4.7ms | Allocations: 3085)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:37:48 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :starts_at, :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.2ms)[0m  [1m[32mINSERT INTO "meetings" ("end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:37:48.899349"], ["updated_at", "2021-12-03 01:37:48.899349"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:37:49 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :starts_at, :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (1.0ms)[0m  [1m[32mINSERT INTO "meetings" ("end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:37:49.061860"], ["updated_at", "2021-12-03 01:37:49.061860"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (200.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 207ms (Views: 0.4ms | ActiveRecord: 200.5ms | Allocations: 8496)
+
+
+  [1m[36mTRANSACTION (122.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 145ms (Views: 0.6ms | ActiveRecord: 128.9ms | Allocations: 6110)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:37:49 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :starts_at, :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.3ms)[0m  [1m[32mINSERT INTO "meetings" ("end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:37:49.300891"], ["updated_at", "2021-12-03 01:37:49.300891"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (16.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 27ms (Views: 0.5ms | ActiveRecord: 17.2ms | Allocations: 3085)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:37:49 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :starts_at, :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.4ms)[0m  [1m[32mINSERT INTO "meetings" ("end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:37:49.422914"], ["updated_at", "2021-12-03 01:37:49.422914"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 13ms (Views: 0.5ms | ActiveRecord: 3.7ms | Allocations: 3085)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:37:49 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :starts_at, :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.4ms)[0m  [1m[32mINSERT INTO "meetings" ("end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:37:49.525135"], ["updated_at", "2021-12-03 01:37:49.525135"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (9.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 20ms (Views: 0.5ms | ActiveRecord: 9.8ms | Allocations: 3085)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:38:00 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"start_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 322)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'start_at' for Meeting.):
+  
+app/controllers/api/v1/meetings_controller.rb:19:in `create'
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:38:27 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.4ms)[0m  [1m[32mINSERT INTO "meetings" ("starts_at", "end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["starts_at", "2021-12-02 10:00:00"], ["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:38:27.652919"], ["updated_at", "2021-12-03 01:38:27.652919"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (21.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 43ms (Views: 0.3ms | ActiveRecord: 31.7ms | Allocations: 9802)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:38:35 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.6ms)[0m  [1m[32mINSERT INTO "meetings" ("starts_at", "end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["starts_at", "2021-12-02 10:00:00"], ["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:38:35.319028"], ["updated_at", "2021-12-03 01:38:35.319028"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:38:35 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (21.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 35ms (Views: 0.5ms | ActiveRecord: 22.4ms | Allocations: 4871)
+
+
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.4ms)[0m  [1m[32mINSERT INTO "meetings" ("starts_at", "end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["starts_at", "2021-12-02 10:00:00"], ["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:38:35.349217"], ["updated_at", "2021-12-03 01:38:35.349217"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (8.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 19ms (Views: 0.3ms | ActiveRecord: 9.3ms | Allocations: 3984)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:38:35 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.3ms)[0m  [1m[32mINSERT INTO "meetings" ("starts_at", "end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["starts_at", "2021-12-02 10:00:00"], ["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:38:35.534262"], ["updated_at", "2021-12-03 01:38:35.534262"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 16ms (Views: 0.6ms | ActiveRecord: 5.9ms | Allocations: 3162)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:38:35 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.3ms)[0m  [1m[32mINSERT INTO "meetings" ("starts_at", "end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["starts_at", "2021-12-02 10:00:00"], ["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:38:35.659998"], ["updated_at", "2021-12-03 01:38:35.659998"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 13ms (Views: 0.4ms | ActiveRecord: 6.6ms | Allocations: 3162)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:38:35 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.3ms)[0m  [1m[32mINSERT INTO "meetings" ("starts_at", "end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["starts_at", "2021-12-02 10:00:00"], ["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:38:35.826194"], ["updated_at", "2021-12-03 01:38:35.826194"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 14ms (Views: 0.4ms | ActiveRecord: 6.6ms | Allocations: 3162)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:38:36 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.4ms)[0m  [1m[32mINSERT INTO "meetings" ("starts_at", "end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["starts_at", "2021-12-02 10:00:00"], ["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:38:36.041814"], ["updated_at", "2021-12-03 01:38:36.041814"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 20ms (Views: 0.6ms | ActiveRecord: 6.7ms | Allocations: 3162)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:38:36 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.3ms)[0m  [1m[32mINSERT INTO "meetings" ("starts_at", "end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["starts_at", "2021-12-02 10:00:00"], ["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:38:36.156818"], ["updated_at", "2021-12-03 01:38:36.156818"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (7.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 18ms (Views: 0.5ms | ActiveRecord: 8.2ms | Allocations: 3162)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:38:36 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.4ms)[0m  [1m[32mINSERT INTO "meetings" ("starts_at", "end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["starts_at", "2021-12-02 10:00:00"], ["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:38:36.276411"], ["updated_at", "2021-12-03 01:38:36.276411"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 15ms (Views: 0.6ms | ActiveRecord: 5.2ms | Allocations: 3162)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:38:36 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.3ms)[0m  [1m[32mINSERT INTO "meetings" ("starts_at", "end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["starts_at", "2021-12-02 10:00:00"], ["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:38:36.399130"], ["updated_at", "2021-12-03 01:38:36.399130"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (7.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 18ms (Views: 0.6ms | ActiveRecord: 7.5ms | Allocations: 3162)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:38:36 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.5ms)[0m  [1m[32mINSERT INTO "meetings" ("starts_at", "end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["starts_at", "2021-12-02 10:00:00"], ["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:38:36.554066"], ["updated_at", "2021-12-03 01:38:36.554066"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 14ms (Views: 0.6ms | ActiveRecord: 2.6ms | Allocations: 3162)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:38:36 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.4ms)[0m  [1m[32mINSERT INTO "meetings" ("starts_at", "end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["starts_at", "2021-12-02 10:00:00"], ["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:38:36.696701"], ["updated_at", "2021-12-03 01:38:36.696701"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (17.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 30ms (Views: 0.9ms | ActiveRecord: 18.6ms | Allocations: 3162)
+
+
+Started POST "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:38:36 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Create (0.3ms)[0m  [1m[32mINSERT INTO "meetings" ("starts_at", "end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["starts_at", "2021-12-02 10:00:00"], ["end_at", "2021-12-02 15:00:00"], ["room_id", 3], ["created_at", "2021-12-03 01:38:36.829213"], ["updated_at", "2021-12-03 01:38:36.829213"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 9ms (Views: 0.4ms | ActiveRecord: 4.0ms | Allocations: 3162)
+
+
+Started GET "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:38:39 -0300
+Processing by Api::V1::MeetingsController#index as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings"[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:9:in `index'
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.3ms | Allocations: 4846)
+
+
+Started GET "/api/v1/organizations/1/rooms/3/meetings/1" for 127.0.0.1 at 2021-12-02 22:38:56 -0300
+Processing by Api::V1::MeetingsController#show as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "id"=>"1", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+  [1m[36mMeeting Load (0.2ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:45:in `set_meeting'
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 837)
+
+
+Started DELETE "/api/v1/organizations/1/rooms/3/meetings/1" for 127.0.0.1 at 2021-12-02 22:39:01 -0300
+Processing by Api::V1::MeetingsController#destroy as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "id"=>"1", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+  [1m[36mMeeting Load (0.2ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:45:in `set_meeting'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:40:in `destroy'
+  [1m[36mMeeting Destroy (0.2ms)[0m  [1m[31mDELETE FROM "meetings" WHERE "meetings"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:40:in `destroy'
+  [1m[36mTRANSACTION (7.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:40:in `destroy'
+Completed 204 No Content in 11ms (ActiveRecord: 7.6ms | Allocations: 2034)
+
+
+Started DELETE "/api/v1/organizations/1/rooms/3/meetings/3" for 127.0.0.1 at 2021-12-02 22:39:07 -0300
+Processing by Api::V1::MeetingsController#destroy as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:45:in `set_meeting'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:40:in `destroy'
+  [1m[36mMeeting Destroy (0.2ms)[0m  [1m[31mDELETE FROM "meetings" WHERE "meetings"."id" = $1[0m  [["id", 3]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:40:in `destroy'
+  [1m[36mTRANSACTION (16.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:40:in `destroy'
+Completed 204 No Content in 24ms (ActiveRecord: 17.5ms | Allocations: 1931)
+
+
+Started DELETE "/api/v1/organizations/1/rooms/3/meetings/13" for 127.0.0.1 at 2021-12-02 22:39:13 -0300
+Processing by Api::V1::MeetingsController#destroy as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "id"=>"13", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+  [1m[36mMeeting Load (0.4ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:45:in `set_meeting'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:40:in `destroy'
+  [1m[36mMeeting Destroy (0.3ms)[0m  [1m[31mDELETE FROM "meetings" WHERE "meetings"."id" = $1[0m  [["id", 13]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:40:in `destroy'
+  [1m[36mTRANSACTION (8.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:40:in `destroy'
+Completed 204 No Content in 16ms (ActiveRecord: 9.3ms | Allocations: 1931)
+
+
+Started DELETE "/api/v1/organizations/1/rooms/3/meetings/12" for 127.0.0.1 at 2021-12-02 22:39:15 -0300
+Processing by Api::V1::MeetingsController#destroy as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "id"=>"12", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:45:in `set_meeting'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:40:in `destroy'
+  [1m[36mMeeting Destroy (0.4ms)[0m  [1m[31mDELETE FROM "meetings" WHERE "meetings"."id" = $1[0m  [["id", 12]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:40:in `destroy'
+  [1m[36mTRANSACTION (17.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:40:in `destroy'
+Completed 204 No Content in 25ms (ActiveRecord: 18.6ms | Allocations: 1931)
+
+
+Started DELETE "/api/v1/organizations/1/rooms/3/meetings/11" for 127.0.0.1 at 2021-12-02 22:39:17 -0300
+Processing by Api::V1::MeetingsController#destroy as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "id"=>"11", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+  [1m[36mMeeting Load (0.6ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:45:in `set_meeting'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:40:in `destroy'
+  [1m[36mMeeting Destroy (0.2ms)[0m  [1m[31mDELETE FROM "meetings" WHERE "meetings"."id" = $1[0m  [["id", 11]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:40:in `destroy'
+  [1m[36mTRANSACTION (13.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:40:in `destroy'
+Completed 204 No Content in 20ms (ActiveRecord: 14.1ms | Allocations: 1931)
+
+
+Started DELETE "/api/v1/organizations/1/rooms/3/meetings/10" for 127.0.0.1 at 2021-12-02 22:39:19 -0300
+Processing by Api::V1::MeetingsController#destroy as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "id"=>"10", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+  [1m[36mMeeting Load (0.2ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:45:in `set_meeting'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:40:in `destroy'
+  [1m[36mMeeting Destroy (0.3ms)[0m  [1m[31mDELETE FROM "meetings" WHERE "meetings"."id" = $1[0m  [["id", 10]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:40:in `destroy'
+  [1m[36mTRANSACTION (23.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:40:in `destroy'
+Completed 204 No Content in 30ms (ActiveRecord: 23.8ms | Allocations: 1931)
+
+
+Started GET "/api/v1/organizations/1/rooms/3/meetings" for 127.0.0.1 at 2021-12-02 22:39:23 -0300
+Processing by Api::V1::MeetingsController#index as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization_id"=>"1", "room_id"=>"3", "meeting"=>{"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00"}}
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings"[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:9:in `index'
+Completed 200 OK in 11ms (Views: 10.2ms | ActiveRecord: 0.3ms | Allocations: 4155)
+
+
+Started GET "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 22:53:31 -0300
+Processing by Api::V1::OrganizationsController#index as */*
+  Parameters: {"starts_at"=>"02/12/2021 10:00", "end_at"=>"02/12/2021 15:00", "organization"=>{}}
+  [1m[36mOrganization Load (0.4ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations"[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:9:in `index'
+Completed 200 OK in 16ms (Views: 12.2ms | ActiveRecord: 12.8ms | Allocations: 7089)
+
+
+Started GET "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 22:53:59 -0300
+Processing by Api::V1::OrganizationsController#index as */*
+  Parameters: {"id"=>1, "name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"-01:00", "organization"=>{"id"=>1, "name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"-01:00"}}
+  [1m[36mOrganization Load (0.3ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations"[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:9:in `index'
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.3ms | Allocations: 3193)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 22:54:05 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"id"=>1, "name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"-01:00", "organization"=>{"id"=>1, "name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"-01:00"}}
+[31mUnpermitted parameter: :id[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.7ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00"], ["business_hours_end", "-01:00"], ["created_at", "2021-12-03 01:54:05.129001"], ["updated_at", "2021-12-03 01:54:05.129001"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (17.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 24ms (Views: 0.4ms | ActiveRecord: 18.3ms | Allocations: 2535)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 22:55:10 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"id"=>1, "name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"-DD:00", "organization"=>{"id"=>1, "name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"-DD:00"}}
+[31mUnpermitted parameter: :id[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.3ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00"], ["business_hours_end", "-DD:00"], ["created_at", "2021-12-03 01:55:10.023851"], ["updated_at", "2021-12-03 01:55:10.023851"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (11.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 18ms (Views: 0.5ms | ActiveRecord: 11.7ms | Allocations: 2287)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 22:55:41 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"id"=>1, "name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"60:00", "organization"=>{"id"=>1, "name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"60:00"}}
+[31mUnpermitted parameter: :id[0m
+Completed 422 Unprocessable Entity in 2ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 529)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 22:56:02 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"id"=>1, "name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"60:00", "organization"=>{"id"=>1, "name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"60:00"}}
+[31mUnpermitted parameter: :id[0m
+Completed 422 Unprocessable Entity in 7ms (Views: 0.2ms | ActiveRecord: 3.1ms | Allocations: 4176)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 23:09:21 -0300
+  
+SyntaxError (/home/milles/Documentos/Produtos/project-ninja/app/models/organization.rb:4: syntax error, unexpected ':', expecting `end'
+  validates :name :number_of_rooms, :work_on_wee...
+                  ^
+/home/milles/Documentos/Produtos/project-ninja/app/models/organization.rb:4: syntax error, unexpected ',', expecting '.' or &. or :: or '['
+...ber_of_rooms, :work_on_weekend, :business_hours_start, :busi...
+...                              ^
+):
+  
+app/models/organization.rb:4: syntax error, unexpected ':', expecting `end'
+app/models/organization.rb:4: syntax error, unexpected ',', expecting '.' or &. or :: or '['
+app/models/organization.rb:4: syntax error, unexpected ':', expecting `end'
+app/models/organization.rb:4: syntax error, unexpected ',', expecting '.' or &. or :: or '['
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 23:10:18 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"id"=>1, "name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"60:00", "organization"=>{"id"=>1, "name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"60:00"}}
+[31mUnpermitted parameter: :id[0m
+Completed 422 Unprocessable Entity in 8ms (Views: 3.2ms | ActiveRecord: 5.6ms | Allocations: 6731)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 23:12:09 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"id"=>1, "name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"60:00", "organization"=>{"id"=>1, "name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"60:00"}}
+[31mUnpermitted parameter: :id[0m
+Completed 422 Unprocessable Entity in 9ms (Views: 0.8ms | ActiveRecord: 7.1ms | Allocations: 4617)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 23:12:26 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"id"=>1, "name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"60:00", "organization"=>{"id"=>1, "name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"60:00"}}
+[31mUnpermitted parameter: :id[0m
+Completed 422 Unprocessable Entity in 7ms (Views: 0.7ms | ActiveRecord: 2.5ms | Allocations: 4622)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 23:13:05 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"60:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"60:00"}}
+Completed 422 Unprocessable Entity in 2ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 763)
+
+
+Started GET "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 23:13:28 -0300
+Processing by Api::V1::OrganizationsController#index as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"60:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"60:00"}}
+  [1m[36mOrganization Load (0.5ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations"[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:9:in `index'
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.5ms | Allocations: 3728)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 23:13:39 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"60:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"60:00"}}
+Completed 422 Unprocessable Entity in 3ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 761)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 23:13:50 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+Completed 422 Unprocessable Entity in 4ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 761)
+
+
+Started GET "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 23:44:49 -0300
+Processing by Api::V1::OrganizationsController#index as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mOrganization Load (0.4ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations"[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:9:in `index'
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 3.3ms | Allocations: 7311)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 23:44:53 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+Completed 422 Unprocessable Entity in 2ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 1007)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 23:45:18 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+Completed 422 Unprocessable Entity in 8ms (Views: 0.8ms | ActiveRecord: 3.6ms | Allocations: 4546)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 23:46:49 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+Completed 422 Unprocessable Entity in 8ms (Views: 0.8ms | ActiveRecord: 2.8ms | Allocations: 4504)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 23:46:51 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+Completed 422 Unprocessable Entity in 3ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 700)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 23:46:52 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+Completed 422 Unprocessable Entity in 2ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 700)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 23:46:57 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>true, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>true, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.4ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", true], ["business_hours_start", "09:00"], ["business_hours_end", "18:00"], ["created_at", "2021-12-03 02:46:57.544766"], ["updated_at", "2021-12-03 02:46:57.544766"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (21.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 29ms (Views: 0.4ms | ActiveRecord: 22.1ms | Allocations: 2447)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 23:47:04 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+Completed 422 Unprocessable Entity in 2ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 700)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 23:47:15 -0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+Completed 422 Unprocessable Entity in 14ms (Views: 2.3ms | ActiveRecord: 2.5ms | Allocations: 9748)
+
+
+Started POST "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 23:47:30 -0300
+Processing by Api::V1::OrganizationsController#create as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mOrganization Create (0.3ms)[0m  [1m[32mINSERT INTO "organizations" ("name", "adress", "number_of_rooms", "work_on_weekend", "business_hours_start", "business_hours_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Get Ninjas SP"], ["adress", "São Paulo"], ["number_of_rooms", 4], ["work_on_weekend", false], ["business_hours_start", "09:00"], ["business_hours_end", "18:00"], ["created_at", "2021-12-03 02:47:30.444005"], ["updated_at", "2021-12-03 02:47:30.444005"]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (23.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:21:in `create'
+Completed 201 Created in 33ms (Views: 0.3ms | ActiveRecord: 25.7ms | Allocations: 6587)
+
+
+Started GET "/api/v1/organizations/" for 127.0.0.1 at 2021-12-02 23:47:34 -0300
+Processing by Api::V1::OrganizationsController#index as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mOrganization Load (0.3ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations"[0m
+  ↳ app/controllers/api/v1/organizations_controller.rb:9:in `index'
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.3ms | Allocations: 4067)
+
+
+Started GET "/api/v1/organizations/1/" for 127.0.0.1 at 2021-12-02 23:47:40 -0300
+Processing by Api::V1::OrganizationsController#show as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "id"=>"1", "organization"=>{"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00"}}
+  [1m[36mOrganization Load (0.2ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organizations_controller.rb:45:in `set_organization'
+Completed 200 OK in 5ms (Views: 0.7ms | ActiveRecord: 0.4ms | Allocations: 1621)
+
+
+Started GET "/api/v1/organizations/1/rooms" for 127.0.0.1 at 2021-12-02 23:47:49 -0300
+Processing by Api::V1::RoomsController#index as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization_id"=>"1", "room"=>{"name"=>"Get Ninjas SP"}}
+  [1m[36mRoom Load (0.6ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:10:in `index'
+Completed 200 OK in 14ms (Views: 10.3ms | ActiveRecord: 4.2ms | Allocations: 3286)
+
+
+Started GET "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-02 23:48:00 -0300
+Processing by Api::V1::MeetingsController#index as */*
+  Parameters: {"name"=>"Get Ninjas SP", "adress"=>"São Paulo", "number_of_rooms"=>4, "work_on_weekend"=>false, "business_hours_start"=>"09:00", "business_hours_end"=>"18:00", "organization_id"=>"1", "room_id"=>"1", "meeting"=>{}}
+  [1m[36mMeeting Load (0.7ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings"[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:9:in `index'
+Completed 200 OK in 12ms (Views: 8.2ms | ActiveRecord: 4.9ms | Allocations: 6819)
+
+
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-02 23:49:00 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"03/12/2021 10:00", "end_at"=>"03/12/2021 09:00", "organization_id"=>"1", "room_id"=>"1", "meeting"=>{"starts_at"=>"03/12/2021 10:00", "end_at"=>"03/12/2021 09:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 500 Internal Server Error in 54ms (ActiveRecord: 0.7ms | Allocations: 9163)
+
+
+  
+NameError (undefined local variable or method `ends_at' for #<Meeting id: nil, starts_at: "2021-12-03 10:00:00.000000000 +0000", end_at: "2021-12-03 09:00:00.000000000 +0000", room_id: 1, created_at: nil, updated_at: nil>
+Did you mean?  end_at
+               end_at?
+               end_at=):
+  
+app/models/meeting.rb:9:in `end_greater_start'
+app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-02 23:49:55 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"03/12/2021 10:00", "end_at"=>"03/12/2021 09:00", "organization_id"=>"1", "room_id"=>"1", "meeting"=>{"starts_at"=>"03/12/2021 10:00", "end_at"=>"03/12/2021 09:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Load (0.2ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."room_id" = $1 AND "meetings"."id" IS NOT NULL[0m  [["room_id", 1]]
+  ↳ app/models/meeting.rb:20:in `booking_conflict'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 422 Unprocessable Entity in 21ms (Views: 0.2ms | ActiveRecord: 8.4ms | Allocations: 9716)
+
+
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-02 23:50:04 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"03/12/2021 10:00", "end_at"=>"03/12/2021 12:00", "organization_id"=>"1", "room_id"=>"1", "meeting"=>{"starts_at"=>"03/12/2021 10:00", "end_at"=>"03/12/2021 12:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."room_id" = $1 AND "meetings"."id" IS NOT NULL[0m  [["room_id", 1]]
+  ↳ app/models/meeting.rb:20:in `booking_conflict'
+  [1m[36mMeeting Create (0.7ms)[0m  [1m[32mINSERT INTO "meetings" ("starts_at", "end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["starts_at", "2021-12-03 10:00:00"], ["end_at", "2021-12-03 12:00:00"], ["room_id", 1], ["created_at", "2021-12-03 02:50:04.459495"], ["updated_at", "2021-12-03 02:50:04.459495"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (14.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 29ms (Views: 0.6ms | ActiveRecord: 16.0ms | Allocations: 3907)
+
+
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-02 23:50:05 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"03/12/2021 10:00", "end_at"=>"03/12/2021 12:00", "organization_id"=>"1", "room_id"=>"1", "meeting"=>{"starts_at"=>"03/12/2021 10:00", "end_at"=>"03/12/2021 12:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."room_id" = $1 AND "meetings"."id" IS NOT NULL[0m  [["room_id", 1]]
+  ↳ app/models/meeting.rb:20:in `booking_conflict'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 0.8ms | Allocations: 6171)
+
+
+  
+NameError (undefined local variable or method `period' for #<Meeting id: nil, starts_at: "2021-12-03 10:00:00.000000000 +0000", end_at: "2021-12-03 12:00:00.000000000 +0000", room_id: 1, created_at: nil, updated_at: nil>
+Did you mean?  persisted?):
+  
+app/models/meeting.rb:21:in `block in booking_conflict'
+app/models/meeting.rb:20:in `booking_conflict'
+app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-02 23:50:36 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"03/12/2021 10:00", "end_at"=>"03/12/2021 12:00", "organization_id"=>"1", "room_id"=>"1", "meeting"=>{"starts_at"=>"03/12/2021 10:00", "end_at"=>"03/12/2021 12:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Load (0.2ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."room_id" = $1 AND "meetings"."id" IS NOT NULL[0m  [["room_id", 1]]
+  ↳ app/models/meeting.rb:20:in `booking_conflict'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 4.5ms | Allocations: 10645)
+
+
+  
+NoMethodError (undefined method `<<' for {}:Hash
+Did you mean?  <):
+  
+app/models/meeting.rb:21:in `block in booking_conflict'
+app/models/meeting.rb:20:in `booking_conflict'
+app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-02 23:51:39 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"03/12/2021 10:00", "end_at"=>"03/12/2021 12:00", "organization_id"=>"1", "room_id"=>"1", "meeting"=>{"starts_at"=>"03/12/2021 10:00", "end_at"=>"03/12/2021 12:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Load (0.2ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."room_id" = $1 AND "meetings"."id" IS NOT NULL[0m  [["room_id", 1]]
+  ↳ app/models/meeting.rb:20:in `booking_conflict'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 422 Unprocessable Entity in 26ms (Views: 0.2ms | ActiveRecord: 8.9ms | Allocations: 9724)
+
+
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-02 23:53:04 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"03/12/2021 10:00", "end_at"=>"03/12/2021 12:00", "organization_id"=>"1", "room_id"=>"1", "meeting"=>{"starts_at"=>"03/12/2021 10:00", "end_at"=>"03/12/2021 12:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Load (0.2ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."room_id" = $1 AND "meetings"."id" IS NOT NULL[0m  [["room_id", 1]]
+  ↳ app/models/meeting.rb:20:in `booking_conflict'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 422 Unprocessable Entity in 17ms (Views: 0.2ms | ActiveRecord: 4.4ms | Allocations: 9658)
+
+
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-02 23:53:38 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"03/12/2021 12:01", "end_at"=>"03/12/2021 13:59", "organization_id"=>"1", "room_id"=>"1", "meeting"=>{"starts_at"=>"03/12/2021 12:01", "end_at"=>"03/12/2021 13:59"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Load (0.1ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."room_id" = $1 AND "meetings"."id" IS NOT NULL[0m  [["room_id", 1]]
+  ↳ app/models/meeting.rb:20:in `booking_conflict'
+  [1m[36mMeeting Create (0.5ms)[0m  [1m[32mINSERT INTO "meetings" ("starts_at", "end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["starts_at", "2021-12-03 12:01:00"], ["end_at", "2021-12-03 13:59:00"], ["room_id", 1], ["created_at", "2021-12-03 02:53:38.551833"], ["updated_at", "2021-12-03 02:53:38.551833"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (18.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 201 Created in 35ms (Views: 0.6ms | ActiveRecord: 19.7ms | Allocations: 3918)
+
+
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-02 23:53:49 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"03/12/2021 09:01", "end_at"=>"03/12/2021 14:59", "organization_id"=>"1", "room_id"=>"1", "meeting"=>{"starts_at"=>"03/12/2021 09:01", "end_at"=>"03/12/2021 14:59"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."room_id" = $1 AND "meetings"."id" IS NOT NULL[0m  [["room_id", 1]]
+  ↳ app/models/meeting.rb:20:in `booking_conflict'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 422 Unprocessable Entity in 13ms (Views: 0.4ms | ActiveRecord: 0.8ms | Allocations: 3065)
+
+
