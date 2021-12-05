@@ -18,6 +18,12 @@ class Api::V1::MeetingsController < Api::V1::ApiController
   def create
     @meeting = Meeting.new(meeting_params)
 
+
+    not_valid_date = @meeting.is_valid_date?(params[:starts_at], params[:end_at])
+    if not_valid_date
+      return render json: @meeting.errors, status: :unprocessable_entity
+    end
+
     if @meeting.save
       render json: @meeting, status: :created
     else
