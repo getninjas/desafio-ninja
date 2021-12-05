@@ -2878,3 +2878,557 @@ FOREIGN KEY ("organization_id")
   [1m[36mTRANSACTION (3.7ms)[0m  [1m[35mCOMMIT[0m
   [1m[36mOrganization Load (1.0ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations"[0m
   [1m[36mRoom Load (0.9ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  [1m[36mOrganization Load (0.4ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" ORDER BY "organizations"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mOrganization Load (0.3ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" ORDER BY "organizations"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."organization_id" = $1[0m  [["organization_id", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mOrganization Load (0.2ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.5ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "created_at", "updated_at", "organization_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "milles"], ["created_at", "2021-12-05 19:31:28.977501"], ["updated_at", "2021-12-05 19:31:28.977501"], ["organization_id", 1]]
+  [1m[36mTRANSACTION (22.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mOrganization Load (0.5ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" ORDER BY "organizations"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."organization_id" = $1[0m  [["organization_id", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mOrganization Load (0.3ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.5ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "created_at", "updated_at", "organization_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "milles"], ["created_at", "2021-12-05 19:32:36.687843"], ["updated_at", "2021-12-05 19:32:36.687843"], ["organization_id", 1]]
+  [1m[36mTRANSACTION (16.1ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/api/v1/organizations/1/rooms" for 127.0.0.1 at 2021-12-05 16:32:55 -0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::RoomsController#create as */*
+  Parameters: {"name"=>"Sala 5", "organization_id"=>"1", "room"=>{"name"=>"Sala 5"}}
+[31mUnpermitted parameter: :room[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."organization_id" = $1[0m  [["organization_id", 1]]
+  ↳ app/models/room.rb:10:in `limit_reached?'
+  [1m[36mOrganization Load (0.7ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/room.rb:10:in `limit_reached?'
+Completed 422 Unprocessable Entity in 43ms (Views: 0.6ms | ActiveRecord: 10.5ms | Allocations: 14933)
+
+
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mOrganization Load (0.3ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.4ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "created_at", "updated_at", "organization_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "milles"], ["created_at", "2021-12-05 19:37:19.506779"], ["updated_at", "2021-12-05 19:37:19.506779"], ["organization_id", 1]]
+  [1m[36mTRANSACTION (39.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mOrganization Load (0.4ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "created_at", "updated_at", "organization_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "milles"], ["created_at", "2021-12-05 19:37:53.588622"], ["updated_at", "2021-12-05 19:37:53.588622"], ["organization_id", 1]]
+  [1m[36mTRANSACTION (14.8ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/api/v1/organizations/1/rooms" for 127.0.0.1 at 2021-12-05 16:38:16 -0300
+Processing by Api::V1::RoomsController#create as */*
+  Parameters: {"name"=>"Sala 5", "organization_id"=>"1", "room"=>{"name"=>"Sala 5"}}
+[31mUnpermitted parameter: :room[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mOrganization Load (0.2ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."organization_id" = $1[0m  [["organization_id", 1]]
+  ↳ app/models/room.rb:11:in `limit_reached?'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Completed 422 Unprocessable Entity in 24ms (Views: 0.3ms | ActiveRecord: 7.6ms | Allocations: 10886)
+
+
+Started POST "/api/v1/organizations/1/rooms" for 127.0.0.1 at 2021-12-05 16:38:17 -0300
+Processing by Api::V1::RoomsController#create as */*
+  Parameters: {"name"=>"Sala 5", "organization_id"=>"1", "room"=>{"name"=>"Sala 5"}}
+[31mUnpermitted parameter: :room[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mOrganization Load (0.3ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."organization_id" = $1[0m  [["organization_id", 1]]
+  ↳ app/models/room.rb:11:in `limit_reached?'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Completed 422 Unprocessable Entity in 12ms (Views: 0.4ms | ActiveRecord: 1.2ms | Allocations: 2971)
+
+
+Started POST "/api/v1/organizations/1/rooms" for 127.0.0.1 at 2021-12-05 16:38:18 -0300
+Processing by Api::V1::RoomsController#create as */*
+  Parameters: {"name"=>"Sala 5", "organization_id"=>"1", "room"=>{"name"=>"Sala 5"}}
+[31mUnpermitted parameter: :room[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mOrganization Load (0.4ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."organization_id" = $1[0m  [["organization_id", 1]]
+  ↳ app/models/room.rb:11:in `limit_reached?'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Completed 422 Unprocessable Entity in 12ms (Views: 0.4ms | ActiveRecord: 1.1ms | Allocations: 2931)
+
+
+Started POST "/api/v1/organizations/1/rooms" for 127.0.0.1 at 2021-12-05 16:38:18 -0300
+Processing by Api::V1::RoomsController#create as */*
+  Parameters: {"name"=>"Sala 5", "organization_id"=>"1", "room"=>{"name"=>"Sala 5"}}
+[31mUnpermitted parameter: :room[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mOrganization Load (0.4ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."organization_id" = $1[0m  [["organization_id", 1]]
+  ↳ app/models/room.rb:11:in `limit_reached?'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Completed 422 Unprocessable Entity in 12ms (Views: 0.4ms | ActiveRecord: 1.1ms | Allocations: 2909)
+
+
+Started POST "/api/v1/organizations/1/rooms" for 127.0.0.1 at 2021-12-05 16:38:18 -0300
+Processing by Api::V1::RoomsController#create as */*
+  Parameters: {"name"=>"Sala 5", "organization_id"=>"1", "room"=>{"name"=>"Sala 5"}}
+[31mUnpermitted parameter: :room[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mOrganization Load (0.3ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."organization_id" = $1[0m  [["organization_id", 1]]
+  ↳ app/models/room.rb:11:in `limit_reached?'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Completed 422 Unprocessable Entity in 6ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 2909)
+
+
+Started POST "/api/v1/organizations/1/rooms" for 127.0.0.1 at 2021-12-05 16:38:18 -0300
+Processing by Api::V1::RoomsController#create as */*
+  Parameters: {"name"=>"Sala 5", "organization_id"=>"1", "room"=>{"name"=>"Sala 5"}}
+[31mUnpermitted parameter: :room[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mOrganization Load (0.2ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."organization_id" = $1[0m  [["organization_id", 1]]
+  ↳ app/models/room.rb:11:in `limit_reached?'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Completed 422 Unprocessable Entity in 5ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 2909)
+
+
+Started POST "/api/v1/organizations/1/rooms" for 127.0.0.1 at 2021-12-05 16:38:18 -0300
+Processing by Api::V1::RoomsController#create as */*
+  Parameters: {"name"=>"Sala 5", "organization_id"=>"1", "room"=>{"name"=>"Sala 5"}}
+[31mUnpermitted parameter: :room[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mOrganization Load (0.2ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."organization_id" = $1[0m  [["organization_id", 1]]
+  ↳ app/models/room.rb:11:in `limit_reached?'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Completed 422 Unprocessable Entity in 10ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 2909)
+
+
+Started POST "/api/v1/organizations/1/rooms" for 127.0.0.1 at 2021-12-05 16:38:18 -0300
+Processing by Api::V1::RoomsController#create as */*
+  Parameters: {"name"=>"Sala 5", "organization_id"=>"1", "room"=>{"name"=>"Sala 5"}}
+[31mUnpermitted parameter: :room[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mOrganization Load (0.2ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."organization_id" = $1[0m  [["organization_id", 1]]
+  ↳ app/models/room.rb:11:in `limit_reached?'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Completed 422 Unprocessable Entity in 9ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 2909)
+
+
+Started POST "/api/v1/organizations/1/rooms" for 127.0.0.1 at 2021-12-05 16:38:18 -0300
+Processing by Api::V1::RoomsController#create as */*
+  Parameters: {"name"=>"Sala 5", "organization_id"=>"1", "room"=>{"name"=>"Sala 5"}}
+[31mUnpermitted parameter: :room[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mOrganization Load (0.2ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."organization_id" = $1[0m  [["organization_id", 1]]
+  ↳ app/models/room.rb:11:in `limit_reached?'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Completed 422 Unprocessable Entity in 9ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 2909)
+
+
+Started POST "/api/v1/organizations/1/rooms" for 127.0.0.1 at 2021-12-05 16:38:19 -0300
+Processing by Api::V1::RoomsController#create as */*
+  Parameters: {"name"=>"Sala 5", "organization_id"=>"1", "room"=>{"name"=>"Sala 5"}}
+[31mUnpermitted parameter: :room[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mOrganization Load (0.2ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."organization_id" = $1[0m  [["organization_id", 1]]
+  ↳ app/models/room.rb:11:in `limit_reached?'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Completed 422 Unprocessable Entity in 11ms (Views: 0.4ms | ActiveRecord: 1.1ms | Allocations: 2909)
+
+
+Started POST "/api/v1/organizations/1/rooms" for 127.0.0.1 at 2021-12-05 16:38:19 -0300
+Processing by Api::V1::RoomsController#create as */*
+  Parameters: {"name"=>"Sala 5", "organization_id"=>"1", "room"=>{"name"=>"Sala 5"}}
+[31mUnpermitted parameter: :room[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mOrganization Load (0.3ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."organization_id" = $1[0m  [["organization_id", 1]]
+  ↳ app/models/room.rb:11:in `limit_reached?'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Completed 422 Unprocessable Entity in 12ms (Views: 0.5ms | ActiveRecord: 1.1ms | Allocations: 2909)
+
+
+Started POST "/api/v1/organizations/1/rooms" for 127.0.0.1 at 2021-12-05 16:38:19 -0300
+Processing by Api::V1::RoomsController#create as */*
+  Parameters: {"name"=>"Sala 5", "organization_id"=>"1", "room"=>{"name"=>"Sala 5"}}
+[31mUnpermitted parameter: :room[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mOrganization Load (0.2ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."organization_id" = $1[0m  [["organization_id", 1]]
+  ↳ app/models/room.rb:11:in `limit_reached?'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Completed 422 Unprocessable Entity in 12ms (Views: 0.4ms | ActiveRecord: 0.9ms | Allocations: 2909)
+
+
+Started POST "/api/v1/organizations/1/rooms" for 127.0.0.1 at 2021-12-05 16:38:19 -0300
+Processing by Api::V1::RoomsController#create as */*
+  Parameters: {"name"=>"Sala 5", "organization_id"=>"1", "room"=>{"name"=>"Sala 5"}}
+[31mUnpermitted parameter: :room[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mOrganization Load (0.2ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."organization_id" = $1[0m  [["organization_id", 1]]
+  ↳ app/models/room.rb:11:in `limit_reached?'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Completed 422 Unprocessable Entity in 10ms (Views: 0.3ms | ActiveRecord: 0.9ms | Allocations: 2909)
+
+
+Started POST "/api/v1/organizations/1/rooms" for 127.0.0.1 at 2021-12-05 16:38:19 -0300
+Processing by Api::V1::RoomsController#create as */*
+  Parameters: {"name"=>"Sala 5", "organization_id"=>"1", "room"=>{"name"=>"Sala 5"}}
+[31mUnpermitted parameter: :room[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mOrganization Load (0.2ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."organization_id" = $1[0m  [["organization_id", 1]]
+  ↳ app/models/room.rb:11:in `limit_reached?'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Completed 422 Unprocessable Entity in 10ms (Views: 0.3ms | ActiveRecord: 0.9ms | Allocations: 2909)
+
+
+Started POST "/api/v1/organizations/1/rooms" for 127.0.0.1 at 2021-12-05 16:38:19 -0300
+Processing by Api::V1::RoomsController#create as */*
+  Parameters: {"name"=>"Sala 5", "organization_id"=>"1", "room"=>{"name"=>"Sala 5"}}
+[31mUnpermitted parameter: :room[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mOrganization Load (0.3ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."organization_id" = $1[0m  [["organization_id", 1]]
+  ↳ app/models/room.rb:11:in `limit_reached?'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Completed 422 Unprocessable Entity in 11ms (Views: 0.5ms | ActiveRecord: 1.0ms | Allocations: 2909)
+
+
+Started POST "/api/v1/organizations/1/rooms" for 127.0.0.1 at 2021-12-05 16:38:20 -0300
+Processing by Api::V1::RoomsController#create as */*
+  Parameters: {"name"=>"Sala 5", "organization_id"=>"1", "room"=>{"name"=>"Sala 5"}}
+[31mUnpermitted parameter: :room[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mOrganization Load (0.1ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."organization_id" = $1[0m  [["organization_id", 1]]
+  ↳ app/models/room.rb:11:in `limit_reached?'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Completed 422 Unprocessable Entity in 5ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 2909)
+
+
+Started POST "/api/v1/organizations/1/rooms" for 127.0.0.1 at 2021-12-05 16:38:20 -0300
+Processing by Api::V1::RoomsController#create as */*
+  Parameters: {"name"=>"Sala 5", "organization_id"=>"1", "room"=>{"name"=>"Sala 5"}}
+[31mUnpermitted parameter: :room[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mOrganization Load (0.3ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."organization_id" = $1[0m  [["organization_id", 1]]
+  ↳ app/models/room.rb:11:in `limit_reached?'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Completed 422 Unprocessable Entity in 12ms (Views: 0.3ms | ActiveRecord: 1.0ms | Allocations: 2909)
+
+
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mOrganization Load (0.3ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+Started POST "/api/v1/organizations/1/rooms" for 127.0.0.1 at 2021-12-05 16:41:18 -0300
+Processing by Api::V1::RoomsController#create as */*
+  Parameters: {"name"=>"Sala 5", "organization_id"=>"1", "room"=>{"name"=>"Sala 5"}}
+[31mUnpermitted parameter: :room[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[36mOrganization Load (0.2ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."organization_id" = $1[0m  [["organization_id", 1]]
+  ↳ app/models/room.rb:11:in `limit_reached?'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/rooms_controller.rb:22:in `create'
+Completed 422 Unprocessable Entity in 27ms (Views: 0.3ms | ActiveRecord: 10.4ms | Allocations: 10702)
+
+
+  [1m[36mOrganization Load (0.5ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMeeting Load (0.5ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" ORDER BY "meetings"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-05 17:17:59 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"name"=>"Sala 5", "organization_id"=>"1", "room_id"=>"1", "meeting"=>{}}
+[31mUnpermitted parameters: :name, :organization_id, :meeting[0m
+Completed 422 Unprocessable Entity in 7ms (Views: 0.2ms | ActiveRecord: 10.9ms | Allocations: 2804)
+
+
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-05 17:18:50 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"06/12/2021 10:00", "end_at"=>"06/12/2021 11:00", "organization_id"=>"1", "room_id"=>"1", "meeting"=>{"starts_at"=>"06/12/2021 10:00", "end_at"=>"06/12/2021 11:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:27:in `create'
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:27:in `create'
+  [1m[36mMeeting Load (0.6ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" WHERE "meetings"."room_id" = $1[0m  [["room_id", 1]]
+  ↳ app/models/meeting.rb:26:in `booking_conflict'
+  [1m[36mOrganization Load (0.4ms)[0m  [1m[34mSELECT "organizations".* FROM "organizations" WHERE "organizations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/meeting.rb:39:in `is_weekend?'
+  [1m[36mMeeting Create (1.3ms)[0m  [1m[32mINSERT INTO "meetings" ("starts_at", "end_at", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["starts_at", "2021-12-06 10:00:00"], ["end_at", "2021-12-06 11:00:00"], ["room_id", 1], ["created_at", "2021-12-05 20:18:50.955869"], ["updated_at", "2021-12-05 20:18:50.955869"]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:27:in `create'
+  [1m[36mTRANSACTION (62.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:27:in `create'
+Completed 201 Created in 105ms (Views: 0.4ms | ActiveRecord: 65.4ms | Allocations: 15437)
+
+
+  [1m[36mMeeting Load (0.5ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" ORDER BY "meetings"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-05 18:19:49 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"", "end_at"=>"06/12/2021 11:00", "organization_id"=>"1", "room_id"=>"1", "meeting"=>{"starts_at"=>"", "end_at"=>"06/12/2021 11:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+Completed 422 Unprocessable Entity in 4ms (Views: 0.2ms | ActiveRecord: 4.9ms | Allocations: 2782)
+
+
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-05 18:40:24 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"", "end_at"=>"06/12/2021 11:00", "organization_id"=>"1", "room_id"=>"1", "meeting"=>{"starts_at"=>"", "end_at"=>"06/12/2021 11:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+Completed 422 Unprocessable Entity in 4ms (Views: 0.2ms | ActiveRecord: 2.6ms | Allocations: 2743)
+
+
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-05 18:41:14 -0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"", "end_at"=>"06/12/2021 11:00", "organization_id"=>"1", "room_id"=>"1", "meeting"=>{"starts_at"=>"", "end_at"=>"06/12/2021 11:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+Completed 422 Unprocessable Entity in 11ms (Views: 0.3ms | ActiveRecord: 4.4ms | Allocations: 6204)
+
+
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-05 18:43:30 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"", "end_at"=>"06/12/2021 11:00", "organization_id"=>"1", "room_id"=>"1", "meeting"=>{"starts_at"=>"", "end_at"=>"06/12/2021 11:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 6.8ms | Allocations: 12234)
+
+
+  
+NoMethodError (undefined method `>=' for nil:NilClass):
+  
+app/models/meeting.rb:17:in `end_greater_start'
+app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-05 18:44:04 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"", "end_at"=>"06/12/2021 11:00", "organization_id"=>"1", "room_id"=>"1", "meeting"=>{"starts_at"=>"", "end_at"=>"06/12/2021 11:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 500 Internal Server Error in 158068ms (ActiveRecord: 9.6ms | Allocations: 75003)
+
+
+  
+NoMethodError (undefined method `>=' for nil:NilClass):
+  
+app/models/meeting.rb:18:in `end_greater_start'
+app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-05 18:46:45 -0300
+  
+SyntaxError (/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/app/models/meeting.rb:8: syntax error, unexpected ':', expecting `end'
+...eekend?, :is_businness_hours? :if self.errors.empty?
+...                              ^
+/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/app/models/meeting.rb:81: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/models/meeting.rb:8: syntax error, unexpected ':', expecting `end'
+app/models/meeting.rb:81: syntax error, unexpected end-of-input, expecting `end'
+app/models/meeting.rb:8: syntax error, unexpected ':', expecting `end'
+app/models/meeting.rb:81: syntax error, unexpected end-of-input, expecting `end'
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-05 18:48:13 -0300
+  
+SyntaxError (/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/app/models/meeting.rb:8: syntax error, unexpected ':', expecting `end'
+...eekend?, :is_businness_hours? :if => errors.empty?
+...                              ^
+):
+  
+app/models/meeting.rb:8: syntax error, unexpected ':', expecting `end'
+app/models/meeting.rb:8: syntax error, unexpected ':', expecting `end'
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-05 18:48:20 -0300
+  
+SyntaxError (/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/app/models/meeting.rb:8: syntax error, unexpected ':', expecting `end'
+...eekend?, :is_businness_hours? :if => self.errors.empty?
+...                              ^
+):
+  
+app/models/meeting.rb:8: syntax error, unexpected ':', expecting `end'
+app/models/meeting.rb:8: syntax error, unexpected ':', expecting `end'
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-05 18:49:08 -0300
+  
+SyntaxError (/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/app/models/meeting.rb:8: syntax error, unexpected ':', expecting `end'
+...eekend?, :is_businness_hours? :if => Proc.new{|object| objec...
+...                              ^
+):
+  
+app/models/meeting.rb:8: syntax error, unexpected ':', expecting `end'
+app/models/meeting.rb:8: syntax error, unexpected ':', expecting `end'
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-05 18:49:24 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"", "end_at"=>"06/12/2021 11:00", "organization_id"=>"1", "room_id"=>"1", "meeting"=>{"starts_at"=>"", "end_at"=>"06/12/2021 11:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 422 Unprocessable Entity in 18ms (Views: 0.8ms | ActiveRecord: 7.2ms | Allocations: 10355)
+
+
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-05 18:49:42 -0300
+  
+SyntaxError (/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/app/models/meeting.rb:8: syntax error, unexpected '}', expecting `end'
+...rs?, :if => self.errors.empty?}
+...                              ^
+/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/app/models/meeting.rb:14: syntax error, unexpected '}', expecting '}'
+                }
+                ^
+):
+  
+app/models/meeting.rb:8: syntax error, unexpected '}', expecting `end'
+app/models/meeting.rb:14: syntax error, unexpected '}', expecting '}'
+app/models/meeting.rb:8: syntax error, unexpected '}', expecting `end'
+app/models/meeting.rb:14: syntax error, unexpected '}', expecting '}'
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-05 18:49:50 -0300
+  
+SyntaxError (/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/app/models/meeting.rb:8: syntax error, unexpected '}', expecting `end'
+...s_hours?, :if => errors.empty?}
+...                              ^
+/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/app/models/meeting.rb:14: syntax error, unexpected '}', expecting '}'
+                }
+                ^
+):
+  
+app/models/meeting.rb:8: syntax error, unexpected '}', expecting `end'
+app/models/meeting.rb:14: syntax error, unexpected '}', expecting '}'
+app/models/meeting.rb:8: syntax error, unexpected '}', expecting `end'
+app/models/meeting.rb:14: syntax error, unexpected '}', expecting '}'
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-05 18:49:56 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"", "end_at"=>"06/12/2021 11:00", "organization_id"=>"1", "room_id"=>"1", "meeting"=>{"starts_at"=>"", "end_at"=>"06/12/2021 11:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 422 Unprocessable Entity in 29ms (Views: 0.8ms | ActiveRecord: 4.0ms | Allocations: 9400)
+
+
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-05 18:50:00 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"", "end_at"=>"", "organization_id"=>"1", "room_id"=>"1", "meeting"=>{"starts_at"=>"", "end_at"=>""}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 422 Unprocessable Entity in 5ms (Views: 1.1ms | ActiveRecord: 0.4ms | Allocations: 3007)
+
+
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-05 19:11:44 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"", "end_at"=>"", "organization_id"=>"1", "room_id"=>"1", "meeting"=>{"starts_at"=>"", "end_at"=>""}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 422 Unprocessable Entity in 28ms (Views: 2.3ms | ActiveRecord: 3.8ms | Allocations: 9413)
+
+
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-05 19:12:05 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"10/10/2021 19:00", "end_at"=>"10/10/2021 19:00", "organization_id"=>"1", "room_id"=>"1", "meeting"=>{"starts_at"=>"10/10/2021 19:00", "end_at"=>"10/10/2021 19:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 422 Unprocessable Entity in 5ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 2523)
+
+
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-05 19:12:11 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"10/10/2021 19:00", "end_at"=>"111/10/2021 19:00", "organization_id"=>"1", "room_id"=>"1", "meeting"=>{"starts_at"=>"10/10/2021 19:00", "end_at"=>"111/10/2021 19:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 422 Unprocessable Entity in 9ms (Views: 1.1ms | ActiveRecord: 0.6ms | Allocations: 2693)
+
+
+Started POST "/api/v1/organizations/1/rooms/1/meetings" for 127.0.0.1 at 2021-12-05 19:17:39 -0300
+Processing by Api::V1::MeetingsController#create as */*
+  Parameters: {"starts_at"=>"10/10/2021 19:00", "end_at"=>"111/10/2021 19:00", "organization_id"=>"1", "room_id"=>"1", "meeting"=>{"starts_at"=>"10/10/2021 19:00", "end_at"=>"111/10/2021 19:00"}}
+[31mUnpermitted parameters: :organization_id, :meeting[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/meetings_controller.rb:21:in `create'
+Completed 422 Unprocessable Entity in 20ms (Views: 0.9ms | ActiveRecord: 10.3ms | Allocations: 9318)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2021-12-05 19:17:42 -0300
+  
+ActionController::RoutingError (No route matches [POST] "/graphql"):
+  

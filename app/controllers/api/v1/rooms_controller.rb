@@ -19,11 +19,6 @@ class Api::V1::RoomsController < Api::V1::ApiController
   def create
     @room = Room.new(room_params)
 
-    rooms_limit_reached = @room.limit_reached?
-    if rooms_limit_reached
-      return render json: @room.errors, status: :unprocessable_entity
-    end
-
     if @room.save
       render json: @room, status: :created
     else

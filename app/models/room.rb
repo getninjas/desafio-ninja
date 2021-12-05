@@ -2,6 +2,7 @@ class Room < ApplicationRecord
   has_many :meetings
   belongs_to :organization
   validates :name, presence: true
+  validate :limit_reached?
 
   def limit_reached?
 
@@ -9,9 +10,8 @@ class Room < ApplicationRecord
 
     if rooms_in_organization.count >= self.organization.number_of_rooms
       errors.add(:name, "Limite máximo de salas cadastradas foi atingida")
-      true
     else
-      false
+      true
     end
   end
 end
