@@ -6,7 +6,10 @@ class Meeting < ApplicationRecord
   validate :end_greater_start, :booking_conflict, :is_weekend?, :is_businness_hours?
 
 
-  DATE_FORMAT = "%d/%m/%Y %H:%M"
+  # Manipulação de formatos de Data em substituição ao I18n
+  DATE_FORMAT = {default: "%d/%m/%Y %H:%M",
+                 american: "%m/%d/%Y %H:%M"
+                }
 
   def end_greater_start
     if starts_at >= end_at
@@ -56,8 +59,8 @@ class Meeting < ApplicationRecord
     end
   end
 
-  def is_valid_date?(start_date, end_date)
-    date_format = DATE_FORMAT
+  def limit_reached?(start_date, end_date)
+    date_format = DATE_FORMAT[:default]
 
     start_date = DateTime.strptime(start_date, date_format) rescue nil
     end_date = DateTime.strptime(end_date, date_format) rescue nil
