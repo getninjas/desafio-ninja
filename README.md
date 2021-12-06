@@ -2,6 +2,7 @@
 > Api projetada para controle de agenda de reuniões.
 
 O projeto se trata de uma API pronta para requisições de agendamento de reuniões. A estrutura do projeto consta de uma Organização com dados de horário comercial e permissão de trabalho em finais de semana. Isso permite que o modelo seja extendido para quaisquer horários comercials e também customização se necessário trabalhar em finais de semana. 
+<br>
 Por seguinte, Organizações(ou sedes) também possuem a informações de quantas salas possuem, isso também permite que a lógica seja extendida para caso o número de salas aumente. O método #Create de salas depende diretamente do parametro de quantas salas existem em cada organização. Por fim, cada sala pode ter N reuniões, respeitando as regras estipuladas de horário comercial e trabalhos em finais de semana e também demais verificações de horário e agendamentos.
 
 ![](./GetReunioes.png)
