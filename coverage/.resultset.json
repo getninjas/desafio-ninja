@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/spec/models/meeting_spec.rb": {
+      "/opt/app/spec/models/meeting_spec.rb": {
         "lines": [
           1,
           null,
@@ -66,7 +66,7 @@
           null
         ]
       },
-      "/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/spec/rails_helper.rb": {
+      "/opt/app/spec/rails_helper.rb": {
         "lines": [
           null,
           1,
@@ -145,7 +145,7 @@
           null
         ]
       },
-      "/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/config/environment.rb": {
+      "/opt/app/config/environment.rb": {
         "lines": [
           null,
           1,
@@ -154,7 +154,7 @@
           1
         ]
       },
-      "/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/config/application.rb": {
+      "/opt/app/config/application.rb": {
         "lines": [
           1,
           null,
@@ -200,7 +200,7 @@
           null
         ]
       },
-      "/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/config/boot.rb": {
+      "/opt/app/config/boot.rb": {
         "lines": [
           1,
           null,
@@ -208,7 +208,7 @@
           1
         ]
       },
-      "/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/config/environments/test.rb": {
+      "/opt/app/config/environments/test.rb": {
         "lines": [
           1,
           null,
@@ -272,7 +272,7 @@
           null
         ]
       },
-      "/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/config/initializers/application_controller_renderer.rb": {
+      "/opt/app/config/initializers/application_controller_renderer.rb": {
         "lines": [
           null,
           null,
@@ -284,7 +284,7 @@
           null
         ]
       },
-      "/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/config/initializers/backtrace_silencers.rb": {
+      "/opt/app/config/initializers/backtrace_silencers.rb": {
         "lines": [
           null,
           null,
@@ -296,7 +296,7 @@
           1
         ]
       },
-      "/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/config/initializers/cors.rb": {
+      "/opt/app/config/initializers/cors.rb": {
         "lines": [
           null,
           null,
@@ -316,7 +316,7 @@
           null
         ]
       },
-      "/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/config/initializers/devise.rb": {
+      "/opt/app/config/initializers/devise.rb": {
         "lines": [
           null,
           null,
@@ -631,7 +631,7 @@
           null
         ]
       },
-      "/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/config/initializers/filter_parameter_logging.rb": {
+      "/opt/app/config/initializers/filter_parameter_logging.rb": {
         "lines": [
           null,
           null,
@@ -641,7 +641,7 @@
           null
         ]
       },
-      "/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/config/initializers/inflections.rb": {
+      "/opt/app/config/initializers/inflections.rb": {
         "lines": [
           null,
           null,
@@ -661,7 +661,7 @@
           null
         ]
       },
-      "/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/config/initializers/mime_types.rb": {
+      "/opt/app/config/initializers/mime_types.rb": {
         "lines": [
           null,
           null,
@@ -669,7 +669,7 @@
           null
         ]
       },
-      "/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/config/initializers/rack_attack.rb": {
+      "/opt/app/config/initializers/rack_attack.rb": {
         "lines": [
           1,
           null,
@@ -691,7 +691,7 @@
           null
         ]
       },
-      "/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/config/initializers/wrap_parameters.rb": {
+      "/opt/app/config/initializers/wrap_parameters.rb": {
         "lines": [
           null,
           null,
@@ -709,7 +709,7 @@
           null
         ]
       },
-      "/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/spec/factories/meetings.rb": {
+      "/opt/app/spec/factories/meetings.rb": {
         "lines": [
           1,
           1,
@@ -720,7 +720,7 @@
           null
         ]
       },
-      "/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/spec/factories/organizations.rb": {
+      "/opt/app/spec/factories/organizations.rb": {
         "lines": [
           1,
           1,
@@ -735,7 +735,7 @@
           null
         ]
       },
-      "/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/spec/factories/rooms.rb": {
+      "/opt/app/spec/factories/rooms.rb": {
         "lines": [
           1,
           1,
@@ -745,7 +745,7 @@
           null
         ]
       },
-      "/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/config/routes.rb": {
+      "/opt/app/config/routes.rb": {
         "lines": [
           1,
           1,
@@ -765,7 +765,7 @@
           null
         ]
       },
-      "/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/app/models/user.rb": {
+      "/opt/app/app/models/user.rb": {
         "lines": [
           1,
           null,
@@ -775,14 +775,14 @@
           null
         ]
       },
-      "/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/app/models/application_record.rb": {
+      "/opt/app/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/app/models/meeting.rb": {
+      "/opt/app/app/models/meeting.rb": {
         "lines": [
           1,
           null,
@@ -848,7 +848,7 @@
           null
         ]
       },
-      "/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/spec/models/organization_spec.rb": {
+      "/opt/app/spec/models/organization_spec.rb": {
         "lines": [
           1,
           null,
@@ -860,7 +860,7 @@
           null
         ]
       },
-      "/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/app/models/organization.rb": {
+      "/opt/app/app/models/organization.rb": {
         "lines": [
           1,
           1,
@@ -870,7 +870,7 @@
           null
         ]
       },
-      "/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/spec/models/room_spec.rb": {
+      "/opt/app/spec/models/room_spec.rb": {
         "lines": [
           1,
           null,
@@ -898,7 +898,7 @@
           null
         ]
       },
-      "/home/milles/Documentos/Produtos/Ninja-milles-challenge/desafio-ninja/app/models/room.rb": {
+      "/opt/app/app/models/room.rb": {
         "lines": [
           1,
           1,
@@ -920,6 +920,6 @@
         ]
       }
     },
-    "timestamp": 1638745928
+    "timestamp": 1638792293
   }
 }

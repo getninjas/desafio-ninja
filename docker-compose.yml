@@ -1,74 +1,26 @@
 version: '3'
-networks:
-  development:
-  test:
-volumes:
-  db_data:
-  gem_cache:
-  shared_data:
 services:
-  ninja_redis:
-    image: redis:4.0-alpine
-    command: redis-server
-    networks:
-      - development
-      - test
-    volumes:
-      - shared_data:/var/shared/redis
-  ninja_db:
-    image: postgres:14-alpine
-    container_name: ninja_db
-    volumes:
-      - db_data:/var/lib/postgresql/data
-      - shared_data:/var/shared
-    networks:
-      - development
-      - test
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-    ports:
-      - 5099:5432
-  ninja_app:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
-    container_name: ninja_app
-    volumes:
-      - .:/var/app
-      - shared_data:/var/shared
-      - gem_cache:/usr/local/bundle/gems
-    networks:
-      - development
+  rails:
+    build: .
+    command: rails s -b 0.0.0.0
+    container_name: ninja_rails
     ports:
       - 3000:3000
-    stdin_open: true
-    tty: true
-    env_file: .env.development
-    entrypoint: dev-entrypoint.sh
-    command: ['rails', 'server', '-p', '3000', '-b', '0.0.0.0']
-    environment:
-      RAILS_ENV: development
+    volumes:
+      - .:/opt/app
+    environment: 
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST=db
     depends_on:
-      - ninja_db
-  # ninja_test:
-  #   image: ninja_ninja_app
-  #   container_name: ninja_test
-  #   volumes:
-  #     - .:/var/app
-  #     - shared_data:/var/shared
-  #     - gem_cache:/usr/local/bundle/gems
-  #   networks:
-  #     - test
-  #   ports:
-  #     - 3001:3000
-  #   stdin_open: true
-  #   tty: true
-  #   env_file: .env.test
-  #   entrypoint: test-entrypoint.sh
-  #   command: ["rails", "-v"]
-  #   environment:
-  #     RAILS_ENV: test
-  #   depends_on:
-  #     - ninja_db
+      - db
+  db:
+    image: postgres:12-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ninja_rails_data:/var/lib/postgresql/data
+volumes:
+  ninja_rails_data:
       
