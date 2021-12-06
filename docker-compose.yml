@@ -7,7 +7,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - .:/opt/app
+      - .:/ninja_app
     environment: 
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres

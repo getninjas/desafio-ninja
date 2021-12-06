@@ -1,7 +1,7 @@
 FROM ruby:2.7.0
 
 ENV NODE_VERSION 12
-ENV INSTALL_PATH /opt/app
+ENV INSTALL_PATH /ninja_app
 
 RUN curl -sL https://deb.nodesource.com/setup_$NODE_VERSION.x | bash -
 
