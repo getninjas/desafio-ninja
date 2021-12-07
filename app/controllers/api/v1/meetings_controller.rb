@@ -4,7 +4,7 @@ class Api::V1::MeetingsController < Api::V1::ApiController
 
   # GET /api/v1/rooms
   def index
-    @meetings = Meeting.all
+    @meetings = Meeting.where(room_id: params[:room_id])
 
     render json: @meetings
   end
@@ -38,6 +38,7 @@ class Api::V1::MeetingsController < Api::V1::ApiController
   # DELETE /api/v1/rooms/{id}
   def destroy
     @meeting.destroy
+    render json: "Reunião excluida com sucesso", status: :ok
   end
 
   private

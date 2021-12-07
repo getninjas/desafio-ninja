@@ -38,6 +38,7 @@ class Api::V1::OrganizationsController < Api::V1::ApiController
   # DELETE /api/v1/organizations/{id}
   def destroy
     @organization.destroy
+    render json: "Organização excluida com sucesso", status: :ok
   end
 
   private

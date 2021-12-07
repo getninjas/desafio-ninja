@@ -2,7 +2,7 @@ class Room < ApplicationRecord
   has_many :meetings
   belongs_to :organization
   validates :name, presence: true
-  validate :limit_reached?
+  validate :limit_reached?, on: :create
 
   def limit_reached?
 

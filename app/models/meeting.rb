@@ -16,7 +16,7 @@ class Meeting < ApplicationRecord
   end
 
   def booking_conflict
-    meetings_in_room = Meeting.where(room_id: room_id)
+    meetings_in_room = Meeting.where(room_id: room_id).where.not(id: id)
     conflicts = []
     duration = (starts_at..end_at)
     meetings_in_room.each do |meeting|

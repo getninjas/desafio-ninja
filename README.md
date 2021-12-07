@@ -51,7 +51,34 @@ GET localhost:3000/api/v1/organizations/1/rooms
 
 ```
 
-_Para mais exemplos, consulte a [Wiki] "Em andamento" 
+_Para mais exemplos, consulte a [Documentação da API](https://documenter.getpostman.com/view/15882001/UVJigtnE)
+
+# Tecnologias e ferramentas utilizadas
+
+<li>Ruby on Rails
+<li>Postgresql
+<li>Docker
+<li>docker-compose
+<li>Gem: <a href="https://github.com/thoughtbot/shoulda-matchers" > Shoulda Matchers </a>
+<li>Gem: <a href="https://github.com/simplecov-ruby/simplecov">SimpleCov</a>
+<li>Gem: <a href="https://github.com/thoughtbot/factory_bot">Factory Bot</a>
+<li>Gem: Devise
+
+
+# Desafios do projeto
+
+- [x] Criar a base do projeto
+- [x] Implementar models e lógica de Sede, salas e reuniões
+- [x] Implementar testes automatizados
+- [x] Dockerizar
+- [x] Criar documentação da API
+- [x] Popular o sistema
+- [x] Validar implementação de principios SOLID
+- [ ] Criar sistema de token para autenticação
+- [ ] Criar validações robustas e retornos customizados de datas
+- [ ] Traduzir o sistema com o i18n
+- [ ] Melhorar a segurança
+- [ ] Projeto finalizado 
 
 ## Informações do desenvolvedor
 
