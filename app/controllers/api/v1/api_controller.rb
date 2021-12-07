@@ -1,3 +1,1 @@
-class Api::V1::ApiController < ApplicationController
-
-end
+class Api::V1::ApiController < ApplicationController; end
