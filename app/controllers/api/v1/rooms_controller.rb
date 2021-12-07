@@ -3,19 +3,19 @@ class Api::V1::RoomsController < Api::V1::ApiController
   before_action :set_room, only: [:show, :update, :destroy]
 
 
-  # GET /api/v1/rooms
+  # GET /api/v1/organizations/{:org_id}/rooms
   def index
     @rooms = Room.where(organization_id: params[:organization_id])
 
     render json: @rooms
   end
 
-  # GET /api/v1/rooms/{id}
+  # GET /api/v1/organizations/{:org_id}/rooms/{:room_id}
   def show
     render json: @room
   end
 
-  # POST /api/v1/rooms
+  # POST /api/v1/organizations/{:org_id}/rooms
   def create
     @room = Room.new(room_params)
 
@@ -27,7 +27,7 @@ class Api::V1::RoomsController < Api::V1::ApiController
 
   end
 
-  # PUT /api/v1/rooms/{id}
+  # PUT /api/v1/organizations/{:org_id}/rooms/{:room_id}
   def update
     if @room.update(room_params)
       render json: @room
@@ -36,7 +36,7 @@ class Api::V1::RoomsController < Api::V1::ApiController
     end
   end
 
-  # DELETE /api/v1/rooms/{id}
+  # DELETE /api/v1/organizations/{:org_id}/rooms/{:room_id}
   def destroy
     @room.destroy
     render json: "Sala de reunião excluida com sucesso", status: :ok

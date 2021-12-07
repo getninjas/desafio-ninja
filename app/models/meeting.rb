@@ -7,6 +7,7 @@ class Meeting < ApplicationRecord
 
   validate :end_greater_start, :booking_conflict, :is_weekend?, :is_businness_hours?, :if => :fields_present?
 
+  # Verifica se o horário inicial é maior que horário final
   def end_greater_start
     if starts_at >= end_at
       errors.add(:end_at, 'Horário de fim de reunião deve ser maior que horário inicial')
@@ -15,6 +16,7 @@ class Meeting < ApplicationRecord
     end
   end
 
+  # Verifica se há outras reuniões no mesmo horário
   def booking_conflict
     meetings_in_room = Meeting.where(room_id: room_id).where.not(id: id)
     conflicts = []
@@ -31,6 +33,7 @@ class Meeting < ApplicationRecord
     end
   end
 
+  # Verifica se a data se trata de final de semana. Retorna erro caso o parametro da Sede não permita agenda nos finais de semana
   def is_weekend?
     can_work_on_weekend = self.room.organization.work_on_weekend
     is_weekend = starts_at.on_weekend? || end_at.on_weekend?
@@ -41,6 +44,7 @@ class Meeting < ApplicationRecord
     end
   end
 
+  # Verificar se os horários não estão fora de horário comercial determinado na sede
   def is_businness_hours?
     time_starts_at = self.room.organization.business_hours_start
     time_ends_at = self.room.organization.business_hours_end
@@ -55,6 +59,7 @@ class Meeting < ApplicationRecord
     end
   end
 
+  # Continua validações apenas se todos os campos estiverem presentes
   def fields_present?
     errors.empty? ? true : false
   end

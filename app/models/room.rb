@@ -4,6 +4,7 @@ class Room < ApplicationRecord
   validates :name, presence: true
   validate :limit_reached?, on: :create
 
+  # Verifica se é possível criar sala com base no limite determinado na sede
   def limit_reached?
 
     rooms_in_organization = Room.where(organization_id: organization_id)
