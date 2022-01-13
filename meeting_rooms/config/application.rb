@@ -31,8 +31,8 @@ module Meeting_rooms
 
     # If you've never dealt with background workers before, this is the Rails
     # way to use them through Active Job. We just need to tell it to use Sidekiq.
-    config.active_job.queue_adapter = :sidekiq
-    
+    # config.active_job.queue_adapter = :sidekiq
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

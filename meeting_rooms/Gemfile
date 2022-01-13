@@ -24,18 +24,10 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'mongoid', '~> 7.3', '>= 7.3.3'
 
-gem 'sidekiq-batch'
-gem 'sidekiq-limit_fetch'
-gem 'redis-rails', '~> 5.0.2'
-
 gem 'awesome_print', '~> 1.8'
 
-gem 'slim', '~> 4.1'
 gem 'kaminari', '~> 1.2', '>= 1.2.1'
 gem 'kaminari-mongoid'
-
-gem 'bootstrap', '~> 5.1'
-gem 'jquery-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -47,6 +39,7 @@ group :development, :test do
   gem 'rubocop', '~> 1.22', '>= 1.22.1'
 
   gem 'rspec'
+  gem 'rspec-rails'
   gem 'rspec-json_expectations'
 end
 
