@@ -6,6 +6,7 @@ development:
         - <%= ENV.fetch('DATABASE_URL') { 'localhost:27017' } %>
       options:
         max_pool_size: 10
+        use_activesupport_time_zone: true
 staging:
   clients:
     default:
@@ -17,6 +18,7 @@ staging:
           w: 1
         raise_not_found_error: false
         max_pool_size: 10
+        use_activesupport_time_zone: true
 test:
   clients:
     default:
@@ -27,5 +29,7 @@ test:
         read:
           mode: :primary
         max_pool_size: 10
+        use_activesupport_time_zone: true
   options:
     raise_not_found_error: false
+    use_activesupport_time_zone: true

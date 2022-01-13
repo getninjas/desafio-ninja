@@ -1,5 +1,6 @@
 class SchedulingsController < ApplicationController
   before_action :set_scheduling, only: %i[show update destroy]
+  before_action :set_room, only: %i[show update destroy create]
 
   # GET /schedulings
   # GET /schedulings.json
@@ -16,10 +17,10 @@ class SchedulingsController < ApplicationController
   # POST /schedulings
   # POST /schedulings.json
   def create
-    @scheduling = Scheduling.new(scheduling_params)
+    @scheduling = Scheduling.new(scheduling_params.merge(room_id: @room&.id))
 
     if @scheduling.save
-      render :show, status: :created, location: @scheduling
+      render :show, status: :created, location: room_schedulings_path(@scheduling)
     else
       render json: @scheduling.errors, status: :unprocessable_entity
     end
@@ -48,8 +49,12 @@ class SchedulingsController < ApplicationController
     @scheduling = Scheduling.find(params[:id])
   end
 
+  def set_room
+    @room = Room.find(params[:room_id])
+  end
+
   # Only allow a list of trusted parameters through.
   def scheduling_params
-    params.fetch(:scheduling, {})
+    params.permit(:date, :time, :duration)
   end
 end

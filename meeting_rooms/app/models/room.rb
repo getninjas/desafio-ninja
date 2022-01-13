@@ -3,5 +3,5 @@ class Room
   include Mongoid::Timestamps
 
   has_many :schedulings,                class_name: 'Scheduling'
-  has_many :days,                       class_name: 'Day'
+  embeds_many :days,                    class_name: 'Day'
 end
