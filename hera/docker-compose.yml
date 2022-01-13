@@ -1,0 +1,71 @@
+version: '3.7'
+services:
+  mongodb:
+    image: mongo
+    restart: always
+    ports:
+      - '27017'
+    volumes:
+      - mongodb_data_container:/data/db
+    networks:
+      - backend-network
+  redis:
+    image: redis:5.0.7
+    ports:
+      - '6379'
+    networks:
+      - backend-network
+    volumes:
+      - redis_data_container:/var/lib/redis/data
+  meeting_rooms:
+    build:
+      context: .
+      args:
+        USER_ID: "${USER_ID:-1000}"
+        GROUP_ID: "${GROUP_ID:-1000}"
+    volumes:
+      - ./meeting_rooms:/opt/app
+    ports:
+      - '8010'
+    depends_on:
+      - redis
+      - mongodb
+    env_file:
+      - .env
+    networks:
+      - backend-network
+  sidekiq:
+    build:
+      context: .
+      args:
+        USER_ID: "${USER_ID:-1000}"
+        GROUP_ID: "${GROUP_ID:-1000}"
+    volumes:
+      - ./meeting_rooms:/opt/app
+    command: bundle exec sidekiq
+    depends_on:
+      - redis
+      - mongodb
+      - meeting_rooms
+    env_file:
+      - .env
+    networks:
+      - backend-network
+  nginx:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.nginx
+    networks:
+      - backend-network
+    ports:
+      - '8020:8020'
+    depends_on:
+      - meeting_rooms
+
+networks:
+  backend-network:
+    driver: bridge
+
+volumes:
+  mongodb_data_container:
+  redis_data_container:

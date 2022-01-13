@@ -1,0 +1,38 @@
+AllCops:
+  TargetRubyVersion: 3.0.2
+  Exclude:
+    - 'Gemfile'
+    - 'Rakefile'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'libs/**/*'
+    - 'bin/**/*'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
+Layout/ExtraSpacing:
+  Enabled: false
+Metrics/LineLength:
+  Max: 125
+Metrics/MethodLength:
+  Max: 50
+Style/RedundantReturn:
+  Enabled: false
+Metrics/AbcSize:
+  Enabled: false
+Style/RedundantParentheses:
+  Enabled: false
+Style/ParenthesesAroundCondition:
+  Enabled: false
+Metrics/ModuleLength:
+  Max: 120
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Metrics/CyclomaticComplexity:
+  Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
