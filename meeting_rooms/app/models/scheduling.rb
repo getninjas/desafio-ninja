@@ -14,7 +14,7 @@ class Scheduling
   validate :check_business_day, :check_availability
 
   def check_business_day
-    if [5, 6].include? self.date.wday
+    if [5, 6].include? date.wday
       errors.add(:availability, 'Non-working day')
       false
     else
@@ -23,19 +23,19 @@ class Scheduling
   end
 
   def check_availability
-    if (check_business_day)
-      day = self.room.days.find_by(week_day: self.date.wday).set_date(self.time)
-      if (((self.time + self.duration.minutes) <= day.time_to) && (self.time >= day.time_from))
-        room.schedulings.where(date: self.date).asc(:time).each do |scheduling|
-          if self.time >= scheduling.time &&
-            self.time <= scheduling.time + scheduling.duration.minutes
-            errors.add(:availability, 'Time coincides with another appointment')
-            break
-          end
-        end
-      else
-        errors.add(:availability, 'Out of business hours')
+    return unless (check_business_day)
+
+    day = room.days.find_by(week_day: date.wday).set_date(time)
+    if (((time + duration.minutes) <= day.time_to) && (time >= day.time_from))
+      room.schedulings.where(date: date).asc(:time).each do |scheduling|
+        next unless time >= scheduling.time &&
+                    time <= scheduling.time + scheduling.duration.minutes
+
+        errors.add(:availability, 'Time coincides with another appointment')
+        break
       end
+    else
+      errors.add(:availability, 'Out of business hours')
     end
   end
 end
