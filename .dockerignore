@@ -1,0 +1,5 @@
+.git
+.dockerignore
+.env
+meeting_rooms/node_modules/
+meeting_rooms/vendor/bundle/

@@ -1,0 +1,27 @@
+version: '3.6'
+services:
+  db:
+    image: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data_container:/data/db
+    networks:
+      - mongo-compose-network
+  app:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - ".:/app"
+    ports:
+      - "3001:3000"
+    depends_on:
+      - db
+    networks:
+      - mongo-compose-network
+networks: 
+  mongo-compose-network:
+    driver: bridge
+volumes:
+  mongodb_data_container:
