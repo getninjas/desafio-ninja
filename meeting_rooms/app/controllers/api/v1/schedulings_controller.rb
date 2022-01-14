@@ -1,4 +1,4 @@
-class SchedulingsController < ApplicationController
+class Api::V1::SchedulingsController < ApplicationController
   before_action :set_scheduling, only: %i[show update destroy]
   before_action :set_room, only: %i[show update destroy create]
 
@@ -20,7 +20,7 @@ class SchedulingsController < ApplicationController
     @scheduling = Scheduling.new(scheduling_params.merge(room_id: @room&.id))
 
     if @scheduling.save
-      render :show, status: :created, location: room_schedulings_path(@scheduling)
+      render :show, status: :created, location: api_v1_room_schedulings_path(@scheduling)
     else
       render json: @scheduling.errors, status: :unprocessable_entity
     end
@@ -30,7 +30,7 @@ class SchedulingsController < ApplicationController
   # PATCH/PUT /schedulings/1.json
   def update
     if @scheduling.update(scheduling_params)
-      render :show, status: :ok, location: room_schedulings_path(@scheduling)
+      render :show, status: :ok, location: api_v1_room_schedulings_path(@scheduling)
     else
       render json: @scheduling.errors, status: :unprocessable_entity
     end

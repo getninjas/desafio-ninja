@@ -1,10 +1,11 @@
-class RoomsController < ApplicationController
+class Api::V1::RoomsController < ApplicationController
   before_action :set_room, only: %i[show update destroy]
 
   # GET /rooms
   # GET /rooms.json
   def index
     @rooms = Room.all
+    render :index, location: api_v1_rooms_path
   end
 
   # GET /rooms/1

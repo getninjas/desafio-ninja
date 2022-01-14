@@ -8,9 +8,9 @@ class Day
 
   embedded_in :room,                    class_name: 'Room'
 
-  def set_date(date_time)
-    time_from = time_from.change({ day: date_time.day, month: date_time.month, year: date_time.year })
-    time_to = time_to.change({ day: date_time.day, month: date_time.month, year: date_time.year })
+  def set_date date_time
+    self.time_from = self.time_from.change({day: date_time.day, month: date_time.month, year: date_time.year})
+    self.time_to = self.time_to.change({day: date_time.day, month: date_time.month, year: date_time.year})
     self
   end
 end

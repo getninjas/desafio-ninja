@@ -33,7 +33,7 @@ RSpec.describe "/schedulings", type: :request do
       it "renders a successful response" do
         room = Room.first
         Scheduling.create! valid_attributes.merge({:room_id => room.id})
-        get room_schedulings_path(room_id: room.id), headers: valid_headers, as: :json
+        get api_v1_room_schedulings_path(room_id: room.id), headers: valid_headers, as: :json
         expect(response).to be_successful
         expect(response.body).to include_json(
           [{
@@ -49,7 +49,7 @@ RSpec.describe "/schedulings", type: :request do
       it "renders a successful response" do
         room = Room.first
         scheduling = Scheduling.create! valid_attributes.merge({:room_id => room.id}).merge({:time => (Time.parse(valid_attributes[:time]) + 90.minutes)})
-        get room_scheduling_path(room_id: room.id, id: scheduling.id), as: :json
+        get api_v1_room_scheduling_path(room_id: room.id, id: scheduling.id), as: :json
         expect(response).to be_successful
         expect(response.body).to include_json(
           {
@@ -76,7 +76,7 @@ RSpec.describe "/schedulings", type: :request do
       it "creates a new Scheduling" do
 
         expect {
-          post room_schedulings_url(room_id: room.id),
+          post api_v1_room_schedulings_url(room_id: room.id),
                params: valid_attributes.merge({:room_id => room.id}), headers: valid_headers, as: :json
         }.to change(Scheduling, :count).by(1)
       end
@@ -90,7 +90,7 @@ RSpec.describe "/schedulings", type: :request do
 
       it "renders a JSON response with the new scheduling" do
 
-        post room_schedulings_url(room_id: room.id),
+        post api_v1_room_schedulings_url(room_id: room.id),
              params: valid_attributes.merge({:room_id => Room.first}), headers: valid_headers, as: :json
         expect(response).to have_http_status(:created)
         expect(response.content_type).to match(a_string_including("application/json"))
@@ -100,13 +100,13 @@ RSpec.describe "/schedulings", type: :request do
     context "with invalid parameters" do
       it "does not create a new Scheduling" do
         expect {
-          post room_schedulings_url(room_id: room.id),
+          post api_v1_room_schedulings_url(room_id: room.id),
                params: invalid_attributes.merge({:room_id => room.id}), as: :json
         }.to change(Scheduling, :count).by(0)
       end
 
       it "renders a JSON response with errors for the new scheduling" do
-        post room_schedulings_url(room_id: room.id),
+        post api_v1_room_schedulings_url(room_id: room.id),
              params: invalid_attributes.merge({:room_id => room.id}), headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to eq("application/json; charset=utf-8")
@@ -120,7 +120,7 @@ RSpec.describe "/schedulings", type: :request do
       }
 
       it "renders a JSON response with errors for the scheduling" do
-        post room_schedulings_url(room_id: room.id),
+        post api_v1_room_schedulings_url(room_id: room.id),
              params: valid_attributes.merge({:room_id => Room.first}), headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to eq("application/json; charset=utf-8")
@@ -140,7 +140,7 @@ RSpec.describe "/schedulings", type: :request do
 
       it "renders a JSON response with errors for the scheduling" do
         Scheduling.create! valid_attributes.merge({:room_id => room.id})
-        post room_schedulings_url(room_id: room.id),
+        post api_v1_room_schedulings_url(room_id: room.id),
              params: valid_attributes.merge({:room_id => Room.first}), headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to eq("application/json; charset=utf-8")
@@ -159,7 +159,7 @@ RSpec.describe "/schedulings", type: :request do
       }
 
       it "renders a JSON response with errors for the scheduling" do
-        post room_schedulings_url(room_id: room.id),
+        post api_v1_room_schedulings_url(room_id: room.id),
              params: valid_attributes.merge({:room_id => Room.first}), headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to eq("application/json; charset=utf-8")
@@ -189,7 +189,7 @@ RSpec.describe "/schedulings", type: :request do
 
       it "updates the requested scheduling" do
         scheduling = Scheduling.create! valid_attributes.merge({:room_id => room.id})
-        patch room_scheduling_url(room_id: room.id, id: scheduling.id),
+        patch api_v1_room_scheduling_url(room_id: room.id, id: scheduling.id),
               params: new_attributes, headers: valid_headers, as: :json
         scheduling.reload
         # skip("Add assertions for updated state")
@@ -207,7 +207,7 @@ RSpec.describe "/schedulings", type: :request do
 
       it "renders a JSON response with the scheduling" do
         scheduling = Scheduling.create! valid_attributes.merge({:room_id => room.id})
-        patch room_scheduling_url(room_id: room.id, id: scheduling.id),
+        patch api_v1_room_scheduling_url(room_id: room.id, id: scheduling.id),
               params: new_attributes, headers: valid_headers, as: :json
         expect(response).to have_http_status(:ok)
         expect(response.content_type).to match(a_string_including("application/json; charset=utf-8"))
@@ -222,7 +222,7 @@ RSpec.describe "/schedulings", type: :request do
 
       it "renders a JSON response with errors for the scheduling" do
         scheduling = Scheduling.create! valid_attributes.merge({:room_id => room.id})
-        patch room_scheduling_url(room_id: room.id, id: scheduling.id),
+        patch api_v1_room_scheduling_url(room_id: room.id, id: scheduling.id),
               params: invalid_attributes, headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to eq("application/json; charset=utf-8")
@@ -242,7 +242,7 @@ RSpec.describe "/schedulings", type: :request do
 
       scheduling = Scheduling.create! valid_attributes.merge({:room_id => room.id})
       expect {
-        delete room_scheduling_url(room_id: room.id, id: scheduling.id), headers: valid_headers, as: :json
+        delete api_v1_room_scheduling_url(room_id: room.id, id: scheduling.id), headers: valid_headers, as: :json
       }.to change(Scheduling, :count).by(-1)
     end
   end
