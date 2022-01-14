@@ -15,22 +15,27 @@ class Scheduling
 
   def check_business_day
     if [5, 6].include? self.date.wday
-      errors.add(:availability, 'Dia não útil')
+      errors.add(:availability, 'Non-working day')
+      false
+    else
+      true
     end
   end
 
   def check_availability
-    day = self.room.days.find_by(week_day: self.date.wday)
-    if (((self.time + self.duration.minutes) <= day.time_to) &&
-      (self.time >= day.time_from))
-      room.schedulings.where(date: self.date).asc(:time).each do |scheduling|
-        if self.time >= scheduling.time &&
-          self.time <= scheduling.time + scheduling.duration.minutes
-          errors.add(:availability, 'Horário coincide com outro agendamento')
+    if (check_business_day)
+      day = self.room.days.find_by(week_day: self.date.wday).set_date(self.time)
+      if (((self.time + self.duration.minutes) <= day.time_to) && (self.time >= day.time_from))
+        room.schedulings.where(date: self.date).asc(:time).each do |scheduling|
+          if self.time >= scheduling.time &&
+            self.time <= scheduling.time + scheduling.duration.minutes
+            errors.add(:availability, 'Time coincides with another appointment')
+            break
+          end
         end
+      else
+        errors.add(:availability, 'Out of business hours')
       end
-    else
-      errors.add(:availability, 'Fora de horário comercial')
     end
   end
 end

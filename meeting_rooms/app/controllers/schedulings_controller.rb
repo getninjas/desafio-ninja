@@ -30,7 +30,7 @@ class SchedulingsController < ApplicationController
   # PATCH/PUT /schedulings/1.json
   def update
     if @scheduling.update(scheduling_params)
-      render :show, status: :ok, location: @scheduling
+      render :show, status: :ok, location: room_schedulings_path(@scheduling)
     else
       render json: @scheduling.errors, status: :unprocessable_entity
     end
