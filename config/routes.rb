@@ -1,6 +1,17 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  all_routes = %i[index new create edit update show destroy]
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  namespace 'api' do
+    namespace 'v1' do
+      resources :salas, only: %i[index show] do
+        member do
+          get 'agendas'
+          get 'todos_agendamentos'
+          post 'buscar_agendamento'
+        end
+      end
+
+      resources :agendamentos, only: all_routes
+    end
+  end
 end
