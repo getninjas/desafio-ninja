@@ -1,6 +1,5 @@
-
 ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'agendamento', 'agendamentos'
-  inflect.irregular 'dia', 'dias'
-  inflect.irregular 'horario', 'horarios'
+  inflect.irregular 'agenda', 'agendas'
+  inflect.irregular 'usuario', 'usuarios'
 end
