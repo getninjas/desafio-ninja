@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  apipie
   all_routes = %i[index new create edit update show destroy]
 
   namespace 'api' do

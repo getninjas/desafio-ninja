@@ -1,5 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Agendamento, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:resource) { build(:agendamento) }
+
+  subject { resource }
+
+  let(:name) { 'Sala' }
+
+  describe 'Relacionamentos' do
+    it { is_expected.to belong_to(:agenda) }
+  end
 end

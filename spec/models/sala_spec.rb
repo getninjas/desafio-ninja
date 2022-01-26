@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Sala, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:name) { 'Sala' }
+
+  describe 'Relacionamentos' do
+    it { is_expected.to have_one(:agenda) }
+  end
 end
