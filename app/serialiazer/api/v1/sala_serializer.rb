@@ -1,5 +1,3 @@
-
-
 module Api
   module V1
     class SalaSerializer < ActiveModel::Serializer

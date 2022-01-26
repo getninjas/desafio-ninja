@@ -10,34 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_24_230505) do
-
+ActiveRecord::Schema.define(version: 20_220_124_230_505) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "agendamentos", force: :cascade do |t|
-    t.date "data"
-    t.time "horario_inicio"
-    t.time "horario_final"
-    t.bigint "agenda_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["agenda_id"], name: "index_agendamentos_on_agenda_id"
+  create_table 'agendamentos', force: :cascade do |t|
+    t.date 'data'
+    t.time 'horario_inicio'
+    t.time 'horario_final'
+    t.bigint 'agenda_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['agenda_id'], name: 'index_agendamentos_on_agenda_id'
   end
 
-  create_table "agendas", force: :cascade do |t|
-    t.bigint "sala_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["sala_id"], name: "index_agendas_on_sala_id"
+  create_table 'agendas', force: :cascade do |t|
+    t.bigint 'sala_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['sala_id'], name: 'index_agendas_on_sala_id'
   end
 
-  create_table "salas", force: :cascade do |t|
-    t.string "nome"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'salas', force: :cascade do |t|
+    t.string 'nome'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  add_foreign_key "agendamentos", "agendas"
-  add_foreign_key "agendas", "salas"
+  add_foreign_key 'agendamentos', 'agendas'
+  add_foreign_key 'agendas', 'salas'
 end

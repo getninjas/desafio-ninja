@@ -34,8 +34,10 @@ RSpec.describe Api::V1::SalasController, type: :controller do
   end
 
   describe 'POST #buscar_agendamento' do
-    before { post :buscar_agendamento,
-             params: { id: sala.id, data: agendamento.data } }
+    before do
+      post :buscar_agendamento,
+           params: { id: sala.id, data: agendamento.data }
+    end
     it 'retorna status 200' do
       expect(response).to have_http_status(:ok)
     end

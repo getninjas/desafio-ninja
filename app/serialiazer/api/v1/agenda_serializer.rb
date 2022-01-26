@@ -1,5 +1,3 @@
-
-
 module Api
   module V1
     class AgendaSerializer < ActiveModel::Serializer

@@ -33,7 +33,7 @@ RSpec.describe Api::V1::AgendamentosController, type: :controller do
   end
 
   describe 'POST #create' do
-    let(:valid_params) { { agenda_id: sala.agenda.id, data: Date.current, horario_inicio: Time.now + 1.hour, horario_final: Time.now + 2.hour} }
+    let(:valid_params) { { agenda_id: sala.agenda.id, data: Date.current, horario_inicio: Time.now + 1.hour, horario_final: Time.now + 2.hour } }
     before { post :create, params: valid_params }
     it 'retorna status 201' do
       expect(response).to have_http_status(:created)
