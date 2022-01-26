@@ -15,13 +15,13 @@ Sua tarefa será de criar uma API REST que crie, edite, mostre e delete o agenda
 - O desafio pode ser entregue abrindo um pull request ou fazendo um fork do repositório
 
 # Instalação
-  Docker
+### Docker
   - docker-compose build
-  Banco de dados
+### Banco de dados
   - docker-compose run web rake db:drop db:create db:migrate
-  Start
+### Start
   - docker-compose up
-  Executar testes
+### Executar testes
   - docker-compose run web bundle exec rspec
 
  # Documentação
