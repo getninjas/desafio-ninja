@@ -13,3 +13,16 @@ Sua tarefa será de criar uma API REST que crie, edite, mostre e delete o agenda
 - A aplicação deverá subir com docker-compose
 - Crie um README.md descrevendo a sua solução e as issues caso houver
 - O desafio pode ser entregue abrindo um pull request ou fazendo um fork do repositório
+
+# Instalação
+  Docker
+  - docker-compose build
+  Banco de dados
+  - docker-compose run web rake db:drop db:create db:migrate
+  Start
+  - docker-compose up
+  Executar testes
+  - docker-compose run web bundle exec rspec
+
+ # Documentação
+  http://localhost:3000/apipie
