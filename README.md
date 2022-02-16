@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- A solução foi criada de maneira bem versátil, onde algum administrador pode criar quantas salas quiser, pode gerenciar o limite de pessoas e de tempo para cada sala. Além disso pode dizer que horas cada sala de reunião abre e fecha.
 
-Things you may want to cover:
+- Existe o modelo agendador, onde quem for criar uma reunião, pode escolher a sala, o horário que não pode bater com outro horário para mesma sala. 
 
-* Ruby version
+- Na reunão pode-se adicionar vários colaboradores, e esses colaboradores não podem estar com nenhuma outra reunião marcada que bate com o horário da reunião a ser criada.
 
-* System dependencies
+- Uma reunião não pode ser excluida quando ela já foi iniciada ou finalizada.
 
-* Configuration
+- Existem validações onde não pode agendar reuniões fora dos horários permitidos para cada sala.
 
-* Database creation
+- O mesmo colaborador pode estar em várias reuniões no mesmo dia porém em horários diferentes.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- A mesma sala de reunião pode ser usada várias vezes no dia porém em horários diferentes.
