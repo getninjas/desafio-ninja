@@ -22,6 +22,14 @@ class SchedulersController < ApplicationController
       @scheduler.errors.add(:people_limit, "The people limit for this room is #{scheduled_room_people_limit}") 
     end
 
+    if @scheduler.start_meeting_time.hour < @scheduler.room.open_at    
+      @scheduler.errors.add(:start_meeting_time, "Please check when this room will be opened")
+    end
+
+    if @scheduler.end_meeting_time.hour > @scheduler.room.close_at
+      @scheduler.errors.add(:end_meeting_time, "Please check when this room will be closed")
+    end
+
     employees_validator
 
     if @scheduler.save
