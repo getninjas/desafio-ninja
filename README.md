@@ -1,15 +1,15 @@
-# Descrição do Problema
-Temos um problema grande com reuniões, elas são muitas e temos poucas salas disponíveis.
-Precisamos de uma agenda para nos mantermos sincronizados e esse será seu desafio!
-Temos 4 salas e podemos usá-las somente em horário comercial, de segunda a sexta das 09:00 até as 18:00.
-Sua tarefa será de criar uma API REST que crie, edite, mostre e delete o agendamento dos horários para que os usuários não se percam ao agendar as salas.
+# README
 
-# Notas
-- O teste deve ser escrito utilizando Ruby e Ruby on Rails
-- Utilize as gems que achar necessário
-- Não faça squash dos seus commits, gostamos de acompanhar a evolução gradual da aplicação via commits.
-- Estamos avaliando coisas como design, higiene do código, confiabilidade e boas práticas
-- Esperamos testes automatizados. 
-- A aplicação deverá subir com docker-compose
-- Crie um README.md descrevendo a sua solução e as issues caso houver
-- O desafio pode ser entregue abrindo um pull request ou fazendo um fork do repositório 
+- A solução foi criada de maneira bem versátil, onde algum administrador pode criar quantas salas quiser, pode gerenciar o limite de pessoas e de tempo para cada sala. Além disso pode dizer que horas cada sala de reunião abre e fecha.
+
+- Existe o modelo agendador, onde quem for criar uma reunião, pode escolher a sala, o horário que não pode bater com outro horário para mesma sala. 
+
+- Na reunão pode-se adicionar vários colaboradores, e esses colaboradores não podem estar com nenhuma outra reunião marcada que bate com o horário da reunião a ser criada.
+
+- Uma reunião não pode ser excluida quando ela já foi iniciada ou finalizada.
+
+- Existem validações onde não pode agendar reuniões fora dos horários permitidos para cada sala.
+
+- O mesmo colaborador pode estar em várias reuniões no mesmo dia porém em horários diferentes.
+
+- A mesma sala de reunião pode ser usada várias vezes no dia porém em horários diferentes.
