@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_meeting_time: 2022-02-16 00:15:55
+  end_meeting_time: 2022-02-16 00:15:55
+  meeting_description: MyString
+
+two:
+  start_meeting_time: 2022-02-16 00:15:55
+  end_meeting_time: 2022-02-16 00:15:55
+  meeting_description: MyString
