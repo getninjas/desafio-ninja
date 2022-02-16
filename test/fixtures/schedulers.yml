@@ -3,9 +3,11 @@
 one:
   start_meeting_time: 2022-02-16 00:15:55
   end_meeting_time: 2022-02-16 00:15:55
-  meeting_description: MyString
+  meeting_description: Entrevista
+  room_id: 1
 
 two:
   start_meeting_time: 2022-02-16 00:15:55
   end_meeting_time: 2022-02-16 00:15:55
-  meeting_description: MyString
+  meeting_description: Semanal
+  room_id: 2

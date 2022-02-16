@@ -2,7 +2,7 @@ require "test_helper"
 
 class EmployeesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @employee = employees(:one)
+    @employee = employees(:one) 
   end
 
   test "should get index" do
@@ -12,7 +12,7 @@ class EmployeesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create employee" do
     assert_difference('Employee.count') do
-      post employees_url, params: { employee: { department: @employee.department, name: @employee.name } }, as: :json
+      post employees_url, params: { employee: { department: @employee.department, name: 'Love' } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class EmployeesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update employee" do
-    patch employee_url(@employee), params: { employee: { department: @employee.department, name: @employee.name } }, as: :json
+    patch employee_url(@employee), params: { employee: { department: @employee.department, name: 'Heart' } }, as: :json
     assert_response 200
   end
 

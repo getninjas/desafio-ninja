@@ -16,9 +16,10 @@ class SchedulersController < ApplicationController
   # POST /schedulers
   def create
     @scheduler = Scheduler.new(scheduler_params)
-    scheduled_room_people_limit = @scheduler.room.people_limit
 
-    if @employees_ids.count > scheduled_room_people_limit
+    scheduled_room_people_limit = @scheduler.room.people_limit_by_meeting
+
+    if employees_ids.count > scheduled_room_people_limit
       @scheduler.errors.add(:people_limit, "The people limit for this room is #{scheduled_room_people_limit}") 
     end
 
@@ -43,7 +44,7 @@ class SchedulersController < ApplicationController
   def update
     employees_validator
     
-    if @scheduler.update(scheduler_params.except(:room_id, :start_meeting_time, :end_meeting_time))
+    if @scheduler.update(scheduler_params.except(:start_meeting_time, :end_meeting_time))
       render json: @scheduler
     else
       render json: @scheduler.errors, status: :unprocessable_entity
@@ -53,7 +54,7 @@ class SchedulersController < ApplicationController
   # DELETE /schedulers/1
   def destroy
     if DateTime.now > @scheduler.start_meeting_time
-      @scheduler.errors.add(:start_meeting_time, "This meeting already started")
+      @scheduler.errors.add(:start_meeting_time, "This meeting already started or finalized")
       render json: @scheduler.errors, status: :unprocessable_entity
     else
       @scheduler.destroy
@@ -63,26 +64,29 @@ class SchedulersController < ApplicationController
   private
 
     def employees_validator
-      employees = Employee.where(id: @employees_ids) 
+      employees = Employee.where(id: employees_ids) 
 
       employees.each do |employee|
         already_in_a_meeting = Scheduler
                                 .where(
-                                  employee_id: employee.id
-                                )
-                                .where(
+                                  employee_id: employee.id,
                                   start_meeting_time: @scheduler.start_meeting_time..@scheduler.end_meeting_time
+                                ).or(
+                                  Scheduler.where(employee_id: employee.id, end_meeting_time: @scheduler.start_meeting_time..@scheduler.end_meeting_time)
                                 )
-                                .or(
-                                  end_meeting_time: @scheduler.start_meeting_time..@scheduler.end_meeting_time
-                                )
-
+                              
         if already_in_a_meeting     
-          @scheduler.errors.add(:employee_id, "#{employee.name} already is in a meeting in this time interval: #{already_in_a_meeting.meeting_description}") 
+          @scheduler.errors.add(:employee_id, "#{employee.name} already is in a meeting between this time") 
         end
       end
 
-      @scheduler.employees = employees
+      employees_ids.each do |employee_id|
+        EmployeeScheduler.create(employee_id: employee_id, scheduler_id: @scheduler.id)
+      end
+    end
+
+    def employees_ids
+      params[:scheduler][:employees_ids]
     end
 
     # Use callbacks to share common setup or constraints between actions.
@@ -92,6 +96,6 @@ class SchedulersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def scheduler_params
-      params.require(:scheduler).permit(:start_meeting_time, :end_meeting_time, :meeting_description, :room_id)
+      params.require(:scheduler).permit(:room_id, :start_meeting_time, :end_meeting_time, :meeting_description)
     end
 end
