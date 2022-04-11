@@ -1,0 +1,407 @@
+require: rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 3.0.0
+  Exclude:
+    - 'bin/*'
+    - 'db/**/*'
+    - 'config.ru'
+    - 'Rakefile'
+    - 'Guardfile'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - 'config/environments/*'
+    - 'config/routes.rb'
+    - 'config/routes/*'
+    - 'config/initializers/*'
+    - 'lib/builders/*'
+
+Bundler/OrderedGems:
+  Enabled: false
+  Exclude:
+    - 'Gemfile'
+
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_first_argument
+  Exclude:
+    - 'bin/webpack'
+    - 'bin/webpack-dev-server'
+
+Layout/EmptyLineAfterGuardClause:
+  Enabled: true
+  Exclude:
+    - 'bin/bundle'
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  AllowAliasSyntax: true
+  Enabled: true
+
+Layout/EmptyLinesAroundBlockBody:
+  EnforcedStyle: no_empty_lines
+  Enabled: true
+  Exclude:
+    - 'db/schema.rb'
+
+Layout/EmptyLinesAroundClassBody:
+  EnforcedStyle: empty_lines_except_namespace
+  Enabled: true
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: aligned
+  Enabled: true
+  Exclude:
+    - 'bin/bundle'
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Layout/SpaceInsideArrayLiteralBrackets:
+  EnforcedStyle: no_space
+  Enabled: true
+  Exclude:
+    - 'config/environments/production.rb'
+
+Layout/LineLength:
+  Max: 120
+
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: false
+
+Lint/MixedRegexpCaptureTypes:
+  Enabled: false
+
+Lint/RaiseException:
+  Enabled: false
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Lint/UnusedBlockArgument:
+  Enabled: true
+
+Metrics/BlockLength:
+  CountComments: false
+  Exclude:
+    - 'spec/**/*.rb'
+
+# Too short methods lead to extraction of single-use methods, which can make
+# the code easier to read (by naming things), but can also clutter the class
+Metrics/MethodLength:
+  Max: 20
+
+# The guiding principle of classes is SRP, SRP can't be accurately measured by LoC
+Metrics/ClassLength:
+  Max: 1500
+
+Style/ClassAndModuleChildren:
+  Enabled: true
+
+Style/CollectionMethods:
+  Enabled: true
+
+Style/ConditionalAssignment:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyMethod:
+  Enabled: true
+
+Style/ExpandPathArguments:
+  Enabled: true
+  Exclude:
+    - 'bin/bundle'
+    - 'bin/rails'
+    - 'bin/rake'
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  Exclude:
+    - 'db/schema.rb'
+    - 'db/seeds.rb'
+
+Style/IfUnlessModifier:
+  Enabled: true
+  Exclude:
+    - 'bin/bundle'
+
+Style/MethodCallWithoutArgsParentheses:
+  Enabled: true
+
+Style/MultipleComparison:
+  Enabled: true
+
+Style/NegatedIf:
+  Enabled: true
+
+Style/NumericLiterals:
+  Enabled: true
+  Exclude:
+    - 'db/schema.rb'
+
+Style/PerlBackrefs:
+  Enabled: true
+  Exclude:
+    - 'bin/bundle'
+
+Style/RaiseArgs:
+  Enabled: false
+
+Style/RedundantBegin:
+  Enabled: true
+  Exclude:
+    - 'bin/yarn'
+
+Style/RedundantSelf:
+  Enabled: true
+
+Style/RescueStandardError:
+  Enabled: true
+
+Style/SpecialGlobalVars:
+  Enabled: true
+  EnforcedStyle: use_english_names
+
+Style/StderrPuts:
+  Enabled: true
+  Exclude:
+    - 'bin/yarn'
+
+Style/StringLiterals:
+  Enabled: false
+  Exclude:
+    - 'bin/bundle'
+    - 'bin/webpack'
+    - 'bin/webpack-dev-server'
+    - 'bin/yarn'
+    - 'config/environments/production.rb'
+    - 'config/puma.rb'
+    - 'config/spring.rb'
+    - 'test/channels/application_cable/connection_test.rb'
+
+Style/SymbolArray:
+  Enabled: true
+  EnforcedStyle: percent
+
+Style/WordArray:
+  Enabled: true
+  EnforcedStyle: percent
+
+Style/ExponentialNotation:
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/RedundantRegexpCharacterClass:
+  Enabled: false
+
+Style/RedundantRegexpEscape:
+  Enabled: false
+
+Style/SlicingWithRange:
+  Enabled: true
+
+RSpec/NestedGroups:
+  Enabled: false
+
+RSpec/FilePath:
+  Enabled: true
+
+RSpec/InstanceVariable:
+  Enabled: true
+
+RSpec/InvalidPredicateMatcher:
+  Enabled: true
+
+RSpec/ExpectChange:
+  Enabled: true
+  EnforcedStyle: method_call
+
+RSpec/HookArgument:
+  Enabled: true
+  EnforcedStyle: each
+
+RSpec/ImplicitExpect:
+  Enabled: true
+  EnforcedStyle: should
+
+RSpec/ImplicitSubject:
+  Enabled: true
+  EnforcedStyle: single_line_only
+
+RSpec/MessageExpectation:
+  Enabled: true
+  EnforcedStyle: expect
+
+RSpec/MessageSpies:
+  Enabled: true
+  EnforcedStyle: receive
+
+RSpec/ReturnFromStub:
+  Enabled: true
+  EnforcedStyle: block
+
+RSpec/InstanceSpy:
+  Enabled: true
+
+RSpec/ScatteredLet:
+  Enabled: true
+
+RSpec/ScatteredSetup:
+  Enabled: true
+
+RSpec/HooksBeforeExamples:
+  Enabled: true
+
+RSpec/ImplicitBlockExpectation:
+  Enabled: true
+
+RSpec/ExpectInHook:
+  Enabled: false
+
+RSpec/ExampleWording:
+  Enabled: true
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/ContextMethod:
+  Enabled: true
+
+RSpec/EmptyExampleGroup:
+  Enabled: true
+
+RSpec/ExampleWithoutDescription:
+  Enabled: true
+
+RSpec/EmptyHook:
+  Enabled: true
+
+RSpec/DescribeMethod:
+  Enabled: true
+
+RSpec/DescribeSymbol:
+  Enabled: true
+
+RSpec/AroundBlock:
+  Enabled: true
+
+RSpec/ContextWording:
+  Prefixes:
+    - when
+    - with
+    - without
+    - if
+    - unless
+    - for
+
+RSpec/EmptyLineAfterExample:
+  Enabled: true
+
+RSpec/EmptyLineAfterExampleGroup:
+  Enabled: true
+
+RSpec/EmptyLineAfterFinalLet:
+  Enabled: true
+
+RSpec/EmptyLineAfterHook:
+  Enabled: true
+
+RSpec/EmptyLineAfterSubject:
+  Enabled: true
+
+RSpec/ItBehavesLike:
+  Enabled: true
+  EnforcedStyle: it_behaves_like
+
+RSpec/IteratedExpectation:
+  Enabled: true
+
+RSpec/LeakyConstantDeclaration:
+  Enabled: true
+
+RSpec/LetBeforeExamples:
+  Enabled: true
+
+RSpec/MissingExampleGroupArgument:
+  Enabled: true
+
+RSpec/MultipleDescribes:
+  Enabled: true
+
+RSpec/MultipleSubjects:
+  Enabled: true
+
+RSpec/NotToNot:
+  Enabled: true
+
+RSpec/PredicateMatcher:
+  Enabled: true
+
+RSpec/ReceiveCounts:
+  Enabled: true
+
+RSpec/ReceiveNever:
+  Enabled: true
+
+RSpec/RepeatedDescription:
+  Enabled: true
+
+RSpec/RepeatedExample:
+  Enabled: true
+
+RSpec/RepeatedExampleGroupDescription:
+  Enabled: true
+
+RSpec/SharedContext:
+  Enabled: true
+
+RSpec/SharedExamples:
+  Enabled: true
+
+RSpec/SingleArgumentMessageChain:
+  Enabled: true
+
+RSpec/UnspecifiedException:
+  Enabled: true
+
+RSpec/VoidExpect:
+  Enabled: true
+
+RSpec/SubjectStub:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/VariableDefinition:
+  Enabled: true
+  EnforcedStyle: symbols
+
+RSpec/VariableName:
+  Enabled: true
+  EnforcedStyle: snake_case
+
+FactoryBot/FactoryClassName:
+  Enabled: true
+
+FactoryBot/CreateList:
+  Enabled: true
+  EnforcedStyle: create_list
+
+FactoryBot/AttributeDefinedStatically:
+  Enabled: true
+
+RSpec/LetSetup:
+  Enabled: false
