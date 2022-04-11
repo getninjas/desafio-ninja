@@ -23,8 +23,9 @@ ActiveRecord::Schema.define(version: 2022_04_11_044046) do
 
   create_table "schedules", force: :cascade do |t|
     t.string "title"
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.integer "start_hour"
+    t.integer "end_hour"
+    t.datetime "date"
     t.bigint "room_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
