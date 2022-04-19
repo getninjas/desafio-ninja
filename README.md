@@ -66,4 +66,14 @@ A senhas de todos eles é 12345678.
 
 No projeto já existe as 4 salas criadas.
 
+# Subir com docker-compose
+
+Para subir com o docker-compose rode o seguinte comando:
+
+`sudo docker-compose up`
+ou
+`docker-compose up`
+
+
+
 
