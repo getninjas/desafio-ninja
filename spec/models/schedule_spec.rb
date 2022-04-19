@@ -104,9 +104,14 @@ RSpec.describe Schedule, type: :model do
     end
 
     it 'must not create at the same time as another reserve, first possibility' do
-      datetime = DateTime.current
+      datetime = DateTime.current + 1.day
+      while datetime.saturday? || datetime.sunday?
+        datetime = DateTime.current + 1.day
+      end
+
       room = create(:room)
       user = create(:user)
+
       create(
         :schedule,
         start_time: DateTime.new(datetime.year, datetime.month, datetime.day, 9, 0, 0),
@@ -149,7 +154,11 @@ RSpec.describe Schedule, type: :model do
     end
 
     it 'must not create at the same time as another reserve, second possibility' do
-      datetime = DateTime.current
+      datetime = DateTime.current + 1.day
+      while datetime.saturday? || datetime.sunday?
+        datetime = DateTime.current + 1.day
+      end
+
       room = create(:room)
       user = create(:user)
       create(

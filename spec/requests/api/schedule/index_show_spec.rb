@@ -9,26 +9,30 @@ RSpec.describe 'Schedule', type: :request do
   context 'Index and show' do
     it 'expect 3 schedules' do
       room = create(:room)
-      datetime = DateTime.current
+      datetime = DateTime.current + 1.day
+
+      while datetime.saturday? || datetime.sunday?
+        datetime = DateTime.current + 1.day
+      end
 
       create(
         :schedule,
         start_time: DateTime.new(datetime.year, datetime.month, datetime.day, 11, 30, 0),
-        end_time:  DateTime.new(datetime.year, datetime.month, datetime.day, 12, 30, 0),
+        end_time: DateTime.new(datetime.year, datetime.month, datetime.day, 12, 30, 0),
         room_id: room.id
       )
 
       create(
         :schedule,
         start_time: DateTime.new(datetime.year, datetime.month, datetime.day, 13, 30, 0),
-        end_time:  DateTime.new(datetime.year, datetime.month, datetime.day, 14, 30, 0),
+        end_time: DateTime.new(datetime.year, datetime.month, datetime.day, 14, 30, 0),
         room_id: room.id
       )
 
       create(
         :schedule,
         start_time: DateTime.new(datetime.year, datetime.month, datetime.day, 15, 30, 0),
-        end_time:  DateTime.new(datetime.year, datetime.month, datetime.day, 16, 30, 0),
+        end_time: DateTime.new(datetime.year, datetime.month, datetime.day, 16, 30, 0),
         room_id: room.id
       )
 
@@ -41,7 +45,12 @@ RSpec.describe 'Schedule', type: :request do
 
     it 'expect 1 schedule' do
       room = create(:room)
-      datetime = DateTime.current
+      datetime = DateTime.current + 1.day
+
+      while datetime.saturday? || datetime.sunday?
+        datetime = DateTime.current + 1.day
+      end
+
       start_time = DateTime.new(datetime.year, datetime.month, datetime.day, 11, 30, 0)
       end_time = DateTime.new(datetime.year, datetime.month, datetime.day, 12, 30, 0)
 
@@ -57,5 +66,4 @@ RSpec.describe 'Schedule', type: :request do
       expect(response).to have_http_status 200
     end
   end
-
 end

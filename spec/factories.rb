@@ -12,7 +12,11 @@ FactoryBot.define do
   end
 
   factory :schedule do
-    datetime = DateTime.current
+    datetime = DateTime.current + 1.day
+    while datetime.saturday? || datetime.sunday?
+      datetime = DateTime.current + 1.day
+    end
+
     room { create(:room) }
     user { create(:user) }
     start_time { DateTime.new(datetime.year, datetime.month, datetime.day, 16, 0, 0) }

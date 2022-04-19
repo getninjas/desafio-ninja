@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/keslleycapelin/Projects/testes/desafio-ninja/app/models/room.rb": {
+      "/Users/keslleycapelin/projeto-teste/desafio-ninja/app/models/room.rb": {
         "lines": [
           1,
           1,
@@ -11,7 +11,7 @@
           null
         ]
       },
-      "/Users/keslleycapelin/Projects/testes/desafio-ninja/app/models/schedule.rb": {
+      "/Users/keslleycapelin/projeto-teste/desafio-ninja/app/models/schedule.rb": {
         "lines": [
           1,
           1,
@@ -38,7 +38,7 @@
           1,
           31,
           null,
-          1,
+          5,
           null,
           null,
           1,
@@ -76,7 +76,7 @@
           null
         ]
       },
-      "/Users/keslleycapelin/Projects/testes/desafio-ninja/app/controllers/api/rooms_controller.rb": {
+      "/Users/keslleycapelin/projeto-teste/desafio-ninja/app/controllers/api/rooms_controller.rb": {
         "lines": [
           1,
           1,
@@ -107,7 +107,7 @@
           null
         ]
       },
-      "/Users/keslleycapelin/Projects/testes/desafio-ninja/app/controllers/application_controller.rb": {
+      "/Users/keslleycapelin/projeto-teste/desafio-ninja/app/controllers/application_controller.rb": {
         "lines": [
           1,
           1,
@@ -116,7 +116,7 @@
           null
         ]
       },
-      "/Users/keslleycapelin/Projects/testes/desafio-ninja/app/modules/pagination/schema.rb": {
+      "/Users/keslleycapelin/projeto-teste/desafio-ninja/app/modules/pagination/schema.rb": {
         "lines": [
           null,
           null,
@@ -168,7 +168,7 @@
           null
         ]
       },
-      "/Users/keslleycapelin/Projects/testes/desafio-ninja/app/modules/common_api_options.rb": {
+      "/Users/keslleycapelin/projeto-teste/desafio-ninja/app/modules/common_api_options.rb": {
         "lines": [
           null,
           null,
@@ -252,7 +252,7 @@
           null
         ]
       },
-      "/Users/keslleycapelin/Projects/testes/desafio-ninja/app/classes/CRUDManagement/index.rb": {
+      "/Users/keslleycapelin/projeto-teste/desafio-ninja/app/classes/CRUDManagement/index.rb": {
         "lines": [
           null,
           null,
@@ -287,7 +287,7 @@
           null
         ]
       },
-      "/Users/keslleycapelin/Projects/testes/desafio-ninja/app/serializable/serializable_room.rb": {
+      "/Users/keslleycapelin/projeto-teste/desafio-ninja/app/serializable/serializable_room.rb": {
         "lines": [
           1,
           1,
@@ -295,7 +295,7 @@
           null
         ]
       },
-      "/Users/keslleycapelin/Projects/testes/desafio-ninja/app/classes/CRUDManagement/show.rb": {
+      "/Users/keslleycapelin/projeto-teste/desafio-ninja/app/classes/CRUDManagement/show.rb": {
         "lines": [
           null,
           null,
@@ -334,7 +334,7 @@
           null
         ]
       },
-      "/Users/keslleycapelin/Projects/testes/desafio-ninja/app/controllers/api/schedules_controller.rb": {
+      "/Users/keslleycapelin/projeto-teste/desafio-ninja/app/controllers/api/schedules_controller.rb": {
         "lines": [
           1,
           1,
@@ -399,7 +399,7 @@
           null
         ]
       },
-      "/Users/keslleycapelin/Projects/testes/desafio-ninja/app/classes/schedule_management/create.rb": {
+      "/Users/keslleycapelin/projeto-teste/desafio-ninja/app/classes/schedule_management/create.rb": {
         "lines": [
           null,
           null,
@@ -418,7 +418,7 @@
           null
         ]
       },
-      "/Users/keslleycapelin/Projects/testes/desafio-ninja/app/classes/CRUDManagement/create.rb": {
+      "/Users/keslleycapelin/projeto-teste/desafio-ninja/app/classes/CRUDManagement/create.rb": {
         "lines": [
           null,
           null,
@@ -461,7 +461,7 @@
           null
         ]
       },
-      "/Users/keslleycapelin/Projects/testes/desafio-ninja/app/serializable/serializable_schedule.rb": {
+      "/Users/keslleycapelin/projeto-teste/desafio-ninja/app/serializable/serializable_schedule.rb": {
         "lines": [
           1,
           1,
@@ -472,7 +472,7 @@
           null
         ]
       },
-      "/Users/keslleycapelin/Projects/testes/desafio-ninja/app/classes/CRUDManagement/destroy.rb": {
+      "/Users/keslleycapelin/projeto-teste/desafio-ninja/app/classes/CRUDManagement/destroy.rb": {
         "lines": [
           null,
           null,
@@ -513,7 +513,7 @@
           null
         ]
       },
-      "/Users/keslleycapelin/Projects/testes/desafio-ninja/app/classes/CRUDManagement/update.rb": {
+      "/Users/keslleycapelin/projeto-teste/desafio-ninja/app/classes/CRUDManagement/update.rb": {
         "lines": [
           null,
           null,
@@ -561,7 +561,7 @@
           null
         ]
       },
-      "/Users/keslleycapelin/Projects/testes/desafio-ninja/app/controllers/api/users_controller.rb": {
+      "/Users/keslleycapelin/projeto-teste/desafio-ninja/app/controllers/api/users_controller.rb": {
         "lines": [
           1,
           1,
@@ -620,7 +620,7 @@
           null
         ]
       },
-      "/Users/keslleycapelin/Projects/testes/desafio-ninja/app/serializable/serializable_user.rb": {
+      "/Users/keslleycapelin/projeto-teste/desafio-ninja/app/serializable/serializable_user.rb": {
         "lines": [
           1,
           1,
@@ -628,7 +628,7 @@
           null
         ]
       },
-      "/Users/keslleycapelin/Projects/testes/desafio-ninja/app/channels/application_cable/channel.rb": {
+      "/Users/keslleycapelin/projeto-teste/desafio-ninja/app/channels/application_cable/channel.rb": {
         "lines": [
           0,
           0,
@@ -638,7 +638,7 @@
         "branches": {
         }
       },
-      "/Users/keslleycapelin/Projects/testes/desafio-ninja/app/channels/application_cable/connection.rb": {
+      "/Users/keslleycapelin/projeto-teste/desafio-ninja/app/channels/application_cable/connection.rb": {
         "lines": [
           0,
           0,
@@ -648,7 +648,7 @@
         "branches": {
         }
       },
-      "/Users/keslleycapelin/Projects/testes/desafio-ninja/app/classes/user_login.rb": {
+      "/Users/keslleycapelin/projeto-teste/desafio-ninja/app/classes/user_login.rb": {
         "lines": [
           0,
           0,
@@ -699,7 +699,7 @@
         "branches": {
         }
       },
-      "/Users/keslleycapelin/Projects/testes/desafio-ninja/app/controllers/api/sessions_controller.rb": {
+      "/Users/keslleycapelin/projeto-teste/desafio-ninja/app/controllers/api/sessions_controller.rb": {
         "lines": [
           null,
           null,
@@ -743,7 +743,7 @@
         "branches": {
         }
       },
-      "/Users/keslleycapelin/Projects/testes/desafio-ninja/app/jobs/application_job.rb": {
+      "/Users/keslleycapelin/projeto-teste/desafio-ninja/app/jobs/application_job.rb": {
         "lines": [
           0,
           null,
@@ -756,7 +756,7 @@
         "branches": {
         }
       },
-      "/Users/keslleycapelin/Projects/testes/desafio-ninja/app/mailers/application_mailer.rb": {
+      "/Users/keslleycapelin/projeto-teste/desafio-ninja/app/mailers/application_mailer.rb": {
         "lines": [
           0,
           0,
@@ -766,7 +766,7 @@
         "branches": {
         }
       },
-      "/Users/keslleycapelin/Projects/testes/desafio-ninja/app/models/application_record.rb": {
+      "/Users/keslleycapelin/projeto-teste/desafio-ninja/app/models/application_record.rb": {
         "lines": [
           0,
           0,
@@ -775,7 +775,7 @@
         "branches": {
         }
       },
-      "/Users/keslleycapelin/Projects/testes/desafio-ninja/app/models/user.rb": {
+      "/Users/keslleycapelin/projeto-teste/desafio-ninja/app/models/user.rb": {
         "lines": [
           0,
           null,
@@ -797,7 +797,7 @@
         "branches": {
         }
       },
-      "/Users/keslleycapelin/Projects/testes/desafio-ninja/app/modules/deserialization/has_many.rb": {
+      "/Users/keslleycapelin/projeto-teste/desafio-ninja/app/modules/deserialization/has_many.rb": {
         "lines": [
           null,
           null,
@@ -821,6 +821,6 @@
         }
       }
     },
-    "timestamp": 1650339929
+    "timestamp": 1650411258
   }
 }

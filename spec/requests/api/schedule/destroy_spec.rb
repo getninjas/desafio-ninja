@@ -9,7 +9,11 @@ RSpec.describe 'Schedule', type: :request do
   context 'Destroy schedule' do
     it 'destroy with success' do
       room = create(:room)
-      datetime = DateTime.current
+      datetime = DateTime.current + 1.day
+      while datetime.saturday? || datetime.sunday?
+        datetime = DateTime.current + 1.day
+      end
+
       start_time = DateTime.new(datetime.year, datetime.month, datetime.day, 11, 30, 0)
       end_time = DateTime.new(datetime.year, datetime.month, datetime.day, 12, 30, 0)
 
@@ -28,7 +32,12 @@ RSpec.describe 'Schedule', type: :request do
 
     it 'destroy without success' do
       room = create(:room)
-      datetime = DateTime.current
+      datetime = DateTime.current + 1.day
+
+      while datetime.saturday? || datetime.sunday?
+        datetime = DateTime.current + 1.day
+      end
+
       start_time = DateTime.new(datetime.year, datetime.month, datetime.day, 11, 30, 0)
       end_time = DateTime.new(datetime.year, datetime.month, datetime.day, 12, 30, 0)
 
