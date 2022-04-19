@@ -1,0 +1,644 @@
+{
+	"info": {
+		"_postman_id": "1ff64414-90d2-4b45-a39e-c16c4f236f39",
+		"name": "desafio_getninja",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Index",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"type\": \"user\",\n        \"attributes\": {\n\n            \"email\": \"keslley@getninja.dev\",\n            \"password\": \"1234567\",\n            \"password_confirmation\": \"1234567\"\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						},
+						"description": "Atenticação"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "default"
+							},
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"type\": \"users\",\n        \"attributes\": {\n            \"name\": \"Keslley JC\"\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/users/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "f3b2ff17-b671-4cd1-86c4-94fe5b7f6eaa"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/users/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "fca413e4-1729-417f-9baf-04eaa720150e"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Room",
+			"item": [
+				{
+					"name": "Schedule",
+					"item": [
+						{
+							"name": "Create",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.api+json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/vnd.api+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"data\": {\n        \"type\": \"schedule\",\n        \"attributes\": {\n            \"start_time\": \"2022-04-19 14:00:16.416361\",\n            \"end_time\": \"2022-04-19 14:35:16.416361\"\n            \n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "{{URL}}/api/rooms/:room_id/schedules",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"rooms",
+										":room_id",
+										"schedules"
+									],
+									"variable": [
+										{
+											"key": "room_id",
+											"value": "a84e342c-d121-4b46-970b-aafb25da97f8"
+										}
+									]
+								},
+								"description": "Atenticação"
+							},
+							"response": []
+						},
+						{
+							"name": "Index",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.api+json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/vnd.api+json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/api/rooms/:room_id/schedules?include=room,user",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"rooms",
+										":room_id",
+										"schedules"
+									],
+									"query": [
+										{
+											"key": "include",
+											"value": "room,user"
+										}
+									],
+									"variable": [
+										{
+											"key": "room_id",
+											"value": "a84e342c-d121-4b46-970b-aafb25da97f8"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Show",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/rooms/:room_id/schedules/:id?include=room,user",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"rooms",
+										":room_id",
+										"schedules",
+										":id"
+									],
+									"query": [
+										{
+											"key": "include",
+											"value": "room,user"
+										}
+									],
+									"variable": [
+										{
+											"key": "room_id",
+											"value": "a84e342c-d121-4b46-970b-aafb25da97f8"
+										},
+										{
+											"key": "id",
+											"value": "0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.api+json",
+										"type": "default"
+									},
+									{
+										"key": "Accept",
+										"value": "application/vnd.api+json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"data\": {\n        \"type\": \"schedule\",\n        \"attributes\": {\n            \"start_time\": \"2022-04-20 14:00:16.416361\",\n            \"end_time\": \"2022-04-20 14:35:16.416361\"\n            \n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "{{URL}}/api/rooms/:room_id/schedules/:id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"rooms",
+										":room_id",
+										"schedules",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "room_id",
+											"value": "a84e342c-d121-4b46-970b-aafb25da97f8"
+										},
+										{
+											"key": "id",
+											"value": "0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Destroy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/rooms/:room_id/schedules/:id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"rooms",
+										":room_id",
+										"schedules",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "room_id",
+											"value": "a84e342c-d121-4b46-970b-aafb25da97f8"
+										},
+										{
+											"key": "id",
+											"value": "0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Index",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/rooms",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"rooms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/rooms/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"rooms",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6a8a23d0-050f-49c2-abdb-8c864c311fc7"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = pm.response.json();",
+							"",
+							"if(response['errors'] === undefined){",
+							"    let token = pm.response.headers.get('Authorization').replace('Bearer ', '')",
+							"    // let typeUser = response.included[0].attributes.name;",
+							"    pm.environment.set('TOKEN', token);",
+							"    //SETANDO CONFORME O TIPO DO USUÁRIO",
+							"    // if(typeUser == 'admin'){",
+							"    //     pm.environment.set('TOKEN_ADMIN', token);",
+							"    // }else if(typeUser == 'graduate'){",
+							"    //     pm.environment.set('TOKEN_GRADUATE', token);",
+							"    // }else if(typeUser == 'partner'){",
+							"    //     pm.environment.set('TOKEN_PARTNER', token);",
+							"    // }else if(typeUser == 'partner_commercial'){",
+							"    //     pm.environment.set('TOKEN_PARTNER_COMMERCIAL', token);",
+							"    // }",
+							"}",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.api+json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/vnd.api+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"data\": {\n        \"type\": \"user\",\n        \"attributes\": {\n            \"login\": \"keslley@nullbug.dev\",\n            \"password\": \"12345678\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/login",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

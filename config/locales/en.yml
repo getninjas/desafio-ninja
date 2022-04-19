@@ -1,0 +1,63 @@
+en:
+  activemodel:
+    attributes:
+      crud_management/show: &default
+        instance: Registry
+        base: registration
+        verification_code: Verification code
+        country_calling_code: Country calling code
+        user: User
+      crud_management/update:
+        <<: *default
+      crud_management/destroy:
+        <<: *default
+      user_management/create:
+        <<: *default
+      social_login_management/sign_in:
+        <<: *default
+      generic_api_error:
+        <<: *default
+        authorization: authorization
+
+    errors:
+      messages:
+        not_found: not found
+        blank: not found
+        invalid: invalid
+        taken: is already in use
+
+  activerecord:
+    attributes:
+      user:
+        id: id
+        name: name
+        email: email
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: is already in use
+              invalid: invalid
+              blank: cannot be blank
+            name:
+              taken: is already in use
+              invalid: invalid
+              blank: cannot be blank
+            password:
+              invalid: invalid
+              blank: cannot be blank
+            password_confirmation:
+              invalid: invalid
+              blank: cannot be blank
+
+  api:
+    errors:
+      not_authorized_title: Invalid Login
+      action_not_provided: Invalid action
+      password_confirmation_invalid: Passwords cannot be different
+
+  devise:
+    failure:
+      api_user:
+        unauthenticated: To continue, login or register

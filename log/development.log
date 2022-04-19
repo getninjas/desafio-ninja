@@ -1,0 +1,1636 @@
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE DATABASE "api_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE DATABASE "api_test" ENCODING = 'unicode'[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5878493172211724820)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5878493172211724820)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (62.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "api_development"[0m
+  [1m[35m (43.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "api_test"[0m
+  [1m[35m (223.3ms)[0m  [1m[35mCREATE DATABASE "desafio_getninja_development" ENCODING = 'unicode'[0m
+  [1m[35m (73.6ms)[0m  [1m[35mCREATE DATABASE "desafio_getninja_test" ENCODING = 'unicode'[0m
+  [1m[35m (22.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20210806180518)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "email" character varying DEFAULT '' NOT NULL, "name" character varying, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying, "last_sign_in_ip" character varying, "failed_attempts" integer DEFAULT 0 NOT NULL, "unlock_token" character varying, "locked_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_unlock_token" ON "users" ("unlock_token")[0m
+  [1m[35mSQL (51.7ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "pgcrypto"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210806180518"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (2.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-04-16 22:25:45.223517"], ["updated_at", "2022-04-16 22:25:45.223517"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (6.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@getninja.dev"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "user1@getninja.dev"], ["name", "User 1"], ["encrypted_password", "$2a$12$zze8P4mPbO2KVdYd0fsgyOfeheb8tsISn32FkX0AzlwtmXECgWTne"], ["created_at", "2022-04-16 22:27:28.716478"], ["updated_at", "2022-04-16 22:27:28.716478"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user2@getninja.dev"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "user2@getninja.dev"], ["name", "User 2"], ["encrypted_password", "$2a$12$bdmfLRNGljgaJY7ka680POyk9agW/S/z81ApzrLs97GpcYmldjXhO"], ["created_at", "2022-04-16 22:27:28.964363"], ["updated_at", "2022-04-16 22:27:28.964363"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user3@getninja.dev"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "user3@getninja.dev"], ["name", "User 3"], ["encrypted_password", "$2a$12$byu31JywFnjuouTjEx7lBuTaV36tRucAVFa1WLbGN88zkotnMICl6"], ["created_at", "2022-04-16 22:27:29.208231"], ["updated_at", "2022-04-16 22:27:29.208231"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user4@getninja.dev"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "user4@getninja.dev"], ["name", "User 4"], ["encrypted_password", "$2a$12$8Jjh..OaQruHe.ETmSDLau/QbAKc2h0VHCCbfq3hj03PbR43uyWbe"], ["created_at", "2022-04-16 22:27:29.451797"], ["updated_at", "2022-04-16 22:27:29.451797"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user5@getninja.dev"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "user5@getninja.dev"], ["name", "User 5"], ["encrypted_password", "$2a$12$nv7Y0SNCoSRtpocStpcxqewU/VhpZGWGbVh.wWNfYNLkhL4znw.7W"], ["created_at", "2022-04-16 22:27:29.699339"], ["updated_at", "2022-04-16 22:27:29.699339"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started GET "/api/users" for 127.0.0.1 at 2022-04-16 19:36:30 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::UsersController#index as JSONAPI
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms | Allocations: 1203)
+
+
+Started POST "/api/users" for 127.0.0.1 at 2022-04-16 19:39:59 -0300
+Processing by Api::UsersController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"user", "attributes"=>{"email"=>"keslley@getninja.dev", "password"=>"[FILTERED]"}}}}
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mUser Exists? (2.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "keslley@getninja.dev"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+[31mUnpermitted parameters: :_jsonapi, :user. Context: { controller: Api::UsersController, action: create, request: #<ActionDispatch::Request:0x000000011398f328>, params: {"_jsonapi"=>{"data"=>{"type"=>"user", "attributes"=>{"email"=>"keslley@getninja.dev", "password"=>"[FILTERED]"}}}, "controller"=>"api/users", "action"=>"create"} }[0m
+Completed 500 Internal Server Error in 287ms (ActiveRecord: 14.3ms | Allocations: 17460)
+
+
+  
+JSONAPI::Serializable::UndefinedSerializableClass (No serializable class defined for Symbol):
+  
+app/modules/common_api_options.rb:36:in `block in success_callback_default'
+app/classes/CRUDManagement/create.rb:25:in `create'
+app/classes/CRUDManagement/create.rb:10:in `perform'
+app/controllers/api/users_controller.rb:16:in `create'
+Started POST "/api/users" for 127.0.0.1 at 2022-04-16 19:40:13 -0300
+Processing by Api::UsersController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"user", "attributes"=>{"email"=>"keslley@getninja.dev", "password"=>"[FILTERED]"}}}}
+[31mUnpermitted parameter: :type. Context: {  }[0m
+Started POST "/api/users" for 127.0.0.1 at 2022-04-16 19:42:09 -0300
+  [1m[36mUser Exists? (2.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "keslley@getninja.dev"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+Processing by Api::UsersController#create as JSONAPI
+[31mUnpermitted parameters: :_jsonapi, :user. Context: { controller: Api::UsersController, action: create, request: #<ActionDispatch::Request:0x0000000113d3d6f0>, params: {"_jsonapi"=>{"data"=>{"type"=>"user", "attributes"=>{"email"=>"keslley@getninja.dev", "password"=>"[FILTERED]"}}}, "controller"=>"api/users", "action"=>"create"} }[0m
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"user", "attributes"=>{"name"=>"Keslley", "email"=>"keslley@getninja.dev", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}}
+Completed 500 Internal Server Error in 115810ms (ActiveRecord: 2.0ms | Allocations: 8614)
+
+
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  
+JSONAPI::Serializable::UndefinedSerializableClass (No serializable class defined for Symbol):
+  
+app/modules/common_api_options.rb:36:in `block in success_callback_default'
+app/classes/CRUDManagement/create.rb:25:in `create'
+app/classes/CRUDManagement/create.rb:10:in `perform'
+app/controllers/api/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "keslley@getninja.dev"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "keslley@getninja.dev"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:22:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/classes/CRUDManagement/create.rb:22:in `create'
+  [1m[36mUser Create (2.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "keslley@getninja.dev"], ["name", "Keslley"], ["encrypted_password", "$2a$12$YE4E69CcQGlS15oIuRR1e.nfGo3vitXQXr3tb4OV9EuGEe3XDeqfW"], ["created_at", "2022-04-16 22:42:31.450083"], ["updated_at", "2022-04-16 22:42:31.450083"]]
+  ↳ app/classes/CRUDManagement/create.rb:22:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/classes/CRUDManagement/create.rb:22:in `create'
+[31mUnpermitted parameters: :_jsonapi, :user. Context: { controller: Api::UsersController, action: create, request: #<ActionDispatch::Request:0x00000001252b1d00>, params: {"_jsonapi"=>{"data"=>{"type"=>"user", "attributes"=>{"name"=>"Keslley", "email"=>"keslley@getninja.dev", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}, "controller"=>"api/users", "action"=>"create"} }[0m
+Completed 500 Internal Server Error in 22355ms (ActiveRecord: 14.8ms | Allocations: 41715)
+
+
+  
+JSONAPI::Serializable::UndefinedSerializableClass (No serializable class defined for Symbol):
+  
+app/modules/common_api_options.rb:36:in `block in success_callback_default'
+app/classes/CRUDManagement/create.rb:23:in `create'
+app/classes/CRUDManagement/create.rb:10:in `perform'
+app/controllers/api/users_controller.rb:16:in `create'
+Started POST "/api/login" for 127.0.0.1 at 2022-04-16 19:43:17 -0300
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"user", "attributes"=>{"login"=>"user1@getninja.dev", "password"=>"[FILTERED]"}}}}
+[31mUnpermitted parameter: :type. Context: {  }[0m
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "user1@getninja.dev"], ["LIMIT", 1]]
+  ↳ app/classes/user_login.rb:43:in `load_user'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/sessions_controller.rb:11:in `block in create'
+  [1m[36mUser Update (5.0ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2022-04-16 22:43:18.272336"], ["last_sign_in_at", "2022-04-16 22:43:18.272336"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2022-04-16 22:43:18.272739"], ["id", "fca413e4-1729-417f-9baf-04eaa720150e"]]
+  ↳ app/controllers/api/sessions_controller.rb:11:in `block in create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/sessions_controller.rb:11:in `block in create'
+Completed 200 OK in 294ms (Views: 1.4ms | ActiveRecord: 24.3ms | Allocations: 11630)
+
+
+Started POST "/api/users" for 127.0.0.1 at 2022-04-16 19:43:44 -0300
+Processing by Api::UsersController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"user", "attributes"=>{"name"=>"Keslley", "email"=>"keslley@getninja.dev", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}}
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mUser Exists? (8.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "keslley@getninja.dev"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "keslley@getninja.dev"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+[31mUnpermitted parameters: :_jsonapi, :user. Context: { controller: Api::UsersController, action: create, request: #<ActionDispatch::Request:0x00000001131cecd8>, params: {"_jsonapi"=>{"data"=>{"type"=>"user", "attributes"=>{"name"=>"Keslley", "email"=>"keslley@getninja.dev", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}, "controller"=>"api/users", "action"=>"create"} }[0m
+Completed 500 Internal Server Error in 53050ms (ActiveRecord: 16.1ms | Allocations: 22801)
+
+
+  
+JSONAPI::Serializable::UndefinedSerializableClass (No serializable class defined for Symbol):
+  
+app/modules/common_api_options.rb:36:in `block in success_callback_default'
+app/classes/CRUDManagement/create.rb:25:in `create'
+app/classes/CRUDManagement/create.rb:10:in `perform'
+app/controllers/api/users_controller.rb:17:in `create'
+  [1m[36mUser Pluck (1.5ms)[0m  [1m[34mSELECT "users"."email" FROM "users"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "keslley@getninja.dev"], ["LIMIT", 1]]
+  [1m[36mUser Destroy (1.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", "73e12de6-94ae-4d5a-9eda-63749d6b2416"]]
+  [1m[36mUser Pluck (0.7ms)[0m  [1m[34mSELECT "users"."email" FROM "users"[0m
+Started POST "/api/users" for 127.0.0.1 at 2022-04-16 19:54:25 -0300
+Processing by Api::UsersController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"user", "attributes"=>{"name"=>"Keslley", "email"=>"keslley@getninja.dev", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}}
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mUser Exists? (4.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "keslley@getninja.dev"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "keslley@getninja.dev"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:22:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/classes/CRUDManagement/create.rb:22:in `create'
+  [1m[36mUser Create (1.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "keslley@getninja.dev"], ["name", "Keslley"], ["encrypted_password", "$2a$12$liSGISFQN6wmr9FMTTCfXeH0ysJIKk2uqF2fn/q5N6SLB8pa.j2je"], ["created_at", "2022-04-16 22:54:32.970979"], ["updated_at", "2022-04-16 22:54:32.970979"]]
+  ↳ app/classes/CRUDManagement/create.rb:22:in `create'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/classes/CRUDManagement/create.rb:22:in `create'
+Completed 201 Created in 7371ms (Views: 2.8ms | ActiveRecord: 22.4ms | Allocations: 18930)
+
+
+Started POST "/api/users" for 127.0.0.1 at 2022-04-16 19:54:37 -0300
+Processing by Api::UsersController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"user", "attributes"=>{"name"=>"Keslley", "email"=>"keslley@getninja.dev", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}}
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "keslley@getninja.dev"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+Completed 422 Unprocessable Entity in 4196ms (Views: 273.7ms | ActiveRecord: 0.9ms | Allocations: 342757)
+
+
+Started POST "/api/users" for 127.0.0.1 at 2022-04-16 19:56:09 -0300
+Processing by Api::UsersController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"user", "attributes"=>{"name"=>"Keslley", "email"=>"keslley@getninja.dev", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}}
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "keslley@getninja.dev"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+Completed 422 Unprocessable Entity in 8651ms (Views: 142.7ms | ActiveRecord: 10.5ms | Allocations: 344092)
+
+
+Started POST "/api/users" for 127.0.0.1 at 2022-04-16 19:56:37 -0300
+Processing by Api::UsersController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"user", "attributes"=>{"name"=>"Keslley", "email"=>"keslley@getninja.dev", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}}
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "keslley@getninja.dev"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+Completed 422 Unprocessable Entity in 353ms (Views: 82.8ms | ActiveRecord: 7.0ms | Allocations: 338584)
+
+
+Started POST "/api/users" for 127.0.0.1 at 2022-04-16 19:56:48 -0300
+Processing by Api::UsersController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"user", "attributes"=>{"name"=>"Keslley", "email"=>"keslley@getninja.dev", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}}
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "keslley@getninja.dev"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+Completed 422 Unprocessable Entity in 366ms (Views: 111.5ms | ActiveRecord: 7.5ms | Allocations: 338719)
+
+
+Started POST "/api/users" for 127.0.0.1 at 2022-04-16 19:56:54 -0300
+Processing by Api::UsersController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"user", "attributes"=>{"name"=>"Keslley", "email"=>"keslley@getninja.dev", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}}
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "keslley@getninja.dev"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+Completed 422 Unprocessable Entity in 338ms (Views: 82.4ms | ActiveRecord: 6.2ms | Allocations: 338549)
+
+
+Started POST "/api/users" for 127.0.0.1 at 2022-04-16 19:57:02 -0300
+Processing by Api::UsersController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"user", "attributes"=>{"email"=>"keslley@getninja.dev", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}}
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "keslley@getninja.dev"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+Completed 422 Unprocessable Entity in 286ms (Views: 0.9ms | ActiveRecord: 0.5ms | Allocations: 2318)
+
+
+Started POST "/api/users" for 127.0.0.1 at 2022-04-16 19:58:30 -0300
+Processing by Api::UsersController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"user", "attributes"=>{"email"=>"keslley@getninja.dev", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}}
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "keslley@getninja.dev"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+Completed 422 Unprocessable Entity in 386ms (Views: 130.3ms | ActiveRecord: 5.8ms | Allocations: 339075)
+
+
+Started POST "/api/users" for 127.0.0.1 at 2022-04-16 19:59:33 -0300
+Processing by Api::UsersController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"user", "attributes"=>{"email"=>"keslley@getninja.dev", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}}
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "keslley@getninja.dev"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+Completed 422 Unprocessable Entity in 354ms (Views: 88.8ms | ActiveRecord: 8.4ms | Allocations: 338810)
+
+
+Started GET "/api/users" for 127.0.0.1 at 2022-04-16 20:02:59 -0300
+Processing by Api::UsersController#index as JSONAPI
+Completed 401 Unauthorized in 14ms (ActiveRecord: 0.0ms | Allocations: 2466)
+
+
+Started POST "/api/login" for 127.0.0.1 at 2022-04-16 20:04:51 -0300
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"user", "attributes"=>{"login"=>"user1@getninja.dev", "password"=>"[FILTERED]"}}}}
+[31mUnpermitted parameter: :type. Context: {  }[0m
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "user1@getninja.dev"], ["LIMIT", 1]]
+  ↳ app/classes/user_login.rb:43:in `load_user'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/sessions_controller.rb:11:in `block in create'
+  [1m[36mUser Update (1.1ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["sign_in_count", 2], ["current_sign_in_at", "2022-04-16 23:04:51.325614"], ["updated_at", "2022-04-16 23:04:51.325839"], ["id", "fca413e4-1729-417f-9baf-04eaa720150e"]]
+  ↳ app/controllers/api/sessions_controller.rb:11:in `block in create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/sessions_controller.rb:11:in `block in create'
+Completed 200 OK in 285ms (Views: 0.9ms | ActiveRecord: 2.9ms | Allocations: 5612)
+
+
+Started GET "/api/users" for 127.0.0.1 at 2022-04-16 20:05:00 -0300
+Processing by Api::UsersController#index as JSONAPI
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "fca413e4-1729-417f-9baf-04eaa720150e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 3], ["current_sign_in_at", "2022-04-16 23:05:00.853622"], ["last_sign_in_at", "2022-04-16 23:04:51.325614"], ["updated_at", "2022-04-16 23:05:00.853976"], ["id", "fca413e4-1729-417f-9baf-04eaa720150e"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Count (5.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/modules/pagination/schema.rb:22:in `block in pages'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1 OFFSET $2[0m  [["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/modules/common_api_options.rb:42:in `block in index_callback_whit_page_links'
+Completed 200 OK in 36ms (Views: 3.4ms | ActiveRecord: 7.9ms | Allocations: 9467)
+
+
+Started PATCH "/api/users/f3b2ff17-b671-4cd1-86c4-94fe5b7f6eaa" for 127.0.0.1 at 2022-04-16 20:05:41 -0300
+  
+AbstractController::ActionNotFound (The action 'update' could not be found for Api::UsersController):
+  
+actionpack (7.0.0) lib/abstract_controller/base.rb:146:in `process'
+actionpack (7.0.0) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.0) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.0) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.0) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.0) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.0) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.0) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.0) lib/action_dispatch/routing/route_set.rb:850:in `call'
+warden-jwt_auth (0.6.0) lib/warden/jwt_auth/middleware/token_dispatcher.rb:20:in `call'
+warden-jwt_auth (0.6.0) lib/warden/jwt_auth/middleware/revocation_manager.rb:21:in `call'
+rack (2.2.3) lib/rack/builder.rb:244:in `call'
+warden-jwt_auth (0.6.0) lib/warden/jwt_auth/middleware.rb:22:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (7.0.0) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.0) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.0) lib/rails/rack/logger.rb:36:in `call_app'
+railties (7.0.0) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.0) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.0) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.0) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.0) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (7.0.0) lib/rails/engine.rb:530:in `call'
+puma (5.5.2) lib/puma/configuration.rb:249:in `call'
+puma (5.5.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.5.2) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.5.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.5.2) lib/puma/server.rb:447:in `process_client'
+puma (5.5.2) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started PATCH "/api/users/f3b2ff17-b671-4cd1-86c4-94fe5b7f6eaa" for 127.0.0.1 at 2022-04-16 20:07:38 -0300
+Processing by Api::UsersController#update as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"users", "attributes"=>{"name"=>"Keslley JC"}}}, "id"=>"f3b2ff17-b671-4cd1-86c4-94fe5b7f6eaa"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "fca413e4-1729-417f-9baf-04eaa720150e"], ["LIMIT", 1]]
+  ↳ (eval):1:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ (eval):1:in `update'
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 4], ["current_sign_in_at", "2022-04-16 23:07:45.158301"], ["last_sign_in_at", "2022-04-16 23:05:00.853622"], ["updated_at", "2022-04-16 23:07:45.158605"], ["id", "fca413e4-1729-417f-9baf-04eaa720150e"]]
+  ↳ (eval):1:in `update'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ (eval):1:in `update'
+Completed 400 Bad Request in 16261ms (ActiveRecord: 9.0ms | Allocations: 13749)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/api/users_controller.rb:40:in `update_user_params'
+app/controllers/api/users_controller.rb:27:in `update'
+Started PATCH "/api/users/f3b2ff17-b671-4cd1-86c4-94fe5b7f6eaa" for 127.0.0.1 at 2022-04-16 20:08:05 -0300
+Processing by Api::UsersController#update as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"users", "attributes"=>{"name"=>"Keslley JC"}}}, "id"=>"f3b2ff17-b671-4cd1-86c4-94fe5b7f6eaa"}
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "fca413e4-1729-417f-9baf-04eaa720150e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:29:in `update'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 5], ["current_sign_in_at", "2022-04-16 23:08:07.494357"], ["last_sign_in_at", "2022-04-16 23:07:45.158301"], ["updated_at", "2022-04-16 23:08:07.495022"], ["id", "fca413e4-1729-417f-9baf-04eaa720150e"]]
+  ↳ app/controllers/api/users_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:29:in `update'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["id", "fca413e4-1729-417f-9baf-04eaa720150e"], ["id", "f3b2ff17-b671-4cd1-86c4-94fe5b7f6eaa"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/update.rb:37:in `load_object'
+Completed 422 Unprocessable Entity in 1506ms (Views: 2.1ms | ActiveRecord: 11.8ms | Allocations: 13346)
+
+
+Started GET "/api/users/fca413e4-1729-417f-9baf-04eaa720150e" for 127.0.0.1 at 2022-04-16 20:09:50 -0300
+Processing by Api::UsersController#show as */*
+  Parameters: {"id"=>"fca413e4-1729-417f-9baf-04eaa720150e"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "fca413e4-1729-417f-9baf-04eaa720150e"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/show.rb:32:in `load_object'
+[31mUnpermitted parameter: :id. Context: { controller: Api::UsersController, action: show, request: #<ActionDispatch::Request:0x0000000132e0c508>, params: {"controller"=>"api/users", "action"=>"show", "id"=>"fca413e4-1729-417f-9baf-04eaa720150e"} }[0m
+Completed 200 OK in 17ms (Views: 1.8ms | ActiveRecord: 8.2ms | Allocations: 6639)
+
+
+Started GET "/api/users/fca413e4-1729-417f-9baf-04eaa720150e" for 127.0.0.1 at 2022-04-16 20:10:40 -0300
+Processing by Api::UsersController#show as */*
+  Parameters: {"id"=>"fca413e4-1729-417f-9baf-04eaa720150e"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "fca413e4-1729-417f-9baf-04eaa720150e"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/show.rb:32:in `load_object'
+[31mUnpermitted parameter: :id. Context: { controller: Api::UsersController, action: show, request: #<ActionDispatch::Request:0x000000011320c600>, params: {"controller"=>"api/users", "action"=>"show", "id"=>"fca413e4-1729-417f-9baf-04eaa720150e"} }[0m
+Completed 200 OK in 15ms (Views: 0.9ms | ActiveRecord: 7.6ms | Allocations: 6560)
+
+
+Started GET "/api/users" for 127.0.0.1 at 2022-04-16 20:10:43 -0300
+Processing by Api::UsersController#index as JSONAPI
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "fca413e4-1729-417f-9baf-04eaa720150e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 6], ["current_sign_in_at", "2022-04-16 23:10:43.390445"], ["last_sign_in_at", "2022-04-16 23:08:07.494357"], ["updated_at", "2022-04-16 23:10:43.391006"], ["id", "fca413e4-1729-417f-9baf-04eaa720150e"]]
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/modules/pagination/schema.rb:22:in `block in pages'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1 OFFSET $2[0m  [["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/modules/common_api_options.rb:42:in `block in index_callback_whit_page_links'
+Completed 200 OK in 27ms (Views: 3.7ms | ActiveRecord: 5.2ms | Allocations: 8680)
+
+
+Started PATCH "/api/users/f3b2ff17-b671-4cd1-86c4-94fe5b7f6eaa" for 127.0.0.1 at 2022-04-16 20:10:45 -0300
+Processing by Api::UsersController#update as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"users", "attributes"=>{"name"=>"Keslley JC"}}}, "id"=>"f3b2ff17-b671-4cd1-86c4-94fe5b7f6eaa"}
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "fca413e4-1729-417f-9baf-04eaa720150e"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:37:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:37:in `update'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 7], ["current_sign_in_at", "2022-04-16 23:10:45.967641"], ["last_sign_in_at", "2022-04-16 23:10:43.390445"], ["updated_at", "2022-04-16 23:10:45.968633"], ["id", "fca413e4-1729-417f-9baf-04eaa720150e"]]
+  ↳ app/controllers/api/users_controller.rb:37:in `update'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:37:in `update'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["id", "fca413e4-1729-417f-9baf-04eaa720150e"], ["id", "f3b2ff17-b671-4cd1-86c4-94fe5b7f6eaa"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/update.rb:37:in `load_object'
+Completed 422 Unprocessable Entity in 168ms (Views: 152.9ms | ActiveRecord: 1.9ms | Allocations: 336998)
+
+
+Started POST "/api/login" for 127.0.0.1 at 2022-04-16 20:10:52 -0300
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"user", "attributes"=>{"login"=>"user1@getninja.dev", "password"=>"[FILTERED]"}}}}
+[31mUnpermitted parameter: :type. Context: {  }[0m
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "user1@getninja.dev"], ["LIMIT", 1]]
+  ↳ app/classes/user_login.rb:43:in `load_user'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/sessions_controller.rb:11:in `block in create'
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 8], ["current_sign_in_at", "2022-04-16 23:10:52.744099"], ["last_sign_in_at", "2022-04-16 23:10:45.967641"], ["updated_at", "2022-04-16 23:10:52.744225"], ["id", "fca413e4-1729-417f-9baf-04eaa720150e"]]
+  ↳ app/controllers/api/sessions_controller.rb:11:in `block in create'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/sessions_controller.rb:11:in `block in create'
+Completed 200 OK in 284ms (Views: 0.3ms | ActiveRecord: 2.9ms | Allocations: 5155)
+
+
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateRooms (20220416231604)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.6ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "description" character varying, "number" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220416231604"]]
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateRooms (20220416231604)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.8ms)[0m  [1m[35mDROP TABLE "rooms"[0m
+  [1m[36mActiveRecord::SchemaMigration Delete All (0.5ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20220416231604"]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateRooms (20220416231604)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.6ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "description" character varying, "number" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220416231604"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/api/rooms" for 127.0.0.1 at 2022-04-16 22:26:28 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::RoomsController#index as JSONAPI
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "fca413e4-1729-417f-9baf-04eaa720150e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 9], ["current_sign_in_at", "2022-04-17 01:26:28.787870"], ["last_sign_in_at", "2022-04-16 23:10:52.744099"], ["updated_at", "2022-04-17 01:26:28.789124"], ["id", "fca413e4-1729-417f-9baf-04eaa720150e"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRoom Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms"[0m
+  ↳ app/modules/pagination/schema.rb:22:in `block in pages'
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" LIMIT $1 OFFSET $2[0m  [["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/modules/common_api_options.rb:42:in `block in index_callback_whit_page_links'
+Completed 200 OK in 67ms (Views: 3.1ms | ActiveRecord: 9.0ms | Allocations: 12937)
+
+
+Started GET "/api/rooms/fca413e4-1729-417f-9baf-04eaa720150e" for 127.0.0.1 at 2022-04-16 22:26:34 -0300
+Processing by Api::RoomsController#show as */*
+  Parameters: {"id"=>"fca413e4-1729-417f-9baf-04eaa720150e"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "fca413e4-1729-417f-9baf-04eaa720150e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 10], ["current_sign_in_at", "2022-04-17 01:26:34.878017"], ["last_sign_in_at", "2022-04-17 01:26:28.787870"], ["updated_at", "2022-04-17 01:26:34.882100"], ["id", "fca413e4-1729-417f-9baf-04eaa720150e"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "fca413e4-1729-417f-9baf-04eaa720150e"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/show.rb:32:in `load_object'
+Completed 422 Unprocessable Entity in 348ms (Views: 288.7ms | ActiveRecord: 3.0ms | Allocations: 337057)
+
+
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (6.6ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala de reuniões 1"], ["number", 1], ["created_at", "2022-04-17 01:27:23.385775"], ["updated_at", "2022-04-17 01:27:23.385775"]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.4ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala de reuniões 2"], ["number", 2], ["created_at", "2022-04-17 01:27:31.156211"], ["updated_at", "2022-04-17 01:27:31.156211"]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.6ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala de reuniões 3"], ["number", 3], ["created_at", "2022-04-17 01:27:38.225514"], ["updated_at", "2022-04-17 01:27:38.225514"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.6ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala de reuniões 4"], ["number", 4], ["created_at", "2022-04-17 01:27:44.345571"], ["updated_at", "2022-04-17 01:27:44.345571"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 5], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.7ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala de reuniões 4"], ["number", 5], ["created_at", "2022-04-17 01:31:50.768114"], ["updated_at", "2022-04-17 01:31:50.768114"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 0], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+Started GET "/api/rooms" for 127.0.0.1 at 2022-04-16 22:32:51 -0300
+Processing by Api::RoomsController#index as JSONAPI
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "fca413e4-1729-417f-9baf-04eaa720150e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 11], ["current_sign_in_at", "2022-04-17 01:32:52.084725"], ["last_sign_in_at", "2022-04-17 01:26:34.878017"], ["updated_at", "2022-04-17 01:32:52.085806"], ["id", "fca413e4-1729-417f-9baf-04eaa720150e"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRoom Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms"[0m
+  ↳ app/modules/pagination/schema.rb:22:in `block in pages'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" LIMIT $1 OFFSET $2[0m  [["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/modules/common_api_options.rb:42:in `block in index_callback_whit_page_links'
+Completed 500 Internal Server Error in 95ms (ActiveRecord: 20.6ms | Allocations: 16499)
+
+
+  
+JSONAPI::Serializable::UndefinedSerializableClass (No serializable class defined for Room):
+  
+app/modules/common_api_options.rb:42:in `block in index_callback_whit_page_links'
+app/classes/CRUDManagement/index.rb:24:in `index'
+app/classes/CRUDManagement/index.rb:9:in `perform'
+app/controllers/api/rooms_controller.rb:6:in `index'
+Started GET "/api/rooms" for 127.0.0.1 at 2022-04-16 22:33:21 -0300
+Processing by Api::RoomsController#index as JSONAPI
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "fca413e4-1729-417f-9baf-04eaa720150e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 12], ["current_sign_in_at", "2022-04-17 01:33:21.311344"], ["last_sign_in_at", "2022-04-17 01:32:52.084725"], ["updated_at", "2022-04-17 01:33:21.312422"], ["id", "fca413e4-1729-417f-9baf-04eaa720150e"]]
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRoom Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms"[0m
+  ↳ app/modules/pagination/schema.rb:22:in `block in pages'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" LIMIT $1 OFFSET $2[0m  [["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/modules/common_api_options.rb:42:in `block in index_callback_whit_page_links'
+Completed 200 OK in 84ms (Views: 9.9ms | ActiveRecord: 17.4ms | Allocations: 15082)
+
+
+Started GET "/api/rooms/6a8a23d0-050f-49c2-abdb-8c864c311fc7" for 127.0.0.1 at 2022-04-16 22:33:30 -0300
+Processing by Api::RoomsController#show as */*
+  Parameters: {"id"=>"6a8a23d0-050f-49c2-abdb-8c864c311fc7"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "fca413e4-1729-417f-9baf-04eaa720150e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 13], ["current_sign_in_at", "2022-04-17 01:33:31.016193"], ["last_sign_in_at", "2022-04-17 01:33:21.311344"], ["updated_at", "2022-04-17 01:33:31.019672"], ["id", "fca413e4-1729-417f-9baf-04eaa720150e"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "6a8a23d0-050f-49c2-abdb-8c864c311fc7"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/show.rb:32:in `load_object'
+[31mUnpermitted parameter: :id. Context: { controller: Api::RoomsController, action: show, request: #<ActionDispatch::Request:0x00000001528494e8>, params: {"controller"=>"api/rooms", "action"=>"show", "id"=>"6a8a23d0-050f-49c2-abdb-8c864c311fc7"} }[0m
+Completed 200 OK in 75ms (Views: 1.0ms | ActiveRecord: 2.3ms | Allocations: 8414)
+
+
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateSchedules (20220417015606)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (19.8ms)[0m  [1m[35mCREATE TABLE "schedules" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "room_id" uuid, "user_id" uuid, "start_time" timestamp(6), "duration" character varying, "end_time" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_f2fe7b2133"
+FOREIGN KEY ("room_id")
+  REFERENCES "rooms" ("id")
+ ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT "fk_rails_3c900465fa"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+ ON DELETE CASCADE ON UPDATE CASCADE)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_room_id" ON "schedules" ("room_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_user_id" ON "schedules" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220417015606"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (72.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "desafio_getninja_development"[0m
+  [1m[35m (41.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "desafio_getninja_test"[0m
+  [1m[35m (175.9ms)[0m  [1m[35mCREATE DATABASE "desafio_getninja_development" ENCODING = 'unicode'[0m
+  [1m[35m (64.2ms)[0m  [1m[35mCREATE DATABASE "desafio_getninja_test" ENCODING = 'unicode'[0m
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20210806180518)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "email" character varying DEFAULT '' NOT NULL, "name" character varying, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying, "last_sign_in_ip" character varying, "failed_attempts" integer DEFAULT 0 NOT NULL, "unlock_token" character varying, "locked_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_unlock_token" ON "users" ("unlock_token")[0m
+  [1m[35mSQL (14.9ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "pgcrypto"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210806180518"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRooms (20220416231604)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "description" character varying, "number" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220416231604"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSchedules (20220417015606)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "schedules" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "room_id" uuid NOT NULL, "user_id" uuid NOT NULL, "start_time" timestamp(6), "duration" character varying, "end_time" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_f2fe7b2133"
+FOREIGN KEY ("room_id")
+  REFERENCES "rooms" ("id")
+ ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT "fk_rails_3c900465fa"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+ ON DELETE CASCADE ON UPDATE CASCADE)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_room_id" ON "schedules" ("room_id")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_user_id" ON "schedules" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220417015606"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-04-17 02:04:55.794017"], ["updated_at", "2022-04-17 02:04:55.794017"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateSchedules (20220417015606)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.2ms)[0m  [1m[35mDROP TABLE "schedules"[0m
+  [1m[36mActiveRecord::SchemaMigration Delete All (0.6ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20220417015606"]]
+  [1m[36mTRANSACTION (7.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateSchedules (20220417015606)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE TABLE "schedules" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "room_id" uuid NOT NULL, "user_id" uuid NOT NULL, "start_time" timestamp(6), "duration" character varying, "end_time" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_f2fe7b2133"
+FOREIGN KEY ("room_id")
+  REFERENCES "rooms" ("id")
+ ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT "fk_rails_3c900465fa"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+ ON DELETE CASCADE ON UPDATE CASCADE)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_room_id" ON "schedules" ("room_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_user_id" ON "schedules" ("user_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_start_time" ON "schedules" ("start_time")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_end_time" ON "schedules" ("end_time")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220417015606"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateSchedules (20220417015606)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.2ms)[0m  [1m[35mDROP INDEX  "index_schedules_on_end_time"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP INDEX  "index_schedules_on_start_time"[0m
+  [1m[35m (8.2ms)[0m  [1m[35mDROP TABLE "schedules"[0m
+  [1m[36mActiveRecord::SchemaMigration Delete All (0.6ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20220417015606"]]
+  [1m[36mTRANSACTION (8.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAgendas (20220417015606)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (22.5ms)[0m  [1m[35mCREATE TABLE "agendas" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "room_id" uuid NOT NULL, "user_id" uuid NOT NULL, "start_time" timestamp(6), "duration" character varying, "end_time" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_09418b9137"
+FOREIGN KEY ("room_id")
+  REFERENCES "rooms" ("id")
+ ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT "fk_rails_91c37ffc37"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+ ON DELETE CASCADE ON UPDATE CASCADE)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_agendas_on_room_id" ON "agendas" ("room_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_agendas_on_user_id" ON "agendas" ("user_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_agendas_on_start_time" ON "agendas" ("start_time")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_agendas_on_end_time" ON "agendas" ("end_time")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220417015606"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (5.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateSchedules (20220417015606)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAgendas (20220417015606)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP INDEX  "index_agendas_on_end_time"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP INDEX  "index_agendas_on_start_time"[0m
+  [1m[35m (4.2ms)[0m  [1m[35mDROP TABLE "agendas"[0m
+  [1m[36mActiveRecord::SchemaMigration Delete All (0.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20220417015606"]]
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateSchedules (20220417015606)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE TABLE "schedules" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "room_id" uuid NOT NULL, "user_id" uuid NOT NULL, "start_time" timestamp(6), "duration" character varying, "end_time" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_f2fe7b2133"
+FOREIGN KEY ("room_id")
+  REFERENCES "rooms" ("id")
+ ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT "fk_rails_3c900465fa"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+ ON DELETE CASCADE ON UPDATE CASCADE)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_room_id" ON "schedules" ("room_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_user_id" ON "schedules" ("user_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_start_time" ON "schedules" ("start_time")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_end_time" ON "schedules" ("end_time")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220417015606"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mRoom Load (1.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" ORDER BY "rooms"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 1], ["LIMIT", 1]]
+  [1m[36mRoom Create (1.7ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala 1"], ["number", 1], ["created_at", "2022-04-18 23:05:16.416361"], ["updated_at", "2022-04-18 23:05:16.416361"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 2], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.4ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala 2"], ["number", 2], ["created_at", "2022-04-18 23:05:21.647725"], ["updated_at", "2022-04-18 23:05:21.647725"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 3], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala 3"], ["number", 3], ["created_at", "2022-04-18 23:05:25.988573"], ["updated_at", "2022-04-18 23:05:25.988573"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 4], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala 4"], ["number", 4], ["created_at", "2022-04-18 23:05:29.883785"], ["updated_at", "2022-04-18 23:05:29.883785"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "keslley@nullbug.dev"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "keslley@nullbug.dev"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "keslley@nullbug.dev"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "keslley@nullbug.dev"], ["name", "Keslley"], ["encrypted_password", "$2a$12$NZon.KnJDHlPvpdx3Z9kCu2fCiYM02DICaRi7jii9EIj/dwZl5tNG"], ["created_at", "2022-04-18 23:06:22.291807"], ["updated_at", "2022-04-18 23:06:22.291807"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" ORDER BY "rooms"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "2256576f-7bad-494d-8de4-d9330508925f"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mSchedule Load (4.2ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time >= '2022-04-18T23:24:19+00:00' or end_time <= '2022-04-18T23:24:19+00:00')[0m
+  [1m[36mSchedule Load (0.6ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time >= '2022-04-18T23:25:36+00:00' or start_time <= '2022-04-18T23:25:36+00:00' or end_time <= '2022-04-18T23:25:36+00:00' or end_time >= '2022-04-18T23:25:36+00:00')[0m
+  [1m[36mSchedule Load (0.7ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time >= '2022-04-18T23:25:55+00:00' or start_time <= '2022-04-18T23:25:55+00:00' or end_time <= '2022-04-18T23:25:55+00:00' or end_time >= '2022-04-18T23:25:55+00:00')[0m
+  [1m[36mSchedule Load (0.5ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" ORDER BY "schedules"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mSchedule Load (0.8ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" ORDER BY "schedules"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mRoom Load (0.6ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" ORDER BY "rooms"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "2256576f-7bad-494d-8de4-d9330508925f"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mRoom Load (0.7ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" ORDER BY "rooms"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "2256576f-7bad-494d-8de4-d9330508925f"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" ORDER BY "rooms"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "2256576f-7bad-494d-8de4-d9330508925f"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" ORDER BY "rooms"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "2256576f-7bad-494d-8de4-d9330508925f"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mRoom Load (0.8ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" ORDER BY "rooms"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSchedule Create (5.1ms)[0m  [1m[32mINSERT INTO "schedules" ("room_id", "user_id", "start_time", "duration", "end_time", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["room_id", "2256576f-7bad-494d-8de4-d9330508925f"], ["user_id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["start_time", "2022-04-18 18:13:56.133294"], ["duration", "1"], ["end_time", "2022-04-19 03:13:56.133578"], ["created_at", "2022-04-18 23:14:04.199752"], ["updated_at", "2022-04-18 23:14:04.199752"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mSchedule Load (0.7ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" ORDER BY "schedules"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" ORDER BY "rooms"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSchedule Create (0.7ms)[0m  [1m[32mINSERT INTO "schedules" ("room_id", "user_id", "start_time", "duration", "end_time", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["room_id", "2256576f-7bad-494d-8de4-d9330508925f"], ["user_id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["start_time", "2022-04-18 23:14:28.253668"], ["duration", "1"], ["end_time", "2022-04-19 00:14:28.253743"], ["created_at", "2022-04-18 23:14:32.997202"], ["updated_at", "2022-04-18 23:14:32.997202"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mSchedule Load (1.4ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time >= '2022-04-18T23:29:43+00:00' or start_time <= '2022-04-18T23:29:43+00:00' or end_time <= '2022-04-18T23:29:43+00:00' or end_time >= '2022-04-18T23:29:43+00:00')[0m
+  [1m[36mSchedule Load (3.5ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time::date = '2022-04-18')[0m
+  [1m[36mSchedule Load (0.6ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time::date = '2022-04-18')[0m
+  [1m[36mSchedule Load (2.4ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time >= '2022-04-19T00:39:08+00:00')[0m
+  [1m[36mSchedule Load (2.9ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time::date = '2022-04-19)[0m
+  [1m[36mSchedule Load (1.1ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time::date = '2022-04-19')[0m
+  [1m[36mSchedule Load (0.4ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" ORDER BY "schedules"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mSchedule Load (0.7ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time::date = '2022-04-18')[0m
+Started GET "/" for 127.0.0.1 at 2022-04-18 22:17:05 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/keslleycapelin/.asdf/installs/ruby/3.0.3/lib/ruby/gems/3.0.0/gems/railties-7.0.0/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/keslleycapelin/.asdf/installs/ruby/3.0.3/lib/ruby/gems/3.0.0/gems/railties-7.0.0/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.6ms | Allocations: 577)
+Completed 200 OK in 13ms (Views: 5.7ms | ActiveRecord: 0.0ms | Allocations: 4934)
+
+
+Started GET "/info" for 127.0.0.1 at 2022-04-18 22:17:09 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/info"):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-04-18 22:17:09 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/rails/info/routes?path=rooms" for 127.0.0.1 at 2022-04-18 22:17:12 -0300
+Processing by Rails::InfoController#routes as */*
+  Parameters: {"path"=>"rooms"}
+Completed 200 OK in 14ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 2622)
+
+
+Started GET "/api/rooms/:room_id/schedules/:id" for 127.0.0.1 at 2022-04-18 22:19:34 -0300
+Processing by Api::SchedulesController#show as */*
+  Parameters: {"room_id"=>":room_id", "id"=>":id"}
+  [1m[36mSchedule Load (1.6ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/show.rb:32:in `load_object'
+Completed 422 Unprocessable Entity in 342ms (Views: 311.6ms | ActiveRecord: 4.6ms | Allocations: 339415)
+
+
+Started POST "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules" for 127.0.0.1 at 2022-04-18 22:40:21 -0300
+Processing by Api::SchedulesController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"schedule", "attributes"=>{"start_time"=>"2022-04-19 13:05:16.416361", "end_time"=>"2022-04-19 13:05:16.416361"}}}, "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"}
+Completed 401 Unauthorized in 4ms (Allocations: 1225)
+
+
+Started POST "/api/login" for 127.0.0.1 at 2022-04-18 22:40:44 -0300
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"user", "attributes"=>{"login"=>"user1@getninja.dev", "password"=>"[FILTERED]"}}}}
+[31mUnpermitted parameter: :type. Context: {  }[0m
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "user1@getninja.dev"], ["LIMIT", 1]]
+  ↳ app/classes/user_login.rb:43:in `load_user'
+Completed 401 Unauthorized in 105ms (Views: 7.9ms | ActiveRecord: 27.1ms | Allocations: 7208)
+
+
+Started POST "/api/login" for 127.0.0.1 at 2022-04-18 22:41:05 -0300
+Error occurred while parsing request parameters.
+Contents:
+
+{
+    "data": {
+        "type": "user",
+        "attributes": {
+            "login": ""keslley@nullbug.dev",
+            "password": "12345678"
+        }
+    }
+}
+Processing by Api::SessionsController#create as JSONAPI
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms | Allocations: 179)
+
+
+  
+ActionDispatch::Http::Parameters::ParseError (Error occurred while parsing request parameters):
+  
+actionpack (7.0.0) lib/action_dispatch/http/parameters.rb:96:in `rescue in parse_formatted_parameters'
+actionpack (7.0.0) lib/action_dispatch/http/parameters.rb:92:in `parse_formatted_parameters'
+actionpack (7.0.0) lib/action_dispatch/http/request.rb:390:in `block in POST'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch_header'
+actionpack (7.0.0) lib/action_dispatch/http/request.rb:389:in `POST'
+actionpack (7.0.0) lib/action_dispatch/http/parameters.rb:55:in `parameters'
+actionpack (7.0.0) lib/action_controller/metal/strong_parameters.rb:1223:in `params'
+jsonapi-rails (0.4.0) lib/jsonapi/rails/controller/deserialization.rb:52:in `block in deserializable_resource'
+activesupport (7.0.0) lib/active_support/callbacks.rb:467:in `instance_exec'
+activesupport (7.0.0) lib/active_support/callbacks.rb:467:in `block in make_lambda'
+activesupport (7.0.0) lib/active_support/callbacks.rb:180:in `block (2 levels) in halting_and_conditional'
+actionpack (7.0.0) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (7.0.0) lib/active_support/callbacks.rb:181:in `block in halting_and_conditional'
+activesupport (7.0.0) lib/active_support/callbacks.rb:595:in `block in invoke_before'
+activesupport (7.0.0) lib/active_support/callbacks.rb:595:in `each'
+activesupport (7.0.0) lib/active_support/callbacks.rb:595:in `invoke_before'
+activesupport (7.0.0) lib/active_support/callbacks.rb:106:in `run_callbacks'
+actionpack (7.0.0) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.0) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.0) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.0) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.0) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.0) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.0) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.0) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.0) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.0) lib/abstract_controller/base.rb:151:in `process'
+actionpack (7.0.0) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.0) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.0) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.0) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.0) lib/action_dispatch/routing/mapper.rb:18:in `block in <class:Constraints>'
+actionpack (7.0.0) lib/action_dispatch/routing/mapper.rb:48:in `serve'
+actionpack (7.0.0) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.0) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.0) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.0) lib/action_dispatch/routing/route_set.rb:850:in `call'
+warden-jwt_auth (0.6.0) lib/warden/jwt_auth/middleware/token_dispatcher.rb:20:in `call'
+warden-jwt_auth (0.6.0) lib/warden/jwt_auth/middleware/revocation_manager.rb:21:in `call'
+rack (2.2.3) lib/rack/builder.rb:244:in `call'
+warden-jwt_auth (0.6.0) lib/warden/jwt_auth/middleware.rb:22:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (7.0.0) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.0) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.0) lib/rails/rack/logger.rb:36:in `call_app'
+railties (7.0.0) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.0) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.0) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.0) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.0) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (7.0.0) lib/rails/engine.rb:530:in `call'
+puma (5.5.2) lib/puma/configuration.rb:249:in `call'
+puma (5.5.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.5.2) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.5.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.5.2) lib/puma/server.rb:447:in `process_client'
+puma (5.5.2) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/api/login" for 127.0.0.1 at 2022-04-18 22:41:10 -0300
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"user", "attributes"=>{"login"=>"keslley@nullbug.dev", "password"=>"[FILTERED]"}}}}
+[31mUnpermitted parameter: :type. Context: {  }[0m
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "keslley@nullbug.dev"], ["LIMIT", 1]]
+  ↳ app/classes/user_login.rb:43:in `load_user'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/sessions_controller.rb:11:in `block in create'
+  [1m[36mUser Update (1.7ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2022-04-19 01:41:10.496511"], ["last_sign_in_at", "2022-04-19 01:41:10.496511"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2022-04-19 01:41:10.497922"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  ↳ app/controllers/api/sessions_controller.rb:11:in `block in create'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/sessions_controller.rb:11:in `block in create'
+Completed 200 OK in 341ms (Views: 1.5ms | ActiveRecord: 4.9ms | Allocations: 15190)
+
+
+Started POST "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules" for 127.0.0.1 at 2022-04-18 22:41:13 -0300
+Processing by Api::SchedulesController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"schedule", "attributes"=>{"start_time"=>"2022-04-19 13:05:16.416361", "end_time"=>"2022-04-19 13:05:16.416361"}}}, "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["sign_in_count", 2], ["current_sign_in_at", "2022-04-19 01:41:13.610940"], ["updated_at", "2022-04-19 01:41:13.612856"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameter: :type. Context: {  }[0m
+Completed 500 Internal Server Error in 20666ms (ActiveRecord: 2.6ms | Allocations: 27026)
+
+
+  
+NameError (uninitialized constant CRUDManagement::CRUDManagemen):
+  
+app/classes/schedule_management/create.rb:4:in `<module:ScheduleManagement>'
+app/classes/schedule_management/create.rb:3:in `<main>'
+app/controllers/api/schedules_controller.rb:24:in `create'
+Started POST "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules" for 127.0.0.1 at 2022-04-18 22:41:44 -0300
+Processing by Api::SchedulesController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"schedule", "attributes"=>{"start_time"=>"2022-04-19 13:05:16.416361", "end_time"=>"2022-04-19 13:05:16.416361"}}}, "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 3], ["current_sign_in_at", "2022-04-19 01:41:44.851380"], ["last_sign_in_at", "2022-04-19 01:41:13.610940"], ["updated_at", "2022-04-19 01:41:44.852708"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mRoom Load (0.8ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "a84e342c-d121-4b46-970b-aafb25da97f8"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+  [1m[36mSchedule Load (2.8ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time::date = '2022-04-19')[0m
+  ↳ app/models/schedule.rb:43:in `validate_schedule'
+Completed 422 Unprocessable Entity in 1028934ms (Views: 0.7ms | ActiveRecord: 32.2ms | Allocations: 128632)
+
+
+Started POST "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules" for 127.0.0.1 at 2022-04-18 22:59:08 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SchedulesController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"schedule", "attributes"=>{"start_time"=>"2022-04-19 13:05:16.416361", "end_time"=>"2022-04-19 14:05:16.416361"}}}, "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 4], ["current_sign_in_at", "2022-04-19 01:59:08.922126"], ["last_sign_in_at", "2022-04-19 01:41:44.851380"], ["updated_at", "2022-04-19 01:59:08.923633"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mRoom Load (0.7ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "a84e342c-d121-4b46-970b-aafb25da97f8"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+  [1m[36mSchedule Load (1.2ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time::date = '2022-04-19')[0m
+  ↳ app/models/schedule.rb:51:in `validate_schedule'
+  [1m[36mCACHE Schedule Load (0.1ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time::date = '2022-04-19')[0m
+  ↳ app/models/schedule.rb:51:in `validate_schedule'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/classes/schedule_management/create.rb:9:in `create'
+  [1m[36mSchedule Create (3.7ms)[0m  [1m[32mINSERT INTO "schedules" ("room_id", "user_id", "start_time", "duration", "end_time", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["room_id", "a84e342c-d121-4b46-970b-aafb25da97f8"], ["user_id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["start_time", "2022-04-19 13:05:16.416361"], ["duration", "3600"], ["end_time", "2022-04-19 14:05:16.416361"], ["created_at", "2022-04-19 01:59:14.905145"], ["updated_at", "2022-04-19 01:59:14.905145"]]
+  ↳ app/classes/schedule_management/create.rb:9:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/classes/schedule_management/create.rb:9:in `create'
+Completed 201 Created in 6055ms (Views: 5.4ms | ActiveRecord: 32.1ms | Allocations: 42278)
+
+
+Started POST "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules" for 127.0.0.1 at 2022-04-18 22:59:58 -0300
+Processing by Api::SchedulesController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"schedule", "attributes"=>{"start_time"=>"2022-04-19 13:05:16.416361", "end_time"=>"2022-04-19 14:05:16.416361"}}}, "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 5], ["current_sign_in_at", "2022-04-19 01:59:59.186911"], ["last_sign_in_at", "2022-04-19 01:59:08.922126"], ["updated_at", "2022-04-19 01:59:59.188276"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mRoom Load (1.0ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "a84e342c-d121-4b46-970b-aafb25da97f8"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+  [1m[36mSchedule Load (0.7ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time::date = '2022-04-19')[0m
+  ↳ app/models/schedule.rb:51:in `validate_schedule'
+Completed 422 Unprocessable Entity in 5233ms (Views: 1.5ms | ActiveRecord: 24.1ms | Allocations: 358644)
+
+
+Started POST "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules" for 127.0.0.1 at 2022-04-18 23:00:21 -0300
+Processing by Api::SchedulesController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"schedule", "attributes"=>{"start_time"=>"2022-04-19 14:00:16.416361", "end_time"=>"2022-04-19 14:35:16.416361"}}}, "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 6], ["current_sign_in_at", "2022-04-19 02:00:21.228109"], ["last_sign_in_at", "2022-04-19 01:59:59.186911"], ["updated_at", "2022-04-19 02:00:21.229223"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "a84e342c-d121-4b46-970b-aafb25da97f8"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+  [1m[36mSchedule Load (0.4ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time::date = '2022-04-19')[0m
+  ↳ app/models/schedule.rb:51:in `validate_schedule'
+Completed 422 Unprocessable Entity in 100ms (Views: 1.2ms | ActiveRecord: 19.1ms | Allocations: 20230)
+
+
+Started POST "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules" for 127.0.0.1 at 2022-04-18 23:00:22 -0300
+Processing by Api::SchedulesController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"schedule", "attributes"=>{"start_time"=>"2022-04-19 14:00:16.416361", "end_time"=>"2022-04-19 14:35:16.416361"}}}, "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (1.0ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 7], ["current_sign_in_at", "2022-04-19 02:00:22.457869"], ["last_sign_in_at", "2022-04-19 02:00:21.228109"], ["updated_at", "2022-04-19 02:00:22.459419"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "a84e342c-d121-4b46-970b-aafb25da97f8"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+  [1m[36mSchedule Load (0.5ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time::date = '2022-04-19')[0m
+  ↳ app/models/schedule.rb:51:in `validate_schedule'
+Completed 422 Unprocessable Entity in 65ms (Views: 1.4ms | ActiveRecord: 3.7ms | Allocations: 7433)
+
+
+Started GET "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules" for 127.0.0.1 at 2022-04-18 23:00:37 -0300
+Processing by Api::SchedulesController#index as JSONAPI
+  Parameters: {"room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 8], ["current_sign_in_at", "2022-04-19 02:00:37.539004"], ["last_sign_in_at", "2022-04-19 02:00:22.457869"], ["updated_at", "2022-04-19 02:00:37.540286"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameter: :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001373398b0>, params: {"controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+[31mUnpermitted parameter: :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001373398b0>, params: {"controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+[31mUnpermitted parameter: :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001373398b0>, params: {"controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+  [1m[36mSchedule Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "schedules"[0m
+  ↳ app/modules/pagination/schema.rb:22:in `block in pages'
+[31mUnpermitted parameter: :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001373398b0>, params: {"controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+  [1m[36mSchedule Load (0.3ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" LIMIT $1 OFFSET $2[0m  [["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/modules/common_api_options.rb:42:in `block in index_callback_whit_page_links'
+Completed 200 OK in 55ms (Views: 7.6ms | ActiveRecord: 2.8ms | Allocations: 8704)
+
+
+Started GET "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules?include=room" for 127.0.0.1 at 2022-04-18 23:01:00 -0300
+Processing by Api::SchedulesController#index as JSONAPI
+  Parameters: {"include"=>"room", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 9], ["current_sign_in_at", "2022-04-19 02:01:00.503281"], ["last_sign_in_at", "2022-04-19 02:00:37.539004"], ["updated_at", "2022-04-19 02:01:00.505971"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameters: :include, :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001272d62e8>, params: {"include"=>"room", "controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+[31mUnpermitted parameters: :include, :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001272d62e8>, params: {"include"=>"room", "controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+[31mUnpermitted parameters: :include, :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001272d62e8>, params: {"include"=>"room", "controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+  [1m[36mSchedule Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "schedules"[0m
+  ↳ app/modules/pagination/schema.rb:22:in `block in pages'
+[31mUnpermitted parameters: :include, :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001272d62e8>, params: {"include"=>"room", "controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+  [1m[36mSchedule Load (0.3ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" LIMIT $1 OFFSET $2[0m  [["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/modules/common_api_options.rb:42:in `block in index_callback_whit_page_links'
+  [1m[36mRoom Load (0.6ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "a84e342c-d121-4b46-970b-aafb25da97f8"], ["LIMIT", 1]]
+  ↳ app/modules/common_api_options.rb:42:in `block in index_callback_whit_page_links'
+Completed 200 OK in 69ms (Views: 14.1ms | ActiveRecord: 3.9ms | Allocations: 8289)
+
+
+Started GET "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules/0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1" for 127.0.0.1 at 2022-04-18 23:01:34 -0300
+Processing by Api::SchedulesController#show as */*
+  Parameters: {"room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 10], ["current_sign_in_at", "2022-04-19 02:01:34.259323"], ["last_sign_in_at", "2022-04-19 02:01:00.503281"], ["updated_at", "2022-04-19 02:01:34.260712"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mSchedule Load (0.3ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."id" = $1 LIMIT $2[0m  [["id", "0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/show.rb:32:in `load_object'
+[31mUnpermitted parameters: :room_id, :id. Context: { controller: Api::SchedulesController, action: show, request: #<ActionDispatch::Request:0x0000000127796fd0>, params: {"controller"=>"api/schedules", "action"=>"show", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"} }[0m
+Completed 200 OK in 68ms (Views: 1.4ms | ActiveRecord: 2.2ms | Allocations: 8418)
+
+
+Started GET "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules/:id?include=room" for 127.0.0.1 at 2022-04-18 23:01:44 -0300
+Processing by Api::SchedulesController#show as */*
+  Parameters: {"include"=>"room", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>":id"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 11], ["current_sign_in_at", "2022-04-19 02:01:45.000986"], ["last_sign_in_at", "2022-04-19 02:01:34.259323"], ["updated_at", "2022-04-19 02:01:45.005147"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mSchedule Load (0.5ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/show.rb:32:in `load_object'
+Completed 422 Unprocessable Entity in 62ms (Views: 3.4ms | ActiveRecord: 2.8ms | Allocations: 5609)
+
+
+Started GET "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules/0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1?include=room" for 127.0.0.1 at 2022-04-18 23:01:56 -0300
+Processing by Api::SchedulesController#show as */*
+  Parameters: {"include"=>"room", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 12], ["current_sign_in_at", "2022-04-19 02:01:56.909424"], ["last_sign_in_at", "2022-04-19 02:01:45.000986"], ["updated_at", "2022-04-19 02:01:56.910869"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mSchedule Load (0.5ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."id" = $1 LIMIT $2[0m  [["id", "0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/show.rb:32:in `load_object'
+[31mUnpermitted parameters: :include, :room_id, :id. Context: { controller: Api::SchedulesController, action: show, request: #<ActionDispatch::Request:0x00000001073704d0>, params: {"include"=>"room", "controller"=>"api/schedules", "action"=>"show", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"} }[0m
+  [1m[36mRoom Load (0.6ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "a84e342c-d121-4b46-970b-aafb25da97f8"], ["LIMIT", 1]]
+  ↳ app/modules/common_api_options.rb:36:in `block in success_callback_default'
+Completed 200 OK in 54ms (Views: 6.2ms | ActiveRecord: 3.0ms | Allocations: 6228)
+
+
+Started GET "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules/0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1?include=room,user" for 127.0.0.1 at 2022-04-18 23:02:02 -0300
+Processing by Api::SchedulesController#show as */*
+  Parameters: {"include"=>"room,user", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 13], ["current_sign_in_at", "2022-04-19 02:02:02.586543"], ["last_sign_in_at", "2022-04-19 02:01:56.909424"], ["updated_at", "2022-04-19 02:02:02.587939"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mSchedule Load (0.4ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."id" = $1 LIMIT $2[0m  [["id", "0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/show.rb:32:in `load_object'
+[31mUnpermitted parameters: :include, :room_id, :id. Context: { controller: Api::SchedulesController, action: show, request: #<ActionDispatch::Request:0x00000001076875b0>, params: {"include"=>"room,user", "controller"=>"api/schedules", "action"=>"show", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"} }[0m
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "a84e342c-d121-4b46-970b-aafb25da97f8"], ["LIMIT", 1]]
+  ↳ app/modules/common_api_options.rb:36:in `block in success_callback_default'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  ↳ app/modules/common_api_options.rb:36:in `block in success_callback_default'
+Completed 200 OK in 56ms (Views: 14.3ms | ActiveRecord: 2.9ms | Allocations: 7444)
+
+
+Started GET "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules?include=room,user" for 127.0.0.1 at 2022-04-18 23:02:07 -0300
+Processing by Api::SchedulesController#index as JSONAPI
+  Parameters: {"include"=>"room,user", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 14], ["current_sign_in_at", "2022-04-19 02:02:07.922635"], ["last_sign_in_at", "2022-04-19 02:02:02.586543"], ["updated_at", "2022-04-19 02:02:07.926012"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameters: :include, :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001077af438>, params: {"include"=>"room,user", "controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+[31mUnpermitted parameters: :include, :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001077af438>, params: {"include"=>"room,user", "controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+[31mUnpermitted parameters: :include, :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001077af438>, params: {"include"=>"room,user", "controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+  [1m[36mSchedule Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "schedules"[0m
+  ↳ app/modules/pagination/schema.rb:22:in `block in pages'
+[31mUnpermitted parameters: :include, :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001077af438>, params: {"include"=>"room,user", "controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+  [1m[36mSchedule Load (0.3ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" LIMIT $1 OFFSET $2[0m  [["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/modules/common_api_options.rb:42:in `block in index_callback_whit_page_links'
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "a84e342c-d121-4b46-970b-aafb25da97f8"], ["LIMIT", 1]]
+  ↳ app/modules/common_api_options.rb:42:in `block in index_callback_whit_page_links'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  ↳ app/modules/common_api_options.rb:42:in `block in index_callback_whit_page_links'
+Completed 200 OK in 75ms (Views: 17.1ms | ActiveRecord: 3.4ms | Allocations: 9111)
+
+
+Started PATCH "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules/0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1" for 127.0.0.1 at 2022-04-18 23:03:05 -0300
+Processing by Api::SchedulesController#update as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"schedule", "attributes"=>{"start_time"=>"2022-04-20 14:00:16.416361", "end_time"=>"2022-04-20 14:35:16.416361"}}}, "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 15], ["current_sign_in_at", "2022-04-19 02:03:06.184092"], ["last_sign_in_at", "2022-04-19 02:02:07.922635"], ["updated_at", "2022-04-19 02:03:06.185195"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mSchedule Load (0.5ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."id" = $1 AND "schedules"."id" = $2 LIMIT $3[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["id", "0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/update.rb:37:in `load_object'
+Completed 422 Unprocessable Entity in 69ms (Views: 1.9ms | ActiveRecord: 12.3ms | Allocations: 13875)
+
+
+Started PATCH "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules/0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1" for 127.0.0.1 at 2022-04-18 23:03:26 -0300
+Processing by Api::SchedulesController#update as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"schedule", "attributes"=>{"start_time"=>"2022-04-20 14:00:16.416361", "end_time"=>"2022-04-20 14:35:16.416361"}}}, "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 16], ["current_sign_in_at", "2022-04-19 02:03:26.240562"], ["last_sign_in_at", "2022-04-19 02:03:06.184092"], ["updated_at", "2022-04-19 02:03:26.241900"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mSchedule Load (0.5ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."id" = $1 AND "schedules"."id" = $2 LIMIT $3[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["id", "0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/update.rb:37:in `load_object'
+Completed 422 Unprocessable Entity in 52ms (Views: 2.2ms | ActiveRecord: 2.5ms | Allocations: 5819)
+
+
+Started PATCH "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules/0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1" for 127.0.0.1 at 2022-04-18 23:03:42 -0300
+Processing by Api::SchedulesController#update as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"schedule", "attributes"=>{"start_time"=>"2022-04-20 14:00:16.416361", "end_time"=>"2022-04-20 14:35:16.416361"}}}, "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 17], ["current_sign_in_at", "2022-04-19 02:03:42.507503"], ["last_sign_in_at", "2022-04-19 02:03:26.240562"], ["updated_at", "2022-04-19 02:03:42.508811"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mSchedule Load (0.6ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."user_id" = $1 AND "schedules"."id" = $2 LIMIT $3[0m  [["user_id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["id", "0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/update.rb:37:in `load_object'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "a84e342c-d121-4b46-970b-aafb25da97f8"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/update.rb:41:in `instance_validations'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/update.rb:41:in `instance_validations'
+  [1m[36mSchedule Load (0.4ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time::date = '2022-04-20')[0m
+  ↳ app/models/schedule.rb:51:in `validate_schedule'
+  [1m[36mCACHE Schedule Load (0.0ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time::date = '2022-04-20')[0m
+  ↳ app/models/schedule.rb:51:in `validate_schedule'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/classes/CRUDManagement/update.rb:27:in `update'
+  [1m[36mSchedule Update (0.5ms)[0m  [1m[33mUPDATE "schedules" SET "start_time" = $1, "end_time" = $2, "updated_at" = $3 WHERE "schedules"."id" = $4[0m  [["start_time", "2022-04-20 14:00:16.416361"], ["end_time", "2022-04-20 14:35:16.416361"], ["updated_at", "2022-04-19 02:03:45.244640"], ["id", "0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"]]
+  ↳ app/classes/CRUDManagement/update.rb:27:in `update'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/classes/CRUDManagement/update.rb:27:in `update'
+[31mUnpermitted parameters: :_jsonapi, :room_id, :id, :schedule. Context: { controller: Api::SchedulesController, action: update, request: #<ActionDispatch::Request:0x0000000112a158e8>, params: {"_jsonapi"=>{"data"=>{"type"=>"schedule", "attributes"=>{"start_time"=>"2022-04-20 14:00:16.416361", "end_time"=>"2022-04-20 14:35:16.416361"}}}, "controller"=>"api/schedules", "action"=>"update", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"} }[0m
+Completed 200 OK in 2795ms (Views: 2.7ms | ActiveRecord: 26.2ms | Allocations: 26249)
+
+
+Started GET "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules/0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1?include=room,user" for 127.0.0.1 at 2022-04-18 23:03:47 -0300
+Processing by Api::SchedulesController#show as */*
+  Parameters: {"include"=>"room,user", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 18], ["current_sign_in_at", "2022-04-19 02:03:47.720501"], ["last_sign_in_at", "2022-04-19 02:03:42.507503"], ["updated_at", "2022-04-19 02:03:47.722950"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mSchedule Load (0.5ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."id" = $1 LIMIT $2[0m  [["id", "0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/show.rb:32:in `load_object'
+[31mUnpermitted parameters: :include, :room_id, :id. Context: { controller: Api::SchedulesController, action: show, request: #<ActionDispatch::Request:0x00000001372f9aa8>, params: {"include"=>"room,user", "controller"=>"api/schedules", "action"=>"show", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"} }[0m
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "a84e342c-d121-4b46-970b-aafb25da97f8"], ["LIMIT", 1]]
+  ↳ app/modules/common_api_options.rb:36:in `block in success_callback_default'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  ↳ app/modules/common_api_options.rb:36:in `block in success_callback_default'
+Completed 200 OK in 71ms (Views: 14.7ms | ActiveRecord: 3.0ms | Allocations: 9003)
+
+
+Started DELETE "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules/0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1" for 127.0.0.1 at 2022-04-18 23:04:07 -0300
+Processing by Api::SchedulesController#destroy as */*
+  Parameters: {"room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"}
+Completed 401 Unauthorized in 5ms (ActiveRecord: 0.0ms | Allocations: 209)
+
+
+Started DELETE "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules/0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1" for 127.0.0.1 at 2022-04-18 23:04:16 -0300
+Processing by Api::SchedulesController#destroy as */*
+  Parameters: {"room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 19], ["current_sign_in_at", "2022-04-19 02:04:16.672320"], ["last_sign_in_at", "2022-04-19 02:03:47.720501"], ["updated_at", "2022-04-19 02:04:16.673931"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 500 Internal Server Error in 113ms (ActiveRecord: 1.8ms | Allocations: 6847)
+
+
+  
+NameError (undefined local variable or method `update_user_params' for #<Api::SchedulesController:0x00000000021048>):
+  
+app/controllers/api/schedules_controller.rb:43:in `destroy'
+Started DELETE "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules/0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1" for 127.0.0.1 at 2022-04-18 23:04:45 -0300
+Processing by Api::SchedulesController#destroy as */*
+  Parameters: {"room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 20], ["current_sign_in_at", "2022-04-19 02:04:45.475655"], ["last_sign_in_at", "2022-04-19 02:04:16.672320"], ["updated_at", "2022-04-19 02:04:45.476906"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mSchedule Load (0.4ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."user_id" = $1 AND "schedules"."id" = $2 LIMIT $3[0m  [["user_id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["id", "0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/destroy.rb:33:in `load_object'
+  [1m[36mSchedule Destroy (0.6ms)[0m  [1m[31mDELETE FROM "schedules" WHERE "schedules"."id" = $1[0m  [["id", "0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"]]
+  ↳ app/classes/CRUDManagement/destroy.rb:23:in `destroy'
+[31mUnpermitted parameters: :room_id, :id. Context: { controller: Api::SchedulesController, action: destroy, request: #<ActionDispatch::Request:0x000000010715dd28>, params: {"controller"=>"api/schedules", "action"=>"destroy", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"} }[0m
+Completed 200 OK in 93ms (Views: 1.7ms | ActiveRecord: 16.1ms | Allocations: 15504)
+
+
+Started GET "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules/0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1?include=room,user" for 127.0.0.1 at 2022-04-18 23:04:49 -0300
+Processing by Api::SchedulesController#show as */*
+  Parameters: {"include"=>"room,user", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 21], ["current_sign_in_at", "2022-04-19 02:04:49.257480"], ["last_sign_in_at", "2022-04-19 02:04:45.475655"], ["updated_at", "2022-04-19 02:04:49.259348"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mSchedule Load (0.7ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."id" = $1 LIMIT $2[0m  [["id", "0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/show.rb:32:in `load_object'
+Completed 422 Unprocessable Entity in 64ms (Views: 4.3ms | ActiveRecord: 2.7ms | Allocations: 6601)
+
+
+Started GET "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules?include=room,user" for 127.0.0.1 at 2022-04-18 23:04:51 -0300
+Processing by Api::SchedulesController#index as JSONAPI
+  Parameters: {"include"=>"room,user", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 22], ["current_sign_in_at", "2022-04-19 02:04:51.631681"], ["last_sign_in_at", "2022-04-19 02:04:49.257480"], ["updated_at", "2022-04-19 02:04:51.632888"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameters: :include, :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001420a2380>, params: {"include"=>"room,user", "controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+[31mUnpermitted parameters: :include, :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001420a2380>, params: {"include"=>"room,user", "controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+[31mUnpermitted parameters: :include, :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001420a2380>, params: {"include"=>"room,user", "controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+  [1m[36mSchedule Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "schedules"[0m
+  ↳ app/modules/pagination/schema.rb:22:in `block in pages'
+[31mUnpermitted parameters: :include, :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001420a2380>, params: {"include"=>"room,user", "controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+  [1m[36mSchedule Load (0.4ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" LIMIT $1 OFFSET $2[0m  [["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/modules/common_api_options.rb:42:in `block in index_callback_whit_page_links'
+Completed 200 OK in 59ms (Views: 6.9ms | ActiveRecord: 2.8ms | Allocations: 7500)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateSchedules (20220417015606)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (17.2ms)[0m  [1m[35mCREATE TABLE "schedules" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "room_id" uuid NOT NULL, "user_id" uuid NOT NULL, "start_time" timestamp(6), "end_time" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_f2fe7b2133"
+FOREIGN KEY ("room_id")
+  REFERENCES "rooms" ("id")
+ ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT "fk_rails_3c900465fa"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+ ON DELETE CASCADE ON UPDATE CASCADE)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_room_id" ON "schedules" ("room_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_user_id" ON "schedules" ("user_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_start_time" ON "schedules" ("start_time")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_end_time" ON "schedules" ("end_time")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220417015606"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (5.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (8213.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "desafio_getninja_development"[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (7.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (8058.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "desafio_getninja_development"[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (7824.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "desafio_getninja_development"[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (63.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "desafio_getninja_development"[0m
+  [1m[35m (37.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "desafio_getninja_test"[0m
+  [1m[35m (164.3ms)[0m  [1m[35mCREATE DATABASE "desafio_getninja_development" ENCODING = 'unicode'[0m
+  [1m[35m (81.5ms)[0m  [1m[35mCREATE DATABASE "desafio_getninja_test" ENCODING = 'unicode'[0m
+  [1m[35m (9.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20210806180518)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "email" character varying DEFAULT '' NOT NULL, "name" character varying, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying, "last_sign_in_ip" character varying, "failed_attempts" integer DEFAULT 0 NOT NULL, "unlock_token" character varying, "locked_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_unlock_token" ON "users" ("unlock_token")[0m
+  [1m[35mSQL (16.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "pgcrypto"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210806180518"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRooms (20220416231604)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "description" character varying, "number" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220416231604"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSchedules (20220417015606)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE TABLE "schedules" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "room_id" uuid NOT NULL, "user_id" uuid NOT NULL, "start_time" timestamp(6), "end_time" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_f2fe7b2133"
+FOREIGN KEY ("room_id")
+  REFERENCES "rooms" ("id")
+ ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT "fk_rails_3c900465fa"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+ ON DELETE CASCADE ON UPDATE CASCADE)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_room_id" ON "schedules" ("room_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_user_id" ON "schedules" ("user_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_start_time" ON "schedules" ("start_time")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_end_time" ON "schedules" ("end_time")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220417015606"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-04-19 03:40:16.555696"], ["updated_at", "2022-04-19 03:40:16.555696"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@getninja.dev"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user2@getninja.dev"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user3@getninja.dev"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user4@getninja.dev"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user5@getninja.dev"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 1], ["LIMIT", 1]]
+  [1m[36mRoom Create (1.0ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala 1"], ["number", 1], ["created_at", "2022-04-19 03:40:22.101421"], ["updated_at", "2022-04-19 03:40:22.101421"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 2], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala 2"], ["number", 2], ["created_at", "2022-04-19 03:40:22.105776"], ["updated_at", "2022-04-19 03:40:22.105776"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 3], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala 3"], ["number", 3], ["created_at", "2022-04-19 03:40:22.108449"], ["updated_at", "2022-04-19 03:40:22.108449"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 4], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala 4"], ["number", 4], ["created_at", "2022-04-19 03:40:22.110882"], ["updated_at", "2022-04-19 03:40:22.110882"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (61.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "desafio_getninja_development"[0m
+  [1m[35m (26.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "desafio_getninja_test"[0m
+  [1m[35m (163.9ms)[0m  [1m[35mCREATE DATABASE "desafio_getninja_development" ENCODING = 'unicode'[0m
+  [1m[35m (49.4ms)[0m  [1m[35mCREATE DATABASE "desafio_getninja_test" ENCODING = 'unicode'[0m
+  [1m[35m (10.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20210806180518)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "email" character varying DEFAULT '' NOT NULL, "name" character varying, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying, "last_sign_in_ip" character varying, "failed_attempts" integer DEFAULT 0 NOT NULL, "unlock_token" character varying, "locked_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_unlock_token" ON "users" ("unlock_token")[0m
+  [1m[35mSQL (13.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "pgcrypto"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210806180518"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRooms (20220416231604)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "description" character varying, "number" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220416231604"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSchedules (20220417015606)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE TABLE "schedules" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "room_id" uuid NOT NULL, "user_id" uuid NOT NULL, "start_time" timestamp(6), "end_time" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_f2fe7b2133"
+FOREIGN KEY ("room_id")
+  REFERENCES "rooms" ("id")
+ ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT "fk_rails_3c900465fa"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+ ON DELETE CASCADE ON UPDATE CASCADE)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_room_id" ON "schedules" ("room_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_user_id" ON "schedules" ("user_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_start_time" ON "schedules" ("start_time")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_end_time" ON "schedules" ("end_time")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220417015606"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-04-19 03:43:32.421577"], ["updated_at", "2022-04-19 03:43:32.421577"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@getninja.dev"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user2@getninja.dev"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user3@getninja.dev"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user4@getninja.dev"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user5@getninja.dev"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 1], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.8ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala 1"], ["number", 1], ["created_at", "2022-04-19 03:43:37.597848"], ["updated_at", "2022-04-19 03:43:37.597848"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 2], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala 2"], ["number", 2], ["created_at", "2022-04-19 03:43:37.601296"], ["updated_at", "2022-04-19 03:43:37.601296"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 3], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala 3"], ["number", 3], ["created_at", "2022-04-19 03:43:37.603785"], ["updated_at", "2022-04-19 03:43:37.603785"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 4], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala 4"], ["number", 4], ["created_at", "2022-04-19 03:43:37.606100"], ["updated_at", "2022-04-19 03:43:37.606100"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (3.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (2.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (1.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (65.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "desafio_getninja_development"[0m
+  [1m[35m (36.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "desafio_getninja_test"[0m
+  [1m[35m (179.1ms)[0m  [1m[35mCREATE DATABASE "desafio_getninja_development" ENCODING = 'unicode'[0m
+  [1m[35m (174.1ms)[0m  [1m[35mCREATE DATABASE "desafio_getninja_test" ENCODING = 'unicode'[0m
+  [1m[35m (19.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20210806180518)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "email" character varying DEFAULT '' NOT NULL, "name" character varying, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying, "last_sign_in_ip" character varying, "failed_attempts" integer DEFAULT 0 NOT NULL, "unlock_token" character varying, "locked_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_unlock_token" ON "users" ("unlock_token")[0m
+  [1m[35mSQL (58.6ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "pgcrypto"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210806180518"]]
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRooms (20220416231604)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "description" character varying, "number" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220416231604"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSchedules (20220417015606)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (11.5ms)[0m  [1m[35mCREATE TABLE "schedules" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "room_id" uuid NOT NULL, "user_id" uuid NOT NULL, "start_time" timestamp(6), "end_time" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_f2fe7b2133"
+FOREIGN KEY ("room_id")
+  REFERENCES "rooms" ("id")
+ ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT "fk_rails_3c900465fa"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+ ON DELETE CASCADE ON UPDATE CASCADE)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_room_id" ON "schedules" ("room_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_user_id" ON "schedules" ("user_id")[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_start_time" ON "schedules" ("start_time")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_end_time" ON "schedules" ("end_time")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220417015606"]]
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-04-19 23:18:35.128705"], ["updated_at", "2022-04-19 23:18:35.128705"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(5543737022646342870)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@getninja.dev"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user2@getninja.dev"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user3@getninja.dev"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user4@getninja.dev"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user5@getninja.dev"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 1], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.6ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala 1"], ["number", 1], ["created_at", "2022-04-19 23:18:41.998320"], ["updated_at", "2022-04-19 23:18:41.998320"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 2], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala 2"], ["number", 2], ["created_at", "2022-04-19 23:18:42.002952"], ["updated_at", "2022-04-19 23:18:42.002952"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 3], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala 3"], ["number", 3], ["created_at", "2022-04-19 23:18:42.024076"], ["updated_at", "2022-04-19 23:18:42.024076"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 4], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala 4"], ["number", 4], ["created_at", "2022-04-19 23:18:42.027544"], ["updated_at", "2022-04-19 23:18:42.027544"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
