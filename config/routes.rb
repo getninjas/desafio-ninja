@@ -12,6 +12,8 @@ Rails.application.routes.draw do
                }, defaults: { format: :json }
 
     resources :users, only: [:index, :show, :update, :create]
-    resources :rooms, only: [:index, :show]
+    resources :rooms, only: [:index, :show] do
+      resources :schedules
+    end
   end
 end

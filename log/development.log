@@ -826,3 +826,527 @@ FOREIGN KEY ("user_id")
   [1m[36mSchedule Load (1.1ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time::date = '2022-04-19')[0m
   [1m[36mSchedule Load (0.4ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" ORDER BY "schedules"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mSchedule Load (0.7ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time::date = '2022-04-18')[0m
+Started GET "/" for 127.0.0.1 at 2022-04-18 22:17:05 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/keslleycapelin/.asdf/installs/ruby/3.0.3/lib/ruby/gems/3.0.0/gems/railties-7.0.0/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/keslleycapelin/.asdf/installs/ruby/3.0.3/lib/ruby/gems/3.0.0/gems/railties-7.0.0/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.6ms | Allocations: 577)
+Completed 200 OK in 13ms (Views: 5.7ms | ActiveRecord: 0.0ms | Allocations: 4934)
+
+
+Started GET "/info" for 127.0.0.1 at 2022-04-18 22:17:09 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/info"):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-04-18 22:17:09 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/rails/info/routes?path=rooms" for 127.0.0.1 at 2022-04-18 22:17:12 -0300
+Processing by Rails::InfoController#routes as */*
+  Parameters: {"path"=>"rooms"}
+Completed 200 OK in 14ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 2622)
+
+
+Started GET "/api/rooms/:room_id/schedules/:id" for 127.0.0.1 at 2022-04-18 22:19:34 -0300
+Processing by Api::SchedulesController#show as */*
+  Parameters: {"room_id"=>":room_id", "id"=>":id"}
+  [1m[36mSchedule Load (1.6ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/show.rb:32:in `load_object'
+Completed 422 Unprocessable Entity in 342ms (Views: 311.6ms | ActiveRecord: 4.6ms | Allocations: 339415)
+
+
+Started POST "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules" for 127.0.0.1 at 2022-04-18 22:40:21 -0300
+Processing by Api::SchedulesController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"schedule", "attributes"=>{"start_time"=>"2022-04-19 13:05:16.416361", "end_time"=>"2022-04-19 13:05:16.416361"}}}, "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"}
+Completed 401 Unauthorized in 4ms (Allocations: 1225)
+
+
+Started POST "/api/login" for 127.0.0.1 at 2022-04-18 22:40:44 -0300
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"user", "attributes"=>{"login"=>"user1@getninja.dev", "password"=>"[FILTERED]"}}}}
+[31mUnpermitted parameter: :type. Context: {  }[0m
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "user1@getninja.dev"], ["LIMIT", 1]]
+  ↳ app/classes/user_login.rb:43:in `load_user'
+Completed 401 Unauthorized in 105ms (Views: 7.9ms | ActiveRecord: 27.1ms | Allocations: 7208)
+
+
+Started POST "/api/login" for 127.0.0.1 at 2022-04-18 22:41:05 -0300
+Error occurred while parsing request parameters.
+Contents:
+
+{
+    "data": {
+        "type": "user",
+        "attributes": {
+            "login": ""keslley@nullbug.dev",
+            "password": "12345678"
+        }
+    }
+}
+Processing by Api::SessionsController#create as JSONAPI
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms | Allocations: 179)
+
+
+  
+ActionDispatch::Http::Parameters::ParseError (Error occurred while parsing request parameters):
+  
+actionpack (7.0.0) lib/action_dispatch/http/parameters.rb:96:in `rescue in parse_formatted_parameters'
+actionpack (7.0.0) lib/action_dispatch/http/parameters.rb:92:in `parse_formatted_parameters'
+actionpack (7.0.0) lib/action_dispatch/http/request.rb:390:in `block in POST'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch_header'
+actionpack (7.0.0) lib/action_dispatch/http/request.rb:389:in `POST'
+actionpack (7.0.0) lib/action_dispatch/http/parameters.rb:55:in `parameters'
+actionpack (7.0.0) lib/action_controller/metal/strong_parameters.rb:1223:in `params'
+jsonapi-rails (0.4.0) lib/jsonapi/rails/controller/deserialization.rb:52:in `block in deserializable_resource'
+activesupport (7.0.0) lib/active_support/callbacks.rb:467:in `instance_exec'
+activesupport (7.0.0) lib/active_support/callbacks.rb:467:in `block in make_lambda'
+activesupport (7.0.0) lib/active_support/callbacks.rb:180:in `block (2 levels) in halting_and_conditional'
+actionpack (7.0.0) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (7.0.0) lib/active_support/callbacks.rb:181:in `block in halting_and_conditional'
+activesupport (7.0.0) lib/active_support/callbacks.rb:595:in `block in invoke_before'
+activesupport (7.0.0) lib/active_support/callbacks.rb:595:in `each'
+activesupport (7.0.0) lib/active_support/callbacks.rb:595:in `invoke_before'
+activesupport (7.0.0) lib/active_support/callbacks.rb:106:in `run_callbacks'
+actionpack (7.0.0) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.0) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.0) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.0) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.0) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.0) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.0) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.0) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.0) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.0) lib/abstract_controller/base.rb:151:in `process'
+actionpack (7.0.0) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.0) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.0) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.0) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.0) lib/action_dispatch/routing/mapper.rb:18:in `block in <class:Constraints>'
+actionpack (7.0.0) lib/action_dispatch/routing/mapper.rb:48:in `serve'
+actionpack (7.0.0) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.0) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.0) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.0) lib/action_dispatch/routing/route_set.rb:850:in `call'
+warden-jwt_auth (0.6.0) lib/warden/jwt_auth/middleware/token_dispatcher.rb:20:in `call'
+warden-jwt_auth (0.6.0) lib/warden/jwt_auth/middleware/revocation_manager.rb:21:in `call'
+rack (2.2.3) lib/rack/builder.rb:244:in `call'
+warden-jwt_auth (0.6.0) lib/warden/jwt_auth/middleware.rb:22:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (7.0.0) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.0) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.0) lib/rails/rack/logger.rb:36:in `call_app'
+railties (7.0.0) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.0) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.0) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.0) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.0) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.0) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (7.0.0) lib/rails/engine.rb:530:in `call'
+puma (5.5.2) lib/puma/configuration.rb:249:in `call'
+puma (5.5.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.5.2) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.5.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.5.2) lib/puma/server.rb:447:in `process_client'
+puma (5.5.2) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/api/login" for 127.0.0.1 at 2022-04-18 22:41:10 -0300
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"user", "attributes"=>{"login"=>"keslley@nullbug.dev", "password"=>"[FILTERED]"}}}}
+[31mUnpermitted parameter: :type. Context: {  }[0m
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "keslley@nullbug.dev"], ["LIMIT", 1]]
+  ↳ app/classes/user_login.rb:43:in `load_user'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/sessions_controller.rb:11:in `block in create'
+  [1m[36mUser Update (1.7ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2022-04-19 01:41:10.496511"], ["last_sign_in_at", "2022-04-19 01:41:10.496511"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2022-04-19 01:41:10.497922"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  ↳ app/controllers/api/sessions_controller.rb:11:in `block in create'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/sessions_controller.rb:11:in `block in create'
+Completed 200 OK in 341ms (Views: 1.5ms | ActiveRecord: 4.9ms | Allocations: 15190)
+
+
+Started POST "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules" for 127.0.0.1 at 2022-04-18 22:41:13 -0300
+Processing by Api::SchedulesController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"schedule", "attributes"=>{"start_time"=>"2022-04-19 13:05:16.416361", "end_time"=>"2022-04-19 13:05:16.416361"}}}, "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["sign_in_count", 2], ["current_sign_in_at", "2022-04-19 01:41:13.610940"], ["updated_at", "2022-04-19 01:41:13.612856"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameter: :type. Context: {  }[0m
+Completed 500 Internal Server Error in 20666ms (ActiveRecord: 2.6ms | Allocations: 27026)
+
+
+  
+NameError (uninitialized constant CRUDManagement::CRUDManagemen):
+  
+app/classes/schedule_management/create.rb:4:in `<module:ScheduleManagement>'
+app/classes/schedule_management/create.rb:3:in `<main>'
+app/controllers/api/schedules_controller.rb:24:in `create'
+Started POST "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules" for 127.0.0.1 at 2022-04-18 22:41:44 -0300
+Processing by Api::SchedulesController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"schedule", "attributes"=>{"start_time"=>"2022-04-19 13:05:16.416361", "end_time"=>"2022-04-19 13:05:16.416361"}}}, "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 3], ["current_sign_in_at", "2022-04-19 01:41:44.851380"], ["last_sign_in_at", "2022-04-19 01:41:13.610940"], ["updated_at", "2022-04-19 01:41:44.852708"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mRoom Load (0.8ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "a84e342c-d121-4b46-970b-aafb25da97f8"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+  [1m[36mSchedule Load (2.8ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time::date = '2022-04-19')[0m
+  ↳ app/models/schedule.rb:43:in `validate_schedule'
+Completed 422 Unprocessable Entity in 1028934ms (Views: 0.7ms | ActiveRecord: 32.2ms | Allocations: 128632)
+
+
+Started POST "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules" for 127.0.0.1 at 2022-04-18 22:59:08 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SchedulesController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"schedule", "attributes"=>{"start_time"=>"2022-04-19 13:05:16.416361", "end_time"=>"2022-04-19 14:05:16.416361"}}}, "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 4], ["current_sign_in_at", "2022-04-19 01:59:08.922126"], ["last_sign_in_at", "2022-04-19 01:41:44.851380"], ["updated_at", "2022-04-19 01:59:08.923633"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mRoom Load (0.7ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "a84e342c-d121-4b46-970b-aafb25da97f8"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+  [1m[36mSchedule Load (1.2ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time::date = '2022-04-19')[0m
+  ↳ app/models/schedule.rb:51:in `validate_schedule'
+  [1m[36mCACHE Schedule Load (0.1ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time::date = '2022-04-19')[0m
+  ↳ app/models/schedule.rb:51:in `validate_schedule'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/classes/schedule_management/create.rb:9:in `create'
+  [1m[36mSchedule Create (3.7ms)[0m  [1m[32mINSERT INTO "schedules" ("room_id", "user_id", "start_time", "duration", "end_time", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["room_id", "a84e342c-d121-4b46-970b-aafb25da97f8"], ["user_id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["start_time", "2022-04-19 13:05:16.416361"], ["duration", "3600"], ["end_time", "2022-04-19 14:05:16.416361"], ["created_at", "2022-04-19 01:59:14.905145"], ["updated_at", "2022-04-19 01:59:14.905145"]]
+  ↳ app/classes/schedule_management/create.rb:9:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/classes/schedule_management/create.rb:9:in `create'
+Completed 201 Created in 6055ms (Views: 5.4ms | ActiveRecord: 32.1ms | Allocations: 42278)
+
+
+Started POST "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules" for 127.0.0.1 at 2022-04-18 22:59:58 -0300
+Processing by Api::SchedulesController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"schedule", "attributes"=>{"start_time"=>"2022-04-19 13:05:16.416361", "end_time"=>"2022-04-19 14:05:16.416361"}}}, "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 5], ["current_sign_in_at", "2022-04-19 01:59:59.186911"], ["last_sign_in_at", "2022-04-19 01:59:08.922126"], ["updated_at", "2022-04-19 01:59:59.188276"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mRoom Load (1.0ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "a84e342c-d121-4b46-970b-aafb25da97f8"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+  [1m[36mSchedule Load (0.7ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time::date = '2022-04-19')[0m
+  ↳ app/models/schedule.rb:51:in `validate_schedule'
+Completed 422 Unprocessable Entity in 5233ms (Views: 1.5ms | ActiveRecord: 24.1ms | Allocations: 358644)
+
+
+Started POST "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules" for 127.0.0.1 at 2022-04-18 23:00:21 -0300
+Processing by Api::SchedulesController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"schedule", "attributes"=>{"start_time"=>"2022-04-19 14:00:16.416361", "end_time"=>"2022-04-19 14:35:16.416361"}}}, "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 6], ["current_sign_in_at", "2022-04-19 02:00:21.228109"], ["last_sign_in_at", "2022-04-19 01:59:59.186911"], ["updated_at", "2022-04-19 02:00:21.229223"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "a84e342c-d121-4b46-970b-aafb25da97f8"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+  [1m[36mSchedule Load (0.4ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time::date = '2022-04-19')[0m
+  ↳ app/models/schedule.rb:51:in `validate_schedule'
+Completed 422 Unprocessable Entity in 100ms (Views: 1.2ms | ActiveRecord: 19.1ms | Allocations: 20230)
+
+
+Started POST "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules" for 127.0.0.1 at 2022-04-18 23:00:22 -0300
+Processing by Api::SchedulesController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"schedule", "attributes"=>{"start_time"=>"2022-04-19 14:00:16.416361", "end_time"=>"2022-04-19 14:35:16.416361"}}}, "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (1.0ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 7], ["current_sign_in_at", "2022-04-19 02:00:22.457869"], ["last_sign_in_at", "2022-04-19 02:00:21.228109"], ["updated_at", "2022-04-19 02:00:22.459419"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "a84e342c-d121-4b46-970b-aafb25da97f8"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/create.rb:36:in `instance_validations'
+  [1m[36mSchedule Load (0.5ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time::date = '2022-04-19')[0m
+  ↳ app/models/schedule.rb:51:in `validate_schedule'
+Completed 422 Unprocessable Entity in 65ms (Views: 1.4ms | ActiveRecord: 3.7ms | Allocations: 7433)
+
+
+Started GET "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules" for 127.0.0.1 at 2022-04-18 23:00:37 -0300
+Processing by Api::SchedulesController#index as JSONAPI
+  Parameters: {"room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 8], ["current_sign_in_at", "2022-04-19 02:00:37.539004"], ["last_sign_in_at", "2022-04-19 02:00:22.457869"], ["updated_at", "2022-04-19 02:00:37.540286"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameter: :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001373398b0>, params: {"controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+[31mUnpermitted parameter: :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001373398b0>, params: {"controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+[31mUnpermitted parameter: :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001373398b0>, params: {"controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+  [1m[36mSchedule Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "schedules"[0m
+  ↳ app/modules/pagination/schema.rb:22:in `block in pages'
+[31mUnpermitted parameter: :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001373398b0>, params: {"controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+  [1m[36mSchedule Load (0.3ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" LIMIT $1 OFFSET $2[0m  [["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/modules/common_api_options.rb:42:in `block in index_callback_whit_page_links'
+Completed 200 OK in 55ms (Views: 7.6ms | ActiveRecord: 2.8ms | Allocations: 8704)
+
+
+Started GET "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules?include=room" for 127.0.0.1 at 2022-04-18 23:01:00 -0300
+Processing by Api::SchedulesController#index as JSONAPI
+  Parameters: {"include"=>"room", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 9], ["current_sign_in_at", "2022-04-19 02:01:00.503281"], ["last_sign_in_at", "2022-04-19 02:00:37.539004"], ["updated_at", "2022-04-19 02:01:00.505971"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameters: :include, :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001272d62e8>, params: {"include"=>"room", "controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+[31mUnpermitted parameters: :include, :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001272d62e8>, params: {"include"=>"room", "controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+[31mUnpermitted parameters: :include, :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001272d62e8>, params: {"include"=>"room", "controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+  [1m[36mSchedule Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "schedules"[0m
+  ↳ app/modules/pagination/schema.rb:22:in `block in pages'
+[31mUnpermitted parameters: :include, :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001272d62e8>, params: {"include"=>"room", "controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+  [1m[36mSchedule Load (0.3ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" LIMIT $1 OFFSET $2[0m  [["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/modules/common_api_options.rb:42:in `block in index_callback_whit_page_links'
+  [1m[36mRoom Load (0.6ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "a84e342c-d121-4b46-970b-aafb25da97f8"], ["LIMIT", 1]]
+  ↳ app/modules/common_api_options.rb:42:in `block in index_callback_whit_page_links'
+Completed 200 OK in 69ms (Views: 14.1ms | ActiveRecord: 3.9ms | Allocations: 8289)
+
+
+Started GET "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules/0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1" for 127.0.0.1 at 2022-04-18 23:01:34 -0300
+Processing by Api::SchedulesController#show as */*
+  Parameters: {"room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 10], ["current_sign_in_at", "2022-04-19 02:01:34.259323"], ["last_sign_in_at", "2022-04-19 02:01:00.503281"], ["updated_at", "2022-04-19 02:01:34.260712"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mSchedule Load (0.3ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."id" = $1 LIMIT $2[0m  [["id", "0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/show.rb:32:in `load_object'
+[31mUnpermitted parameters: :room_id, :id. Context: { controller: Api::SchedulesController, action: show, request: #<ActionDispatch::Request:0x0000000127796fd0>, params: {"controller"=>"api/schedules", "action"=>"show", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"} }[0m
+Completed 200 OK in 68ms (Views: 1.4ms | ActiveRecord: 2.2ms | Allocations: 8418)
+
+
+Started GET "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules/:id?include=room" for 127.0.0.1 at 2022-04-18 23:01:44 -0300
+Processing by Api::SchedulesController#show as */*
+  Parameters: {"include"=>"room", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>":id"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 11], ["current_sign_in_at", "2022-04-19 02:01:45.000986"], ["last_sign_in_at", "2022-04-19 02:01:34.259323"], ["updated_at", "2022-04-19 02:01:45.005147"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mSchedule Load (0.5ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/show.rb:32:in `load_object'
+Completed 422 Unprocessable Entity in 62ms (Views: 3.4ms | ActiveRecord: 2.8ms | Allocations: 5609)
+
+
+Started GET "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules/0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1?include=room" for 127.0.0.1 at 2022-04-18 23:01:56 -0300
+Processing by Api::SchedulesController#show as */*
+  Parameters: {"include"=>"room", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 12], ["current_sign_in_at", "2022-04-19 02:01:56.909424"], ["last_sign_in_at", "2022-04-19 02:01:45.000986"], ["updated_at", "2022-04-19 02:01:56.910869"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mSchedule Load (0.5ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."id" = $1 LIMIT $2[0m  [["id", "0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/show.rb:32:in `load_object'
+[31mUnpermitted parameters: :include, :room_id, :id. Context: { controller: Api::SchedulesController, action: show, request: #<ActionDispatch::Request:0x00000001073704d0>, params: {"include"=>"room", "controller"=>"api/schedules", "action"=>"show", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"} }[0m
+  [1m[36mRoom Load (0.6ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "a84e342c-d121-4b46-970b-aafb25da97f8"], ["LIMIT", 1]]
+  ↳ app/modules/common_api_options.rb:36:in `block in success_callback_default'
+Completed 200 OK in 54ms (Views: 6.2ms | ActiveRecord: 3.0ms | Allocations: 6228)
+
+
+Started GET "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules/0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1?include=room,user" for 127.0.0.1 at 2022-04-18 23:02:02 -0300
+Processing by Api::SchedulesController#show as */*
+  Parameters: {"include"=>"room,user", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 13], ["current_sign_in_at", "2022-04-19 02:02:02.586543"], ["last_sign_in_at", "2022-04-19 02:01:56.909424"], ["updated_at", "2022-04-19 02:02:02.587939"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mSchedule Load (0.4ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."id" = $1 LIMIT $2[0m  [["id", "0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/show.rb:32:in `load_object'
+[31mUnpermitted parameters: :include, :room_id, :id. Context: { controller: Api::SchedulesController, action: show, request: #<ActionDispatch::Request:0x00000001076875b0>, params: {"include"=>"room,user", "controller"=>"api/schedules", "action"=>"show", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"} }[0m
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "a84e342c-d121-4b46-970b-aafb25da97f8"], ["LIMIT", 1]]
+  ↳ app/modules/common_api_options.rb:36:in `block in success_callback_default'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  ↳ app/modules/common_api_options.rb:36:in `block in success_callback_default'
+Completed 200 OK in 56ms (Views: 14.3ms | ActiveRecord: 2.9ms | Allocations: 7444)
+
+
+Started GET "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules?include=room,user" for 127.0.0.1 at 2022-04-18 23:02:07 -0300
+Processing by Api::SchedulesController#index as JSONAPI
+  Parameters: {"include"=>"room,user", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 14], ["current_sign_in_at", "2022-04-19 02:02:07.922635"], ["last_sign_in_at", "2022-04-19 02:02:02.586543"], ["updated_at", "2022-04-19 02:02:07.926012"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameters: :include, :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001077af438>, params: {"include"=>"room,user", "controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+[31mUnpermitted parameters: :include, :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001077af438>, params: {"include"=>"room,user", "controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+[31mUnpermitted parameters: :include, :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001077af438>, params: {"include"=>"room,user", "controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+  [1m[36mSchedule Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "schedules"[0m
+  ↳ app/modules/pagination/schema.rb:22:in `block in pages'
+[31mUnpermitted parameters: :include, :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001077af438>, params: {"include"=>"room,user", "controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+  [1m[36mSchedule Load (0.3ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" LIMIT $1 OFFSET $2[0m  [["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/modules/common_api_options.rb:42:in `block in index_callback_whit_page_links'
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "a84e342c-d121-4b46-970b-aafb25da97f8"], ["LIMIT", 1]]
+  ↳ app/modules/common_api_options.rb:42:in `block in index_callback_whit_page_links'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  ↳ app/modules/common_api_options.rb:42:in `block in index_callback_whit_page_links'
+Completed 200 OK in 75ms (Views: 17.1ms | ActiveRecord: 3.4ms | Allocations: 9111)
+
+
+Started PATCH "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules/0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1" for 127.0.0.1 at 2022-04-18 23:03:05 -0300
+Processing by Api::SchedulesController#update as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"schedule", "attributes"=>{"start_time"=>"2022-04-20 14:00:16.416361", "end_time"=>"2022-04-20 14:35:16.416361"}}}, "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 15], ["current_sign_in_at", "2022-04-19 02:03:06.184092"], ["last_sign_in_at", "2022-04-19 02:02:07.922635"], ["updated_at", "2022-04-19 02:03:06.185195"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mSchedule Load (0.5ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."id" = $1 AND "schedules"."id" = $2 LIMIT $3[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["id", "0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/update.rb:37:in `load_object'
+Completed 422 Unprocessable Entity in 69ms (Views: 1.9ms | ActiveRecord: 12.3ms | Allocations: 13875)
+
+
+Started PATCH "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules/0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1" for 127.0.0.1 at 2022-04-18 23:03:26 -0300
+Processing by Api::SchedulesController#update as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"schedule", "attributes"=>{"start_time"=>"2022-04-20 14:00:16.416361", "end_time"=>"2022-04-20 14:35:16.416361"}}}, "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 16], ["current_sign_in_at", "2022-04-19 02:03:26.240562"], ["last_sign_in_at", "2022-04-19 02:03:06.184092"], ["updated_at", "2022-04-19 02:03:26.241900"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mSchedule Load (0.5ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."id" = $1 AND "schedules"."id" = $2 LIMIT $3[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["id", "0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/update.rb:37:in `load_object'
+Completed 422 Unprocessable Entity in 52ms (Views: 2.2ms | ActiveRecord: 2.5ms | Allocations: 5819)
+
+
+Started PATCH "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules/0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1" for 127.0.0.1 at 2022-04-18 23:03:42 -0300
+Processing by Api::SchedulesController#update as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"schedule", "attributes"=>{"start_time"=>"2022-04-20 14:00:16.416361", "end_time"=>"2022-04-20 14:35:16.416361"}}}, "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 17], ["current_sign_in_at", "2022-04-19 02:03:42.507503"], ["last_sign_in_at", "2022-04-19 02:03:26.240562"], ["updated_at", "2022-04-19 02:03:42.508811"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameter: :type. Context: {  }[0m
+  [1m[36mSchedule Load (0.6ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."user_id" = $1 AND "schedules"."id" = $2 LIMIT $3[0m  [["user_id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["id", "0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/update.rb:37:in `load_object'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "a84e342c-d121-4b46-970b-aafb25da97f8"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/update.rb:41:in `instance_validations'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/update.rb:41:in `instance_validations'
+  [1m[36mSchedule Load (0.4ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time::date = '2022-04-20')[0m
+  ↳ app/models/schedule.rb:51:in `validate_schedule'
+  [1m[36mCACHE Schedule Load (0.0ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE (start_time::date = '2022-04-20')[0m
+  ↳ app/models/schedule.rb:51:in `validate_schedule'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/classes/CRUDManagement/update.rb:27:in `update'
+  [1m[36mSchedule Update (0.5ms)[0m  [1m[33mUPDATE "schedules" SET "start_time" = $1, "end_time" = $2, "updated_at" = $3 WHERE "schedules"."id" = $4[0m  [["start_time", "2022-04-20 14:00:16.416361"], ["end_time", "2022-04-20 14:35:16.416361"], ["updated_at", "2022-04-19 02:03:45.244640"], ["id", "0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"]]
+  ↳ app/classes/CRUDManagement/update.rb:27:in `update'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/classes/CRUDManagement/update.rb:27:in `update'
+[31mUnpermitted parameters: :_jsonapi, :room_id, :id, :schedule. Context: { controller: Api::SchedulesController, action: update, request: #<ActionDispatch::Request:0x0000000112a158e8>, params: {"_jsonapi"=>{"data"=>{"type"=>"schedule", "attributes"=>{"start_time"=>"2022-04-20 14:00:16.416361", "end_time"=>"2022-04-20 14:35:16.416361"}}}, "controller"=>"api/schedules", "action"=>"update", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"} }[0m
+Completed 200 OK in 2795ms (Views: 2.7ms | ActiveRecord: 26.2ms | Allocations: 26249)
+
+
+Started GET "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules/0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1?include=room,user" for 127.0.0.1 at 2022-04-18 23:03:47 -0300
+Processing by Api::SchedulesController#show as */*
+  Parameters: {"include"=>"room,user", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 18], ["current_sign_in_at", "2022-04-19 02:03:47.720501"], ["last_sign_in_at", "2022-04-19 02:03:42.507503"], ["updated_at", "2022-04-19 02:03:47.722950"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mSchedule Load (0.5ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."id" = $1 LIMIT $2[0m  [["id", "0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/show.rb:32:in `load_object'
+[31mUnpermitted parameters: :include, :room_id, :id. Context: { controller: Api::SchedulesController, action: show, request: #<ActionDispatch::Request:0x00000001372f9aa8>, params: {"include"=>"room,user", "controller"=>"api/schedules", "action"=>"show", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"} }[0m
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "a84e342c-d121-4b46-970b-aafb25da97f8"], ["LIMIT", 1]]
+  ↳ app/modules/common_api_options.rb:36:in `block in success_callback_default'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  ↳ app/modules/common_api_options.rb:36:in `block in success_callback_default'
+Completed 200 OK in 71ms (Views: 14.7ms | ActiveRecord: 3.0ms | Allocations: 9003)
+
+
+Started DELETE "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules/0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1" for 127.0.0.1 at 2022-04-18 23:04:07 -0300
+Processing by Api::SchedulesController#destroy as */*
+  Parameters: {"room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"}
+Completed 401 Unauthorized in 5ms (ActiveRecord: 0.0ms | Allocations: 209)
+
+
+Started DELETE "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules/0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1" for 127.0.0.1 at 2022-04-18 23:04:16 -0300
+Processing by Api::SchedulesController#destroy as */*
+  Parameters: {"room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 19], ["current_sign_in_at", "2022-04-19 02:04:16.672320"], ["last_sign_in_at", "2022-04-19 02:03:47.720501"], ["updated_at", "2022-04-19 02:04:16.673931"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 500 Internal Server Error in 113ms (ActiveRecord: 1.8ms | Allocations: 6847)
+
+
+  
+NameError (undefined local variable or method `update_user_params' for #<Api::SchedulesController:0x00000000021048>):
+  
+app/controllers/api/schedules_controller.rb:43:in `destroy'
+Started DELETE "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules/0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1" for 127.0.0.1 at 2022-04-18 23:04:45 -0300
+Processing by Api::SchedulesController#destroy as */*
+  Parameters: {"room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 20], ["current_sign_in_at", "2022-04-19 02:04:45.475655"], ["last_sign_in_at", "2022-04-19 02:04:16.672320"], ["updated_at", "2022-04-19 02:04:45.476906"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mSchedule Load (0.4ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."user_id" = $1 AND "schedules"."id" = $2 LIMIT $3[0m  [["user_id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["id", "0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/destroy.rb:33:in `load_object'
+  [1m[36mSchedule Destroy (0.6ms)[0m  [1m[31mDELETE FROM "schedules" WHERE "schedules"."id" = $1[0m  [["id", "0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"]]
+  ↳ app/classes/CRUDManagement/destroy.rb:23:in `destroy'
+[31mUnpermitted parameters: :room_id, :id. Context: { controller: Api::SchedulesController, action: destroy, request: #<ActionDispatch::Request:0x000000010715dd28>, params: {"controller"=>"api/schedules", "action"=>"destroy", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"} }[0m
+Completed 200 OK in 93ms (Views: 1.7ms | ActiveRecord: 16.1ms | Allocations: 15504)
+
+
+Started GET "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules/0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1?include=room,user" for 127.0.0.1 at 2022-04-18 23:04:49 -0300
+Processing by Api::SchedulesController#show as */*
+  Parameters: {"include"=>"room,user", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8", "id"=>"0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 21], ["current_sign_in_at", "2022-04-19 02:04:49.257480"], ["last_sign_in_at", "2022-04-19 02:04:45.475655"], ["updated_at", "2022-04-19 02:04:49.259348"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mSchedule Load (0.7ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."id" = $1 LIMIT $2[0m  [["id", "0a37a665-d0ab-44b4-bc8a-23ff89ff5cb1"], ["LIMIT", 1]]
+  ↳ app/classes/CRUDManagement/show.rb:32:in `load_object'
+Completed 422 Unprocessable Entity in 64ms (Views: 4.3ms | ActiveRecord: 2.7ms | Allocations: 6601)
+
+
+Started GET "/api/rooms/a84e342c-d121-4b46-970b-aafb25da97f8/schedules?include=room,user" for 127.0.0.1 at 2022-04-18 23:04:51 -0300
+Processing by Api::SchedulesController#index as JSONAPI
+  Parameters: {"include"=>"room,user", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 22], ["current_sign_in_at", "2022-04-19 02:04:51.631681"], ["last_sign_in_at", "2022-04-19 02:04:49.257480"], ["updated_at", "2022-04-19 02:04:51.632888"], ["id", "cb02f399-4a32-4c8a-a9e1-7211bc02597e"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameters: :include, :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001420a2380>, params: {"include"=>"room,user", "controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+[31mUnpermitted parameters: :include, :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001420a2380>, params: {"include"=>"room,user", "controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+[31mUnpermitted parameters: :include, :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001420a2380>, params: {"include"=>"room,user", "controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+  [1m[36mSchedule Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "schedules"[0m
+  ↳ app/modules/pagination/schema.rb:22:in `block in pages'
+[31mUnpermitted parameters: :include, :room_id. Context: { controller: Api::SchedulesController, action: index, request: #<ActionDispatch::Request:0x00000001420a2380>, params: {"include"=>"room,user", "controller"=>"api/schedules", "action"=>"index", "room_id"=>"a84e342c-d121-4b46-970b-aafb25da97f8"} }[0m
+  [1m[36mSchedule Load (0.4ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" LIMIT $1 OFFSET $2[0m  [["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/modules/common_api_options.rb:42:in `block in index_callback_whit_page_links'
+Completed 200 OK in 59ms (Views: 6.9ms | ActiveRecord: 2.8ms | Allocations: 7500)
+
+

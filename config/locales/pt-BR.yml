@@ -18,6 +18,7 @@ pt-BR:
         authorization: Autorização
         user: Usuário
         room: Sala de reunião
+        schedule: Agenda
 
       user_login:
         user: Usuário
@@ -41,6 +42,12 @@ pt-BR:
         id: ID
         number: Número
         description: Descrição
+      schedule:
+        id: ID
+        room_id: ID da sala
+        user_id: ID do usuário
+        start_time: Hora de início
+        end_tome: Hora de término
     errors:
       models:
         user:
@@ -70,6 +77,24 @@ pt-BR:
               taken: já está em uso
               invalid: inválido
               blank: não pode ficar em branco
+        schedule:
+          attributes:
+            room_id:
+              taken: já está em uso
+              invalid: inválido
+              blank: não pode ficar em branco
+            user_id:
+              taken: já está em uso
+              invalid: inválido
+              blank: não pode ficar em branco
+            start_time:
+              taken: já está em uso
+              invalid: inválido
+              blank: não pode ficar em branco
+            end_time:
+              taken: já está em uso
+              invalid: inválido
+              blank: não pode ficar em branco
       messages:
         record_invalid: Registro inválido
   api:
@@ -80,6 +105,9 @@ pt-BR:
       time_invalid: As salas só podem ser reservadas em horário comercial
       start_end_time_invalid: A data/hora de início não pode ser maior que a data/hora de término
       time_not_available: Esse horário não está disponível
+      invalid_start_and_end_range: O início e fim da reserva precisa ser no mesmo dia
+      date_hour_invalid: Você só pode agendar uma sala a partir do momento atual
+      duration_invalid: A duração da reunião deve ser maior que 0  minutos
 
   devise:
     failure:

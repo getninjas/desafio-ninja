@@ -4,7 +4,6 @@ class CreateSchedules < ActiveRecord::Migration[7.0]
       t.references :room, index: true, type: :uuid, null: false, foreign_key: { on_update: :cascade, on_delete: :cascade }
       t.references :user, index: true, type: :uuid, null: false, foreign_key: { on_update: :cascade, on_delete: :cascade }
       t.datetime :start_time
-      t.string :duration
       t.datetime :end_time
       t.timestamps
     end
