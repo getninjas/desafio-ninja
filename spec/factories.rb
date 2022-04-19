@@ -17,6 +17,5 @@ FactoryBot.define do
     user { create(:user) }
     start_time { DateTime.new(datetime.year, datetime.month, datetime.day, 16, 0, 0) }
     end_time { DateTime.new(datetime.year, datetime.month, datetime.day, 17, 0, 0) }
-    duration { 1 }
   end
 end

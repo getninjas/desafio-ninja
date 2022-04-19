@@ -15,8 +15,7 @@ RSpec.describe Schedule, type: :model do
         room_id: room.id,
         user_id: user.id,
         start_time: DateTime.new(datetime.year, datetime.month, datetime.day, 17, 0, 0),
-        end_time: DateTime.new(datetime.year, datetime.month, datetime.day, 16, 0, 0),
-        duration: 1
+        end_time: DateTime.new(datetime.year, datetime.month, datetime.day, 16, 0, 0)
       )
 
       expect(schedule.persisted?).to_not be_truthy
@@ -36,8 +35,7 @@ RSpec.describe Schedule, type: :model do
         room_id: room.id,
         user_id: user.id,
         start_time: DateTime.new(datetime.year, datetime.month, datetime.day, 16, 0, 0),
-        end_time: DateTime.new(datetime.year, datetime.month, datetime.day, 17, 0, 0),
-        duration: 1
+        end_time: DateTime.new(datetime.year, datetime.month, datetime.day, 17, 0, 0)
       )
 
       expect(schedule.persisted?).to_not be_truthy
@@ -57,8 +55,7 @@ RSpec.describe Schedule, type: :model do
         room_id: room.id,
         user_id: user.id,
         start_time: DateTime.new(datetime.year, datetime.month, datetime.day, 16, 0, 0),
-        end_time: DateTime.new(datetime.year, datetime.month, datetime.day, 17, 0, 0),
-        duration: 1
+        end_time: DateTime.new(datetime.year, datetime.month, datetime.day, 17, 0, 0)
       )
 
       expect(schedule.persisted?).to_not be_truthy
@@ -72,8 +69,7 @@ RSpec.describe Schedule, type: :model do
         room_id: room.id,
         user_id: user.id,
         start_time: DateTime.new(datetime.year, datetime.month, datetime.day, 8, 0, 0),
-        end_time: DateTime.new(datetime.year, datetime.month, datetime.day, 17, 0, 0),
-        duration: 1
+        end_time: DateTime.new(datetime.year, datetime.month, datetime.day, 17, 0, 0)
       )
 
       expect(schedule.persisted?).to_not be_truthy
@@ -87,8 +83,7 @@ RSpec.describe Schedule, type: :model do
         room_id: room.id,
         user_id: user.id,
         start_time: DateTime.new(datetime.year, datetime.month, datetime.day, 19, 0, 0),
-        end_time: DateTime.new(datetime.year, datetime.month, datetime.day, 20, 0, 0),
-        duration: 1
+        end_time: DateTime.new(datetime.year, datetime.month, datetime.day, 20, 0, 0)
       )
 
       expect(schedule.persisted?).to_not be_truthy
@@ -102,8 +97,7 @@ RSpec.describe Schedule, type: :model do
         room_id: room.id,
         user_id: user.id,
         start_time: DateTime.new(datetime.year, datetime.month, datetime.day, 17, 0, 0),
-        end_time: DateTime.new(datetime.year, datetime.month, datetime.day + 1, 18, 0, 0),
-        duration: 1
+        end_time: DateTime.new(datetime.year, datetime.month, datetime.day + 1, 18, 0, 0)
       )
 
       expect(schedule.persisted?).to_not be_truthy
@@ -118,7 +112,6 @@ RSpec.describe Schedule, type: :model do
         start_time: DateTime.new(datetime.year, datetime.month, datetime.day, 9, 0, 0),
         end_time: DateTime.new(datetime.year, datetime.month, datetime.day, 10, 0, 0),
         room_id: room.id,
-        duration: 1,
         user_id: create(:user).id
       )
 
@@ -134,8 +127,7 @@ RSpec.describe Schedule, type: :model do
         room_id: room.id,
         user_id: user.id,
         start_time: DateTime.new(datetime.year, datetime.month, datetime.day, 11, 30, 0),
-        end_time: DateTime.new(datetime.year, datetime.month, datetime.day, 12, 30, 0),
-        duration: 1
+        end_time: DateTime.new(datetime.year, datetime.month, datetime.day, 12, 30, 0)
       )
 
       expect(schedule.persisted?).to_not be_truthy
@@ -150,8 +142,7 @@ RSpec.describe Schedule, type: :model do
         room_id: room.id,
         user_id: user.id,
         start_time: DateTime.new(datetime.year, datetime.month, datetime.day, 11, 30, 0),
-        end_time: DateTime.new(datetime.year, datetime.month, datetime.day, 12, 30, 0),
-        duration: 1
+        end_time: DateTime.new(datetime.year, datetime.month, datetime.day, 12, 30, 0)
       )
 
       expect(schedule.persisted?).to_not be_truthy
@@ -166,7 +157,6 @@ RSpec.describe Schedule, type: :model do
         start_time: DateTime.new(datetime.year, datetime.month, datetime.day, 9, 0, 0),
         end_time: DateTime.new(datetime.year, datetime.month, datetime.day, 10, 0, 0),
         room_id: room.id,
-        duration: 1,
         user_id: create(:user).id
       )
 
@@ -183,7 +173,6 @@ RSpec.describe Schedule, type: :model do
         user_id: user.id,
         start_time: DateTime.new(datetime.year, datetime.month, datetime.day, 12, 30, 0),
         end_time: DateTime.new(datetime.year, datetime.month, datetime.day, 13, 30, 0),
-        duration: 1
       )
 
       expect(schedule.persisted?).to_not be_truthy
