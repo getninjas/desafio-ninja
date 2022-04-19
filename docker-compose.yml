@@ -1,0 +1,46 @@
+version: '3'
+services:
+  mailcatcher:
+    restart: on-failure:10
+    image: dockage/mailcatcher:0.7.1
+    ports:
+    - "1080:1080"
+    - "1025:1025"
+  redis:
+    image: redis
+    command: redis-server
+    ports:
+      - "6379:6379"
+  sidekiq:
+    depends_on:
+      - db
+      - redis
+      - web
+    environment:
+      - LOCAL=docker
+    build: .
+    command: bash -c "bundle install && bundle exec sidekiq"
+    volumes:
+      - .:/api
+  db:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+  web:
+    depends_on:
+      - db
+      - redis
+    environment:
+      - LOCAL=docker
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle install && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/api
+    links:
+      - mailcatcher
+    ports:
+      - "3000:3000"

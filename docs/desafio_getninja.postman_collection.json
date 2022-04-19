@@ -1,0 +1,193 @@
+{
+	"info": {
+		"_postman_id": "8232198c-59c3-41f5-8b30-275e1e35f008",
+		"name": "Get Ninja",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Index",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.api+json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/vnd.api+json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/api/users",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"users"
+									],
+									"query": [
+										{
+											"key": "filter[id_eq]",
+											"value": "e14cc753-bbbf-44e3-a1aa-e15bf656f89b",
+											"disabled": true
+										},
+										{
+											"key": "page[number]",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "page[size]",
+											"value": "15",
+											"disabled": true
+										},
+										{
+											"key": "fields[user]",
+											"value": "id,email",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();",
+									"",
+									"if(response['errors'] === undefined){",
+									"    let token = pm.response.headers.get('Authorization').replace('Bearer ', '')",
+									"    // let typeUser = response.included[0].attributes.name;",
+									"    pm.environment.set('TOKEN', token);",
+									"    //SETANDO CONFORME O TIPO DO USUÁRIO",
+									"    // if(typeUser == 'admin'){",
+									"    //     pm.environment.set('TOKEN_ADMIN', token);",
+									"    // }else if(typeUser == 'graduate'){",
+									"    //     pm.environment.set('TOKEN_GRADUATE', token);",
+									"    // }else if(typeUser == 'partner'){",
+									"    //     pm.environment.set('TOKEN_PARTNER', token);",
+									"    // }else if(typeUser == 'partner_commercial'){",
+									"    //     pm.environment.set('TOKEN_PARTNER_COMMERCIAL', token);",
+									"    // }",
+									"}",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"type\": \"user\",\n        \"attributes\": {\n            \"login\": \"admin@nullbug.dev\",\n            \"password\": \"12345678\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{TOKEN}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}

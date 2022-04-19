@@ -1,0 +1,87 @@
+pt-BR:
+  activemodel:
+    attributes:
+      crud_management/show: &default
+        instance: Registro
+        base: Registro
+        user: Usuário
+      crud_management/update:
+        <<: *default
+      crud_management/destroy:
+        <<: *default
+      user_management/create:
+        <<: *default
+      social_login_management/sign_in:
+        <<: *default
+      generic_api_error:
+        <<: *default
+        authorization: Autorização
+        user: Usuário
+        room: Sala de reunião
+
+      user_login:
+        user: Usuário
+
+    errors:
+      messages:
+        not_found: não encontrado
+        blank: não encontrado
+        invalid: inválido
+        taken: já está em uso
+
+  activerecord:
+    attributes:
+      user:
+        id: ID
+        name: Nome
+        email: E-mail
+        password: Senha
+        password_confirmation: Senha de confirmação
+      room:
+        id: ID
+        number: Número
+        description: Descrição
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: já está em uso
+              invalid: inválido
+              blank: não pode ficar em branco
+            name:
+              taken: já está em uso
+              invalid: inválido
+              blank: não pode ficar em branco
+            password:
+              invalid: inválido
+              blank: não pode ficar em branco
+            password_confirmation:
+              invalid: inválido
+              blank: não pode ficar em branco
+              confirmation: é diferente da senha
+        room:
+          attributes:
+            number:
+              taken: já está em uso
+              invalid: inválido
+              blank: não pode ficar em branco
+            description:
+              taken: já está em uso
+              invalid: inválido
+              blank: não pode ficar em branco
+      messages:
+        record_invalid: Registro inválido
+  api:
+    errors:
+      not_authorized_title: Login Inválido
+      action_not_provided: Ação inválida
+      date_invalid: As salas só podem ser usadas de segunda-feira a sexta-feira
+      time_invalid: As salas só podem ser reservadas em horário comercial
+      start_end_time_invalid: A data/hora de início não pode ser maior que a data/hora de término
+      time_not_available: Esse horário não está disponível
+
+  devise:
+    failure:
+      api_user:
+        unauthenticated: Para continuar, efetue login ou registre-se
