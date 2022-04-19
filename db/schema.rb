@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 2022_04_17_015606) do
     t.uuid "room_id", null: false
     t.uuid "user_id", null: false
     t.datetime "start_time", precision: 6
-    t.string "duration"
     t.datetime "end_time", precision: 6
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

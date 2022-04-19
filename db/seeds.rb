@@ -3,3 +3,8 @@ User.create(name: "User 2", email: 'user2@getninja.dev', password: '12345678')
 User.create(name: "User 3", email: 'user3@getninja.dev', password: '12345678')
 User.create(name: "User 4", email: 'user4@getninja.dev', password: '12345678')
 User.create(name: "User 5", email: 'user5@getninja.dev', password: '12345678')
+
+Room.create(description: "Sala 1", number: 1)
+Room.create(description: "Sala 2", number: 2)
+Room.create(description: "Sala 3", number: 3)
+Room.create(description: "Sala 4", number: 4)

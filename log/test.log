@@ -9845,3 +9845,624 @@ Processing by Api::UsersController#update as HTML
   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["id", "a89b761b-b274-4229-99b5-310793fb3225"], ["id", "a89b761b-b274-4229-99b5-310793fb3225"], ["LIMIT", 1]]
 Completed 422 Unprocessable Entity in 1ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 1245)
   [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (53.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "desafio_getninja_test"[0m
+  [1m[35m (53.9ms)[0m  [1m[35mCREATE DATABASE "desafio_getninja_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (2.9ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "pgcrypto"[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "rooms" CASCADE[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "description" character varying, "number" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "schedules" CASCADE[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "schedules" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "room_id" uuid NOT NULL, "user_id" uuid NOT NULL, "start_time" timestamp(6), "end_time" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_end_time" ON "schedules" ("end_time")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_room_id" ON "schedules" ("room_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_start_time" ON "schedules" ("start_time")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_user_id" ON "schedules" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "email" character varying DEFAULT '' NOT NULL, "name" character varying, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp(6), "last_sign_in_at" timestamp(6), "current_sign_in_ip" character varying, "last_sign_in_ip" character varying, "failed_attempts" integer DEFAULT 0 NOT NULL, "unlock_token" character varying, "locked_at" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_unlock_token" ON "users" ("unlock_token")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "schedules" ADD CONSTRAINT "fk_rails_f2fe7b2133"
+FOREIGN KEY ("room_id")
+  REFERENCES "rooms" ("id")
+ ON DELETE CASCADE ON UPDATE CASCADE[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "schedules" ADD CONSTRAINT "fk_rails_3c900465fa"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+ ON DELETE CASCADE ON UPDATE CASCADE[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220417015606)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210806180518),
+(20220416231604);
+
+[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2022-04-19 03:40:26.487338"], ["updated_at", "2022-04-19 03:40:26.487338"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "85abed7f864f8a749a664e70cd5e14bcccee113f"], ["created_at", "2022-04-19 03:40:26.489433"], ["updated_at", "2022-04-19 03:40:26.489433"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 796], ["LIMIT", 1]]
+  [1m[36mRoom Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 796], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" ORDER BY "rooms"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Create (1.2ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 940], ["created_at", "2022-04-19 03:40:26.703435"], ["updated_at", "2022-04-19 03:40:26.703435"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 940], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 572], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 572], ["created_at", "2022-04-19 03:40:26.721310"], ["updated_at", "2022-04-19 03:40:26.721310"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sam.gerhold@dietrich-cassin.info"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "sam.gerhold@dietrich-cassin.info"], ["name", "Gael Barroso"], ["encrypted_password", "$2a$04$r.ircNOxR5AxdRTRJOFVvufKG9Tst2qZYrIihrHEu3aQlvCwIe7Xu"], ["created_at", "2022-04-19 03:40:26.736356"], ["updated_at", "2022-04-19 03:40:26.736356"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 184], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 184], ["created_at", "2022-04-19 03:40:26.739817"], ["updated_at", "2022-04-19 03:40:26.739817"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "isreal.larkin@carter.org"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "isreal.larkin@carter.org"], ["name", "Isabella Dantas"], ["encrypted_password", "$2a$04$013L0O.tw0iw1xb8S3twoOi6iRS6V9d2dgA.T3n5RMSx.pENuzFWK"], ["created_at", "2022-04-19 03:40:26.742904"], ["updated_at", "2022-04-19 03:40:26.742904"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 750], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 750], ["created_at", "2022-04-19 03:40:26.744971"], ["updated_at", "2022-04-19 03:40:26.744971"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "noah@lowe.biz"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "noah@lowe.biz"], ["name", "João Barreira Filho"], ["encrypted_password", "$2a$04$LXsJWABKsSCYB8skodcYXeRh0EsCzqSACb7CakQ7TeaBiCmCLjPqe"], ["created_at", "2022-04-19 03:40:26.747779"], ["updated_at", "2022-04-19 03:40:26.747779"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 191], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.6ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 191], ["created_at", "2022-04-19 03:40:26.749737"], ["updated_at", "2022-04-19 03:40:26.749737"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kenneth@morissette.org"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "kenneth@morissette.org"], ["name", "Danilo Cerqueira"], ["encrypted_password", "$2a$04$Q5MXtt67vcWe57QmQzJEzOZIWJ..LZo883Y9DPADDHZ.wVnz0poki"], ["created_at", "2022-04-19 03:40:26.753254"], ["updated_at", "2022-04-19 03:40:26.753254"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 580], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 580], ["created_at", "2022-04-19 03:40:26.755523"], ["updated_at", "2022-04-19 03:40:26.755523"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sidney@runolfsson-boyle.name"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "sidney@runolfsson-boyle.name"], ["name", "Adriana Antena"], ["encrypted_password", "$2a$04$9UCnJ/.Ndbw0.fnzaPVCgeqNlRbf3YS.atntQbf/wZ.yUdHJjw7Ja"], ["created_at", "2022-04-19 03:40:26.758741"], ["updated_at", "2022-04-19 03:40:26.758741"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 882], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 882], ["created_at", "2022-04-19 03:40:26.761079"], ["updated_at", "2022-04-19 03:40:26.761079"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "lewis@mcglynn.io"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "lewis@mcglynn.io"], ["name", "Maya Freitas Jr."], ["encrypted_password", "$2a$04$/rztHnK4OnqgVkSIuElQdOowUlAsOPVpGUFO9UdQ2tmLm6SPZOMoq"], ["created_at", "2022-04-19 03:40:26.764029"], ["updated_at", "2022-04-19 03:40:26.764029"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 894], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 894], ["created_at", "2022-04-19 03:40:26.766102"], ["updated_at", "2022-04-19 03:40:26.766102"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "marnie@labadie.name"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "marnie@labadie.name"], ["name", "Mathias Carneiro"], ["encrypted_password", "$2a$04$OTegT4aw8Z7wzb0jvTnvBuNGFM7wiTXT6sDvdd5oGbPk5MaNY7nAG"], ["created_at", "2022-04-19 03:40:26.769270"], ["updated_at", "2022-04-19 03:40:26.769270"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "antonia@jacobson.io"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "antonia@jacobson.io"], ["name", "Dr. Talita Carvalheira"], ["encrypted_password", "$2a$04$yU3MKpwFnhmOcTdGn2mLKOeryx4zbw/YgZS/Zpq97FCmgUiDeQ5YK"], ["created_at", "2022-04-19 03:40:26.772983"], ["updated_at", "2022-04-19 03:40:26.772983"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 259], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 259], ["created_at", "2022-04-19 03:40:26.775515"], ["updated_at", "2022-04-19 03:40:26.775515"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "lorene@douglas.net"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "lorene@douglas.net"], ["name", "Dra. Janaína da Fonseca"], ["encrypted_password", "$2a$04$WF7CiW5pu7/QkGUR9siLee6fEDcKeLe.TOhBrlt1mQBMKIKKwu.5K"], ["created_at", "2022-04-19 03:40:26.778323"], ["updated_at", "2022-04-19 03:40:26.778323"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 678], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 678], ["created_at", "2022-04-19 03:40:26.780278"], ["updated_at", "2022-04-19 03:40:26.780278"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "keenan@lynch.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "keenan@lynch.com"], ["name", "Ana Luiza da Paz Neto"], ["encrypted_password", "$2a$04$FEXtyNoS0PpRcbANkKBvne.MwLIk4EWMwgYjwDSrN1Vs.Oq6WLOUy"], ["created_at", "2022-04-19 03:40:26.783125"], ["updated_at", "2022-04-19 03:40:26.783125"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "monika.reilly@bosco.biz"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "monika.reilly@bosco.biz"], ["name", "Clara Conceição"], ["encrypted_password", "$2a$04$DAtYTc7Vi2pypuDbJIYEsubEJSguaQyEkbGZHZrES6KLWuoo3kfkm"], ["created_at", "2022-04-19 03:40:26.786130"], ["updated_at", "2022-04-19 03:40:26.786130"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jamaal_koepp@shields.net"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jamaal_koepp@shields.net"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "tracy@sipes-simonis.name"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "van@murray-gulgowski.biz"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "van@murray-gulgowski.biz"], ["name", "Francisco Xavier"], ["encrypted_password", "$2a$04$XUzXaSQ8L2fnXTVX.up6OeVVjszheNqamSAh3gUtaVHDGEhl8asba"], ["created_at", "2022-04-19 03:40:26.803945"], ["updated_at", "2022-04-19 03:40:26.803945"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 296], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 296], ["created_at", "2022-04-19 03:40:26.805549"], ["updated_at", "2022-04-19 03:40:26.805549"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 436], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 436], ["created_at", "2022-04-19 03:40:26.806776"], ["updated_at", "2022-04-19 03:40:26.806776"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 38], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.1ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 38], ["created_at", "2022-04-19 03:40:26.808122"], ["updated_at", "2022-04-19 03:40:26.808122"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 201], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 201], ["created_at", "2022-04-19 03:40:26.809029"], ["updated_at", "2022-04-19 03:40:26.809029"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 660], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 660], ["created_at", "2022-04-19 03:40:26.810140"], ["updated_at", "2022-04-19 03:40:26.810140"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 266], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 266], ["created_at", "2022-04-19 03:40:26.811221"], ["updated_at", "2022-04-19 03:40:26.811221"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 253], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 253], ["created_at", "2022-04-19 03:40:26.812304"], ["updated_at", "2022-04-19 03:40:26.812304"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 504], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 504], ["created_at", "2022-04-19 03:40:26.813409"], ["updated_at", "2022-04-19 03:40:26.813409"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 471], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 471], ["created_at", "2022-04-19 03:40:26.814502"], ["updated_at", "2022-04-19 03:40:26.814502"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 444], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 444], ["created_at", "2022-04-19 03:40:26.819234"], ["updated_at", "2022-04-19 03:40:26.819234"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/rooms" for 127.0.0.1 at 2022-04-19 00:40:26 -0300
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2022-04-19 03:40:26.825910"], ["last_sign_in_at", "2022-04-19 03:40:26.825910"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2022-04-19 03:40:26.825996"], ["id", "d4010f19-d4ea-440a-9b48-0762d8c01474"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::RoomsController#index as HTML
+  [1m[36mRoom Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms"[0m
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" LIMIT $1 OFFSET $2[0m  [["LIMIT", 25], ["OFFSET", 0]]
+Completed 200 OK in 9ms (Views: 1.2ms | ActiveRecord: 1.0ms | Allocations: 9446)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "elvin.emard@morissette.co"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "elvin.emard@morissette.co"], ["name", "Ian da Costa"], ["encrypted_password", "$2a$04$oMExWc8D7sQoH1khxMuD4e2hi2wdgEmW.6ZKnpCIGheg.Lg9GMAeS"], ["created_at", "2022-04-19 03:40:26.846903"], ["updated_at", "2022-04-19 03:40:26.846903"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 888], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.1ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 888], ["created_at", "2022-04-19 03:40:26.847962"], ["updated_at", "2022-04-19 03:40:26.847962"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/rooms/46d46e81-3d72-44b5-bbc7-52da0a54efd3" for 127.0.0.1 at 2022-04-19 00:40:26 -0300
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2022-04-19 03:40:26.851543"], ["last_sign_in_at", "2022-04-19 03:40:26.851543"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2022-04-19 03:40:26.851620"], ["id", "541b5d73-67a0-41e6-b1bc-9cca266150d1"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::RoomsController#show as HTML
+  Parameters: {"id"=>"46d46e81-3d72-44b5-bbc7-52da0a54efd3"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "46d46e81-3d72-44b5-bbc7-52da0a54efd3"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :id. Context: { controller: Api::RoomsController, action: show, request: #<ActionDispatch::Request:0x0000000130afabf0>, params: {"controller"=>"api/rooms", "action"=>"show", "id"=>"46d46e81-3d72-44b5-bbc7-52da0a54efd3"} }[0m
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 1664)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "maryalice.hammes@powlowski.info"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "maryalice.hammes@powlowski.info"], ["name", "Pietra da Paz"], ["encrypted_password", "$2a$04$2xYSWY39oyGJcfCtz8owV.qkw6r9yNltNt8xPewQ/11BUAInihV.u"], ["created_at", "2022-04-19 03:40:26.858470"], ["updated_at", "2022-04-19 03:40:26.858470"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/rooms" for 127.0.0.1 at 2022-04-19 00:40:26 -0300
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2022-04-19 03:40:26.862255"], ["last_sign_in_at", "2022-04-19 03:40:26.862255"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2022-04-19 03:40:26.862336"], ["id", "12f7bb2d-f9ab-4e95-8050-cfbacdf907f5"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::RoomsController#index as HTML
+  [1m[36mRoom Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms"[0m
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" LIMIT $1 OFFSET $2[0m  [["LIMIT", 25], ["OFFSET", 0]]
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 1195)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jacquelynn_murazik@gottlieb.name"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "jacquelynn_murazik@gottlieb.name"], ["name", "Rafaela da Mata"], ["encrypted_password", "$2a$04$Hxg9k7dEwciN2HW0gjob1.9lNhptsBdstURsvlFIlk.NxvtLBBFzy"], ["created_at", "2022-04-19 03:40:26.867907"], ["updated_at", "2022-04-19 03:40:26.867907"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/rooms/7dfbb296-f546-44a5-8916-46c9e2fac8e2" for 127.0.0.1 at 2022-04-19 00:40:26 -0300
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2022-04-19 03:40:26.872349"], ["last_sign_in_at", "2022-04-19 03:40:26.872349"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2022-04-19 03:40:26.872469"], ["id", "d44b8791-1872-406b-a753-7902e470c098"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::RoomsController#show as HTML
+  Parameters: {"id"=>"7dfbb296-f546-44a5-8916-46c9e2fac8e2"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", "7dfbb296-f546-44a5-8916-46c9e2fac8e2"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 1ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 1151)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jacqualine@douglas-schimmel.biz"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "jacqualine@douglas-schimmel.biz"], ["name", "Beatriz Moraes Filho"], ["encrypted_password", "$2a$04$rct2S6LIiSLaPHsVHmQile5SsioZ9/uPWFjzY2eUEa/TRqTgx1YRm"], ["created_at", "2022-04-19 03:40:26.878966"], ["updated_at", "2022-04-19 03:40:26.878966"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 732], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 732], ["created_at", "2022-04-19 03:40:26.880280"], ["updated_at", "2022-04-19 03:40:26.880280"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/rooms/c06c9b8d-17ff-4510-ae91-304e7346b954/schedules" for 127.0.0.1 at 2022-04-19 00:40:26 -0300
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2022-04-19 03:40:26.884713"], ["last_sign_in_at", "2022-04-19 03:40:26.884713"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2022-04-19 03:40:26.884791"], ["id", "cf6c4d67-c9ce-4063-8368-9c2887f73bfc"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::SchedulesController#create as HTML
+  Parameters: {"schedule"=>{"room"=>"#<Room:0x0000000130c589e8>", "user"=>"#<User:0x0000000130c197e8>", "start_time"=>"2022-04-19T16:00:00+00:00", "end_time"=>"2022-04-19T17:00:00+00:00", "duration"=>"1"}, "room_id"=>"c06c9b8d-17ff-4510-ae91-304e7346b954"}
+[31mUnpermitted parameters: :room, :user, :duration. Context: {  }[0m
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 3648)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "calandra.hauck@hilll.co"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "calandra.hauck@hilll.co"], ["name", "Pietro Moreira"], ["encrypted_password", "$2a$04$KePAlwfvALfm614fIXscGewPPOnwYe8d5lB1n4lPdocvdedAurh5W"], ["created_at", "2022-04-19 03:40:26.897375"], ["updated_at", "2022-04-19 03:40:26.897375"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 103], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 103], ["created_at", "2022-04-19 03:40:26.898695"], ["updated_at", "2022-04-19 03:40:26.898695"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 715], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 715], ["created_at", "2022-04-19 03:40:26.899997"], ["updated_at", "2022-04-19 03:40:26.899997"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "harry@koch.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "harry@koch.com"], ["name", "Meire Melo"], ["encrypted_password", "$2a$04$/NaXddPYDpVENQ0GKMIwIOa9xg5lto.56PHpAYL4QgSiHdgvfoSqe"], ["created_at", "2022-04-19 03:40:26.902707"], ["updated_at", "2022-04-19 03:40:26.902707"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/rooms/cd612253-520a-4d2e-99aa-133090c1018a/schedules" for 127.0.0.1 at 2022-04-19 00:40:26 -0300
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2022-04-19 03:40:26.906729"], ["last_sign_in_at", "2022-04-19 03:40:26.906729"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2022-04-19 03:40:26.906834"], ["id", "f18f81cd-b4f0-47ec-b1e1-47dbd149264f"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::SchedulesController#create as HTML
+  Parameters: {"schedule"=>{"room"=>"#<Room:0x0000000130d3aa78>", "user"=>"#<User:0x0000000130d90068>", "start_time"=>"2022-04-21T03:40:26+00:00", "end_time"=>"2022-04-19T17:00:00+00:00", "duration"=>"1"}, "room_id"=>"cd612253-520a-4d2e-99aa-133090c1018a"}
+[31mUnpermitted parameters: :room, :user, :duration. Context: {  }[0m
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 2636)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "angle@rippin.org"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "angle@rippin.org"], ["name", "Luana da Maia"], ["encrypted_password", "$2a$04$Uy0z/TZZJPYaZi3Lu4wHkeE3e9yqtgovvok3QdabUefAeAF3IPv0a"], ["created_at", "2022-04-19 03:40:26.916214"], ["updated_at", "2022-04-19 03:40:26.916214"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 614], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 614], ["created_at", "2022-04-19 03:40:26.917996"], ["updated_at", "2022-04-19 03:40:26.917996"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "russell_kohler@schultz.info"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "russell_kohler@schultz.info"], ["name", "Augusto Caldas"], ["encrypted_password", "$2a$04$fG3Ls46sL5YuD9t7t.Pqte.nHTsjuW/5A4qKzR3avZ5LwbjuHrcjG"], ["created_at", "2022-04-19 03:40:26.920892"], ["updated_at", "2022-04-19 03:40:26.920892"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/api/rooms/f61ef685-d590-49e0-be71-567cac0e7ba5/schedules" for 127.0.0.1 at 2022-04-19 00:40:26 -0300
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2022-04-19 03:40:26.925155"], ["last_sign_in_at", "2022-04-19 03:40:26.925155"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2022-04-19 03:40:26.925261"], ["id", "d11ba5db-33a9-4f11-85d8-ca6e94be3a8e"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::SchedulesController#create as HTML
+  Parameters: {"schedule"=>{"room"=>"#<Room:0x0000000130df8028>", "user"=>"#<User:0x0000000130e49400>", "start_time"=>"2022-04-19T16:00:00+00:00", "end_time"=>"2022-04-19T17:00:00+00:00", "duration"=>"1"}, "room_id"=>"f61ef685-d590-49e0-be71-567cac0e7ba5"}
+[31mUnpermitted parameters: :room, :user, :duration. Context: {  }[0m
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 2637)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "otto@ohara-conroy.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "otto@ohara-conroy.com"], ["name", "Sra. Breno Marins"], ["encrypted_password", "$2a$04$Yj.hgJTzaBvPddK2mH4J5.lzLPYtGoWvXgubepqcBSILBS39oMAym"], ["created_at", "2022-04-19 03:40:26.934113"], ["updated_at", "2022-04-19 03:40:26.934113"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 396], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 396], ["created_at", "2022-04-19 03:40:26.935681"], ["updated_at", "2022-04-19 03:40:26.935681"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "horace.feest@jast.info"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "horace.feest@jast.info"], ["name", "Calebe Barroso"], ["encrypted_password", "$2a$04$oWkry.Lka5fl9S0NnTJJC.FvBzdNERyC1XeVNiclCtm.jBl9lTOJC"], ["created_at", "2022-04-19 03:40:26.940085"], ["updated_at", "2022-04-19 03:40:26.940085"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 941], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 941], ["created_at", "2022-04-19 03:40:26.941463"], ["updated_at", "2022-04-19 03:40:26.941463"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "frederic_vandervort@dibbert-mccullough.co"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "frederic_vandervort@dibbert-mccullough.co"], ["name", "Sílvia Barbosa"], ["encrypted_password", "$2a$04$yAbaQQe5n4SBQ3znvOhc1.m9dXzGVJEtN3/BPwSvBReGinQOFhmeu"], ["created_at", "2022-04-19 03:40:26.944281"], ["updated_at", "2022-04-19 03:40:26.944281"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "meghann.mckenzie@ritchie-jakubowski.info"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "meghann.mckenzie@ritchie-jakubowski.info"], ["name", "Isabel das Neves"], ["encrypted_password", "$2a$04$btrOlgJvOKcp.9sxJuf0seSsBTIUx/P3hXCmLmlmOSPHcWBJ.cjS2"], ["created_at", "2022-04-19 03:40:26.948195"], ["updated_at", "2022-04-19 03:40:26.948195"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 41], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 41], ["created_at", "2022-04-19 03:40:26.949575"], ["updated_at", "2022-04-19 03:40:26.949575"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "oliver_rau@armstrong-crooks.info"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "oliver_rau@armstrong-crooks.info"], ["name", "Larissa de Lara Filho"], ["encrypted_password", "$2a$04$Z0FxvoDL/ClNgq2H7CKY6OG0gsOeA6x7/yJnnsuS.n92MSRX8YjXG"], ["created_at", "2022-04-19 03:40:26.952753"], ["updated_at", "2022-04-19 03:40:26.952753"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "andres_gislason@bailey.biz"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "andres_gislason@bailey.biz"], ["name", "Alice da Barranca Filho"], ["encrypted_password", "$2a$04$ATQ1VbmP5flBNyZvsr9C3uxhYLOcCKIQ1L4StPMhDlytEXIJ7I8RO"], ["created_at", "2022-04-19 03:40:26.957358"], ["updated_at", "2022-04-19 03:40:26.957358"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 45], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 45], ["created_at", "2022-04-19 03:40:26.959147"], ["updated_at", "2022-04-19 03:40:26.959147"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "neoma@mosciski.info"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "neoma@mosciski.info"], ["name", "Isadora Barata"], ["encrypted_password", "$2a$04$Cn1y14UEizdWU.DxcSJheuQMz3VtJyXetPcKzpCbpqxbfWYDmR8w6"], ["created_at", "2022-04-19 03:40:26.962279"], ["updated_at", "2022-04-19 03:40:26.962279"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "johnie@rosenbaum.name"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "johnie@rosenbaum.name"], ["name", "Carlos Bomdia Neto"], ["encrypted_password", "$2a$04$JH0wW0rstLNYzuX0d.V.teeV5TatehJhf/XPCla2Z9ztdmkWqUL4O"], ["created_at", "2022-04-19 03:40:26.966536"], ["updated_at", "2022-04-19 03:40:26.966536"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 767], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 767], ["created_at", "2022-04-19 03:40:26.968166"], ["updated_at", "2022-04-19 03:40:26.968166"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "eddie@haley.info"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "eddie@haley.info"], ["name", "César Laranjeira"], ["encrypted_password", "$2a$04$j0iSwdqWbBG.WHegahgYweDmVxCcffYqkAvQLXQhriakYkp5PHET2"], ["created_at", "2022-04-19 03:40:26.972350"], ["updated_at", "2022-04-19 03:40:26.972350"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 586], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 586], ["created_at", "2022-04-19 03:40:26.973856"], ["updated_at", "2022-04-19 03:40:26.973856"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ramon@flatley-stokes.name"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "ramon@flatley-stokes.name"], ["name", "Melissa Castanho"], ["encrypted_password", "$2a$04$b0lg8UazE2oq7c0oy0X8wOePOoYs0ZWzA9ZlT7TYe6y632iqyewYO"], ["created_at", "2022-04-19 03:40:26.977910"], ["updated_at", "2022-04-19 03:40:26.977910"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRoom Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."number" = $1 LIMIT $2[0m  [["number", 994], ["LIMIT", 1]]
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("description", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Sala para reuniões"], ["number", 994], ["created_at", "2022-04-19 03:40:26.979200"], ["updated_at", "2022-04-19 03:40:26.979200"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/users" for 127.0.0.1 at 2022-04-19 00:40:26 -0300
+Processing by Api::UsersController#create as HTML
+  Parameters: {"user"=>{"email"=>"elli@lind.io", "name"=>"Luiz Felipe Roriz", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "elli@lind.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "elli@lind.io"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "elli@lind.io"], ["name", "Luiz Felipe Roriz"], ["encrypted_password", "$2a$04$t/Bw6y76dtAAIHQd/y7wue4VMFcW.HygZAnSPgviZUNPygprca52a"], ["created_at", "2022-04-19 03:40:26.988246"], ["updated_at", "2022-04-19 03:40:26.988246"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 4ms (Views: 0.6ms | ActiveRecord: 0.7ms | Allocations: 1996)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/users" for 127.0.0.1 at 2022-04-19 00:40:26 -0300
+Processing by Api::UsersController#create as HTML
+  Parameters: {"user"=>{"name"=>"Eduarda Filgueira", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+Completed 422 Unprocessable Entity in 2ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 1064)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/users" for 127.0.0.1 at 2022-04-19 00:40:27 -0300
+Processing by Api::UsersController#create as HTML
+  Parameters: {"user"=>{"email"=>"mariano@leffler-boyer.co", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "mariano@leffler-boyer.co"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 3ms (Views: 0.5ms | ActiveRecord: 0.4ms | Allocations: 1296)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/users" for 127.0.0.1 at 2022-04-19 00:40:27 -0300
+Processing by Api::UsersController#create as HTML
+  Parameters: {"user"=>{"name"=>"Suélen Porteira", "email"=>"david.bergnaum@huel.org", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "david.bergnaum@huel.org"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 3ms (Views: 0.5ms | ActiveRecord: 0.4ms | Allocations: 1406)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/users" for 127.0.0.1 at 2022-04-19 00:40:27 -0300
+Processing by Api::UsersController#create as HTML
+  Parameters: {"user"=>{"name"=>"Sr. Janaína Barreto", "email"=>"thu.zboncak@hackett.com"}}
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "thu.zboncak@hackett.com"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 1ms (Views: 0.6ms | ActiveRecord: 0.3ms | Allocations: 1731)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/users" for 127.0.0.1 at 2022-04-19 00:40:27 -0300
+Processing by Api::UsersController#create as HTML
+  Parameters: {"user"=>{"name"=>"Matheus Cardoso", "email"=>"adena@rohan.net", "password"=>"[FILTERED]"}}
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "adena@rohan.net"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 3ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 1316)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "mari.nicolas@okuneva.info"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "mari.nicolas@okuneva.info"], ["name", "Sophia Silveira"], ["encrypted_password", "$2a$04$.bOjkvbXdOA7IfIX5qCPqOfkFh0Y31GD8PYxw4YslSeMqzdbDb6wK"], ["created_at", "2022-04-19 03:40:27.040822"], ["updated_at", "2022-04-19 03:40:27.040822"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "karima@heaney.net"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "karima@heaney.net"], ["name", "Ruan Cavalcanti"], ["encrypted_password", "$2a$04$h2.ojSQQFCO/yctmxxU/QOTz/rYj8Hao3ye0V9cVXCYLj5y82GuFS"], ["created_at", "2022-04-19 03:40:27.043922"], ["updated_at", "2022-04-19 03:40:27.043922"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "lottie@wilkinson.name"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "lottie@wilkinson.name"], ["name", "Rafaela Neves"], ["encrypted_password", "$2a$04$b6jYS8Eg6tI6MemjzZxYc.hVREat/kFiqlM.mq7LAjE.Ud1AObh5S"], ["created_at", "2022-04-19 03:40:27.046711"], ["updated_at", "2022-04-19 03:40:27.046711"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "chadwick@nitzsche.name"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "chadwick@nitzsche.name"], ["name", "Fabrício de Quadros Jr."], ["encrypted_password", "$2a$04$7k9cYi3abZA8SmLf/vUoa.Rpns/sMfKJA8uFATKyAVtU0g/XXZcay"], ["created_at", "2022-04-19 03:40:27.049575"], ["updated_at", "2022-04-19 03:40:27.049575"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "nohemi@nienow.org"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "nohemi@nienow.org"], ["name", "Luiz Felipe Martim"], ["encrypted_password", "$2a$04$zHHu6iuK7FGSbXl9bcZGSOg9wRKSR16mKNXl3mtfv0B4x.GVAwIka"], ["created_at", "2022-04-19 03:40:27.052384"], ["updated_at", "2022-04-19 03:40:27.052384"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dinah_price@murphy-dach.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "dinah_price@murphy-dach.com"], ["name", "Nicolas Porteira"], ["encrypted_password", "$2a$04$XWYl9/R3kMiePJjnI6t5l.H1OZSCuVdaTBEKXszt3mT5H8qWSGgmO"], ["created_at", "2022-04-19 03:40:27.054998"], ["updated_at", "2022-04-19 03:40:27.054998"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "marcellus@bode-bins.io"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "marcellus@bode-bins.io"], ["name", "Elisa Modesto"], ["encrypted_password", "$2a$04$yoinHwz/JgyVjS5HFoOeTOSVnEsAmCYzvr9ME3HGk5RT5JuEXBpLS"], ["created_at", "2022-04-19 03:40:27.058576"], ["updated_at", "2022-04-19 03:40:27.058576"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "howard@jast.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "howard@jast.com"], ["name", "Dr. Isabel Meireles"], ["encrypted_password", "$2a$04$xkYC2QI.7oHNSr00moFuee7leJEwBQUpSuW3utDm5lswDyptKfy9e"], ["created_at", "2022-04-19 03:40:27.061471"], ["updated_at", "2022-04-19 03:40:27.061471"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "gayle@fadel.net"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "gayle@fadel.net"], ["name", "Dalila Moreno"], ["encrypted_password", "$2a$04$wZRosYilxLbrVdW/sf8C..AuBX3oGCwuwgCM7TgM9sizvg67a1kJ2"], ["created_at", "2022-04-19 03:40:27.064373"], ["updated_at", "2022-04-19 03:40:27.064373"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "millicent@farrell.net"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "millicent@farrell.net"], ["name", "Sr. Mariah Barreira"], ["encrypted_password", "$2a$04$pQT9kJSsxs6EFxTzYuurjOrOkgKeotRDApc9T0lyxKSzDpYAXsB4q"], ["created_at", "2022-04-19 03:40:27.067392"], ["updated_at", "2022-04-19 03:40:27.067392"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/users" for 127.0.0.1 at 2022-04-19 00:40:27 -0300
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2022-04-19 03:40:27.071408"], ["last_sign_in_at", "2022-04-19 03:40:27.071408"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2022-04-19 03:40:27.071473"], ["id", "220cf561-f506-433b-98fd-15c7a8b0ec3d"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::UsersController#index as HTML
+  [1m[36mUser Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1 OFFSET $2[0m  [["LIMIT", 25], ["OFFSET", 0]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.6ms | Allocations: 2792)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ryan@luettgen.net"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "ryan@luettgen.net"], ["name", "Karla da Mata"], ["encrypted_password", "$2a$04$s/SdF1CPEW5FOpczWC9do.XkQ/Q0E6NHnopr39rbqUcqrkXbJSMia"], ["created_at", "2022-04-19 03:40:27.078250"], ["updated_at", "2022-04-19 03:40:27.078250"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "andrew@bahringer.org"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "andrew@bahringer.org"], ["name", "Carolina Palhares"], ["encrypted_password", "$2a$04$yOluC6Ie.XxIyyudiOdV9.b1mwxShcZnCnI7MngFsx4AxTG1ILU7W"], ["created_at", "2022-04-19 03:40:27.081240"], ["updated_at", "2022-04-19 03:40:27.081240"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/users/376417fe-b864-440c-8d99-164c4a0d878e" for 127.0.0.1 at 2022-04-19 00:40:27 -0300
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2022-04-19 03:40:27.084968"], ["last_sign_in_at", "2022-04-19 03:40:27.084968"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2022-04-19 03:40:27.085025"], ["id", "122dcd50-49f2-45c8-850f-953ca99d9951"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::UsersController#show as HTML
+  Parameters: {"id"=>"376417fe-b864-440c-8d99-164c4a0d878e"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", "376417fe-b864-440c-8d99-164c4a0d878e"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :id. Context: { controller: Api::UsersController, action: show, request: #<ActionDispatch::Request:0x0000000131567ac0>, params: {"controller"=>"api/users", "action"=>"show", "id"=>"376417fe-b864-440c-8d99-164c4a0d878e"} }[0m
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 802)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "mckenzie.lesch@upton-weimann.info"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "mckenzie.lesch@upton-weimann.info"], ["name", "Emilly Caldas Neto"], ["encrypted_password", "$2a$04$jz2J4s5FdRnR0WyLvQ/kquiXNn7pE0ZZOoqHOg5TiFPleEXraa5a."], ["created_at", "2022-04-19 03:40:27.090414"], ["updated_at", "2022-04-19 03:40:27.090414"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started PATCH "/api/users/3814e179-98f5-4a45-bcea-c6bd6a2f02fe" for 127.0.0.1 at 2022-04-19 00:40:27 -0300
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2022-04-19 03:40:27.094268"], ["last_sign_in_at", "2022-04-19 03:40:27.094268"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2022-04-19 03:40:27.094348"], ["id", "3814e179-98f5-4a45-bcea-c6bd6a2f02fe"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::UsersController#update as HTML
+  Parameters: {"user"=>{"name"=>"Sra. Anthony da Rosa"}, "id"=>"3814e179-98f5-4a45-bcea-c6bd6a2f02fe"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["id", "3814e179-98f5-4a45-bcea-c6bd6a2f02fe"], ["id", "3814e179-98f5-4a45-bcea-c6bd6a2f02fe"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "name" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["name", "Sra. Anthony da Rosa"], ["updated_at", "2022-04-19 03:40:27.097894"], ["id", "3814e179-98f5-4a45-bcea-c6bd6a2f02fe"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[31mUnpermitted parameters: :user, :id. Context: { controller: Api::UsersController, action: update, request: #<ActionDispatch::Request:0x00000001315c0f58>, params: {"user"=>{"name"=>"Sra. Anthony da Rosa"}, "controller"=>"api/users", "action"=>"update", "id"=>"3814e179-98f5-4a45-bcea-c6bd6a2f02fe"} }[0m
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 2498)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ardath_waelchi@kohler.org"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "ardath_waelchi@kohler.org"], ["name", "Melissa Grotas"], ["encrypted_password", "$2a$04$jA.gcGI/qxaREN8zgqSPBevX8FCy6z3QJFlUqcXUyM82mnlhz7vfe"], ["created_at", "2022-04-19 03:40:27.102407"], ["updated_at", "2022-04-19 03:40:27.102407"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started PATCH "/api/users/00a3d840-1447-4a51-b1fd-5bce8f304e40" for 127.0.0.1 at 2022-04-19 00:40:27 -0300
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2022-04-19 03:40:27.106803"], ["last_sign_in_at", "2022-04-19 03:40:27.106803"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2022-04-19 03:40:27.106863"], ["id", "00a3d840-1447-4a51-b1fd-5bce8f304e40"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::UsersController#update as HTML
+  Parameters: {"user"=>{"email"=>"carrol_cummerata@pacocha-hudson.co"}, "id"=>"00a3d840-1447-4a51-b1fd-5bce8f304e40"}
+[31mUnpermitted parameter: :email. Context: {  }[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["id", "00a3d840-1447-4a51-b1fd-5bce8f304e40"], ["id", "00a3d840-1447-4a51-b1fd-5bce8f304e40"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :user, :id. Context: { controller: Api::UsersController, action: update, request: #<ActionDispatch::Request:0x0000000131679080>, params: {"user"=>{"email"=>"carrol_cummerata@pacocha-hudson.co"}, "controller"=>"api/users", "action"=>"update", "id"=>"00a3d840-1447-4a51-b1fd-5bce8f304e40"} }[0m
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 1308)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@von-sanford.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "alec@von-sanford.com"], ["name", "Ana da Barranca"], ["encrypted_password", "$2a$04$.tfT3ddaEys0xXRDfqhkD.esP9h0AZ4cWT5Rt0Lf9qcAmF6wxXg.O"], ["created_at", "2022-04-19 03:40:27.112614"], ["updated_at", "2022-04-19 03:40:27.112614"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "renita.marks@pacocha.co"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "renita.marks@pacocha.co"], ["name", "Dra. Adriana Porteira"], ["encrypted_password", "$2a$04$vQ/rrRaYXzehPWfp3qlG1eG5AVqgEcVMMl82BqWv3m4WUumVP1XEm"], ["created_at", "2022-04-19 03:40:27.116015"], ["updated_at", "2022-04-19 03:40:27.116015"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started PATCH "/api/users/8b4da478-ec29-4506-8b54-73907dcc32b9" for 127.0.0.1 at 2022-04-19 00:40:27 -0300
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2022-04-19 03:40:27.120390"], ["last_sign_in_at", "2022-04-19 03:40:27.120390"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2022-04-19 03:40:27.120481"], ["id", "1af7336f-b4a5-41ea-a557-f72c6eacf123"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::UsersController#update as HTML
+  Parameters: {"user"=>{"name"=>"Margarida Veloso"}, "id"=>"8b4da478-ec29-4506-8b54-73907dcc32b9"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["id", "1af7336f-b4a5-41ea-a557-f72c6eacf123"], ["id", "8b4da478-ec29-4506-8b54-73907dcc32b9"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 1ms (Views: 0.6ms | ActiveRecord: 0.2ms | Allocations: 1306)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "george.gerlach@torphy.name"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "george.gerlach@torphy.name"], ["name", "Isabel Garcês Neto"], ["encrypted_password", "$2a$04$081C.rT3VKbxx6sIYkfu3O4PNnfGOFZrI4RHIQ6rfo1ZorFHqdTlm"], ["created_at", "2022-04-19 03:40:27.126460"], ["updated_at", "2022-04-19 03:40:27.126460"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "milo@schneider.biz"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "milo@schneider.biz"], ["name", "Sr. Warley Muniz"], ["encrypted_password", "$2a$04$nBSJ6T7K44456FRxazqeputn46JbaCKXMuCOjbP5fILgl.X.ONuui"], ["created_at", "2022-04-19 03:40:27.129462"], ["updated_at", "2022-04-19 03:40:27.129462"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started PATCH "/api/users/333f0347-f969-4470-9999-4078d644c4b1" for 127.0.0.1 at 2022-04-19 00:40:27 -0300
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2022-04-19 03:40:27.133322"], ["last_sign_in_at", "2022-04-19 03:40:27.133322"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2022-04-19 03:40:27.133379"], ["id", "dae680e6-949a-4157-a304-3ae94066522f"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::UsersController#update as HTML
+  Parameters: {"user"=>{"email"=>"irving.heathcote@maggio.net"}, "id"=>"333f0347-f969-4470-9999-4078d644c4b1"}
+[31mUnpermitted parameter: :email. Context: {  }[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["id", "dae680e6-949a-4157-a304-3ae94066522f"], ["id", "333f0347-f969-4470-9999-4078d644c4b1"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 1ms (Views: 0.4ms | ActiveRecord: 0.3ms | Allocations: 1161)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "oscar@kling.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "oscar@kling.com"], ["name", "Enrico Almada Filho"], ["encrypted_password", "$2a$04$t7KaTVc13FG/1jwP9g0S4uMWeK9lXccAt6OkuqoQJ0.wDpmF0kUku"], ["created_at", "2022-04-19 03:40:27.138655"], ["updated_at", "2022-04-19 03:40:27.138655"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started PATCH "/api/users/cd6410e5-d53d-4a0e-bed5-95968b2dca07" for 127.0.0.1 at 2022-04-19 00:40:27 -0300
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2022-04-19 03:40:27.142166"], ["last_sign_in_at", "2022-04-19 03:40:27.142166"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2022-04-19 03:40:27.142221"], ["id", "cd6410e5-d53d-4a0e-bed5-95968b2dca07"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::UsersController#update as HTML
+  Parameters: {"user"=>{"name"=>""}, "id"=>"cd6410e5-d53d-4a0e-bed5-95968b2dca07"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["id", "cd6410e5-d53d-4a0e-bed5-95968b2dca07"], ["id", "cd6410e5-d53d-4a0e-bed5-95968b2dca07"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 1ms (Views: 0.4ms | ActiveRecord: 0.3ms | Allocations: 1245)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
