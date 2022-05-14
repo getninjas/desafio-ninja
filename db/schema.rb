@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_14_034603) do
+ActiveRecord::Schema.define(version: 2022_05_14_035011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "invited_meetings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "meeting_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["meeting_id"], name: "index_invited_meetings_on_meeting_id"
+    t.index ["user_id"], name: "index_invited_meetings_on_user_id"
+  end
+
+  create_table "meetings", force: :cascade do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.bigint "room_id", null: false
+    t.bigint "user_id", null: false
+    t.string "subject", default: "Reunião de trabalho"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_meetings_on_room_id"
+    t.index ["user_id"], name: "index_meetings_on_user_id"
+  end
 
   create_table "rooms", force: :cascade do |t|
     t.string "name"
@@ -46,4 +67,8 @@ ActiveRecord::Schema.define(version: 2022_05_14_034603) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "invited_meetings", "meetings"
+  add_foreign_key "invited_meetings", "users"
+  add_foreign_key "meetings", "rooms"
+  add_foreign_key "meetings", "users"
 end
