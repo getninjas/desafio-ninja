@@ -6,7 +6,12 @@ class MeetingController < ApplicationController
 
   def my_created_meetings
     @my_created_meetings = current_user.created_meetings
-    render :my_created_meetings, status: :ok if @my_created_meetings.present?
+
+    if @my_created_meetings.present?
+      render :my_created_meetings, status: :ok
+    else
+      render json: { message: "You don't have created meetings yet." }, status: :ok
+    end
   end
 
   def create
