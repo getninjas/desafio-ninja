@@ -1,4 +1,5 @@
 class MeetingController < ApplicationController
+  before_action :find_meeting, only: %i[show update destroy]
   def my_created_meetings
     @my_created_meetings = current_user.created_meetings
     render :my_created_meetings, status: :ok if @my_created_meetings.present?
@@ -24,6 +25,11 @@ class MeetingController < ApplicationController
   def formatted_params
     permitted_params.merge!(users_emails: params[:users_emails])
   end
+
+  def find_meeting
+    @meeting = Meeting.find(params[:id])
+  end
+
   end
 
   def delete
