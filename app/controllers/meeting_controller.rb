@@ -1,4 +1,5 @@
 class MeetingController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_meeting, only: %i[show update destroy]
   def my_created_meetings
     @my_created_meetings = current_user.created_meetings
