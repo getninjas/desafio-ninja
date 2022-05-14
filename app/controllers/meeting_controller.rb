@@ -1,5 +1,7 @@
 class MeetingController < ApplicationController
-  def my_meetings
+  def my_created_meetings
+    @my_created_meetings = current_user.created_meetings
+    render :my_created_meetings, status: :ok if @my_created_meetings.present?
   end
 
   def create
