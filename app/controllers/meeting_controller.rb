@@ -62,5 +62,9 @@ class MeetingController < ApplicationController
     end
   end
 
+  def find_guests
+    guests = @meeting_params[:users_emails].map { |email| User.find_by(email: email) }
+    guests.compact!
+    guests
   end
 end
