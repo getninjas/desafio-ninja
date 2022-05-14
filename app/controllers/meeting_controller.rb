@@ -15,6 +15,8 @@ class MeetingController < ApplicationController
   def update
   end
 
+  def show; end
+
   private
 
   def permitted_params
