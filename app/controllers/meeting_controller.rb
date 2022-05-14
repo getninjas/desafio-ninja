@@ -1,6 +1,9 @@
 class MeetingController < ApplicationController
   before_action :authenticate_user!
   before_action :find_meeting, only: %i[show update destroy]
+  before_action :check_my_meetings, only: %i[show]
+  before_action :check_my_created_meetings, only: %i[update destroy]
+
   def my_created_meetings
     @my_created_meetings = current_user.created_meetings
     render :my_created_meetings, status: :ok if @my_created_meetings.present?
@@ -31,8 +34,22 @@ class MeetingController < ApplicationController
     @meeting = Meeting.find(params[:id])
   end
 
+  def check_my_meetings
+    unless current_user.meetings.include?(@meeting) ||
+      current_user.created_meetings.include?(@meeting)
+      render json: { message: "You have to belong this meeting to do this action." },
+             status: :forbidden
+      return
+    end
   end
 
-  def delete
+  def check_my_created_meetings
+    unless current_user.created_meetings.include?(@meeting)
+      render json: { message: "You have to own this meeting to do this action." },
+             status: :forbidden
+      return
+    end
+  end
+
   end
 end
