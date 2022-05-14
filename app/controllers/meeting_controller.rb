@@ -10,7 +10,20 @@ class MeetingController < ApplicationController
   def update
   end
 
-  def show
+  private
+
+  def permitted_params
+    params.require(:meeting).permit(
+      :start_time,
+      :end_time,
+      :room_id,
+      :subject
+    )
+  end
+
+  def formatted_params
+    permitted_params.merge!(users_emails: params[:users_emails])
+  end
   end
 
   def delete
