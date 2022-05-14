@@ -17,6 +17,10 @@ class MeetingController < ApplicationController
 
   def show; end
 
+  def destroy
+    render json: '', status: :ok if @meeting.destroy
+  end
+
   private
 
   def permitted_params
