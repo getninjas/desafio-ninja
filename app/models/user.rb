@@ -7,4 +7,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
+
+  has_many :invited_meetings
+  has_many :meetings, :through => :invited_meetings
+
+  has_many :created_meetings, :class_name => "Meeting", :foreign_key => :user_id
 end
