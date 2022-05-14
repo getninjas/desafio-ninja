@@ -8,12 +8,10 @@ user3 = User.create(name: 'Aurora', email: 'aurora@getninjas.com.br', password: 
 start_time = DateTime.now - 15.minutes
 end_time = DateTime.now + 15.minutes
 
-meeting = Meeting.new(
+Meeting.create(
   start_time: start_time,
   end_time: end_time,
   user_id: user1.id,
   room: room1,
   users: [user2, user3]
 )
-meeting.save
-
