@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
 
-  has_many :invited_meetings
-  has_many :meetings, :through => :invited_meetings
+  has_many :invited_meetings, dependent: :destroy
+  has_many :meetings, :through => :invited_meetings, dependent: :destroy
 
-  has_many :created_meetings, :class_name => "Meeting", :foreign_key => :user_id
+  has_many :created_meetings, :class_name => "Meeting", :foreign_key => :user_id, dependent: :destroy
 end
