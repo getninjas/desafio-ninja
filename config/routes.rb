@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   resources :meeting, only: %i[show create update destroy]
   get '/my_created_meetings', to: 'meeting#my_created_meetings'
+  get '/my_meetings_invitations', to: 'meeting#my_meetings_invitations'
 end
