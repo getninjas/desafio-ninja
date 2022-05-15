@@ -5,6 +5,7 @@ ruby '2.6.3'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise_token_auth'
+gem 'dry-validation'
 gem 'jbuilder'
 gem 'pg', '~> 1.1'
 gem 'pry'
