@@ -21,6 +21,6 @@ class MeetingContract < Dry::Validation::Contract
   end
 
   rule(:start_time, :start_time) do
-    key.failure('must be before end_time') if values[:start_time] >= values[:start_time]
+    key.failure('must be before end_time') if values[:start_time] < values[:start_time]
   end
 end
