@@ -9,6 +9,9 @@ RSpec.describe "Meetings", type: :request do
   let(:response_empty_invited_meetings) do
     { message: "You don't have any inveted meetings yet." }.to_json
   end
+  let(:response_not_related_to_meeting) do
+    { message: 'You have to belong to this meeting to do this action.' }.to_json
+  end
 
   before(:each) do
     @current_user = create(:user)
@@ -77,8 +80,8 @@ RSpec.describe "Meetings", type: :request do
         expect(date_formatter(meeting_data[:start_time])).to eq(meeting.start_time.strftime("%H:%M %d/%m/%Y"))
         expect(date_formatter(meeting_data[:end_time])).to eq(meeting.end_time.strftime("%H:%M %d/%m/%Y"))
         expect(meeting_data[:room]).to eq(meeting.room.name)
-        expect(meeting_data[:owner_name]).to eq(meeting_owner.name)
-        expect(meeting_data[:owner_email]).to eq(meeting_owner.email)
+        expect(meeting_data[:owner_name]).to eq(meeting.owner.name)
+        expect(meeting_data[:owner_email]).to eq(meeting.owner.email)
         expect(meeting_data[:subject]).to eq(meeting.subject)
         expect(meeting_data[:participants]).to match_array(
           [
@@ -90,10 +93,56 @@ RSpec.describe "Meetings", type: :request do
     end
   end
 
-  describe "GET /delete" do
-    it "returns http success" do
-      get "/meeting/delete"
-      expect(response).to have_http_status(:success)
+
+  describe "GET /show" do
+    context 'when user is not related to the meeting' do
+      it "returns an info message and http forbidden" do
+        meeting_owner = create(:user, name: 'Mariana', email: 'mariana@email.com')
+        meeting = create(:meeting, user_id: meeting_owner.id)
+        invited_user = create(:user, name: 'Aurora', email: 'aurora@email.com')
+        meeting.users << invited_user
+        get api_meeting_path(meeting.id), headers: @auth_params
+
+        expect(response).to have_http_status(:forbidden)
+        expect(response.body).to eq(response_not_related_to_meeting)
+      end
+    end
+
+    context 'when meeting does not exist' do
+      it "returns http not_found" do
+        get api_meeting_path(666), headers: @auth_params
+
+        expect(response).to have_http_status(:not_found)
+      end
+    end
+
+    context 'when meeting exists and it is related to user' do
+      it "returns http success" do
+        meeting_owner = create(:user, name: 'Mariana', email: 'mariana@email.com')
+        meeting = create(:meeting, user_id: meeting_owner.id)
+        invited_user = create(:user, name: 'Aurora', email: 'aurora@email.com')
+        meeting.users << [invited_user, @current_user]
+
+        get api_meeting_path(meeting.id), headers: @auth_params
+
+        expect(response).to have_http_status(:success)
+        meeting_data = JSON.parse(response.body, symbolize_names: true)
+        expect(meeting_data[:id]).to eq(meeting.id)
+        expect(date_formatter(meeting_data[:start_time])).to eq(meeting.start_time.strftime("%H:%M %d/%m/%Y"))
+        expect(date_formatter(meeting_data[:end_time])).to eq(meeting.end_time.strftime("%H:%M %d/%m/%Y"))
+        expect(meeting_data[:owner_name]).to eq(meeting.owner.name)
+        expect(meeting_data[:owner_email]).to eq(meeting.owner.email)
+        expect(meeting_data[:room]).to eq(meeting.room.name)
+        expect(meeting_data[:subject]).to eq(meeting.subject)
+        expect(meeting_data[:participants]).to match_array(
+          [
+            { name: @current_user.name, email: @current_user.email },
+            { name: invited_user.name, email: invited_user.email }
+          ]
+        )
+      end
+    end
+  end
 
   def login
     post api_user_session_path, params:  { email: @current_user.email, password: 'password' }.to_json, headers: { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
