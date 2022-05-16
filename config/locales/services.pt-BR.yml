@@ -1,0 +1,5 @@
+pt-BR:
+  services:
+    meeting_room:
+      errors:
+        not_found: Sala de reuniões não encontrada

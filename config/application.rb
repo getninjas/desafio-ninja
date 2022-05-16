@@ -29,8 +29,12 @@ module DesafioNinja
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.time_zone = 'Brasilia'
+
+    I18n.available_locales = %i[en pt-BR]
+    config.i18n.default_locale = :'pt-BR'
 
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
