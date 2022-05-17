@@ -1,5 +1,5 @@
 class SchedulingsController < ApiController
-  before_action :find_scheduling, only: [:update, :show]
+  before_action :find_scheduling, only: [:update, :show, :destroy]
 
   def index
     render_success(Scheduling.all.where('time > ?', DateTime.current.beginning_of_day))
@@ -23,6 +23,10 @@ class SchedulingsController < ApiController
 
   def show
     render_success(@scheduling)
+  end
+
+  def destroy
+    render_success(@scheduling.destroy)
   end
 
   private
