@@ -492,6 +492,7 @@ RSpec.describe 'Meetings', type: :request do
         put "/api/meeting/#{meeting.id}", params: meeting_params_update_guest_subject, headers: @auth_params
 
         expect(response).to have_http_status(:forbidden)
+        expect(response.body).to eq(response_not_the_meeting_owner)
         expect(meeting.subject).to_not eq(meeting_params_update_guest_subject[:subject])
         expect(meeting.users.map(&:email)).to_not eq(meeting_params_update_guest_subject[:users_emails])
       end
