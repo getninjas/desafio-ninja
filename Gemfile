@@ -11,6 +11,10 @@ gem 'pg', '~> 1.1'
 gem 'pry'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 6.1.6'
+gem 'rswag'
+gem 'rswag-api'
+gem 'rswag-ui'
+gem 'swagger-docs'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do

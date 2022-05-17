@@ -1,0 +1,774 @@
+openapi: 3.0.2
+info:
+  version: '1.0'
+  title: desafio-ninja-agenda
+  contact:
+    email: fasanelli.italo@gmail.com
+  description: |
+    # Description
+    Meeting scheduler application.
+externalDocs:
+  description: API repository
+  url: 'https://github.com/getninjas/desafio-ninja'
+paths:
+  /api/auth:
+    post:
+      tags:
+        - Sign up
+      summary: User sign up
+      description: Creates user account and return auth tokens
+      operationId: signup
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/signup_response_ok'
+          headers:
+            access-token:
+              schema:
+                type: string
+              description: User access token
+            client:
+              schema:
+                type: string
+              description: Recognizes user device
+            uid:
+              schema:
+                type: string
+              description: User identifier
+        '422':
+          description: Unprocessable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/login_response_unprocessable'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/signup_payload'
+        description: Update meeting payload
+        required: true
+  /api/auth/sign_in:
+    post:
+      tags:
+        - Login
+      summary: User login
+      description: Logs user in and return auth tokens
+      operationId: login
+      security:
+        - basic_auth: []
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/login_response_ok'
+          headers:
+            access-token:
+              schema:
+                type: string
+              description: User access token
+            client:
+              schema:
+                type: string
+              description: Recognizes user device
+            uid:
+              schema:
+                type: string
+              description: User identifier
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/login_response_unauthrized'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/login_payload'
+        description: Update meeting payload
+        required: true
+  /api/my_created_meetings:
+    get:
+      tags:
+        - My created meetings 
+      summary: Shows created meetings
+      description: Returns all the meetings data created by the current user
+      operationId: my_created_meetings
+      security:
+        - apiToken:  []
+          apiClient: []
+          apiUid:    []
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/my_created_meetings_response'
+  /api/my_meetings_invitations:
+    get:
+      tags:
+        - My meetings invitations
+      summary: Shows meetings invitations data
+      description: Returns all the invited meetings data
+      operationId: my_meetings_invitations
+      security:
+        - apiToken:  []
+          apiClient: []
+          apiUid:    []
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/my_invited_meetings_response'
+  /api/meeting:
+    post:
+      tags:
+        - Create meeting
+      summary: Creates meeting
+      description: Returns created meeting data
+      operationId: create_meeting_data
+      security:
+        - apiToken:  []
+          apiClient: []
+          apiUid:    []
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/create_meeting_ok'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/create_meeting_payload'
+        description: Update meeting payload
+        required: true
+  /api/meeting/:id:
+    put:
+      tags:
+        - Update meeting data
+      summary: Updates meeting data
+      description: Returns updated meeting data
+      operationId: update_meeting_data
+      security:
+        - apiToken:  []
+          apiClient: []
+          apiUid:    []
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/update_meeting_ok'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/update_meeting_forbidden'
+        '404':
+          description: Not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/update_meeting_payload'
+        description: Update meeting payload
+        required: true
+    get:
+      tags:
+        - Show meeting data
+      summary: Shows meeting data
+      description: Returns meeting data
+      operationId: show_meeting_data
+      security:
+        - apiToken:  []
+          apiClient: []
+          apiUid:    []
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/show_meeting_ok'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/show_meeting_forbidden'
+        '404':
+          description: Not found
+    delete:
+      tags:
+        - Delete meeting
+      summary: Deletes meetings
+      description: Deletes meetings owned by current user
+      operationId: delete_meeting
+      security:
+        - apiToken:  []
+          apiClient: []
+          apiUid:    []
+      responses:
+        '200':
+          description: Ok
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/delete_meeting_forbidden'
+        '404':
+          description: Not found
+components:
+  schemas:
+    my_created_meetings_response:
+      type: object
+      properties:
+        my_created_meetings:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                description: VPS Id
+                type: integer
+                example: 1
+              start_time:
+                description: Meeting start time
+                type: string
+                example: '2022-05-16T14:41:02.827Z'
+              end_time:
+                description: Meeting end time
+                type: string
+                example: '2022-05-16T14:41:02.827Z'
+              room:
+                description: Meeting room
+                type: string
+                example: Sala 1
+              subject:
+                description: Meeting subject
+                type: string
+                example: Planning
+              created_at:
+                description: Meeting creation date
+                type: string
+                example: '2022-05-17T15:06:40.119Z'
+              updated_at:
+                description: Meeting update date
+                type: string
+                example: '2022-05-17T15:06:40.119Z'
+              participants:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      description: Meeting guest name
+                      type: string
+                      example: Mariana
+                    email:
+                      description: Meeting guest email
+                      type: string
+                      example: mariana@getninjas.com.br
+    my_invited_meetings_response:
+      type: object
+      properties:
+        my_meetings_invitations:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                description: VPS Id
+                type: integer
+                example: 1
+              start_time:
+                description: Meeting start time
+                type: string
+                example: '2022-05-16T14:41:02.827Z'
+              end_time:
+                description: Meeting end time
+                type: string
+                example: '2022-05-16T14:41:02.827Z'
+              room:
+                description: Meeting room
+                type: string
+                example: Sala 1
+              owner_name:
+                description: Meeting owner name
+                type: string
+                example: Italo
+              owner_email:
+                description: Meeting owner email
+                type: string
+                example: italo@getninjas.com.br
+              subject:
+                description: Meeting subject
+                type: string
+                example: Planning
+              created_at:
+                description: Meeting creation date
+                type: string
+                example: '2022-05-17T15:06:40.119Z'
+              updated_at:
+                description: Meeting update date
+                type: string
+                example: '2022-05-17T15:06:40.119Z'
+              participants:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      description: Meeting guest name
+                      type: string
+                      example: Mariana
+                    email:
+                      description: Meeting guest email
+                      type: string
+                      example: mariana@getninjas.com.br
+    show_meeting_forbidden:
+      type: object
+      properties:
+        message:
+          description: Info message
+          type: string
+          example: You have to belong to this meeting to do this action.
+    show_meeting_ok:
+      type: object
+      properties:
+        id:
+          description: VPS Id
+          type: integer
+          example: 1
+        start_time:
+          description: Meeting start time
+          type: string
+          example: '2022-05-16T14:41:02.827Z'
+        end_time:
+          description: Meeting end time
+          type: string
+          example: '2022-05-16T14:41:02.827Z'
+        room:
+          description: Meeting room
+          type: string
+          example: Sala 1
+        owner_name:
+          description: Meeting owner name
+          type: string
+          example: Italo
+        owner_email:
+          description: Meeting owner email
+          type: string
+          example: italo@getninjas.com.br
+        subject:
+          description: Meeting subject
+          type: string
+          example: Planning
+        created_at:
+          description: Meeting creation date
+          type: string
+          example: '2022-05-17T15:06:40.119Z'
+        updated_at:
+          description: Meeting update date
+          type: string
+          example: '2022-05-17T15:06:40.119Z'
+        participants:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                description: Meeting guest name
+                type: string
+                example: Mariana
+              email:
+                description: Meeting guest email
+                type: string
+                example: mariana@getninjas.com.br
+    delete_meeting_forbidden:
+      type: object
+      properties:
+        message:
+          description: Info message
+          type: string
+          example: You have to own this meeting to do this action.
+    update_meeting_ok:
+      type: object
+      properties:
+        id:
+          description: VPS Id
+          type: integer
+          example: 1
+        start_time:
+          description: Meeting start time
+          type: string
+          example: '2022-05-16T14:41:02.827Z'
+        end_time:
+          description: Meeting end time
+          type: string
+          example: '2022-05-16T14:41:02.827Z'
+        room:
+          description: Meeting room
+          type: string
+          example: Sala 1
+        owner_name:
+          description: Meeting owner name
+          type: string
+          example: Italo
+        owner_email:
+          description: Meeting owner email
+          type: string
+          example: italo@getninjas.com.br
+        subject:
+          description: Meeting subject
+          type: string
+          example: Planning
+        created_at:
+          description: Meeting creation date
+          type: string
+          example: '2022-05-17T15:06:40.119Z'
+        updated_at:
+          description: Meeting update date
+          type: string
+          example: '2022-05-17T15:06:40.119Z'
+        participants:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                description: Meeting guest name
+                type: string
+                example: Mariana
+              email:
+                description: Meeting guest email
+                type: string
+                example: mariana@getninjas.com.br
+    update_meeting_forbidden:
+      type: object
+      properties:
+        message:
+          description: Info message
+          type: string
+          example: You have to own this meeting to do this action.
+    update_meeting_payload:
+      type: object
+      properties:
+        meeting:
+          type: object
+          properties:
+            start_time:
+              description: Meeting start time
+              type: string
+              example: '2022-05-16T14:41:02.827Z'
+            end_time:
+              description: Meeting end time
+              type: string
+              example: '2022-05-16T14:41:02.827Z'
+            subject:
+              description: Meeting subject
+              type: string
+              example: Planning
+            users_emails:
+              type: array
+              items:
+                type: string
+                description: Guest email
+                example: mariana@getninjas.com.br
+    create_meeting_ok:
+      type: object
+      properties:
+        id:
+          description: VPS Id
+          type: integer
+          example: 1
+        start_time:
+          description: Meeting start time
+          type: string
+          example: '2022-05-16T14:41:02.827Z'
+        end_time:
+          description: Meeting end time
+          type: string
+          example: '2022-05-16T14:41:02.827Z'
+        room:
+          description: Meeting room
+          type: string
+          example: Sala 1
+        owner_name:
+          description: Meeting owner name
+          type: string
+          example: Italo
+        owner_email:
+          description: Meeting owner email
+          type: string
+          example: italo@getninjas.com.br
+        subject:
+          description: Meeting subject
+          type: string
+          example: Planning
+        created_at:
+          description: Meeting creation date
+          type: string
+          example: '2022-05-17T15:06:40.119Z'
+        updated_at:
+          description: Meeting update date
+          type: string
+          example: '2022-05-17T15:06:40.119Z'
+        participants:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                description: Meeting guest name
+                type: string
+                example: Mariana
+              email:
+                description: Meeting guest email
+                type: string
+                example: mariana@getninjas.com.br
+    create_meeting_payload:
+      type: object
+      properties:
+        meeting:
+          type: object
+          properties:
+            start_time:
+              description: Meeting start time
+              type: string
+              example: '2022-05-16T14:41:02.827Z'
+            end_time:
+              description: Meeting end time
+              type: string
+              example: '2022-05-16T14:41:02.827Z'
+            subject:
+              description: Meeting subject
+              type: string
+              example: Planning
+            users_emails:
+              type: array
+              items:
+                type: string
+                description: Guest email
+                example: mariana@getninjas.com.br
+    login_payload:
+      type: object
+      properties:
+        email:
+          description: User email
+          type: string
+          example: italo@getninjas.com.br
+        password:
+          description: User password
+          type: string
+          example: Efs@45$ds%
+    login_response_ok:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            email:
+              description: User email
+              type: string
+              example: italo@getninjas.com.br
+            uid:
+              description: User identification email
+              type: string
+              example: italo@getninjas.com.br
+            id:
+              description: User id
+              type: integer
+              example: 1
+            provider:
+              description: Auth user identification provider
+              type: string
+              example: email
+            allow_password_change:
+              description: If user is allowed to change password
+              type: boolean
+              example: false
+            name:
+              description: User name
+              type: string
+              example: Italo Fasanelli
+            nickname:
+              description: User nickname
+              type: string
+              example: Italo
+            image:
+              description: User image profile
+              type: string
+              example: null
+    login_response_unauthrized:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        errors:
+          type: array
+          items:
+            type: string
+            example: "Invalid login credentials. Please try again."
+    signup_payload:
+      type: object
+      properties:
+        name:
+          description: User name
+          type: string
+          example: Italo Fasanelli
+        email:
+          description: User email
+          type: string
+          example: italo@getninjas.com.br
+        password:
+          description: User password
+          type: string
+          example: DgT%r@ASd
+        password_confirmation:
+          description: User password confirmation
+          type: string
+          example: DgT%r@ASd
+    signup_response_ok:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        data:
+          type: object
+          properties:
+            id:
+              description: User id
+              type: integer
+              example: 1
+            email:
+              description: User email
+              type: string
+              example: italo@getninjas.com.br
+            uid:
+              description: User identification email
+              type: string
+              example: italo@getninjas.com.br
+            provider:
+              description: Auth user identification provider
+              type: string
+              example: email
+            allow_password_change:
+              description: If user is allowed to change password
+              type: boolean
+              example: false
+            name:
+              description: User name
+              type: string
+              example: Italo Fasanelli
+            nickname:
+              description: User nickname
+              type: string
+              example: Italo
+            image:
+              description: User image profile
+              type: string
+              example: null
+            created_at:
+              description: User account create timestamp
+              type: string
+              example: "2022-05-17T17:43:56.991Z"
+            updated_at:
+              description: User account update timestamp
+              type: string
+              example: "2022-05-17T17:43:56.991Z"
+    login_response_unprocessable:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        data:
+          type: object
+          properties:
+            id:
+              description: User id
+              type: integer
+              example: 1
+            email:
+              description: User email
+              type: string
+              example: italo@getninjas.com.br
+            uid:
+              description: User identification email
+              type: string
+              example: italo@getninjas.com.br
+            provider:
+              description: Auth user identification provider
+              type: string
+              example: email
+            allow_password_change:
+              description: If user is allowed to change password
+              type: boolean
+              example: false
+            name:
+              description: User name
+              type: string
+              example: Italo Fasanelli
+            nickname:
+              description: User nickname
+              type: string
+              example: Italo
+            image:
+              description: User image profile
+              type: string
+              example: null
+            created_at:
+              description: User account create timestamp
+              type: string
+              example: null
+            updated_at:
+              description: User account update timestamp
+              type: string
+              example: null
+        errors:
+          type: object
+          properties:
+            email:
+              type: array
+              items:
+                type: string
+                example: "is not an email"
+            full_messages:
+              type: array
+              items:
+                type: string
+                example: "Email is not an email"
+  securitySchemes:
+    basic_auth:
+      type: http
+      scheme: basic
+    apiToken:
+      type: apiKey
+      in: header
+      name: access-token
+    apiClient:
+      type: apiKey
+      in: header
+      name: client
+    apiUid:
+      type: apiKey
+      in: header
+      name: uid
