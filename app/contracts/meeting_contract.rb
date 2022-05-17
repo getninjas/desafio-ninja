@@ -8,16 +8,16 @@ class MeetingContract < Dry::Validation::Contract
 
   rule(:start_time) do
     key.failure('creating events is allowed only on weekdays.') if value.saturday? || value.sunday?
-    key.failure(
-      'creating events is allowed only from 9am to 6pm on weekdays.'
-    ) if value.strftime('%H').to_i < 9 || value.strftime('%H').to_i >= 18
+    if value.strftime('%H').to_i < 9 || value.strftime('%H').to_i >= 18
+      key.failure('creating events is allowed only from 9am to 6pm on weekdays.')
+    end
   end
 
   rule(:end_time) do
     key.failure('creating events is allowed only on weekdays.') if value.saturday? || value.sunday?
-    key.failure(
-      'creating events is allowed only from 9am to 6pm on weekdays.'
-    ) if value.strftime('%H').to_i < 9 || value.strftime('%H').to_i > 18
+    if value.strftime('%H').to_i < 9 || value.strftime('%H').to_i > 18
+      key.failure('creating events is allowed only from 9am to 6pm on weekdays.')
+    end
   end
 
   rule(:start_time, :end_time) do

@@ -26,8 +26,8 @@ module Api
       end
 
       def create
-        (respond_contract_errors; return) if meeting_contract.errors.present?
-        (respond_no_room_available; return) if available_rooms.blank?
+        (respond_contract_errors and return) if meeting_contract.errors.present?
+        (respond_no_room_available and return) if available_rooms.blank?
 
         @meeting_cadidate = Meeting.new(
           start_time: formatted_params[:start_time],
@@ -52,9 +52,9 @@ module Api
         end
 
         if formatted_params[:start_time].present? && formatted_params[:end_time].present? &&
-          (@meeting.start_time != formatted_params[:start_time] || @meeting.end_time != formatted_params[:end_time])
+            (@meeting.start_time != formatted_params[:start_time] || @meeting.end_time != formatted_params[:end_time])
 
-          (respond_no_room_available; return) if available_rooms.blank?
+          (respond_no_room_available and return) if available_rooms.blank?
           @meeting.room_id = available_rooms
           @meeting.start_time = formatted_params[:start_time]
           @meeting.end_time = formatted_params[:end_time]
@@ -95,18 +95,16 @@ module Api
 
       def check_my_meetings
         unless current_api_user.meetings.include?(@meeting) ||
-          current_api_user.created_meetings.include?(@meeting)
+            current_api_user.created_meetings.include?(@meeting)
           render json: { message: 'You have to belong to this meeting to do this action.' },
-                status: :forbidden
-          return
+                 status: :forbidden
         end
       end
 
       def check_my_created_meetings
         unless current_api_user.created_meetings.include?(@meeting)
           render json: { message: 'You have to own this meeting to do this action.' },
-                status: :forbidden
-          return
+                 status: :forbidden
         end
       end
 
@@ -116,11 +114,11 @@ module Api
 
       def respond_contract_errors
         render json: { errors: meeting_contract.errors.messages.map(&:to_h) },
-              status: :bad_request
+               status: :bad_request
       end
 
       def respond_no_room_available
-        render json: { message: 'No room available for this time.'}, status: :ok
+        render json: { message: 'No room available for this time.' }, status: :ok
       end
 
       def find_guests

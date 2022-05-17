@@ -1,8 +1,8 @@
 require 'rails_helper'
 require 'webmock/rspec'
-include ActionController::RespondWith
 
-RSpec.describe "Meetings", type: :request do
+RSpec.describe 'Meetings', type: :request do
+  include ActionController::RespondWith
   let(:response_empty_created_meetings) do
     { message: "You don't have created meetings yet." }.to_json
   end
@@ -19,126 +19,126 @@ RSpec.describe "Meetings", type: :request do
     { message: 'No room available for this time.' }.to_json
   end
   let(:response_without_start_time_end_time) do
-    { errors: [{ start_time: ["is missing"] }, { end_time: ["is missing"] }] }.to_json
+    { errors: [{ start_time: ['is missing'] }, { end_time: ['is missing'] }] }.to_json
   end
   let(:response_wrong_data_type) do
     {
       errors: [
-      { start_time: ["must be a time"] },
-      { end_time: ["must be a time"] },
-      { users_emails: ["must be an array"] }
+        { start_time: ['must be a time'] },
+        { end_time: ['must be a time'] },
+        { users_emails: ['must be an array'] }
       ]
     }.to_json
   end
   let(:response_weekend) do
     {
       errors: [
-      { start_time: ["creating events is allowed only on weekdays."] },
-      { end_time: ["creating events is allowed only on weekdays."] }
+        { start_time: ['creating events is allowed only on weekdays.'] },
+        { end_time: ['creating events is allowed only on weekdays.'] }
       ]
     }.to_json
   end
   let(:response_before_nine_am_after_six_pm) do
     {
       errors: [
-      { start_time: ["creating events is allowed only from 9am to 6pm on weekdays."] },
-      { end_time: ["creating events is allowed only from 9am to 6pm on weekdays."] }
+        { start_time: ['creating events is allowed only from 9am to 6pm on weekdays.'] },
+        { end_time: ['creating events is allowed only from 9am to 6pm on weekdays.'] }
       ]
     }.to_json
   end
   let(:response_start_time_after_end_time) do
-    { errors: [{ start_time: ["must be before end_time."] }] }.to_json
+    { errors: [{ start_time: ['must be before end_time.'] }] }.to_json
   end
   let(:meeting_params) do
     {
       meeting: {
-        start_time: "2022-05-16T14:41:02.827Z",
-        end_time: "2022-05-16T15:11:02.827Z",
-        subject: "Planning",
+        start_time: '2022-05-16T14:41:02.827Z',
+        end_time: '2022-05-16T15:11:02.827Z',
+        subject: 'Planning'
       },
-      users_emails: ["aurora@getninjas.com.br", "mariana@getninjas.com.br"]
+      users_emails: ['aurora@getninjas.com.br', 'mariana@getninjas.com.br']
     }
   end
   let(:meeting_params_without_start_time_end_time) do
     {
       meeting: {
-        subject: "Planning",
+        subject: 'Planning'
       },
-      users_emails: ["aurora@getninjas.com.br", "mariana@getninjas.com.br"]
+      users_emails: ['aurora@getninjas.com.br', 'mariana@getninjas.com.br']
     }
   end
   let(:meeting_params_wrong_data_type) do
     {
       meeting: {
         start_time: 1,
-        end_time: 2,
+        end_time: 2
       },
-      users_emails: "aurora@getninjas.com.br"
+      users_emails: 'aurora@getninjas.com.br'
     }
   end
   let(:meeting_params_weenkend) do
     {
       meeting: {
-        start_time: "2022-05-15T14:41:02.827Z",
-        end_time: "2022-05-15T15:11:02.827Z",
-        subject: "Planning",
+        start_time: '2022-05-15T14:41:02.827Z',
+        end_time: '2022-05-15T15:11:02.827Z',
+        subject: 'Planning'
       },
-      users_emails: ["aurora@getninjas.com.br", "mariana@getninjas.com.br"]
+      users_emails: ['aurora@getninjas.com.br', 'mariana@getninjas.com.br']
     }
   end
   let(:meeting_params_before_nine_am) do
     {
       meeting: {
-        start_time: "2022-05-16T04:41:02.827Z",
-        end_time: "2022-05-16T05:11:02.827Z",
-        subject: "Planning",
+        start_time: '2022-05-16T04:41:02.827Z',
+        end_time: '2022-05-16T05:11:02.827Z',
+        subject: 'Planning'
       },
-      users_emails: ["aurora@getninjas.com.br", "mariana@getninjas.com.br"]
+      users_emails: ['aurora@getninjas.com.br', 'mariana@getninjas.com.br']
     }
   end
   let(:meeting_params_after_six_pm) do
     {
       meeting: {
-        start_time: "2022-05-16T19:41:02.827Z",
-        end_time: "2022-05-16T20:11:02.827Z",
-        subject: "Planning",
+        start_time: '2022-05-16T19:41:02.827Z',
+        end_time: '2022-05-16T20:11:02.827Z',
+        subject: 'Planning'
       },
-      users_emails: ["aurora@getninjas.com.br", "mariana@getninjas.com.br"]
+      users_emails: ['aurora@getninjas.com.br', 'mariana@getninjas.com.br']
     }
   end
   let(:meeting_params_start_time_after_end_time) do
     {
       meeting: {
-        start_time: "2022-05-16T10:11:02.827Z",
-        end_time: "2022-05-16T09:41:02.827Z",
-        subject: "Planning",
+        start_time: '2022-05-16T10:11:02.827Z',
+        end_time: '2022-05-16T09:41:02.827Z',
+        subject: 'Planning'
       },
-      users_emails: ["aurora@getninjas.com.br", "mariana@getninjas.com.br"]
+      users_emails: ['aurora@getninjas.com.br', 'mariana@getninjas.com.br']
     }
   end
   let(:meeting_params_update_guest_subject) do
     {
       meeting: {
-        start_time: "2022-05-16T14:41:02.827Z",
-        end_time: "2022-05-16T15:11:02.827Z",
-        subject: "Weekly"
+        start_time: '2022-05-16T14:41:02.827Z',
+        end_time: '2022-05-16T15:11:02.827Z',
+        subject: 'Weekly'
       },
-      users_emails: ["aurora@getninjas.com.br", "mariana@getninjas.com.br"]
+      users_emails: ['aurora@getninjas.com.br', 'mariana@getninjas.com.br']
     }
   end
   let(:meeting_params_update_timmings) do
     {
       meeting: {
-        start_time: "2022-05-16T16:41:02.827Z",
-        end_time: "2022-05-16T17:11:02.827Z"
+        start_time: '2022-05-16T16:41:02.827Z',
+        end_time: '2022-05-16T17:11:02.827Z'
       }
     }
   end
   let(:meeting_params_update_timmings_conflict) do
     {
       meeting: {
-        start_time: "2022-05-16T14:41:02.827Z",
-        end_time: "2022-05-16T15:11:02.827Z"
+        start_time: '2022-05-16T14:41:02.827Z',
+        end_time: '2022-05-16T15:11:02.827Z'
       }
     }
   end
@@ -206,18 +206,18 @@ RSpec.describe "Meetings", type: :request do
     end
   end
 
-  describe "GET /api/my_created_meetings" do
-    context "when user does not have any created meetings" do
-      it "returns an info message and http success" do
+  describe 'GET /api/my_created_meetings' do
+    context 'when user does not have any created meetings' do
+      it 'returns an info message and http success' do
         get api_my_created_meetings_path, headers: @auth_params
 
         expect(response).to have_http_status(:success)
-        expect(response.body). to eq(response_empty_created_meetings)
+        expect(response.body).to eq(response_empty_created_meetings)
       end
     end
 
-    context "when user has a created meeting" do
-      it "returns an info message and http success" do
+    context 'when user has a created meeting' do
+      it 'returns an info message and http success' do
         meeting = create(:meeting, user_id: @current_user.id)
         invited_user = create(:user, name: 'Aurora', email: 'aurora@getninjas.com.br')
         other_invited_user = create(:user, name: 'Mariana', email: 'mariana@getninjas.com.br')
@@ -228,8 +228,8 @@ RSpec.describe "Meetings", type: :request do
         data = JSON.parse(response.body, symbolize_names: true)
         meeting_data = data[:my_created_meetings].first
         expect(response).to have_http_status(:success)
-        expect(date_formatter(meeting_data[:start_time])).to eq(meeting.start_time.strftime("%H:%M %d/%m/%Y"))
-        expect(date_formatter(meeting_data[:end_time])).to eq(meeting.end_time.strftime("%H:%M %d/%m/%Y"))
+        expect(date_formatter(meeting_data[:start_time])).to eq(meeting.start_time.strftime('%H:%M %d/%m/%Y'))
+        expect(date_formatter(meeting_data[:end_time])).to eq(meeting.end_time.strftime('%H:%M %d/%m/%Y'))
         expect(meeting_data[:room]).to eq(meeting.room.name)
         expect(meeting_data[:subject]).to eq(meeting.subject)
         expect(meeting_data[:participants]).to match_array(
@@ -242,18 +242,18 @@ RSpec.describe "Meetings", type: :request do
     end
   end
 
-  describe "GET /api/my_meetings_invitations" do
-    context "when user does not have any invited meetings" do
-      it "returns http success" do
+  describe 'GET /api/my_meetings_invitations' do
+    context 'when user does not have any invited meetings' do
+      it 'returns http success' do
         get api_my_meetings_invitations_path, headers: @auth_params
 
         expect(response).to have_http_status(:success)
-        expect(response.body). to eq(response_empty_invited_meetings)
+        expect(response.body).to eq(response_empty_invited_meetings)
       end
     end
 
-    context "when user has an invited meeting" do
-      it "returns an info message and http success" do
+    context 'when user has an invited meeting' do
+      it 'returns an info message and http success' do
         meeting_owner = create(:user, name: 'Mariana', email: 'mariana@getninjas.com.br')
         meeting = create(:meeting, user_id: meeting_owner.id)
         invited_user = create(:user, name: 'Aurora', email: 'aurora@getninjas.com.br')
@@ -264,8 +264,8 @@ RSpec.describe "Meetings", type: :request do
         data = JSON.parse(response.body, symbolize_names: true)
         meeting_data = data[:my_meetings_invitations].first
         expect(response).to have_http_status(:success)
-        expect(date_formatter(meeting_data[:start_time])).to eq(meeting.start_time.strftime("%H:%M %d/%m/%Y"))
-        expect(date_formatter(meeting_data[:end_time])).to eq(meeting.end_time.strftime("%H:%M %d/%m/%Y"))
+        expect(date_formatter(meeting_data[:start_time])).to eq(meeting.start_time.strftime('%H:%M %d/%m/%Y'))
+        expect(date_formatter(meeting_data[:end_time])).to eq(meeting.end_time.strftime('%H:%M %d/%m/%Y'))
         expect(meeting_data[:room]).to eq(meeting.room.name)
         expect(meeting_data[:owner_name]).to eq(meeting.owner.name)
         expect(meeting_data[:owner_email]).to eq(meeting.owner.email)
@@ -280,9 +280,9 @@ RSpec.describe "Meetings", type: :request do
     end
   end
 
-  describe "GET /api/meeting/:id" do
+  describe 'GET /api/meeting/:id' do
     context 'when user is not related to the meeting' do
-      it "returns an info message and http forbidden" do
+      it 'returns an info message and http forbidden' do
         meeting_owner = create(:user, name: 'Mariana', email: 'mariana@getninjas.com.br')
         meeting = create(:meeting, user_id: meeting_owner.id)
         invited_user = create(:user, name: 'Aurora', email: 'aurora@getninjas.com.br')
@@ -296,7 +296,7 @@ RSpec.describe "Meetings", type: :request do
     end
 
     context 'when meeting does not exist' do
-      it "returns http not_found" do
+      it 'returns http not_found' do
         get api_meeting_path(666), headers: @auth_params
 
         expect(response).to have_http_status(:not_found)
@@ -304,7 +304,7 @@ RSpec.describe "Meetings", type: :request do
     end
 
     context 'when meeting exists and it is related to user' do
-      it "returns http success" do
+      it 'returns http success' do
         meeting_owner = create(:user, name: 'Mariana', email: 'mariana@getninjas.com.br')
         meeting = create(:meeting, user_id: meeting_owner.id)
         invited_user = create(:user, name: 'Aurora', email: 'aurora@getninjas.com.br')
@@ -315,8 +315,8 @@ RSpec.describe "Meetings", type: :request do
         expect(response).to have_http_status(:success)
         meeting_data = JSON.parse(response.body, symbolize_names: true)
         expect(meeting_data[:id]).to eq(meeting.id)
-        expect(date_formatter(meeting_data[:start_time])).to eq(meeting.start_time.strftime("%H:%M %d/%m/%Y"))
-        expect(date_formatter(meeting_data[:end_time])).to eq(meeting.end_time.strftime("%H:%M %d/%m/%Y"))
+        expect(date_formatter(meeting_data[:start_time])).to eq(meeting.start_time.strftime('%H:%M %d/%m/%Y'))
+        expect(date_formatter(meeting_data[:end_time])).to eq(meeting.end_time.strftime('%H:%M %d/%m/%Y'))
         expect(meeting_data[:owner_name]).to eq(meeting.owner.name)
         expect(meeting_data[:owner_email]).to eq(meeting.owner.email)
         expect(meeting_data[:room]).to eq(meeting.room.name)
@@ -331,7 +331,7 @@ RSpec.describe "Meetings", type: :request do
     end
   end
 
-  describe "POST /api/meeting" do
+  describe 'POST /api/meeting' do
     context 'when there is four rooms available' do
       it 'creates a meeting in Room 1, returns meeting data and http success' do
         invited_user = create(:user, name: 'Mariana', email: 'mariana@getninjas.com.br')
@@ -481,9 +481,9 @@ RSpec.describe "Meetings", type: :request do
     end
   end
 
-  describe "PUT /api/meeting/:id" do
+  describe 'PUT /api/meeting/:id' do
     context 'when the user is not the meeting owner' do
-      it "does not updates the meeting returns http fprbidden" do
+      it 'does not updates the meeting returns http fprbidden' do
         meeting_owner = create(:user, name: 'Mariana', email: 'mariana@getninjas.com.br')
         meeting = create(:meeting, user_id: meeting_owner.id)
         invited_user = create(:user, name: 'Aurora', email: 'aurora@getninjas.com.br')
@@ -498,7 +498,7 @@ RSpec.describe "Meetings", type: :request do
     end
 
     context 'when there is only subject and guests to update' do
-      it "updates meeting returns http success" do
+      it 'updates meeting returns http success' do
         to_be_invited = create(:user, name: 'Mariana', email: 'mariana@getninjas.com.br')
         meeting = create(:meeting, user_id: @current_user.id)
         invited_user = create(:user, name: 'Aurora', email: 'aurora@getninjas.com.br')
@@ -515,7 +515,7 @@ RSpec.describe "Meetings", type: :request do
     end
 
     context 'when there is only meeting timmings to update' do
-      it "updates meeting returns http success" do
+      it 'updates meeting returns http success' do
         meeting = create(:meeting, user_id: @current_user.id)
         invited_user = create(:user, name: 'Aurora', email: 'aurora@getninjas.com.br')
         meeting.users << invited_user
@@ -524,10 +524,10 @@ RSpec.describe "Meetings", type: :request do
         put "/api/meeting/#{meeting.id}", params: meeting_params_update_timmings, headers: @auth_params
         meeting.reload
         expect(response).to have_http_status(:success)
-        expect(meeting.start_time.strftime("%H:%M %d/%m/%Y")).to eq(
+        expect(meeting.start_time.strftime('%H:%M %d/%m/%Y')).to eq(
           date_formatter(meeting_params_update_timmings[:meeting][:start_time])
         )
-        expect(meeting.end_time.strftime("%H:%M %d/%m/%Y")).to eq(
+        expect(meeting.end_time.strftime('%H:%M %d/%m/%Y')).to eq(
           date_formatter(meeting_params_update_timmings[:meeting][:end_time])
         )
         expect(Meeting.all.count).to eq(1)
@@ -535,7 +535,7 @@ RSpec.describe "Meetings", type: :request do
     end
 
     context 'when there is room available to new timmings' do
-      it "updates meeting returns http success" do
+      it 'updates meeting returns http success' do
         room_one = create(:room, name: 'Sala 1')
         room_two = create(:room, name: 'Sala 2')
         room_three = create(:room, name: 'Sala 3')
@@ -564,25 +564,25 @@ RSpec.describe "Meetings", type: :request do
     end
 
     context 'when meeting does not exist' do
-      it "returns http not_found" do
-        put "/api/meeting/666", params: meeting_params_update_guest_subject, headers: @auth_params
+      it 'returns http not_found' do
+        put '/api/meeting/666', params: meeting_params_update_guest_subject, headers: @auth_params
 
         expect(response).to have_http_status(:not_found)
       end
     end
   end
 
-  describe "DELETE /api/meeting/:id" do
+  describe 'DELETE /api/meeting/:id' do
     context 'when meeting does not exist' do
-      it "returns http not_found" do
-        delete "/api/meeting/666", headers: @auth_params
+      it 'returns http not_found' do
+        delete '/api/meeting/666', headers: @auth_params
 
         expect(response).to have_http_status(:not_found)
       end
     end
 
     context 'when user is not the meeting owner' do
-      it "returns an info message and http forbidden" do
+      it 'returns an info message and http forbidden' do
         meeting_owner = create(:user, name: 'Mariana', email: 'mariana@getninjas.com.br')
         meeting = create(:meeting, user_id: meeting_owner.id)
 
@@ -620,17 +620,16 @@ RSpec.describe "Meetings", type: :request do
     token_type = response.headers['token-type']
     uid = response.headers['uid']
 
-    auth_params = {
+    {
       'access-token' => token,
       'client' => client,
       'uid' => uid,
       'expiry' => expiry,
       'token-type' => token_type
     }
-    auth_params
   end
 
   def date_formatter(date)
-    DateTime.parse(date).strftime("%H:%M %d/%m/%Y")
+    DateTime.parse(date).strftime('%H:%M %d/%m/%Y')
   end
 end
