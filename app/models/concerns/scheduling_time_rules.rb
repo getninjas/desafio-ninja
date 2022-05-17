@@ -4,7 +4,7 @@ module SchedulingTimeRules
   private
 
   def valid_time_range
-    return if time.hour.between?(9, 18) && time > DateTime.current
+    return if time.on_weekday? && time.hour.between?(9, 18) && time > DateTime.current
 
     errors.add(:time, :out_of_time)
   end
