@@ -36,7 +36,7 @@ module Api
           room_id: available_rooms,
           subject: formatted_params[:subject]
         )
-        @meeting_cadidate.users << find_guests if find_guests.present?
+        @meeting_cadidate.users = find_guests if find_guests.present?
 
         if @meeting_cadidate.save
           render :created_meeting, status: :ok
@@ -48,11 +48,11 @@ module Api
       def update
         @meeting.subject = formatted_params[:subject] if formatted_params[:subject].present?
         if formatted_params[:users_emails].present?
-          @meeting_cadidate.users << find_guests if find_guests.present?
+          @meeting.users = find_guests if find_guests.present?
         end
+
         if formatted_params[:start_time].present? && formatted_params[:end_time].present? &&
-          @meeting.start_time != formatted_params[:start_time] &&
-          @meeting.end_time != formatted_params[:end_time]
+          (@meeting.start_time != formatted_params[:start_time] || @meeting.end_time != formatted_params[:end_time])
 
           (respond_no_room_available; return) if available_rooms.blank?
           @meeting.room_id = available_rooms
@@ -125,6 +125,7 @@ module Api
 
       def find_guests
         return nil if formatted_params[:users_emails].blank?
+
         guests = formatted_params[:users_emails].map { |email| User.find_by(email: email) }
         guests.compact!
         guests
