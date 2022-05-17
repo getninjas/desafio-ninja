@@ -1,5 +1,6 @@
-class Schedulings::CreateService < BusinessProcess::Base
+class Schedulings::UpdateService < BusinessProcess::Base
   needs :scheduling_params
+  needs :scheduling
 
   steps :find_meeting_room,
         :create
@@ -7,7 +8,7 @@ class Schedulings::CreateService < BusinessProcess::Base
   def call
     process_steps
 
-    @scheduling
+    scheduling
   end
 
   private
@@ -19,9 +20,9 @@ class Schedulings::CreateService < BusinessProcess::Base
   end
 
   def create
-    @scheduling = Scheduling.new(scheduling_params)
+    scheduling.update(scheduling_params)
 
-    fail(@scheduling.errors.full_messages) unless @scheduling.save
+    fail(scheduling.errors.full_messages) if scheduling.errors.present?
   end
 
 end
