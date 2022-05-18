@@ -10,6 +10,12 @@ Solução: Foi criado 2 modelos, uma para sala de reunioes (Meeting Room) e outr
 }
 ```
 
+### **Observações**
+- Cada solicitação corresponde a 1h de agendamento da sala
+- Agendamentos não podem ser realizados em tempo anterior ao tempo atual
+- Agendamentos não podem ser realizados fora de horario comercial
+- Agendamentos não podem ser realizados em periodo ja agendado na mesma sala
+
 Alem das rotas `INDEX, CREATE, UPDATE, SHOW e DESTROY` para agendamento, existe um `INDEX` para obter as salas de reunioes. Todas as rotas estão na [documentação postman](https://documenter.getpostman.com/view/8120581/Uyxkm6AC).
 
 ## Configuração Docker Compose
