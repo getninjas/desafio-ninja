@@ -1,4 +1,4 @@
-class MeetingContract < Dry::Validation::Contract
+class CreateMeetingContract < Dry::Validation::Contract
   params do
     required(:start_time).filled(:time)
     required(:end_time).filled(:time)

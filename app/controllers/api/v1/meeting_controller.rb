@@ -26,7 +26,7 @@ module Api
       end
 
       def create
-        (respond_contract_errors and return) if meeting_contract.errors.present?
+        (respond_contract_errors(create_meeting_contract) and return) if create_meeting_contract.errors.present?
         (respond_no_room_available and return) if available_rooms.blank?
 
         @meeting_cadidate = Meeting.new(
@@ -108,12 +108,12 @@ module Api
         end
       end
 
-      def meeting_contract
-        @meeting_contract ||= MeetingContract.new.call(formatted_params)
+      def create_meeting_contract
+        @create_meeting_contract ||= CreateMeetingContract.new.call(formatted_params)
       end
 
-      def respond_contract_errors
-        render json: { errors: meeting_contract.errors.messages.map(&:to_h) },
+      def respond_contract_errors(contract)
+        render json: { errors: contract.errors.messages.map(&:to_h) },
                status: :bad_request
       end
 
