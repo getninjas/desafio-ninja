@@ -1,4 +1,4 @@
-class ApiController < ActionController::API
+class Api::ApiController < ActionController::API
   include ApiCommonResponses
 
   wrap_parameters false

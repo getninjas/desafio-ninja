@@ -10,3 +10,4 @@ pt-BR:
               time:
                 taken: já reservado
                 out_of_time: fora do permitido
+                invalid: invalido

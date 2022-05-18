@@ -1,4 +1,4 @@
-class SchedulingsController < ApiController
+class Api::V1::SchedulingsController < Api::ApiController
   before_action :find_scheduling, only: [:update, :show, :destroy]
 
   def index

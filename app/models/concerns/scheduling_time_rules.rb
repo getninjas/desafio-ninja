@@ -16,6 +16,8 @@ module SchedulingTimeRules
   end
 
   def format_hour
+    return errors.add(:time, :invalid) unless time.present?
+
     self.time = time.beginning_of_hour
   end
 
