@@ -1,15 +1,32 @@
-# Descrição do Problema
-Temos um problema grande com reuniões, elas são muitas e temos poucas salas disponíveis.
-Precisamos de uma agenda para nos mantermos sincronizados e esse será seu desafio!
-Temos 4 salas e podemos usá-las somente em horário comercial, de segunda a sexta das 09:00 até as 18:00.
-Sua tarefa será de criar uma API REST que crie, edite, mostre e delete o agendamento dos horários para que os usuários não se percam ao agendar as salas.
+# Desafio Ninja
 
-# Notas
-- O teste deve ser escrito utilizando Ruby e Ruby on Rails
-- Utilize as gems que achar necessário
-- Não faça squash dos seus commits, gostamos de acompanhar a evolução gradual da aplicação via commits.
-- Estamos avaliando coisas como design, higiene do código, confiabilidade e boas práticas
-- Esperamos testes automatizados. 
-- A aplicação deverá subir com docker-compose
-- Crie um README.md descrevendo a sua solução e as issues caso houver
-- O desafio pode ser entregue abrindo um pull request ou fazendo um fork do repositório 
+Solução: Foi criado 2 modelos, uma para sala de reunioes (Meeting Room) e outro para agendamento (Scheduling). O agendamento pode ser realizado enviando os seguintes paramentros:
+
+```json
+{
+    "meeting_room_id": 1,
+    "time": "2022-05-18T10:00:00.000-03:00",
+    "responsible": "Nathan"
+}
+```
+
+Alem das rotas `INDEX, CREATE, UPDATE, SHOW e DESTROY` para agendamento, existe um `INDEX` para obter as salas de reunioes. Todas as rotas estão na [documentação postman](https://documenter.getpostman.com/view/8120581/Uyxkm6AC).
+
+## Configuração Docker Compose
+
+```docker
+docker-compose build
+```
+
+```docker
+docker-compose run api rake db:create db:migrate db:seed
+```
+
+```docker
+docker-compose up 
+```
+
+## Executar testes
+```docker
+docker-compose run api cucumber
+```
