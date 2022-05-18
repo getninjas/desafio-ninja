@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+  api:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    environment:
+      - MYSQL_ROOT_NAME=root
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DB_PORT=3306
+      - MYSQL_DB_HOST=db
+    depends_on:
+      - db
