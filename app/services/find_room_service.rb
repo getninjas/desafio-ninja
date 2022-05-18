@@ -1,0 +1,21 @@
+# frozen_string_literal: true
+
+class FindRoomService
+  def initialize(start_time_candidate, end_time_candidate)
+    @start_time_candidate = start_time_candidate
+    @end_time_candidate = end_time_candidate
+    @rooms_id = []
+  end
+
+  def find
+    Room.all.each do |room|
+      meeting_conflict = room.meetings.select do |meeting|
+        (@start_time_candidate..@end_time_candidate).overlaps?(meeting.start_time..meeting.end_time)
+      end
+
+      (@rooms_id << room.id and break) if meeting_conflict.blank?
+    end
+
+    @rooms_id.uniq.first
+  end
+end

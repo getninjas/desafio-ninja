@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: db
+  username: postgres
+  password: password
+
+development:
+  <<: *default
+  database: desafio_ninja_development
+
+test:
+  <<: *default
+  database: desafio_ninja_test
+
+production:
+  <<: *default
+  database: desafio_ninja_production
+  username: desafio_ninja
+  password: <%= ENV['DESAFIO_NINJA_DATABASE_PASSWORD'] %>
