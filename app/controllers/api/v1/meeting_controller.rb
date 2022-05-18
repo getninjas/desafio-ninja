@@ -46,6 +46,7 @@ module Api
       end
 
       def update
+        (respond_contract_errors(update_meeting_contract) and return) if update_meeting_contract.errors.present?
         @meeting.subject = formatted_params[:subject] if formatted_params[:subject].present?
         if formatted_params[:users_emails].present?
           @meeting.users = find_guests if find_guests.present?
@@ -115,6 +116,10 @@ module Api
       def respond_contract_errors(contract)
         render json: { errors: contract.errors.messages.map(&:to_h) },
                status: :bad_request
+      end
+
+      def update_meeting_contract
+        @update_meeting_contract ||= UpdateMeetingContract.new.call(formatted_params)
       end
 
       def respond_no_room_available
